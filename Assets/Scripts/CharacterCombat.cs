@@ -14,7 +14,7 @@ public class CharacterCombat : MonoBehaviour
         {
             if(OnAttack != null)
             {
-                canAttack = false;
+                canAttack = false; // we wait for the animation to hit before we can attack again
                 OnAttack();
             }
         }

@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public Transform groundChecker;
     public LayerMask groundMask;
     bool isGrounded;
-    Vector3 lastMovement;
     Vector3 velocity;
 
     float turnSmoothness = 0.1f;
@@ -50,12 +49,6 @@ public class PlayerController : MonoBehaviour
 
         CharacterController controller = GetComponent<CharacterController>();
 
-
-        if (!isGrounded)
-        {
-            controller.Move(lastMovement * speed * Time.deltaTime);
-        }
-
         Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         if(move.magnitude >= 0.1f)
         {
@@ -75,25 +68,24 @@ public class PlayerController : MonoBehaviour
             {
                 speed = minSpeed;
             }
-            if (isDashing)
+            if (!isAttacking)
             {
-                if (Time.time - dashStartTime <= dashDuration)
+                if (isDashing)
                 {
-                    //Debug.Log("DASHING");
-                    controller.Move(move * dashSpeed * Time.deltaTime);
-                    isMoving = true;
+                    if (Time.time - dashStartTime <= dashDuration)
+                    {
+                        isMoving = true;
+                        controller.Move(move * dashSpeed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        OnEndDash();
+                    }
                 }
                 else
                 {
-                    OnEndDash();
-                }
-            }
-            else
-            {
-                if (!isAttacking)
-                {
-                    controller.Move(move * speed * Time.deltaTime);
                     isMoving = true;
+                    controller.Move(move * speed * Time.deltaTime);
                 }
             }
         }
@@ -102,7 +94,6 @@ public class PlayerController : MonoBehaviour
             speed = 0f;
             isMoving = false;
         }
-        
     }
 
     void OnAttack()

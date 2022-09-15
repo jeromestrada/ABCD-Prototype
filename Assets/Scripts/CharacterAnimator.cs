@@ -25,11 +25,15 @@ public class CharacterAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Speed in Animator " + playerController.speed);
+        
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
         if (playerController.isMoving)
         {
             animator.SetTrigger("attackCancel"); // whenever the player is moving trigger this so we can cancel attack animations
+        }
+        else
+        {
+            animator.ResetTrigger("attackCancel");
         }
     }
 
