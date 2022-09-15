@@ -555,6 +555,8 @@ GameObject:
   - component: {fileID: 1477938530}
   - component: {fileID: 1477938532}
   - component: {fileID: 1477938528}
+  - component: {fileID: 1477938529}
+  - component: {fileID: 1477938533}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -579,6 +581,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashStartTime: 0
   dashDuration: 0.2
+  speed: 0
   jumpSpeed: 2.5
   gravity: -19.62
   groundDistance: 0.1
@@ -586,6 +589,18 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &1477938529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477938527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068da96e424261f49ba0ba5512cd7d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &1477938530
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -628,6 +643,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &1477938533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477938527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01efbdff09642d64591320a45d21c613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
