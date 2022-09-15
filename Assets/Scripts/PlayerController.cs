@@ -24,11 +24,16 @@ public class PlayerController : MonoBehaviour
     float turnSmoothness = 0.1f;
     float turnSmoothVelocity;
 
+    CharacterCombat combat;
+    bool isAttacking = false;
+    public bool isMoving = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        combat = GetComponent<CharacterCombat>();
+        combat.OnAttack += OnAttack;
         speed = 0;
         isDashing = false;
     }
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 {
                     //Debug.Log("DASHING");
                     controller.Move(move * dashSpeed * Time.deltaTime);
+                    isMoving = true;
                 }
                 else
                 {
@@ -84,15 +90,24 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                controller.Move(move * speed * Time.deltaTime);
-                Debug.Log("Speed in Controller " + speed);
+                if (!isAttacking)
+                {
+                    controller.Move(move * speed * Time.deltaTime);
+                    isMoving = true;
+                }
             }
         }
         else
         {
             speed = 0f;
+            isMoving = false;
         }
         
+    }
+
+    void OnAttack()
+    {
+        isAttacking = true;
     }
 
     void OnStartDash()
@@ -105,5 +120,10 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = false;
         dashStartTime = 0;
+    }
+
+    public void AttackHit_AnimationEvent()
+    {
+        isAttacking = false;
     }
 }
