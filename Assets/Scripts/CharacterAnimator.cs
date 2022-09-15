@@ -19,6 +19,7 @@ public class CharacterAnimator : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         combat = GetComponent<CharacterCombat>();
 
+        playerController.OnDash += OnDash;
         combat.OnAttack += OnAttack; // subscribe to the delegate
     }
 
@@ -40,5 +41,10 @@ public class CharacterAnimator : MonoBehaviour
     protected virtual void OnAttack()
     {
         animator.SetTrigger("attackTrigger"); // trigger in the animator    
+    }
+
+    protected virtual void OnDash()
+    {
+        animator.SetTrigger("dashTrigger"); // trigger in the animator    
     }
 }

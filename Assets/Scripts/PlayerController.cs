@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float minSpeed = 3.5f;
     public float maxSpeed = 7f;
-    bool isDashing;
+    public bool isDashing;
     public float dashSpeed;
     public float dashStartTime;
     public float dashDuration;
@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     CharacterCombat combat;
     bool isAttacking = false;
     public bool isMoving = false;
+
+    public event System.Action OnDash;
 
 
     // Start is called before the first frame update
@@ -49,17 +51,37 @@ public class PlayerController : MonoBehaviour
 
         CharacterController controller = GetComponent<CharacterController>();
 
+        if (!isAttacking)
+        {
+            HandleMovement(controller);
+        }
+        
+    }
+
+    void HandleMovement(CharacterController controller)
+    {
         Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        if(move.magnitude >= 0.1f)
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
+        {
+            OnStartDash();
+        }
+        if (isDashing)
+        {
+            if (Time.time - dashStartTime <= dashDuration)
+            {
+                isMoving = true;
+                controller.Move(transform.forward * dashSpeed * Time.deltaTime);
+            }
+            else
+            {
+                OnEndDash();
+            }
+        }
+
+        if (move.magnitude >= 0.1f)
         {
             speed = minSpeed;
-            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
-            {
-                OnStartDash();
-            }
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = maxSpeed;
@@ -68,25 +90,14 @@ public class PlayerController : MonoBehaviour
             {
                 speed = minSpeed;
             }
-            if (!isAttacking)
+            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            
+            if(!isDashing)
             {
-                if (isDashing)
-                {
-                    if (Time.time - dashStartTime <= dashDuration)
-                    {
-                        isMoving = true;
-                        controller.Move(move * dashSpeed * Time.deltaTime);
-                    }
-                    else
-                    {
-                        OnEndDash();
-                    }
-                }
-                else
-                {
-                    isMoving = true;
-                    controller.Move(move * speed * Time.deltaTime);
-                }
+                isMoving = true;
+                controller.Move(move * speed * Time.deltaTime);
             }
         }
         else
@@ -95,7 +106,6 @@ public class PlayerController : MonoBehaviour
             isMoving = false;
         }
     }
-
     void OnAttack()
     {
         isAttacking = true;
@@ -105,6 +115,10 @@ public class PlayerController : MonoBehaviour
     {
         isDashing = true;
         dashStartTime = Time.time;
+        if(OnDash != null)
+        {
+            OnDash();
+        }
     }
 
     void OnEndDash()

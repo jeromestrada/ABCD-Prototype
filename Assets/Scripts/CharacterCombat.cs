@@ -7,10 +7,16 @@ public class CharacterCombat : MonoBehaviour
     private bool canAttack = true;
 
     public event System.Action OnAttack;
+    PlayerController controller;
+
+    private void Start()
+    {
+        controller = GetComponent<PlayerController>();
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && canAttack)
+        if (Input.GetButton("Fire1") && canAttack && !controller.isDashing)
         {
             if(OnAttack != null)
             {
