@@ -6,7 +6,12 @@ using UnityEngine;
 public class CharacterAnimator : MonoBehaviour
 {
     Animator animator;
+    public AnimationClip replaceableAttackAnim;
+    public AnimationClip[] defaultAttackAnimSet;
+    protected AnimationClip[] currentAttackAnimSet;
+
     PlayerController playerController;
+    public AnimatorOverrideController overrideController;
     CharacterCombat combat;
 
     float motionSmoothness = 0.1f;
@@ -16,6 +21,13 @@ public class CharacterAnimator : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        if (overrideController == null)
+        {
+            overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        }
+        animator.runtimeAnimatorController = overrideController;
+        currentAttackAnimSet = defaultAttackAnimSet;
+
         playerController = GetComponent<PlayerController>();
         combat = GetComponent<CharacterCombat>();
 
@@ -38,13 +50,15 @@ public class CharacterAnimator : MonoBehaviour
         }
     }
 
-    protected virtual void OnAttack()
+    protected virtual void OnAttack(int attackString)
     {
-        animator.SetTrigger("attackTrigger"); // trigger in the animator    
+        animator.SetTrigger("attackTrigger"); // trigger in the animator
+        overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
     }
 
     protected virtual void OnDash()
     {
-        animator.SetTrigger("dashTrigger"); // trigger in the animator    
+        animator.SetTrigger("dashTrigger"); // trigger in the animator
+        
     }
 }

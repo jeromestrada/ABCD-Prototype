@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 1477938530}
   - component: {fileID: 1477938532}
   - component: {fileID: 1477938528}
-  - component: {fileID: 1477938529}
   - component: {fileID: 1477938533}
   - component: {fileID: 1477938534}
   m_Layer: 0
@@ -579,6 +578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 3.5
   maxSpeed: 7
+  isDashing: 0
   dashSpeed: 20
   dashStartTime: 0
   dashDuration: 0.2
@@ -590,18 +590,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1477938529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477938527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 068da96e424261f49ba0ba5512cd7d81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isMoving: 0
 --- !u!33 &1477938530
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -656,6 +645,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01efbdff09642d64591320a45d21c613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replaceableAttackAnim: {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+  defaultAttackAnimSet:
+  - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+  - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+  overrideController: {fileID: 0}
 --- !u!114 &1477938534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,6 +662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab92b7d85194c33489f006a33554459f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stringAttacksCount: 2
+  stringGracePeriod: 0.85
+  cooldownDuration: 0.6
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
             isMoving = false;
         }
     }
-    void OnAttack()
+    void OnAttack(int attackString)
     {
         isAttacking = true;
     }
