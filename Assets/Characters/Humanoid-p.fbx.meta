@@ -109,7 +109,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.47950813
+      - time: 0.5412036
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -145,7 +145,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.3236514
+      - time: 0.42499995
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}

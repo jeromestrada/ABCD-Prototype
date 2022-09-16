@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterCombat : MonoBehaviour
 {
-    private bool canAttack = true;
+    private bool canStringAttack = true;
     private int currentAttackString = 0;
     public int stringAttacksCount = 2;
     private float lastAttackStringTime;
@@ -13,7 +13,7 @@ public class CharacterCombat : MonoBehaviour
 
     bool isCoolingDown = false;
     float finalStringStart;
-    public float cooldownDuration = 2f;
+    public float cooldownDuration = 0.8f;
 
     public event System.Action<int> OnAttack;
     PlayerController controller;
@@ -25,11 +25,17 @@ public class CharacterCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - finalStringStart >= cooldownDuration)
+        // TODO: maybe use the animation time data or completion instead?
+        // experiment with masking the legs to allow it to move but letting the upper body's animation to finish
+        if (Time.time - lastAttackStringTime >= stringGracePeriod)
+        {
+            currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
+        }
+        if (Time.time - finalStringStart >= cooldownDuration)
         {
             isCoolingDown = false;
         }
-        if (Input.GetButton("Fire1") && canAttack && !controller.isDashing && !isCoolingDown)
+        if (Input.GetButton("Fire1") && canStringAttack && !controller.isDashing && !isCoolingDown)
         {
             if(OnAttack != null)
             {
@@ -38,24 +44,18 @@ public class CharacterCombat : MonoBehaviour
                     isCoolingDown = true;
                     finalStringStart = Time.time;
                 }
-                canAttack = false; // we wait for the animation to hit before we can attack again
+                canStringAttack = false; // we wait for the animation to hit before we can attack again
                 OnAttack(currentAttackString % stringAttacksCount);
                 currentAttackString++;
                 lastAttackStringTime = Time.time;
-
-                
             }
         }
-        // TODO: maybe use the animation time data or completion instead?
-        if(Time.time - lastAttackStringTime > stringGracePeriod)
-        {
-            currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
-        }
+        
     }
 
     public void AttackHit_AnimationEvent()
     {
         Debug.Log("Animation Hit!");
-        canAttack = true;
+        canStringAttack = true;
     }
 }
