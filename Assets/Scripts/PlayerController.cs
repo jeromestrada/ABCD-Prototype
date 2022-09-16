@@ -81,14 +81,14 @@ public class PlayerController : MonoBehaviour
 
         if (move.magnitude >= 0.1f)
         {
-            speed = minSpeed;
+            speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                speed = maxSpeed;
+                speed = minSpeed;
             }
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                speed = minSpeed;
+                speed = maxSpeed;
             }
             float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
