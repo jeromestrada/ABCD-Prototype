@@ -89,7 +89,7 @@ ModelImporter:
       takeName: Sword Attack 1
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -109,7 +109,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.5412036
+      - time: 0.6780627
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -145,7 +145,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.42499995
+      - time: 0.9333332
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -277,7 +277,7 @@ ModelImporter:
       takeName: Dash
       internalID: 0
       firstFrame: 0
-      lastFrame: 11
+      lastFrame: 9
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
