@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stringAttacksCount: 2
-  stringGracePeriod: 0.85
-  cooldownDuration: 0.85
+  stringGracePeriod: 0.75
+  cooldownDuration: 0.75
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

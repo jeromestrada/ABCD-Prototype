@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CharacterCombat : MonoBehaviour
 {
-    private bool canStringAttack = true;
-    private int currentAttackString = 0;
+    public bool canStringAttack;
+    private int currentAttackString; 
     public int stringAttacksCount = 2;
     private float lastAttackStringTime;
-    public float stringGracePeriod = 0.85f;
+    public float stringGracePeriod = 0.5f;
 
 
     bool isCoolingDown = false;
@@ -21,41 +21,44 @@ public class CharacterCombat : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<PlayerController>();
+        lastAttackStringTime = Time.time;
+        canStringAttack = true;
+        currentAttackString = 0;
     }
     // Update is called once per frame
     void Update()
     {
-        // TODO: maybe use the animation time data or completion instead?
-        // experiment with masking the legs to allow it to move but letting the upper body's animation to finish
-        if (Time.time - lastAttackStringTime >= stringGracePeriod)
-        {
-            currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
-        }
+        // TODO: will use full animation instead, and have a separate recovery animation for each attack
+        // this will eliminate the need to use events to sync different attack string animations.
+        
         if (Time.time - finalStringStart >= cooldownDuration)
         {
             isCoolingDown = false;
         }
-        if (Input.GetButton("Fire1") && canStringAttack && !controller.isDashing && !isCoolingDown)
+        if (Time.time - lastAttackStringTime >= stringGracePeriod)
         {
-            if(OnAttack != null)
+            currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
+        }
+        if (Input.GetButton("Fire1") && !isCoolingDown && canStringAttack && !controller.isDashing)
+        {
+            if (OnAttack != null)
             {
-                if (currentAttackString == stringAttacksCount - 1)
+                OnAttack(currentAttackString % stringAttacksCount); // invoke the delegate
+                lastAttackStringTime = Time.time;
+                currentAttackString++; // increment to the next attack string
+                if (currentAttackString == stringAttacksCount) // if we've reached the last string we cooldown
                 {
                     isCoolingDown = true;
                     finalStringStart = Time.time;
-                }
-                canStringAttack = false; // we wait for the animation to hit before we can attack again
-                OnAttack(currentAttackString % stringAttacksCount);
-                currentAttackString++;
-                lastAttackStringTime = Time.time;
+                } 
             }
+            canStringAttack = false; // we wait for the animation to hit before we can attack again
         }
-        
     }
 
     public void AttackHit_AnimationEvent()
     {
-        Debug.Log("Animation Hit!");
-        canStringAttack = true;
+        Debug.Log("Animation Hit! " + (currentAttackString - 1));
+        canStringAttack = true; 
     }
 }

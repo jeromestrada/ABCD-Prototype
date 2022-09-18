@@ -40,9 +40,11 @@ public class CharacterAnimator : MonoBehaviour
     {
         
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
-        if (playerController.isMoving)
+        if (playerController.isDashing)
         {
             animator.SetTrigger("attackCancel"); // whenever the player is moving trigger this so we can cancel attack animations
+            combat.canStringAttack = true;
+            playerController.isAttacking = false;
         }
         else
         {
