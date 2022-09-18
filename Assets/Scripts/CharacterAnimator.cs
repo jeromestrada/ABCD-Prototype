@@ -45,11 +45,13 @@ public class CharacterAnimator : MonoBehaviour
             animator.SetTrigger("attackCancel"); // whenever the player is moving trigger this so we can cancel attack animations
             combat.canStringAttack = true;
             playerController.isAttacking = false;
+            
         }
         else
         {
             animator.ResetTrigger("attackCancel");
         }
+        animator.SetBool("isAttacking", playerController.isAttacking);
     }
 
     protected virtual void OnAttack(int attackString)
