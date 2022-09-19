@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
     bool walkPointSet;
 
+    public float speedPercent;
+
     // Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -37,8 +39,10 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
+        speedPercent = agent.velocity.magnitude / agent.speed;
+
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (!playerInSightRange && playerInAttackRange) Chasing();
+        if (playerInSightRange && !playerInAttackRange) Chasing();
         if (playerInSightRange && playerInAttackRange) Attacking();
     }
 
@@ -47,10 +51,9 @@ public class EnemyAI : MonoBehaviour
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet) agent.SetDestination(walkPoint);
-
         Vector3 distancToWalkPoint = transform.position - walkPoint;
 
-        if (distancToWalkPoint.magnitude <= 1)
+        if (distancToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
         }
@@ -63,7 +66,7 @@ public class EnemyAI : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 3f, Ground)) walkPointSet = true;
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground)) walkPointSet = true;
     }
     private void Chasing()
     {
@@ -73,12 +76,12 @@ public class EnemyAI : MonoBehaviour
     {
         agent.SetDestination(transform.position);
         transform.LookAt(playerTrans);
-        if (OnEnemyAttack != null)
-        {
-            OnEnemyAttack();
-        }
         if (!alreadyAttacked)
         {
+            if (OnEnemyAttack != null)
+            {
+                OnEnemyAttack();
+            }
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
