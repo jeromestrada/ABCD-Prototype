@@ -5,9 +5,9 @@ public class AnimationEventReciever : MonoBehaviour
     public CharacterCombat combat;
     public PlayerController controller;
 
-    public void AttackHitEvent()
+    public void AttackFinishEvent()
     {
-        combat.AttackHit_AnimationEvent();
-        controller.AttackHit_AnimationEvent();
+        combat.AttackFinish_AnimationEvent();
+        controller.AttackFinish_AnimationEvent();
     }
 }

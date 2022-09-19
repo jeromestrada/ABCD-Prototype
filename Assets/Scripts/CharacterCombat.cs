@@ -35,12 +35,17 @@ public class CharacterCombat : MonoBehaviour
         {
             isCoolingDown = false;
         }
-        if (Time.time - lastAttackStringTime >= stringGracePeriod)
+        if (Time.time - lastAttackStringTime > stringGracePeriod)
         {
             currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
         }
-        if (Input.GetButton("Fire1") && !isCoolingDown && canStringAttack && !controller.isDashing)
+        if (Input.GetButton("Fire1") && !isCoolingDown && canStringAttack)
         {
+            canStringAttack = false; // we wait for the animation to hit before we can attack again
+            if (controller.isDashing)
+            {
+                controller.OnEndDash();
+            }
             if (OnAttack != null)
             {
                 OnAttack(currentAttackString % stringAttacksCount); // invoke the delegate
@@ -52,13 +57,12 @@ public class CharacterCombat : MonoBehaviour
                     finalStringStart = Time.time;
                 } 
             }
-            canStringAttack = false; // we wait for the animation to hit before we can attack again
         }
     }
 
-    public void AttackHit_AnimationEvent()
+    public void AttackFinish_AnimationEvent()
     {
-        Debug.Log("Animation Hit! " + (currentAttackString - 1));
+        /*Debug.Log("Animation Hit! " + (currentAttackString - 1));*/
         canStringAttack = true; 
     }
 }

@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
         }*/
 
         CharacterController controller = GetComponent<CharacterController>();
+        HandleMovement(controller);
+
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
         {
             OnStartDash();
@@ -67,23 +69,11 @@ public class PlayerController : MonoBehaviour
                 OnEndDash();
             }
         }
-        if (!isAttacking)
-        {
-            HandleMovement(controller);
-        }
-        else
-        {
-            speed = 0; // if attacking, stop moving;
-            isMoving = false;
-        }
-        
     }
 
     void HandleMovement(CharacterController controller)
     {
         Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-
-        
 
         if (move.magnitude >= 0.1f)
         {
@@ -99,6 +89,10 @@ public class PlayerController : MonoBehaviour
             if(!isDashing)
             {
                 isMoving = true;
+                if (isAttacking)
+                {
+                    speed /= 10;
+                }
                 controller.Move(move * speed * Time.deltaTime);
             }
         }
@@ -120,7 +114,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnEndDash()
+    public void OnEndDash()
     {
         isDashing = false;
         dashStartTime = 0;
@@ -129,7 +123,7 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = true;
     }
-    public void AttackHit_AnimationEvent()
+    public void AttackFinish_AnimationEvent()
     {
         isAttacking = false;
     }

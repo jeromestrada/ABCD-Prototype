@@ -36,12 +36,13 @@ public class CharacterAnimator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
         if (playerController.isDashing)
         {
+            
             animator.SetTrigger("attackCancel"); // whenever the player is moving trigger this so we can cancel attack animations
             combat.canStringAttack = true;
             playerController.isAttacking = false;
@@ -49,13 +50,16 @@ public class CharacterAnimator : MonoBehaviour
         }
         else
         {
+            animator.ResetTrigger("dashTrigger");
             animator.ResetTrigger("attackCancel");
         }
         animator.SetBool("isAttacking", playerController.isAttacking);
+        animator.SetBool("canMove", playerController.isMoving);
     }
 
     protected virtual void OnAttack(int attackString)
     {
+        playerController.isAttacking = true;
         animator.SetTrigger("attackTrigger"); // trigger in the animator
         overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
     }
