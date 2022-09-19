@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
             OnDying();
         }
         GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<EnemyAI>().enabled = false;
         this.enabled = false;
     }
 }
