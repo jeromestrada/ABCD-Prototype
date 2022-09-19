@@ -10,6 +10,12 @@ public class CharacterCombat : MonoBehaviour
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
 
+    public int playerDamage = 50;
+
+    public Transform attackPoint;
+    public float attackRadius = 3f;
+    public LayerMask enemyMask;
+
 
     bool isCoolingDown = false;
     float finalStringStart;
@@ -64,5 +70,27 @@ public class CharacterCombat : MonoBehaviour
     {
         /*Debug.Log("Animation Hit! " + (currentAttackString - 1));*/
         canStringAttack = true; 
+    }
+
+    public void AttackHit_AnimationEvent()
+    {
+        Debug.Log("Attack Hit");
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRadius, enemyMask);
+
+        foreach(Collider enemy in hitEnemies)
+        {
+            Debug.Log(enemy.name + " taking damage!");
+            enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

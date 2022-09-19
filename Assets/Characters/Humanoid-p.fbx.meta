@@ -116,6 +116,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.4041666
+        functionName: AttackHitEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -147,6 +154,13 @@ ModelImporter:
       events:
       - time: 0.9333332
         functionName: AttackFinishEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.22916664
+        functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -309,7 +323,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 0
     importCameras: 0
     importLights: 0

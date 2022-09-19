@@ -10,4 +10,9 @@ public class AnimationEventReciever : MonoBehaviour
         combat.AttackFinish_AnimationEvent();
         controller.AttackFinish_AnimationEvent();
     }
+
+    public void AttackHitEvent()
+    {
+        combat.AttackHit_AnimationEvent();
+    }
 }

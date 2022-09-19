@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public float minSpeed = 3.5f;
     public float maxSpeed = 7f;
-    float tLerp = 0f;
     public bool isDashing;
     public float dashSpeed;
     public float dashStartTime;
