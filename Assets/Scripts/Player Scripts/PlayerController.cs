@@ -29,16 +29,13 @@ public class PlayerController : MonoBehaviour
 
     public event System.Action OnDash;
 
-    public float interactionRange = 3f;
-    public LayerMask interactableMask;
-    Interactable closestInteractable = null;
-    float interactableScanInterval = 0.5f;
-    bool alreadyScanned = false;
+    InteractableScanner scanner;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        scanner = GetComponent<InteractableScanner>();
         combat = GetComponent<CharacterCombat>();
         combat.OnAttack += OnAttack;
         speed = maxSpeed;
@@ -48,22 +45,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScanForInteractables();
+        
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(closestInteractable != null)
-            {
-                Debug.Log("Trying to interact...");
-                closestInteractable.interacting = true;
-            }
-            
-        }
         isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
 
         CharacterController controller = GetComponent<CharacterController>();
         HandleMovement(controller);
-
+        PlayerInteract();
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
         {
             OnStartDash();
@@ -82,36 +70,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ScanForInteractables()
+    void PlayerInteract()
     {
-        if (!alreadyScanned)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Collider[] detected = Physics.OverlapSphere(transform.position, interactionRange, interactableMask);
-            if(detected.Length == 0) // null the closest when nothing is detected
+            if (scanner.closestInteractable != null)
             {
-                closestInteractable = null;
-                return;
+                Debug.Log("Trying to interact...");
+                scanner.closestInteractable.interacting = true;
             }
-            float closestDist = float.MaxValue;
-            foreach (Collider c in detected) // finds the closest interactable detected
-            {
-                Interactable temp = c.GetComponent<Interactable>();
-                float distance = Vector3.Distance(temp.interactionTransform.position, transform.position);
-                if (distance < closestDist)
-                {
-                    closestDist = distance;
-                    closestInteractable = temp;
-                }
-                temp.WhenInRange(transform); // we're in range, so we activate the interactable.
-            }
-            alreadyScanned = true;
-            Invoke(nameof(ResetScan), interactableScanInterval); // reset scan for interactables after given seconds lapsed.
         }
-    }
-
-    private void ResetScan()
-    {
-        alreadyScanned = false;
     }
 
     void HandleMovement(CharacterController controller)
@@ -146,7 +114,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-
     void OnStartDash()
     {
         isDashing = true;
@@ -156,7 +123,6 @@ public class PlayerController : MonoBehaviour
             OnDash();
         }
     }
-
     public void OnEndDash()
     {
         isDashing = false;
@@ -169,11 +135,5 @@ public class PlayerController : MonoBehaviour
     public void AttackFinish_AnimationEvent()
     {
         isAttacking = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 }
