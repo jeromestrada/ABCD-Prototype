@@ -12,6 +12,8 @@ public class Interactable : MonoBehaviour
     public Transform player;
     public bool interacting = false;
 
+    float isInRangeResetTimer = 0.5f;
+
 
     private void Awake()
     {
@@ -20,36 +22,43 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         // this is meant to be overwritten
-        Debug.Log("Interacting with " + transform.name);
+        //Debug.Log("Interacting with " + transform.name);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isInRange && !hasInteracted) // only process when this interactable is in range
-        {
-            
-            if (interacting)
+        {                                // and we haven't interacted with it
+            if (interacting) // wait until the player triggers the interaction
             {
                 Interact();
                 hasInteracted = true;
                 Debug.Log("INTERACTED with " + transform.name + "!");
+
+                // disable collider once interacted with. this is just a test
+                // since classes that will inherit this class will be responsible for the interaction limit.
+                // i.e infinitely interactable objects won't get disabled at all
+                GetComponent<SphereCollider>().enabled = false;
+                this.enabled = false;
             }
         }
     }
 
-    public void WhenInRange(Transform playerTransform)
+    public void WhenInRange(Transform playerTransform) // activates the interactable by setting isInRange to true
     {
         float distance = Vector3.Distance(player.position, interactionTransform.position);
         if (player != null && !hasInteracted)
         {
-            if(distance < radius)
-            {
-                Debug.Log("In range of " + transform.name);
-                isInRange = true;
-                player = playerTransform;
-            }
+            isInRange = true;
+            player = playerTransform;
+            Invoke(nameof(ResetInRange), isInRangeResetTimer); // reset isInRange after timer in case player moves out of range for too long.
         }
+    }
+
+    private void ResetInRange()
+    {
+        isInRange = false;
     }
 
     private void OnDrawGizmosSelected()
