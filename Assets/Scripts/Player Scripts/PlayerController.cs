@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
 
     public event System.Action OnDash;
 
+    public float interactionRange = 3f;
+    public LayerMask interactableMask;
+    Interactable closestInteractable = null;
+    float interactableScanInterval = 1f;
+    bool alreadyScanned = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +48,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
+        ScanForInteractables();
 
-        /*if (isGrounded && velocity.y < 0) // if already grounded, adjust the effect of gravity accordingly
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            velocity.y = -1f;
-        }*/
+            if(closestInteractable != null)
+            {
+                Debug.Log("Trying to interact...");
+                closestInteractable.interacting = true;
+            }
+            
+        }
+        isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
 
         CharacterController controller = GetComponent<CharacterController>();
         HandleMovement(controller);
@@ -68,6 +80,33 @@ public class PlayerController : MonoBehaviour
                 OnEndDash();
             }
         }
+    }
+
+    public void ScanForInteractables()
+    {
+        if (!alreadyScanned)
+        {
+            Collider[] detected = Physics.OverlapSphere(transform.position, interactionRange, interactableMask);
+            float closestDist = float.MaxValue;
+            foreach (Collider c in detected)
+            {
+                Interactable temp = c.GetComponent<Interactable>();
+                float distance = Vector3.Distance(temp.interactionTransform.position, transform.position);
+                if (distance < closestDist)
+                {
+                    closestDist = distance;
+                    closestInteractable = temp;
+                }
+                temp.WhenInRange(transform);
+            }
+            alreadyScanned = true;
+            Invoke(nameof(ResetScan), interactableScanInterval); // reset scan for interactables after  given interval in seconds.
+        }
+    }
+
+    private void ResetScan()
+    {
+        alreadyScanned = false;
     }
 
     void HandleMovement(CharacterController controller)
