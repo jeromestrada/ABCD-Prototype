@@ -21,7 +21,6 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         // this is meant to be overwritten
-        //Debug.Log("Interacting with " + transform.name);
         hasInteracted = true;
     }
 
@@ -34,7 +33,6 @@ public class Interactable : MonoBehaviour
             if (interacting) // wait until the player triggers the interaction
             {
                 Interact();
-                Debug.Log("INTERACTED with " + transform.name + "!");
             }
         }
     }

@@ -68,7 +68,6 @@ public class CharacterCombat : MonoBehaviour
 
     public void AttackFinish_AnimationEvent()
     {
-        /*Debug.Log("Animation Hit! " + (currentAttackString - 1));*/
         canStringAttack = true; 
     }
 

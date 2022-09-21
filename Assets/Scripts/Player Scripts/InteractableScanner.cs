@@ -15,7 +15,6 @@ public class InteractableScanner : MonoBehaviour
         interactables = new List<Interactable>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(interactables.Count > 0)
@@ -64,7 +63,6 @@ public class InteractableScanner : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Interactable interactableObj = other.gameObject.GetComponent<Interactable>();
-        //Debug.Log("Collision ENTER layer: " + interactableObj);
         if (interactableObj != null)
         {
             interactables.Add(interactableObj);
@@ -74,7 +72,6 @@ public class InteractableScanner : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Interactable interactableObj = other.gameObject.GetComponent<Interactable>();
-        //Debug.Log("Collision EXIT: " + interactableObj);
         if (interactableObj != null)
         {
             interactables.Remove(interactableObj);

@@ -11,7 +11,6 @@ public class EnemyAnimator : MonoBehaviour
     EnemyAI enemyAI;
 
     public float locomotionSmoothTime = 0.1f;
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -24,7 +23,6 @@ public class EnemyAnimator : MonoBehaviour
         enemyAI.OnEnemyAttack += OnEnemyAttack;
     }
 
-    // Update is called once per frame
     void Update()
     {
         animator.SetFloat("speedPercent", enemyAI.speedPercent, locomotionSmoothTime, Time.deltaTime);

@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
         {
             if (scanner.closestInteractable != null)
             {
-                Debug.Log("Trying to interact...");
                 scanner.closestInteractable.interacting = true;
             }
         }

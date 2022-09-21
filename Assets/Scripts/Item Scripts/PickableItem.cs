@@ -14,7 +14,6 @@ public class PickableItem : Interactable
 
     void Pickup()
     {
-        Debug.Log("Picking up " + hasInteracted);
         if (hasInteracted)
         {
             Destroy(gameObject);
