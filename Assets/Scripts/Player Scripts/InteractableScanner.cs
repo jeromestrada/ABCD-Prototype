@@ -4,47 +4,46 @@ using UnityEngine;
 
 public class InteractableScanner : MonoBehaviour
 {
-
-    public float interactionRange = 3f;
-    public LayerMask interactableMask;
     public Interactable closestInteractable = null;
     float interactableScanInterval = 0.5f;
     bool alreadyScanned = false;
+
+    private List<Interactable> interactables;
     // Start is called before the first frame update
     void Start()
     {
-        
+        interactables = new List<Interactable>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // can have a state that dictates if we scan or not
-        // or what type of interactable to look out for.
-        ScanForInteractables(interactableMask);
+        if(interactables.Count > 0)
+        {
+            ScanForClosestInteractable();
+        }
     }
 
-    public void ScanForInteractables(LayerMask interactableTypeMask)
+    public void ScanForClosestInteractable()
     {
         if (!alreadyScanned)
         {
-            Collider[] detected = Physics.OverlapSphere(transform.position, interactionRange, interactableTypeMask);
-            if (detected.Length == 0) // null the closest when nothing is detected
-            {
-                closestInteractable = null;
-                return;
-            }
+            ResetClosestInteractable();
             float closestDist = float.MaxValue;
-            foreach (Collider c in detected) // finds the closest interactable detected
+            foreach (Interactable i in interactables) // finds the closest interactable detected
             {
-                Interactable temp = c.GetComponent<Interactable>();
-                float distance = Vector3.Distance(temp.interactionTransform.position, transform.position);
+                if(i == null) // since some of interactables can Destroy themselves, we check for nulls
+                {
+                    interactables.Remove(i);
+                    return;
+                }
+                float distance = Vector3.Distance(i.interactionTransform.position, transform.position);
                 if (distance < closestDist)
                 {
                     closestDist = distance;
-                    closestInteractable = temp;
+                    closestInteractable = i;
                 }
-                temp.WhenInRange(transform); // we're in range, so we activate the interactable.
+                i.WhenInRange(transform); // we're in range if we haven't exited the trigger, so we activate the interactable.
             }
             alreadyScanned = true;
             Invoke(nameof(ResetScan), interactableScanInterval); // reset scan for interactables after given seconds lapsed.
@@ -54,11 +53,35 @@ public class InteractableScanner : MonoBehaviour
     private void ResetScan()
     {
         alreadyScanned = false;
+        ResetClosestInteractable();
     }
 
-    private void OnDrawGizmosSelected()
+    private void ResetClosestInteractable()
     {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, interactionRange);
+        closestInteractable = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Interactable interactableObj = other.gameObject.GetComponent<Interactable>();
+        //Debug.Log("Collision ENTER layer: " + interactableObj);
+        if (interactableObj != null)
+        {
+            interactables.Add(interactableObj);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Interactable interactableObj = other.gameObject.GetComponent<Interactable>();
+        //Debug.Log("Collision EXIT: " + interactableObj);
+        if (interactableObj != null)
+        {
+            interactables.Remove(interactableObj);
+        }
+        if (interactables.Count == 0) // null the closest if the interactables list is empty
+        {
+            ResetClosestInteractable();
+        }
     }
 }

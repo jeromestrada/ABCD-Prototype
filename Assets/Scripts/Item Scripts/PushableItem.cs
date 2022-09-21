@@ -15,7 +15,8 @@ public class PushableItem : Interactable
         Vector3 direction = (transform.position - player.transform.position).normalized;
         direction.y = 0;
         transform.position += direction * 3;
-        hasInteracted = false; // reset interaction status so we can do it infinitely
+        // reset interaction status so we can do it infinitely
+        hasInteracted = false; 
         interacting = false;
     }
 }

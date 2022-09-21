@@ -5,8 +5,7 @@ using UnityEngine;
 public class PickableItem : Interactable
 {
     public Item item;
-
-
+    
     public override void Interact()
     {
         base.Interact();
