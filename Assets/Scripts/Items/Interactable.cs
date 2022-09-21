@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        
     }
     public virtual void Interact()
     {
@@ -47,11 +47,10 @@ public class Interactable : MonoBehaviour
 
     public void WhenInRange(Transform playerTransform) // activates the interactable by setting isInRange to true
     {
-        float distance = Vector3.Distance(player.position, interactionTransform.position);
+        player = playerTransform;
         if (player != null && !hasInteracted)
         {
             isInRange = true;
-            player = playerTransform;
             Invoke(nameof(ResetInRange), isInRangeResetTimer); // reset isInRange after timer in case player moves out of range for too long.
         }
     }
@@ -59,6 +58,7 @@ public class Interactable : MonoBehaviour
     private void ResetInRange()
     {
         isInRange = false;
+        player = null;
     }
 
     private void OnDrawGizmosSelected()

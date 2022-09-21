@@ -19,14 +19,16 @@ public class InteractableScanner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScanForInteractables();
+        // can have a state that dictates if we scan or not
+        // or what type of interactable to look out for.
+        ScanForInteractables(interactableMask);
     }
 
-    public void ScanForInteractables()
+    public void ScanForInteractables(LayerMask interactableTypeMask)
     {
         if (!alreadyScanned)
         {
-            Collider[] detected = Physics.OverlapSphere(transform.position, interactionRange, interactableMask);
+            Collider[] detected = Physics.OverlapSphere(transform.position, interactionRange, interactableTypeMask);
             if (detected.Length == 0) // null the closest when nothing is detected
             {
                 closestInteractable = null;

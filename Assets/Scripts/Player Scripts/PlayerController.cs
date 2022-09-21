@@ -45,8 +45,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
 
         CharacterController controller = GetComponent<CharacterController>();
