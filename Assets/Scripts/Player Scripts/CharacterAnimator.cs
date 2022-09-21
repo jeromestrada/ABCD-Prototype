@@ -10,6 +10,9 @@ public class CharacterAnimator : MonoBehaviour
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
 
+    public WeaponAnimations[] weaponAnimations;
+    Dictionary<Weapon, AnimationClip[]> weaponAnimationsDict;
+
     PlayerController playerController;
     public AnimatorOverrideController overrideController;
     CharacterCombat combat;
@@ -33,6 +36,13 @@ public class CharacterAnimator : MonoBehaviour
 
         playerController.OnDash += OnDash;
         combat.OnAttack += OnAttack; // subscribe to the delegate
+
+        // handle the animations
+        weaponAnimationsDict = new Dictionary<Weapon, AnimationClip[]>();
+        foreach (WeaponAnimations a in weaponAnimations)
+        {
+            weaponAnimationsDict.Add(a.weapon, a.clips);
+        }
     }
 
     // Update is called once per frame
@@ -68,5 +78,13 @@ public class CharacterAnimator : MonoBehaviour
     {
         animator.SetTrigger("dashTrigger"); // trigger in the animator
         
+    }
+
+
+    [System.Serializable]
+    public struct WeaponAnimations
+    {
+        public Weapon weapon;
+        public AnimationClip[] clips;
     }
 }

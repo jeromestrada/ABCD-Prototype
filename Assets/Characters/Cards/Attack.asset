@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ca4b86e1897f04e9b3476164435828, type: 3}
-  m_Name: Starting Sword
+  m_Script: {fileID: 11500000, guid: af8ce314783194640b536872b6efd095, type: 3}
+  m_Name: Attack
   m_EditorClassIdentifier: 
-  name: Starting Sword
-  description: A trusty sword inherited from Uncle Smithy...
-  icon: {fileID: 21300000, guid: 5f8eadf6d26aec84abe03814b6a8c6f7, type: 3}
+  name: Attack
+  description: Attack with your current weapon, limited
+  cardType: 1
+  numOfUses: 6
+  exhaustable: 0
