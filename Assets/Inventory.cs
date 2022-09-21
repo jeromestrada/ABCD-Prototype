@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
+    [SerializeField] private int inventorySize;
     public List<Item> items = new List<Item>();
 
     public void Add(Item item)
