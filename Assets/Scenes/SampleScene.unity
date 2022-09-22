@@ -563,6 +563,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462393154}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &519069856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519069858}
+  - component: {fileID: 519069857}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &519069857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519069856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec8c340d4567f5a41b41fc76fa70e4d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &519069858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519069856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7440506, y: 0.012619022, z: -2.5743647}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526589322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2116,7 @@ MonoBehaviour:
   defaultAttackAnimSet:
   - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
   - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+  weaponAnimations: []
   overrideController: {fileID: 0}
 --- !u!114 &1477938534
 MonoBehaviour:
@@ -2122,7 +2166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b2881918e530543a8101ce4f64c956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckSize: 0
+  cards:
+  - {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
+  - {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
+  - {fileID: 11400000, guid: 541d6deeeaf30f640b64b15d075e7ef1, type: 2}
+  weapons: []
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0

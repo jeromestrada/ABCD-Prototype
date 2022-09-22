@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Reverse Trusty Sword
   description: A not so typical sword
-  icon: {fileID: 0}
-  damage: 0
+  icon: {fileID: 21300000, guid: 9e47e17380468004aa41e7854579bd9d, type: 3}
+  damage: 2
+  weaponAnimations:
+    weapon: {fileID: 11400000}
+    clips:
+    - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+    - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}

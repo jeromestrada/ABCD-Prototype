@@ -6,4 +6,5 @@ using UnityEngine;
 public class Weapon : Item
 {
     public int damage;
+    public WeaponAnimations weaponAnimations;
 }
