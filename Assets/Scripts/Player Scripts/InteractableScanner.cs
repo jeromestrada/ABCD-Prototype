@@ -62,7 +62,7 @@ public class InteractableScanner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Interactable interactableObj = other.gameObject.GetComponent<Interactable>();
+        var interactableObj = other.transform.GetComponent<Interactable>();
         if (interactableObj != null)
         {
             interactables.Add(interactableObj);
@@ -71,9 +71,10 @@ public class InteractableScanner : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Interactable interactableObj = other.gameObject.GetComponent<Interactable>();
+        var interactableObj = other.transform.GetComponent<Interactable>();
         if (interactableObj != null)
         {
+            interactableObj.WhenNotInRange();
             interactables.Remove(interactableObj);
         }
         if (interactables.Count == 0) // null the closest if the interactables list is empty

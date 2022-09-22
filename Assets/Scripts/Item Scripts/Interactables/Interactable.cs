@@ -13,9 +13,12 @@ public class Interactable : MonoBehaviour
     public Transform player;
     public bool interacting = false;
 
+    private SphereCollider myCollider;
+
     private void Awake()
     {
-        GetComponent<SphereCollider>().radius = radius;
+        myCollider = GetComponent<SphereCollider>();
+        myCollider.radius = radius;
     }
 
     public virtual void Interact()
@@ -27,7 +30,6 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<SphereCollider>().radius != radius) GetComponent<SphereCollider>().radius = radius;
         if (isInRange && !hasInteracted) // only process when this interactable is in range
         {                                // and we haven't interacted with it
             if (interacting) // wait until the player triggers the interaction
@@ -46,6 +48,11 @@ public class Interactable : MonoBehaviour
                 isInRange = true;
             }
         }
+    }
+    public void WhenNotInRange()
+    {
+        isInRange = false;
+        player = null;
     }
     private void OnDrawGizmosSelected()
     {
