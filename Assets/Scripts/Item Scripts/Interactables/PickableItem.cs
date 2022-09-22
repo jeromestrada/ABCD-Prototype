@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickableItem : Interactable
 {
     public Item item;
+    public Card card;
     
     public override void Interact()
     {
@@ -14,9 +15,13 @@ public class PickableItem : Interactable
 
     void Pickup()
     {
-        if (hasInteracted)
+        var inventory = player.transform.GetComponent<InventoryHolder>();
+        if(inventory != null)
         {
-            Destroy(gameObject);
+            if (inventory.InventorySystem.AddToInventory(card, 1))
+            {
+                Destroy(gameObject); // destroy the game object
+            }
         }
     }
 }
