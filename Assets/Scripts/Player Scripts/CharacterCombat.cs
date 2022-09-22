@@ -18,8 +18,8 @@ public class CharacterCombat : MonoBehaviour
 
 
     bool isCoolingDown = false;
-    float finalStringStart;
-    public float cooldownDuration = 0.8f;
+    float finalStringTime;
+    public float cooldownDuration = 3f;
 
     public event System.Action<int> OnAttack;
     PlayerController controller;
@@ -27,7 +27,7 @@ public class CharacterCombat : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<PlayerController>();
-        lastAttackStringTime = Time.time;
+        lastAttackStringTime = 0;
         canStringAttack = true;
         currentAttackString = 0;
     }
@@ -37,48 +37,50 @@ public class CharacterCombat : MonoBehaviour
         // TODO: will use full animation instead, and have a separate recovery animation for each attack
         // this will eliminate the need to use events to sync different attack string animations.
         
-        if (Time.time - finalStringStart >= cooldownDuration)
+        if ((Time.time - finalStringTime) >= cooldownDuration)
         {
             isCoolingDown = false;
         }
-        if (Time.time - lastAttackStringTime > stringGracePeriod)
+        if ((Time.time - lastAttackStringTime) >= stringGracePeriod)
         {
             currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
         }
-        if (Input.GetButton("Fire1") && !isCoolingDown && canStringAttack)
+        if (Input.GetButton("Fire1") && canStringAttack && !isCoolingDown)
         {
             canStringAttack = false; // we wait for the animation to hit before we can attack again
-            if (controller.isDashing)
-            {
-                controller.OnEndDash();
-            }
+            lastAttackStringTime = float.MaxValue; 
             if (OnAttack != null)
             {
                 OnAttack(currentAttackString % stringAttacksCount); // invoke the delegate
-                lastAttackStringTime = Time.time;
-                currentAttackString++; // increment to the next attack string
-                if (currentAttackString == stringAttacksCount) // if we've reached the last string we cooldown
-                {
-                    isCoolingDown = true;
-                    finalStringStart = Time.time;
-                } 
+            }
+            
+            if (controller.isDashing)
+            {
+                controller.OnEndDash();
             }
         }
     }
 
     public void AttackFinish_AnimationEvent()
     {
-        canStringAttack = true; 
+        lastAttackStringTime = Time.time;
+        canStringAttack = true;
+        currentAttackString++; // increment to the next attack string
+        if (currentAttackString == stringAttacksCount) // if we've reached the last string we cooldown
+        {
+            isCoolingDown = true;
+            finalStringTime = Time.time;
+            currentAttackString = 0;
+        }
+        
     }
 
     public void AttackHit_AnimationEvent()
     {
-        Debug.Log("Attack Hit");
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRadius, enemyMask);
 
         foreach(Collider enemy in hitEnemies)
         {
-            Debug.Log(enemy.name + " taking damage!");
             enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
         }
     }

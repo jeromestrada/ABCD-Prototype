@@ -10,8 +10,10 @@ public class CharacterAnimator : MonoBehaviour
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
 
-    public WeaponAnimations[] weaponAnimations;
+    public List<WeaponAnimations> weaponAnimations;
     Dictionary<Weapon, AnimationClip[]> weaponAnimationsDict;
+
+    Deck deck;
 
     PlayerController playerController;
     public AnimatorOverrideController overrideController;
@@ -37,7 +39,12 @@ public class CharacterAnimator : MonoBehaviour
         playerController.OnDash += OnDash;
         combat.OnAttack += OnAttack; // subscribe to the delegate
 
+        deck = GetComponent<Deck>(); // get the Deck component attached to this gameObject(Player)
+        Debug.Log("Deck has " + deck.cards.Count + " cards");
+        LoadWeaponAnimations();
+
         // handle the animations
+        // TODO: call the same logic whenever the player adds/removes a weapon card in the deck.
         weaponAnimationsDict = new Dictionary<Weapon, AnimationClip[]>();
         foreach (WeaponAnimations a in weaponAnimations)
         {
@@ -52,11 +59,9 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
         if (playerController.isDashing)
         {
-            
             animator.SetTrigger("attackCancel"); // whenever the player is moving trigger this so we can cancel attack animations
-            combat.canStringAttack = true;
+            //combat.canStringAttack = true;
             playerController.isAttacking = false;
-            
         }
         else
         {
@@ -67,11 +72,19 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetBool("canMove", playerController.isMoving);
     }
 
+    public void LoadWeaponAnimations()
+    {
+        foreach(Weapon w in deck.weapons)
+        {
+            weaponAnimations.Add(w.weaponAnimations);
+        }
+    }
+
     protected virtual void OnAttack(int attackString)
     {
-        playerController.isAttacking = true;
         animator.SetTrigger("attackTrigger"); // trigger in the animator
         overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
+        playerController.isAttacking = true;
     }
 
     protected virtual void OnDash()
@@ -79,12 +92,11 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetTrigger("dashTrigger"); // trigger in the animator
         
     }
+}
 
-
-    [System.Serializable]
-    public struct WeaponAnimations
-    {
-        public Weapon weapon;
-        public AnimationClip[] clips;
-    }
+[System.Serializable]
+public struct WeaponAnimations
+{
+    public Weapon weapon;
+    public AnimationClip[] clips;
 }
