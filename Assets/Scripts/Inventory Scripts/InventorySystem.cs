@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 [System.Serializable]
 public class InventorySystem
@@ -26,7 +27,35 @@ public class InventorySystem
 
     public bool AddToInventory(Card cardToAdd, int amountToAdd)
     {
-        inventorySlots[0] = new InventorySlot(cardToAdd, amountToAdd);
-        return true;
+        if(ContainsItem(cardToAdd, out List<InventorySlot> invSlots))
+        {
+            foreach(var slot in invSlots) // gets the first slot that can accomodate the amount to add
+            {
+                if (slot.RoomLeftInStack(amountToAdd))
+                {
+                    slot.AddToStack(amountToAdd);
+                    OnInventorySlotChanged?.Invoke(slot);
+                    return true;
+                }
+            }
+        }
+        if(HasFreeSlot(out InventorySlot freeSlot))
+        {
+            freeSlot.UpdateInventorySlot(cardToAdd, amountToAdd);
+            OnInventorySlotChanged?.Invoke(freeSlot);
+            return true;
+        }
+        return false;
+    }
+
+    public bool ContainsItem(Card cardToAdd, out List<InventorySlot> invSlots)
+    {
+        invSlots = InventorySlots.Where( i => i.Card == cardToAdd).ToList();
+        return invSlots == null ? false : true;
+    }
+    public bool HasFreeSlot(out InventorySlot freeSlot)
+    {
+        freeSlot = InventorySlots.FirstOrDefault(i => i.Card == null);
+        return freeSlot == null ? false : true;
     }
 }

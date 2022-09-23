@@ -28,6 +28,12 @@ public class InventorySlot
         stackSize = -1;
     }
 
+    public void UpdateInventorySlot(Card cardToAdd, int amountToAdd)
+    {
+        card = cardToAdd;
+        stackSize += amountToAdd;
+    }
+
     public bool RoomLeftInStack(int amount, out int amountRemaining)
     {
         amountRemaining = card.MaxStackSize - stackSize;
