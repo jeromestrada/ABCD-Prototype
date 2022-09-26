@@ -28,6 +28,17 @@ public class InventorySlot
         stackSize = -1;
     }
 
+    public void AssignItem(InventorySlot invSlot)
+    {
+        if (card == invSlot.card) AddToStack(invSlot.stackSize);
+        else
+        {
+            card = invSlot.card;
+            stackSize = 0;
+            AddToStack(invSlot.stackSize);
+        }
+    }
+
     public void UpdateInventorySlot(Card cardToAdd, int amountToAdd)
     {
         card = cardToAdd;

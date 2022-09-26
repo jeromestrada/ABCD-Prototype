@@ -18,7 +18,7 @@ public abstract class InventoryDisplay : MonoBehaviour
 
     }
 
-    public abstract void AssignSlot(InventorySystem invToDisplay);
+    public abstract void AssignSlots(InventorySystem invToDisplay);
 
     public void AssignInventoryType(InventoryDisplayType type)
     {
@@ -36,14 +36,20 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-    public void SlotClicked(InventorySlot_UI clickedSlot)
+    public void SlotClicked(InventorySlot_UI clickedUISlot)
     {
-        Debug.Log("Slot clicked!");
-
         // if it is the Player's hand, then we treat UI clicks as Use,
         if(this.InventoryDisplayType == InventoryDisplayType.HandInventory)
         {
             Debug.Log("Using Card!");
+            // if the card slot in the hand has a card and the mouse doesn't
+            if(clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedInventorySlot.Card == null)
+            {
+                Debug.Log("mouse now contains the item...");
+                mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
+                clickedUISlot.ClearSlot();
+                return;
+            }
         }
 
         // if it is the Player's deck, we treat it as card Inspection, we only display the card's details

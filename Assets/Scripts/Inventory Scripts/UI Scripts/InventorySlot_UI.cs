@@ -26,7 +26,7 @@ public class InventorySlot_UI : MonoBehaviour
 
     public void Init(InventorySlot slot)
     {
-        assignedInventorySlot = slot;
+        assignedInventorySlot = slot; // ties the ui to the system.
         UpdateUISlot(slot);
     }
 
@@ -63,8 +63,8 @@ public class InventorySlot_UI : MonoBehaviour
         // access display class function.
         Debug.Log("Clicking UI");
         ParentDisplay?.SlotClicked(this);
-        // functionality will depend on the type of display this slot's parent is.
-        // see parenDisplay's SlotClicked for more details
+        // functionality will depend on the type of display this slot's display parent is.
+        // see parentDisplay's SlotClicked for more details
         
     }
 }
