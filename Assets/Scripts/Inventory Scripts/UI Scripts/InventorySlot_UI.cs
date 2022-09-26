@@ -19,8 +19,9 @@ public class InventorySlot_UI : MonoBehaviour
 
         button = GetComponent<Button>();
         button?.onClick.AddListener(OnUISlotClick);
-
-        ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
+        // since the UI slot is inside a container that is a child of the Parent Display
+        // we have to access the parent of the parent of this object
+        ParentDisplay = transform.parent.parent.GetComponent<InventoryDisplay>(); 
     }
 
     public void Init(InventorySlot slot)
@@ -60,6 +61,10 @@ public class InventorySlot_UI : MonoBehaviour
     public void OnUISlotClick()
     {
         // access display class function.
+        Debug.Log("Clicking UI");
         ParentDisplay?.SlotClicked(this);
+        // functionality will depend on the type of display this slot's parent is.
+        // see parenDisplay's SlotClicked for more details
+        
     }
 }

@@ -6,6 +6,7 @@ public class StaticInventoryDisplay : InventoryDisplay
 {
     [SerializeField] private InventoryHolder inventoryHolder;
     [SerializeField] private InventorySlot_UI[] slotsUI;
+    [SerializeField] private InventoryDisplayType displayType;
 
     protected override void Start()
     {
@@ -20,6 +21,7 @@ public class StaticInventoryDisplay : InventoryDisplay
             Debug.LogWarning($"No inventory assigned to {this.gameObject}");
         }
         AssignSlot(inventorySystem);
+        AssignInventoryType(displayType);
     }
     public override void AssignSlot(InventorySystem invToDisplay)
     {
@@ -33,5 +35,4 @@ public class StaticInventoryDisplay : InventoryDisplay
             slotsUI[i].Init(inventorySystem.InventorySlots[i]);
         }
     }
-
 }

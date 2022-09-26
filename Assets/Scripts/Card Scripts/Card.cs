@@ -13,6 +13,13 @@ public class Card : ScriptableObject
     [SerializeField] private bool exhaustable;
 
     public int MaxStackSize => stackSize;
+
+    public virtual bool Use()
+    {
+        Debug.Log($"Using {this.name}");
+        // use can and return if the card was used successfully
+        return true;
+    }
 }
 
 public enum CardType { ItemCard, AttackCard, DefendCard, UtilityCard}
