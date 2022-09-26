@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickableItem : Interactable
+public class PickableCard : Interactable
 {
-    public Item item;
     public Card card;
     
     public override void Interact()
