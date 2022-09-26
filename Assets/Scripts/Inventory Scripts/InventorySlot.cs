@@ -9,7 +9,7 @@ public class InventorySlot
     [SerializeField] private int stackSize;
 
     public Card Card => card;
-    public int MaxStackSize => stackSize;
+    public int StackSize => stackSize;
 
     public InventorySlot(Card source, int amount)
     {
