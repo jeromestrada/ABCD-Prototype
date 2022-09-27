@@ -49,6 +49,12 @@ public abstract class InventoryDisplay : MonoBehaviour
                 clickedUISlot.ClearSlot();
                 return;
             }
+            if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedInventorySlot.Card != null)
+            {
+                clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
+                clickedUISlot.UpdateUISlot();
+                mouseInventoryItem.ClearSlot();
+            }
         }
 
         // if it is the Player's deck, we treat it as card Inspection, we only display the card's details

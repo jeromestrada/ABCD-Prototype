@@ -24,6 +24,8 @@ public class MouseItemData : MonoBehaviour
         ItemSprite.sprite = invSlot.Card.cardIcon;
         ItemSprite.color = Color.white;
         ItemCount.text = invSlot.StackSize.ToString();
+        if (invSlot.StackSize > 1) ItemCount.text = invSlot.StackSize.ToString();
+        else ItemCount.text = "";
         transform.SetAsLastSibling(); // makes sure that the mouse icon is drawn last
     }
 
