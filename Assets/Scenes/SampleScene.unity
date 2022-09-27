@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 526589324}
   - component: {fileID: 526589323}
   m_Layer: 8
-  m_Name: Interactable
+  m_Name: Trusty Sword pickable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,7 +663,6 @@ MonoBehaviour:
   hasInteracted: 0
   player: {fileID: 0}
   interacting: 0
-  item: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
   card: {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
 --- !u!135 &526589324
 SphereCollider:
@@ -1851,6 +1850,7 @@ MonoBehaviour:
   - {fileID: 1802597455}
   - {fileID: 139524384}
   - {fileID: 1300693393}
+  displayType: 0
 --- !u!1 &1393592103
 GameObject:
   m_ObjectHideFlags: 3
@@ -2285,7 +2285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.89, y: -26.071}
+  m_AnchoredPosition: {x: 35, y: -63}
   m_SizeDelta: {x: 91.172, y: 43.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677918804
@@ -2302,7 +2302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2702,6 +2702,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemSprite: {fileID: 2033034740}
   ItemCount: {fileID: 1677918804}
+  AssignedInventorySlot:
+    card: {fileID: 0}
+    stackSize: -1
 --- !u!1 &1912389605 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
@@ -2779,7 +2782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 35, y: -35}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033034740
@@ -2796,7 +2799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

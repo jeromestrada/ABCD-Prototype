@@ -42,7 +42,8 @@ public class InventorySlot
     public void UpdateInventorySlot(Card cardToAdd, int amountToAdd)
     {
         card = cardToAdd;
-        stackSize += amountToAdd;
+        if (stackSize == -1) stackSize = 1;
+        else stackSize += amountToAdd;
     }
 
     public bool RoomLeftInStack(int amount, out int amountRemaining)

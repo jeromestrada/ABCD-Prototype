@@ -41,12 +41,11 @@ public abstract class InventoryDisplay : MonoBehaviour
         // if it is the Player's hand, then we treat UI clicks as Use,
         if(this.InventoryDisplayType == InventoryDisplayType.HandInventory)
         {
-            Debug.Log("Using Card!");
             // if the card slot in the hand has a card and the mouse doesn't
             if(clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedInventorySlot.Card == null)
             {
-                Debug.Log("mouse now contains the item...");
                 mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
+                mouseInventoryItem.SavePickedFrom(clickedUISlot); // save the UI slot in case the player wants to return the card by right clicking
                 clickedUISlot.ClearSlot();
                 return;
             }

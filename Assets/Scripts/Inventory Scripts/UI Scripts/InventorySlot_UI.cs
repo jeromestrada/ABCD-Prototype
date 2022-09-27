@@ -61,7 +61,6 @@ public class InventorySlot_UI : MonoBehaviour
     public void OnUISlotClick()
     {
         // access display class function.
-        Debug.Log("Clicking UI");
         ParentDisplay?.SlotClicked(this);
         // functionality will depend on the type of display this slot's display parent is.
         // see parentDisplay's SlotClicked for more details
