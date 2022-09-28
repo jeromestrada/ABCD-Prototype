@@ -26,6 +26,8 @@ public class CharacterCombat : MonoBehaviour
     public event System.Action<int> OnAttack;
     PlayerController controller;
 
+    [SerializeField] MouseItemData mouseItemData;
+
     private void Start()
     {
         weaponManager = GetComponent<WeaponManager>();
@@ -50,7 +52,7 @@ public class CharacterCombat : MonoBehaviour
         {
             ResetAttackString();
         }
-        if (Input.GetButton("Fire1") && canStringAttack && !isCoolingDown)
+        if (Input.GetButton("Fire1") && !mouseItemData.IsPointerOverUIObjects() && !mouseItemData.inUI && canStringAttack && !isCoolingDown)
         {
             canStringAttack = false; // we wait for the animation to hit before we can attack again
             lastAttackStringTime = float.MaxValue; 

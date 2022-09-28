@@ -49,11 +49,18 @@ public abstract class InventoryDisplay : MonoBehaviour
                 clickedUISlot.ClearSlot();
                 return;
             }
-            if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedInventorySlot.Card != null)
+            // if the mouse has a card and the slot doesn't
+            else if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedInventorySlot.Card != null)
             {
                 clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
                 clickedUISlot.UpdateUISlot();
                 mouseInventoryItem.ClearSlot();
+                return;
+            }
+            // Both have items 
+            else if (clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedInventorySlot.Card != null)
+            {
+                SwapSlots(clickedUISlot);
             }
         }
 
@@ -72,6 +79,16 @@ public abstract class InventoryDisplay : MonoBehaviour
         {
             Debug.Log("Trying to buy Card!");
         }
+    }
+
+    public void SwapSlots(InventorySlot_UI clickedUISlot)
+    {
+        var clonedSlot = new InventorySlot(mouseInventoryItem.AssignedInventorySlot.Card, mouseInventoryItem.AssignedInventorySlot.StackSize);
+        mouseInventoryItem.ClearSlot();
+        mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
+
+        clickedUISlot.AssignedInventorySlot.AssignItem(clonedSlot);
+        clickedUISlot.UpdateUISlot();
     }
 }
 

@@ -1930,6 +1930,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   cooldownDuration: 0.5
+  mouseItemData: {fileID: 1863707525}
 --- !u!114 &1477938535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,7 +2013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: -63}
+  m_AnchoredPosition: {x: 25, y: -60}
   m_SizeDelta: {x: 91.172, y: 43.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677918804
@@ -2413,7 +2414,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1863707525
 MonoBehaviour:
@@ -2432,6 +2433,7 @@ MonoBehaviour:
   AssignedInventorySlot:
     card: {fileID: 0}
     stackSize: -1
+  inUI: 0
 --- !u!95 &1912389607
 Animator:
   serializedVersion: 3
@@ -2500,7 +2502,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 35, y: -35}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033034740
 MonoBehaviour:

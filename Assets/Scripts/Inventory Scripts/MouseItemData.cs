@@ -11,6 +11,7 @@ public class MouseItemData : MonoBehaviour
     public TextMeshProUGUI ItemCount;
     public InventorySlot AssignedInventorySlot;
     private InventorySlot_UI pickedFromSlot;
+    public bool inUI;
 
     private void Awake()
     {
@@ -39,11 +40,11 @@ public class MouseItemData : MonoBehaviour
         if (AssignedInventorySlot.Card != null)
         {
             transform.position = Input.mousePosition;
-
+            inUI = true;
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
             {
                 AssignedInventorySlot.Card.Use();
-                if(AssignedInventorySlot.Card.numOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
+                if (AssignedInventorySlot.Card.numOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
                 else ReturnToSlot();
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
@@ -51,6 +52,7 @@ public class MouseItemData : MonoBehaviour
                 ReturnToSlot();
             }
         }
+        else if(Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1)) inUI = false; // only set inUI state to false when the mouse is released
     }
 
     public void ReturnToSlot() // returns the card to the slot
@@ -68,7 +70,7 @@ public class MouseItemData : MonoBehaviour
         pickedFromSlot = null;
     }
 
-    public static bool IsPointerOverUIObjects()
+    public bool IsPointerOverUIObjects()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = Input.mousePosition;
