@@ -70,7 +70,7 @@ public class MouseItemData : MonoBehaviour
         pickedFromSlot = null;
     }
 
-    public bool IsPointerOverUIObjects()
+    public static bool IsPointerOverUIObjects()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = Input.mousePosition;
