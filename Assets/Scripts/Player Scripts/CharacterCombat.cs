@@ -34,8 +34,7 @@ public class CharacterCombat : MonoBehaviour
         controller = GetComponent<PlayerController>();
         lastAttackStringTime = 0;
         canStringAttack = true;
-        currentAttackString = 0;
-        currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
+        ResetAttackString();
     }
     // Update is called once per frame
     void Update()
@@ -49,8 +48,7 @@ public class CharacterCombat : MonoBehaviour
         }
         if ((Time.time - lastAttackStringTime) >= stringGracePeriod)
         {
-            currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
-            currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
+            ResetAttackString();
         }
         if (Input.GetButton("Fire1") && canStringAttack && !isCoolingDown)
         {
@@ -72,6 +70,13 @@ public class CharacterCombat : MonoBehaviour
     private void OnWeaponChanged(Weapon weapon)
     {
         equippedWeapon = weapon;
+        ResetAttackString();
+    }
+
+    private void ResetAttackString()
+    {
+        currentAttackString = 0;
+        if(equippedWeapon != null) currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
     }
 
     public void AttackFinish_AnimationEvent()
@@ -83,8 +88,7 @@ public class CharacterCombat : MonoBehaviour
         {
             isCoolingDown = true;
             finalStringTime = Time.time;
-            currentAttackString = 0;
-            currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
+            ResetAttackString();
         }
         
     }

@@ -16,7 +16,6 @@ public class Card : ScriptableObject
 
     public virtual bool Use()
     {
-        Debug.Log($"Using {this.name}");
         // use card and return if the card was used successfully
         if (numOfUses <= 0) Debug.Log($"{this.name} is completely used up");
         return true;

@@ -42,7 +42,6 @@ public class MouseItemData : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
             {
-                Debug.Log("Using card in mouse");
                 AssignedInventorySlot.Card.Use();
                 if(AssignedInventorySlot.Card.numOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
                 else ReturnToSlot();
