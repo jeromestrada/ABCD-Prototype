@@ -5,16 +5,16 @@ using UnityEngine;
 public class CharacterCombat : MonoBehaviour
 {
     WeaponManager weaponManager;
-    Weapon equippedWeapon;
+    [SerializeField] Weapon equippedWeapon;
     public bool canStringAttack;
-    private int currentAttackString; 
+    private int currentAttackString;
+    private Transform currentAttackPoint;
     
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
 
     public int playerDamage = 50;
 
-    public Transform attackPoint;
     public float attackRadius = 3f;
     public LayerMask enemyMask;
 
@@ -29,12 +29,13 @@ public class CharacterCombat : MonoBehaviour
     private void Start()
     {
         weaponManager = GetComponent<WeaponManager>();
-        equippedWeapon = weaponManager.equippedWeapon;
+        weaponManager.onWeaponChanged += OnWeaponChanged;
 
         controller = GetComponent<PlayerController>();
         lastAttackStringTime = 0;
         canStringAttack = true;
         currentAttackString = 0;
+        currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
     }
     // Update is called once per frame
     void Update()
@@ -49,6 +50,7 @@ public class CharacterCombat : MonoBehaviour
         if ((Time.time - lastAttackStringTime) >= stringGracePeriod)
         {
             currentAttackString = 0; // reset the string to the first animation if the grace period lapsed.
+            currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
         }
         if (Input.GetButton("Fire1") && canStringAttack && !isCoolingDown)
         {
@@ -56,6 +58,7 @@ public class CharacterCombat : MonoBehaviour
             lastAttackStringTime = float.MaxValue; 
             if (OnAttack != null)
             {
+                currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
                 OnAttack(currentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
             }
             
@@ -64,6 +67,11 @@ public class CharacterCombat : MonoBehaviour
                 controller.OnEndDash();
             }
         }
+    }
+
+    private void OnWeaponChanged(Weapon weapon)
+    {
+        equippedWeapon = weapon;
     }
 
     public void AttackFinish_AnimationEvent()
@@ -76,6 +84,7 @@ public class CharacterCombat : MonoBehaviour
             isCoolingDown = true;
             finalStringTime = Time.time;
             currentAttackString = 0;
+            currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
         }
         
     }
@@ -83,7 +92,7 @@ public class CharacterCombat : MonoBehaviour
     public void AttackHit_AnimationEvent()
     {
         // access a corresponding attackPoint for the current attack string instead of using a set attackPoint
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRadius, enemyMask);
+        Collider[] hitEnemies = Physics.OverlapSphere(currentAttackPoint.position, attackRadius, enemyMask);
 
         foreach(Collider enemy in hitEnemies)
         {
@@ -93,11 +102,11 @@ public class CharacterCombat : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if(attackPoint == null)
+        if(currentAttackPoint == null)
         {
             return;
         }
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(currentAttackPoint.position, attackRadius);
     }
 }

@@ -16,8 +16,13 @@ MonoBehaviour:
   description: A not so typical sword
   icon: {fileID: 21300000, guid: 9e47e17380468004aa41e7854579bd9d, type: 3}
   damage: 2
+  stringAttacksCount: 2
+  attackPoints:
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
   weaponAnimations:
     weapon: {fileID: 11400000}
     clips:
     - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
     - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+  mesh: {fileID: 402616743014682421, guid: a21ff9b00362dfc43968e1edad50ae54, type: 3}

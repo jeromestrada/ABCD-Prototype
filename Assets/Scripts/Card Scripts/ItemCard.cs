@@ -8,6 +8,7 @@ public class ItemCard : Card
     public override bool Use()
     {
         Debug.Log("Using the item in card");
+        item.Use();
         numOfUses--;
         return base.Use();
     }

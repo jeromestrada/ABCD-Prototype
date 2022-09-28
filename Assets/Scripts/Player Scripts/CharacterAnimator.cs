@@ -10,6 +10,8 @@ public class CharacterAnimator : MonoBehaviour
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
 
+    WeaponManager weaponManager;
+
     public List<WeaponAnimations> weaponAnimations;
     Dictionary<Weapon, AnimationClip[]> weaponAnimationsDict;
 
@@ -39,6 +41,9 @@ public class CharacterAnimator : MonoBehaviour
         playerController.OnDash += OnDash;
         combat.OnAttack += OnAttack; // subscribe to the delegate
 
+        weaponManager = GetComponent<WeaponManager>();
+        weaponManager.onWeaponChanged += OnWeaponChanged;
+
         deck = GetComponent<Deck>(); // get the Deck component attached to this gameObject(Player)
         LoadWeaponAnimations();
 
@@ -49,6 +54,16 @@ public class CharacterAnimator : MonoBehaviour
         {
             weaponAnimationsDict.Add(a.weapon, a.clips);
         }
+    }
+
+    void ChangeCurrentAttackAnimSet(Weapon newWeapon)
+    {
+        if (newWeapon == null)
+        {
+            currentAttackAnimSet = defaultAttackAnimSet;
+            return;
+        }
+        currentAttackAnimSet = weaponAnimationsDict[newWeapon];
     }
 
     // Update is called once per frame
@@ -84,6 +99,11 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetTrigger("attackTrigger"); // trigger in the animator
         overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
         playerController.isAttacking = true;
+    }
+
+    protected virtual void OnWeaponChanged(Weapon weapon)
+    {
+        ChangeCurrentAttackAnimSet(weapon);
     }
 
     protected virtual void OnDash()

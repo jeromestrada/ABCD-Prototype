@@ -8,34 +8,55 @@ public class WeaponManager : MonoBehaviour
     // this includes updating the character animator's animation based on the weapon
     // handles the MeshRenderer to display the weapon being wielded by the player.
 
-    public event System.Action onWeaponChanged;
+    public event System.Action<Weapon> onWeaponChanged;
     public Weapon equippedWeapon;
     public Weapon testEquip;
+    public Weapon testEquipReverse;
     SkinnedMeshRenderer equippedWeaponMesh;
     public SkinnedMeshRenderer targetMesh;
 
     private void Start()
     {
         equippedWeaponMesh = new SkinnedMeshRenderer();
-        EquipWeapon(testEquip);
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("Test equip");
+            EquipWeapon(testEquip);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Test equip reverse");
+            EquipWeapon(testEquipReverse);
+        }
     }
 
     public void EquipWeapon(Weapon weapon)
-    {
-        equippedWeapon = weapon;
-        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(weapon.mesh);
-        newMesh.transform.parent = targetMesh.transform;
-        newMesh.bones = targetMesh.bones;
-        newMesh.rootBone = targetMesh.rootBone;
+    {   // only proceed when the weapon being equipped isn't the same as the equipped
+        if(weapon != equippedWeapon)
+        {
+            UnequipWeapon();
 
-        equippedWeaponMesh = newMesh;
-        onWeaponChanged?.Invoke();
+            equippedWeapon = weapon;
+            // Render the weapon mesh
+            SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(weapon.mesh);
+            newMesh.transform.parent = targetMesh.transform;
+            newMesh.bones = targetMesh.bones;
+            newMesh.rootBone = targetMesh.rootBone;
+            equippedWeaponMesh = newMesh;
+            onWeaponChanged?.Invoke(equippedWeapon);
+        }
+        
     }
 
     public void UnequipWeapon()
     {
         if(equippedWeaponMesh != null) Destroy(equippedWeaponMesh.gameObject);
         equippedWeapon = null;
-        onWeaponChanged?.Invoke();
+        onWeaponChanged?.Invoke(equippedWeapon);
     }
 }
