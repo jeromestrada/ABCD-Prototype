@@ -13,10 +13,4 @@ public class Item : ScriptableObject
     {
         // use item, when inherited define usage in sub class.
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -40,7 +40,6 @@ public class CharacterAnimator : MonoBehaviour
         combat.OnAttack += OnAttack; // subscribe to the delegate
 
         deck = GetComponent<Deck>(); // get the Deck component attached to this gameObject(Player)
-        Debug.Log("Deck has " + deck.cards.Count + " cards");
         LoadWeaponAnimations();
 
         // handle the animations

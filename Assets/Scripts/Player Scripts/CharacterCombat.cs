@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CharacterCombat : MonoBehaviour
 {
+    WeaponManager weaponManager;
+    Weapon equippedWeapon;
     public bool canStringAttack;
     private int currentAttackString; 
-    public int stringAttacksCount = 2;
+    
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
 
@@ -26,6 +28,9 @@ public class CharacterCombat : MonoBehaviour
 
     private void Start()
     {
+        weaponManager = GetComponent<WeaponManager>();
+        equippedWeapon = weaponManager.equippedWeapon;
+
         controller = GetComponent<PlayerController>();
         lastAttackStringTime = 0;
         canStringAttack = true;
@@ -51,7 +56,7 @@ public class CharacterCombat : MonoBehaviour
             lastAttackStringTime = float.MaxValue; 
             if (OnAttack != null)
             {
-                OnAttack(currentAttackString % stringAttacksCount); // invoke the delegate
+                OnAttack(currentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
             }
             
             if (controller.isDashing)
@@ -66,7 +71,7 @@ public class CharacterCombat : MonoBehaviour
         lastAttackStringTime = Time.time;
         canStringAttack = true;
         currentAttackString++; // increment to the next attack string
-        if (currentAttackString == stringAttacksCount) // if we've reached the last string we cooldown
+        if (currentAttackString == equippedWeapon.stringAttacksCount) // if we've reached the last string we cooldown
         {
             isCoolingDown = true;
             finalStringTime = Time.time;
@@ -77,6 +82,7 @@ public class CharacterCombat : MonoBehaviour
 
     public void AttackHit_AnimationEvent()
     {
+        // access a corresponding attackPoint for the current attack string instead of using a set attackPoint
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRadius, enemyMask);
 
         foreach(Collider enemy in hitEnemies)

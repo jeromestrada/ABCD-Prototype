@@ -42,15 +42,23 @@ public class MouseItemData : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
             {
-                Debug.Log("Confirming");
+                Debug.Log("Using card in mouse");
+                AssignedInventorySlot.Card.Use();
+                if(AssignedInventorySlot.Card.numOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
+                else ReturnToSlot();
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
             {
-                pickedFromSlot.AssignedInventorySlot.AssignItem(AssignedInventorySlot);
-                pickedFromSlot.UpdateUISlot();
-                ClearSlot(); // we clear the mouse after we put the card back into the hand
+                ReturnToSlot();
             }
         }
+    }
+
+    public void ReturnToSlot() // returns the card to the slot
+    {
+        pickedFromSlot.AssignedInventorySlot.AssignItem(AssignedInventorySlot);
+        pickedFromSlot.UpdateUISlot();
+        ClearSlot();
     }
     public void ClearSlot()
     {
