@@ -49,7 +49,6 @@ public class PlayerController : MonoBehaviour
 
         CharacterController controller = GetComponent<CharacterController>();
         HandleMovement(controller);
-        PlayerInteract();
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
         {
             OnStartDash();
@@ -64,17 +63,6 @@ public class PlayerController : MonoBehaviour
             else
             {
                 OnEndDash();
-            }
-        }
-    }
-
-    void PlayerInteract()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (scanner.closestInteractable != null)
-            {
-                scanner.closestInteractable.interacting = true;
             }
         }
     }

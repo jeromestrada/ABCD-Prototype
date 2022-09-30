@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// TODO: refactor this class to use the refactored Interactable class.
 public class InteractableScanner : MonoBehaviour
 {
     public Interactable closestInteractable = null;
     float interactableScanInterval = 0.5f;
     bool alreadyScanned = false;
+
+    public bool IsInteracting { get; private set; }
 
     private List<Interactable> interactables;
     // Start is called before the first frame update
@@ -21,6 +25,16 @@ public class InteractableScanner : MonoBehaviour
         {
             ScanForClosestInteractable();
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (closestInteractable != null) StartInteraction(closestInteractable);
+        }
+    }
+
+    void StartInteraction(IInteractable interactable)
+    {
+        interactable.Interact(this, out bool hasInteracted);
+        IsInteracting = true;
     }
 
     public void ScanForClosestInteractable()

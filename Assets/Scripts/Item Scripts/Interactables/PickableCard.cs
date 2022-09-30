@@ -6,9 +6,9 @@ public class PickableCard : Interactable
 {
     public Card card;
     
-    public override void Interact()
+    public override void Interact(InteractableScanner scanner, out bool interactionSuccessful)
     {
-        base.Interact();
+        base.Interact(scanner, out interactionSuccessful);
         Pickup();
     }
 

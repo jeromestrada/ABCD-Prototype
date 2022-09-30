@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+//TODO:
+/*
+ Refactor this class to implement an IInteractable interface
+ 
+ */
 
 [RequireComponent(typeof(SphereCollider))]
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour, IInteractable
 {
     public float radius = 2f;
     public Transform interactionTransform; // so we can set a variable location when we want to
@@ -11,9 +18,10 @@ public class Interactable : MonoBehaviour
     bool isInRange = false;
     public bool hasInteracted = false;
     public Transform player;
-    public bool interacting = false;
 
     private SphereCollider myCollider;
+
+    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
     private void Awake()
     {
@@ -21,23 +29,18 @@ public class Interactable : MonoBehaviour
         myCollider.radius = radius;
     }
 
-    public virtual void Interact()
+    public virtual void Interact(InteractableScanner interactor, out bool interactSuccessful)
     {
-        // this is meant to be overwritten
+        // start the interaction logic here.
         hasInteracted = true;
+        interactSuccessful = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void EndInteraction()
     {
-        if (isInRange && !hasInteracted) // only process when this interactable is in range
-        {                                // and we haven't interacted with it
-            if (interacting) // wait until the player triggers the interaction
-            {
-                Interact();
-            }
-        }
+
     }
+
     public void WhenInRange(Transform playerTransform) // activates the interactable by setting isInRange to true
     {
         if (!isInRange) // if we're not in range already
@@ -63,4 +66,6 @@ public class Interactable : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
+
+    
 }

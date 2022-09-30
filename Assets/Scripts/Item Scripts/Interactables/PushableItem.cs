@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PushableItem : Interactable
 {
-    public override void Interact()
+    public override void Interact(InteractableScanner scanner, out bool interactionSuccessful)
     {
-        base.Interact();
+        base.Interact(scanner, out interactionSuccessful);
         Push();
     }
 
@@ -16,7 +16,6 @@ public class PushableItem : Interactable
         direction.y = 0;
         transform.position += direction * 3;
         // reset interaction status so we can do it infinitely
-        hasInteracted = false; 
-        interacting = false;
+        hasInteracted = false;
     }
 }
