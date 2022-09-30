@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//TODO:
-/*
- Refactor this class to implement an IInteractable interface
- 
- */
-
 [RequireComponent(typeof(SphereCollider))]
 public class Interactable : MonoBehaviour, IInteractable
 {

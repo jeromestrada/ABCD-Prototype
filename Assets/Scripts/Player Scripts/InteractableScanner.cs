@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// TODO: refactor this class to use the refactored Interactable class.
 public class InteractableScanner : MonoBehaviour
 {
     public Interactable closestInteractable = null;
