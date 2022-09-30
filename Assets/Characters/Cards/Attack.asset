@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   name: Attack
+  cardIcon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   description: Attack with your current weapon, limited
   cardType: 1
   numOfUses: 6

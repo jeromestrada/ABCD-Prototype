@@ -5,17 +5,24 @@ using UnityEngine.Events;
 
 public class DeckInventory : InventoryHolder
 {
-    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
+    [SerializeField] List<Card> startingCards;
 
-    public void Interact(Interactor interactor, out bool interactSuccessful)
+    private void Start()
     {
-        OnDynamicInventoryDisplayRequested?.Invoke(inventorySystem);
-        interactSuccessful = true;
+        // add the starting cards into the deck
+        foreach (Card card in startingCards)
+        {
+            inventorySystem.AddToInventory(card, 1);
+        }
     }
 
-    public void EndInteraction()
+    public void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            // open deck of cards
+            OnDynamicInventoryDisplayRequested?.Invoke(inventorySystem);
+        }
     }
-    
+
 }
