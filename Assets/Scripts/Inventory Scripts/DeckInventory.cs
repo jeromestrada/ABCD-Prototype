@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DeckInventory : InventoryHolder
+public class DeckInventory : CardSystemHolder
 {
     [SerializeField] List<Card> startingCards;
 
@@ -12,7 +12,7 @@ public class DeckInventory : InventoryHolder
         // add the starting cards into the deck
         foreach (Card card in startingCards)
         {
-            inventorySystem.AddToInventory(card, 1);
+            cardSystem.AddToInventory(card, card.NumOfUses);
         }
     }
 
@@ -21,7 +21,7 @@ public class DeckInventory : InventoryHolder
         if (Input.GetKeyDown(KeyCode.C))
         {
             // open deck of cards
-            OnDynamicInventoryDisplayRequested?.Invoke(inventorySystem);
+            OnDynamicCardSystemDisplayRequested?.Invoke(cardSystem);
         }
     }
 

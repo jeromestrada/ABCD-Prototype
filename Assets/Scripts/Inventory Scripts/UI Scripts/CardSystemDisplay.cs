@@ -2,30 +2,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class InventoryDisplay : MonoBehaviour
+public abstract class CardSystemDisplay : MonoBehaviour
 {
     [SerializeField] MouseItemData mouseInventoryItem;
-    protected InventorySystem inventorySystem;
-    protected Dictionary<InventorySlot_UI, InventorySlot> slotDictionary;
-    protected InventoryDisplayType inventoryDisplayType;
+    protected CardSystem cardSystem;
+    protected Dictionary<CardSlot_UI, CardSlot> slotDictionary;
+    protected CardSystemDisplayType cardSystemDisplayType;
 
-    public InventorySystem InventorySystem => inventorySystem;
-    public Dictionary<InventorySlot_UI, InventorySlot> SlotDictionary => slotDictionary;
-    public InventoryDisplayType InventoryDisplayType => inventoryDisplayType;
+    public CardSystem CardSystem => cardSystem;
+    public Dictionary<CardSlot_UI, CardSlot> SlotDictionary => slotDictionary;
+    public CardSystemDisplayType CardSystemDisplayType => cardSystemDisplayType;
 
     protected virtual void Start()
     {
 
     }
 
-    public abstract void AssignSlots(InventorySystem invToDisplay);
+    public abstract void AssignSlots(CardSystem invToDisplay);
 
-    public void AssignInventoryType(InventoryDisplayType type)
+    public void AssignInventoryType(CardSystemDisplayType type)
     {
-        inventoryDisplayType = type;
+        cardSystemDisplayType = type;
     }
 
-    protected virtual void UpdateSlot(InventorySlot updatedSlot)
+    protected virtual void UpdateSlot(CardSlot updatedSlot)
     {
         foreach(var slot in SlotDictionary)
         {
@@ -36,10 +36,10 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
     }
 
-    public void SlotClicked(InventorySlot_UI clickedUISlot)
+    public void SlotClicked(CardSlot_UI clickedUISlot)
     {
         // if it is the Player's hand, then we treat UI clicks as Use,
-        if(this.InventoryDisplayType == InventoryDisplayType.HandInventory)
+        if(this.CardSystemDisplayType == CardSystemDisplayType.HandInventory)
         {
             // if the card slot in the hand has a card and the mouse doesn't
             if(clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedInventorySlot.Card == null)
@@ -65,7 +65,7 @@ public abstract class InventoryDisplay : MonoBehaviour
         }
 
         // if it is the Player's deck, we treat it as card Inspection, we only display the card's details
-        else if (this.InventoryDisplayType == InventoryDisplayType.DeckInventory)
+        else if (this.CardSystemDisplayType == CardSystemDisplayType.DeckInventory)
         {
             Debug.Log("Inspecting Card!");
         }
@@ -75,15 +75,15 @@ public abstract class InventoryDisplay : MonoBehaviour
             for instance, an edit tab, where we can add or remove cards, like a rest site/service stop/event that allows us to do so
             
          */
-        else if (this.InventoryDisplayType == InventoryDisplayType.ShopInventory)
+        else if (this.CardSystemDisplayType == CardSystemDisplayType.ShopInventory)
         {
             Debug.Log("Trying to buy Card!");
         }
     }
 
-    public void SwapSlots(InventorySlot_UI clickedUISlot)
+    public void SwapSlots(CardSlot_UI clickedUISlot)
     {
-        var clonedSlot = new InventorySlot(mouseInventoryItem.AssignedInventorySlot.Card, mouseInventoryItem.AssignedInventorySlot.StackSize);
+        var clonedSlot = new CardSlot(mouseInventoryItem.AssignedInventorySlot.Card, mouseInventoryItem.AssignedInventorySlot.StackSize);
         mouseInventoryItem.ClearSlot();
         mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
 
@@ -92,4 +92,4 @@ public abstract class InventoryDisplay : MonoBehaviour
     }
 }
 
-public enum InventoryDisplayType { HandInventory, DeckInventory, ShopInventory }
+public enum CardSystemDisplayType { HandInventory, DeckInventory, ShopInventory }

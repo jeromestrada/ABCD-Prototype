@@ -9,7 +9,6 @@ public class ItemCard : Card
     {
         Debug.Log($"Using {item.name} in a card");
         item.Use();
-        numOfUses--;
         return base.Use();
     }
 }

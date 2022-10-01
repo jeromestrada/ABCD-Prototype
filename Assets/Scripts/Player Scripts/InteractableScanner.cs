@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class InteractableScanner : MonoBehaviour
 {
+    [SerializeField] float scannerRadius;
+    private CharacterController characterController;
     public Interactable closestInteractable = null;
     float interactableScanInterval = 0.5f;
     bool alreadyScanned = false;
@@ -14,6 +17,8 @@ public class InteractableScanner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        characterController = GetComponent<CharacterController>();
+        characterController.radius = scannerRadius;
         interactables = new List<Interactable>();
     }
 

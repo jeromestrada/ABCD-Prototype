@@ -870,7 +870,6 @@ MonoBehaviour:
   interactionTransform: {fileID: 526589325}
   hasInteracted: 0
   player: {fileID: 0}
-  interacting: 0
   card: {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
 --- !u!135 &526589324
 SphereCollider:
@@ -1162,11 +1161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e86b46ad009e444b819eb6f4762a118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  radius: 2
   interactionTransform: {fileID: 714852375}
   hasInteracted: 0
   player: {fileID: 0}
-  interacting: 0
 --- !u!1001 &893403019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2068,6 +2066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5824cbdb14ba94492e623a6dc440fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scannerRadius: 0.75
   closestInteractable: {fileID: 0}
 --- !u!33 &1477938530
 MeshFilter:
@@ -2881,7 +2880,6 @@ MonoBehaviour:
   interactionTransform: {fileID: 2116023098}
   hasInteracted: 0
   player: {fileID: 0}
-  interacting: 0
   card: {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
 --- !u!135 &2116023097
 SphereCollider:

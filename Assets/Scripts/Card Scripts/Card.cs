@@ -8,11 +8,9 @@ public class Card : ScriptableObject
     [TextArea(4,4)]
     public string description;
     public CardType cardType;
-    public int numOfUses = 1; // a card can be used atleast once
-    private int stackSize;
+    [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
-
-    public int MaxStackSize => stackSize;
+    public int NumOfUses => numOfUses;
 
     public virtual bool Use()
     {

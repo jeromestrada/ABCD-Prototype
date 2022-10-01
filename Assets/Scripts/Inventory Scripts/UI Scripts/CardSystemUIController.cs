@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class InventoryUIController : MonoBehaviour
+public class CardSystemUIController : MonoBehaviour
 {
-    public DynamicInventoryDisplay inventoryPanel;
+    public DynamicCardSystemDisplay inventoryPanel;
 
     private void Awake()
     {
@@ -13,11 +13,11 @@ public class InventoryUIController : MonoBehaviour
     }
     private void OnEnable()
     {
-        InventoryHolder.OnDynamicInventoryDisplayRequested += DisplayInventory;
+        CardSystemHolder.OnDynamicCardSystemDisplayRequested += DisplayInventory;
     }
     private void OnDisable()
     {
-        InventoryHolder.OnDynamicInventoryDisplayRequested -= DisplayInventory;
+        CardSystemHolder.OnDynamicCardSystemDisplayRequested -= DisplayInventory;
     }
     // Update is called once per frame
     void Update()
@@ -25,7 +25,7 @@ public class InventoryUIController : MonoBehaviour
         if(inventoryPanel.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape)) inventoryPanel.gameObject.SetActive(false);
     }
 
-    void DisplayInventory(InventorySystem invToDisplay)
+    void DisplayInventory(CardSystem invToDisplay)
     {
         inventoryPanel.gameObject.SetActive(true); 
         inventoryPanel.RefreshDynamicInventory(invToDisplay);

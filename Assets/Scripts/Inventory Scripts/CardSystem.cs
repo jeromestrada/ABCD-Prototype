@@ -5,29 +5,29 @@ using UnityEngine.Events;
 using System.Linq;
 
 [System.Serializable]
-public class InventorySystem
+public class CardSystem
 {
     // This Inventory system can be used in multiple scenarios
     // i.e. the current hand of the player, their deck, and the shop system
-    [SerializeField] private List<InventorySlot> inventorySlots = new List<InventorySlot>();
+    [SerializeField] private List<CardSlot> cardSlots = new List<CardSlot>();
 
-    public List<InventorySlot> InventorySlots => inventorySlots;
-    public int InventorySize => inventorySlots.Count;
-    public UnityAction<InventorySlot> OnInventorySlotChanged;
+    public List<CardSlot> CardSlots => cardSlots;
+    public int CardSystemSize => cardSlots.Count;
+    public UnityAction<CardSlot> OnInventorySlotChanged;
 
-    public InventorySystem(int size)
+    public CardSystem(int size)
     {
-        inventorySlots = new List<InventorySlot>(size);
+        cardSlots = new List<CardSlot>(size);
 
         for(int i = 0; i < size; i++)
         {
-            inventorySlots.Add(new InventorySlot());
+            cardSlots.Add(new CardSlot());
         }
     }
 
-    public bool AddToInventory(Card cardToAdd, int amountToAdd)
+    public bool AddToInventory(Card cardToAdd, int numOfUses)
     {
-        if(ContainsItem(cardToAdd, out List<InventorySlot> invSlots))
+        /*if(ContainsItem(cardToAdd, out List<InventorySlot> invSlots))
         {
             foreach(var slot in invSlots) // gets the first slot that can accomodate the amount to add
             {
@@ -38,24 +38,24 @@ public class InventorySystem
                     return true;
                 }
             }
-        }
-        if(HasFreeSlot(out InventorySlot freeSlot))
+        }*/
+        if(HasFreeSlot(out CardSlot freeSlot))
         {
-            freeSlot.UpdateInventorySlot(cardToAdd, amountToAdd);
+            freeSlot.UpdateInventorySlot(cardToAdd, numOfUses);
             OnInventorySlotChanged?.Invoke(freeSlot);
             return true;
         }
         return false;
     }
 
-    public bool ContainsItem(Card cardToAdd, out List<InventorySlot> invSlots)
+    /*public bool ContainsItem(Card cardToAdd, out List<InventorySlot> invSlots)
     {
         invSlots = InventorySlots.Where( i => i.Card == cardToAdd).ToList();
         return invSlots == null ? false : true;
-    }
-    public bool HasFreeSlot(out InventorySlot freeSlot)
+    }*/
+    public bool HasFreeSlot(out CardSlot freeSlot)
     {
-        freeSlot = InventorySlots.FirstOrDefault(i => i.Card == null);
+        freeSlot = CardSlots.FirstOrDefault(i => i.Card == null);
         return freeSlot == null ? false : true;
     }
 }

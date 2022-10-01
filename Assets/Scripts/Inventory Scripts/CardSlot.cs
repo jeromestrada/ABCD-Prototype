@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class InventorySlot
+public class CardSlot
 {
     [SerializeField] private Card card;
     [SerializeField] private int stackSize;
@@ -11,13 +11,13 @@ public class InventorySlot
     public Card Card => card;
     public int StackSize => stackSize;
 
-    public InventorySlot(Card source, int amount)
+    public CardSlot(Card source, int amount)
     {
         card = source;
         stackSize = amount;
     }
 
-    public InventorySlot()
+    public CardSlot()
     {
         ClearSlot();
     }
@@ -28,7 +28,7 @@ public class InventorySlot
         stackSize = -1;
     }
 
-    public void AssignItem(InventorySlot invSlot)
+    public void AssignItem(CardSlot invSlot)
     {
         if (card == invSlot.card) AddToStack(invSlot.stackSize);
         else
@@ -46,17 +46,17 @@ public class InventorySlot
         else stackSize += amountToAdd;
     }
 
-    public bool RoomLeftInStack(int amount, out int amountRemaining)
+  /*  public bool RoomLeftInStack(int amount, out int amountRemaining)
     {
         amountRemaining = card.MaxStackSize - stackSize;
         return RoomLeftInStack(amount);
-    }
-
+    }*/
+/*
     public bool RoomLeftInStack(int amount)
     {
         if (stackSize + amount <= card.MaxStackSize) return true;
         else return false;
-    }
+    }*/
 
     public void AddToStack(int amount)
     {

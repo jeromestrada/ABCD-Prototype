@@ -9,8 +9,8 @@ public class MouseItemData : MonoBehaviour
 {
     public Image ItemSprite;
     public TextMeshProUGUI ItemCount;
-    public InventorySlot AssignedInventorySlot;
-    private InventorySlot_UI pickedFromSlot;
+    public CardSlot AssignedInventorySlot;
+    private CardSlot_UI pickedFromSlot;
     public bool inUI;
 
     private void Awake()
@@ -18,7 +18,7 @@ public class MouseItemData : MonoBehaviour
         ItemSprite.color = Color.clear;
         ItemCount.text = "";
     }
-    public void UpdateMouseSlot(InventorySlot invSlot)
+    public void UpdateMouseSlot(CardSlot invSlot)
     {
         AssignedInventorySlot.AssignItem(invSlot); // system
         // UI
@@ -30,7 +30,7 @@ public class MouseItemData : MonoBehaviour
         transform.SetAsLastSibling(); // makes sure that the mouse icon is drawn last
     }
 
-    public void SavePickedFrom(InventorySlot_UI _pickedFromSlot)
+    public void SavePickedFrom(CardSlot_UI _pickedFromSlot)
     {
         pickedFromSlot = _pickedFromSlot;
     }
@@ -44,7 +44,7 @@ public class MouseItemData : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
             {
                 AssignedInventorySlot.Card.Use();
-                if (AssignedInventorySlot.Card.numOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
+                if (AssignedInventorySlot.Card.NumOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
                 else ReturnToSlot();
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
