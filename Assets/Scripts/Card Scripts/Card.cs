@@ -10,13 +10,19 @@ public class Card : ScriptableObject
     public CardType cardType;
     [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
+    private int remainingUses;
     public int NumOfUses => numOfUses;
+
+    private void Awake()
+    {
+        remainingUses = numOfUses;
+    }
 
     public virtual bool Use()
     {
         // use card and return if the card was used successfully
-        numOfUses--;
-        if (numOfUses <= 0) Debug.Log($"{this.name} is completely used up");
+        remainingUses--;
+        if (remainingUses <= 0) Debug.Log($"{this.name} is completely used up");
         return true;
     }
 }

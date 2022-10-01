@@ -17,7 +17,7 @@ public class PickableCard : Interactable
         var inventory = player.transform.GetComponent<CardSystemHolder>();
         if(inventory != null)
         {
-            if (inventory.CardSystem.AddToInventory(card, card.NumOfUses))
+            if (inventory.CardSystem.AddToCardSystem(card))
             {
                 Destroy(gameObject); // destroy the game object
             }

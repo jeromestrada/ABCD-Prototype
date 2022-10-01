@@ -6,15 +6,15 @@ using UnityEngine;
 public class CardSlot
 {
     [SerializeField] private Card card;
-    [SerializeField] private int numOfUses;
+    [SerializeField] private int remainingUses;
+
+    public int RemainingUses => remainingUses;
 
     public Card Card => card;
-    public int NumOfUses => numOfUses;
 
-    public CardSlot(Card source, int amount)
+    public CardSlot(Card source)
     {
         card = source;
-        numOfUses = amount;
     }
 
     public CardSlot()
@@ -25,46 +25,25 @@ public class CardSlot
     public void ClearSlot()
     {
         card = null;
-        numOfUses = -1;
+        remainingUses = -1;
     }
 
-    public void AssignItem(CardSlot invSlot)
+    public void AssignCard(CardSlot cardSlot)
     {
-        if (card == invSlot.card) AddToStack(invSlot.numOfUses);
-        else
-        {
-            card = invSlot.card;
-            numOfUses = 0;
-            AddToStack(invSlot.numOfUses);
-        }
+        card = cardSlot.card;
+        remainingUses = cardSlot.RemainingUses;
     }
 
-    public void UpdateInventorySlot(Card cardToAdd, int amountToAdd)
+    public void InitCardSlot(Card cardToAdd)
     {
         card = cardToAdd;
-        if (numOfUses == -1) numOfUses = 1;
-        else numOfUses += amountToAdd;
+        remainingUses = card.NumOfUses;
     }
 
-  /*  public bool RoomLeftInStack(int amount, out int amountRemaining)
+    public void UseCardInSlot()
     {
-        amountRemaining = card.MaxStackSize - stackSize;
-        return RoomLeftInStack(amount);
-    }*/
-/*
-    public bool RoomLeftInStack(int amount)
-    {
-        if (stackSize + amount <= card.MaxStackSize) return true;
-        else return false;
-    }*/
-
-    public void AddToStack(int amount)
-    {
-        numOfUses += amount;
-    }
-
-    public void RemoveFromStack(int amount)
-    {
-        numOfUses -= amount;
+        card.Use();
+        remainingUses--;
+        if (remainingUses == 0) ClearSlot();
     }
 }

@@ -52,7 +52,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
             // if the mouse has a card and the slot doesn't
             else if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedCardSlot.Card != null)
             {
-                clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedCardSlot);
+                clickedUISlot.AssignedInventorySlot.AssignCard(mouseInventoryItem.AssignedCardSlot);
                 clickedUISlot.UpdateUISlot();
                 mouseInventoryItem.ClearSlot();
                 return;
@@ -83,11 +83,11 @@ public abstract class CardSystemDisplay : MonoBehaviour
 
     public void SwapSlots(CardSlot_UI clickedUISlot)
     {
-        var clonedSlot = new CardSlot(mouseInventoryItem.AssignedCardSlot.Card, mouseInventoryItem.AssignedCardSlot.NumOfUses);
+        var clonedSlot = new CardSlot(mouseInventoryItem.AssignedCardSlot.Card);
         mouseInventoryItem.ClearSlot();
         mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
 
-        clickedUISlot.AssignedInventorySlot.AssignItem(clonedSlot);
+        clickedUISlot.AssignedInventorySlot.AssignCard(clonedSlot);
         clickedUISlot.UpdateUISlot();
     }
 }

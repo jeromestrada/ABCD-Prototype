@@ -16,5 +16,5 @@ MonoBehaviour:
   cardIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   description: Attack with your current weapon, limited
   cardType: 1
-  numOfUses: 6
+  numOfUses: 3
   exhaustable: 0

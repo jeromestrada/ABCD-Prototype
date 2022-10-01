@@ -12,7 +12,7 @@ public class DeckInventory : CardSystemHolder
         // add the starting cards into the deck
         foreach (Card card in startingCards)
         {
-            cardSystem.AddToInventory(card, card.NumOfUses);
+            cardSystem.AddToCardSystem(card);
         }
     }
 
