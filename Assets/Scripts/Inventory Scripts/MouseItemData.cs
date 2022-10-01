@@ -9,7 +9,7 @@ public class MouseItemData : MonoBehaviour
 {
     public Image ItemSprite;
     public TextMeshProUGUI ItemCount;
-    public CardSlot AssignedInventorySlot;
+    public CardSlot AssignedCardSlot;
     private CardSlot_UI pickedFromSlot;
     public bool inUI;
 
@@ -18,14 +18,14 @@ public class MouseItemData : MonoBehaviour
         ItemSprite.color = Color.clear;
         ItemCount.text = "";
     }
-    public void UpdateMouseSlot(CardSlot invSlot)
+    public void UpdateMouseSlot(CardSlot cardSlot)
     {
-        AssignedInventorySlot.AssignItem(invSlot); // system
+        AssignedCardSlot.AssignItem(cardSlot); // system
         // UI
-        ItemSprite.sprite = invSlot.Card.cardIcon;
+        ItemSprite.sprite = cardSlot.Card.cardIcon;
         ItemSprite.color = Color.white;
-        ItemCount.text = invSlot.StackSize.ToString();
-        if (invSlot.StackSize > 1) ItemCount.text = invSlot.StackSize.ToString();
+        ItemCount.text = cardSlot.NumOfUses.ToString();
+        if (cardSlot.NumOfUses > 1) ItemCount.text = cardSlot.NumOfUses.ToString();
         else ItemCount.text = "";
         transform.SetAsLastSibling(); // makes sure that the mouse icon is drawn last
     }
@@ -37,14 +37,14 @@ public class MouseItemData : MonoBehaviour
 
     private void Update()
     {
-        if (AssignedInventorySlot.Card != null)
+        if (AssignedCardSlot.Card != null)
         {
             transform.position = Input.mousePosition;
             inUI = true;
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
             {
-                AssignedInventorySlot.Card.Use();
-                if (AssignedInventorySlot.Card.NumOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
+                AssignedCardSlot.Card.Use();
+                if (AssignedCardSlot.Card.NumOfUses <= 0) ClearSlot(); // once the card is used up, we should remove it from the mouse.
                 else ReturnToSlot();
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
@@ -57,13 +57,13 @@ public class MouseItemData : MonoBehaviour
 
     public void ReturnToSlot() // returns the card to the slot
     {
-        pickedFromSlot.AssignedInventorySlot.AssignItem(AssignedInventorySlot);
+        pickedFromSlot.AssignedInventorySlot.AssignItem(AssignedCardSlot);
         pickedFromSlot.UpdateUISlot();
         ClearSlot();
     }
     public void ClearSlot()
     {
-        AssignedInventorySlot.ClearSlot();
+        AssignedCardSlot.ClearSlot();
         ItemCount.text = "";
         ItemSprite.color = Color.clear;
         ItemSprite.sprite = null;

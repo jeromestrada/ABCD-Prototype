@@ -42,7 +42,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
         if(this.CardSystemDisplayType == CardSystemDisplayType.HandInventory)
         {
             // if the card slot in the hand has a card and the mouse doesn't
-            if(clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedInventorySlot.Card == null)
+            if(clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card == null)
             {
                 mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
                 mouseInventoryItem.SavePickedFrom(clickedUISlot); // save the UI slot in case the player wants to return the card by right clicking
@@ -50,15 +50,15 @@ public abstract class CardSystemDisplay : MonoBehaviour
                 return;
             }
             // if the mouse has a card and the slot doesn't
-            else if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedInventorySlot.Card != null)
+            else if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedCardSlot.Card != null)
             {
-                clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
+                clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedCardSlot);
                 clickedUISlot.UpdateUISlot();
                 mouseInventoryItem.ClearSlot();
                 return;
             }
             // Both have items 
-            else if (clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedInventorySlot.Card != null)
+            else if (clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card != null)
             {
                 SwapSlots(clickedUISlot);
             }
@@ -83,7 +83,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
 
     public void SwapSlots(CardSlot_UI clickedUISlot)
     {
-        var clonedSlot = new CardSlot(mouseInventoryItem.AssignedInventorySlot.Card, mouseInventoryItem.AssignedInventorySlot.StackSize);
+        var clonedSlot = new CardSlot(mouseInventoryItem.AssignedCardSlot.Card, mouseInventoryItem.AssignedCardSlot.NumOfUses);
         mouseInventoryItem.ClearSlot();
         mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
 

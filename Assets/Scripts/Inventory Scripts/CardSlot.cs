@@ -6,15 +6,15 @@ using UnityEngine;
 public class CardSlot
 {
     [SerializeField] private Card card;
-    [SerializeField] private int stackSize;
+    [SerializeField] private int numOfUses;
 
     public Card Card => card;
-    public int StackSize => stackSize;
+    public int NumOfUses => numOfUses;
 
     public CardSlot(Card source, int amount)
     {
         card = source;
-        stackSize = amount;
+        numOfUses = amount;
     }
 
     public CardSlot()
@@ -25,25 +25,25 @@ public class CardSlot
     public void ClearSlot()
     {
         card = null;
-        stackSize = -1;
+        numOfUses = -1;
     }
 
     public void AssignItem(CardSlot invSlot)
     {
-        if (card == invSlot.card) AddToStack(invSlot.stackSize);
+        if (card == invSlot.card) AddToStack(invSlot.numOfUses);
         else
         {
             card = invSlot.card;
-            stackSize = 0;
-            AddToStack(invSlot.stackSize);
+            numOfUses = 0;
+            AddToStack(invSlot.numOfUses);
         }
     }
 
     public void UpdateInventorySlot(Card cardToAdd, int amountToAdd)
     {
         card = cardToAdd;
-        if (stackSize == -1) stackSize = 1;
-        else stackSize += amountToAdd;
+        if (numOfUses == -1) numOfUses = 1;
+        else numOfUses += amountToAdd;
     }
 
   /*  public bool RoomLeftInStack(int amount, out int amountRemaining)
@@ -60,11 +60,11 @@ public class CardSlot
 
     public void AddToStack(int amount)
     {
-        stackSize += amount;
+        numOfUses += amount;
     }
 
     public void RemoveFromStack(int amount)
     {
-        stackSize -= amount;
+        numOfUses -= amount;
     }
 }

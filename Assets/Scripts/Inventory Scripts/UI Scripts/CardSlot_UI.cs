@@ -34,7 +34,7 @@ public class CardSlot_UI : MonoBehaviour
         {
             cardSprite.sprite = slot.Card.cardIcon;
             cardSprite.color = Color.white;
-            if (slot.StackSize > 1) cardCount.text = slot.StackSize.ToString();
+            if (slot.NumOfUses > 1) cardCount.text = slot.NumOfUses.ToString();
             else cardCount.text = "";
         }
         else
