@@ -11,15 +11,13 @@ public class CharacterAnimator : MonoBehaviour
     protected AnimationClip[] currentAttackAnimSet;
 
     WeaponManager weaponManager;
-
-    public List<WeaponAnimations> weaponAnimations;
     Dictionary<Weapon, AnimationClip[]> weaponAnimationsDict;
-
-    Deck deck;
 
     PlayerController playerController;
     public AnimatorOverrideController overrideController;
     CharacterCombat combat;
+
+    [SerializeField] DeckInventory deck;
 
     float motionSmoothness = 0.1f;
 
@@ -38,22 +36,18 @@ public class CharacterAnimator : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         combat = GetComponent<CharacterCombat>();
 
+        deck = GetComponentInChildren<DeckInventory>();
+        deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
+
         playerController.OnDash += OnDash;
         combat.OnAttack += OnAttack; // subscribe to the delegate
 
         weaponManager = GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += OnWeaponChanged;
 
-        deck = GetComponent<Deck>(); // get the Deck component attached to this gameObject(Player)
-        LoadWeaponAnimations();
-
         // handle the animations
         // TODO: call the same logic whenever the player adds/removes a weapon card in the deck.
         weaponAnimationsDict = new Dictionary<Weapon, AnimationClip[]>();
-        foreach (WeaponAnimations a in weaponAnimations)
-        {
-            weaponAnimationsDict.Add(a.weapon, a.clips);
-        }
     }
 
     void ChangeCurrentAttackAnimSet(Weapon newWeapon)
@@ -63,11 +57,15 @@ public class CharacterAnimator : MonoBehaviour
             currentAttackAnimSet = defaultAttackAnimSet;
             return;
         }
-        currentAttackAnimSet = weaponAnimationsDict[newWeapon];
+        else
+        {
+            if(weaponAnimationsDict.ContainsKey(newWeapon)) currentAttackAnimSet = weaponAnimationsDict[newWeapon];
+        }
+
     }
 
-    // Update is called once per frame
-    void LateUpdate()
+        // Update is called once per frame
+        void LateUpdate()
     {
         
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
@@ -86,12 +84,15 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetBool("canMove", playerController.isMoving);
     }
 
-    public void LoadWeaponAnimations()
+    public void AddWeaponAnimation(CardSlot slot)
     {
-        foreach(Weapon w in deck.weapons)
+        if (slot.Card.cardType == CardType.ItemCard)
         {
-            weaponAnimations.Add(w.weaponAnimations);
+            var itemCard = (ItemCard)slot.Card;
+            if (itemCard.item is Weapon) weaponAnimationsDict.Add((Weapon)itemCard.item, ((Weapon)itemCard.item).weaponAnimations.clips);
+            Debug.Log("Added animation to dictionary!");
         }
+        else return;
     }
 
     protected virtual void OnAttack(int attackString)

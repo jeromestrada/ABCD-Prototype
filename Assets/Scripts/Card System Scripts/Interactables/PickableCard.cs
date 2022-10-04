@@ -14,10 +14,10 @@ public class PickableCard : Interactable
 
     void Pickup()
     {
-        var inventory = player.transform.GetComponent<CardSystemHolder>();
-        if(inventory != null)
+        var deck = player.GetComponentInChildren<DeckInventory>();
+        if(deck != null)
         {
-            if (inventory.CardSystem.AddToCardSystem(card))
+            if (deck.CardSystem.AddToCardSystem(card))
             {
                 Destroy(gameObject); // destroy the game object
             }

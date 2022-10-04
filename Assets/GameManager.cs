@@ -5,19 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     CharacterAnimator characterAnimator;
-    Deck deck;
     GameObject playerObj;
     private void Awake()
     {
         playerObj = GameObject.Find("Player");
 
         characterAnimator = playerObj.GetComponent<CharacterAnimator>();
-        deck = playerObj.GetComponent<Deck>();
 
-        UpdateAnimationSet();
+        //UpdateAnimationSet();
     }
 
-    public void UpdateAnimationSet()
+    /*public void UpdateAnimationSet()
     {
         if (characterAnimator != null)
         {
@@ -29,7 +27,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
     // will manage the available weapon animations based on the weapons in the deck
 
     // will also manage deck shuffling and draw,

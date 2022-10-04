@@ -7,6 +7,11 @@ using UnityEngine.Events;
 public class DeckInventory : CardSystemHolder
 {
     [SerializeField] List<Card> startingCards;
+    [SerializeField] List<Weapon> weaponsInDeck;
+
+    public event System.Action<Weapon> OnWeaponAdd;
+
+    public List<Weapon> WeaponsInDeck => weaponsInDeck;
 
     protected override void Awake()
     {
@@ -20,6 +25,27 @@ public class DeckInventory : CardSystemHolder
         if(data.deckDictionary.TryGetValue(GetComponent<UniqueID>().ID, out DeckSaveData deckData))
         {
             cardSystem = deckData.cardSystem;
+        }
+    }
+
+    public void AddWeapon(Weapon weaponToAdd)
+    {
+        if (weaponToAdd != null)
+        {
+            weaponsInDeck.Add(weaponToAdd);
+            OnWeaponAdd?.Invoke(weaponToAdd);
+        }
+    }
+
+    public void UpdateWeaponList()
+    {
+        foreach(CardSlot cSlot in cardSystem.CardSlots)
+        {
+            if(cSlot.Card.cardType == CardType.ItemCard)
+            {
+                var temp = (ItemCard)cSlot.Card;
+                if(temp.item is Weapon) weaponsInDeck.Add((Weapon)temp.item);
+            }
         }
     }
 
