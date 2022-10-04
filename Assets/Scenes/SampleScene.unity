@@ -1380,7 +1380,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1477938531}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &547087588
 MonoBehaviour:
@@ -1407,6 +1407,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
   - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
   - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
+  weaponsInDeck: []
 --- !u!114 &547087589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2281,7 +2282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1477938531}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112102603
 GameObject:
@@ -2919,7 +2920,6 @@ GameObject:
   - component: {fileID: 1477938531}
   - component: {fileID: 1477938530}
   - component: {fileID: 1477938537}
-  - component: {fileID: 1477938536}
   - component: {fileID: 1477938535}
   - component: {fileID: 1477938533}
   - component: {fileID: 1477938534}
@@ -2994,9 +2994,9 @@ Transform:
   m_LocalPosition: {x: 3.37, y: 0, z: -11.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1077236089}
   - {fileID: 543450653079166247}
   - {fileID: 547087587}
+  - {fileID: 1077236089}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3034,8 +3034,8 @@ MonoBehaviour:
   defaultAttackAnimSet:
   - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
   - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
-  weaponAnimations: []
   overrideController: {fileID: 0}
+  deck: {fileID: 0}
 --- !u!114 &1477938534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3074,23 +3074,6 @@ MonoBehaviour:
   testEquip: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
   testEquipReverse: {fileID: 11400000, guid: 01be133a8b63ce6419c6ec4b81322446, type: 2}
   targetMesh: {fileID: 3248816037825387173}
---- !u!114 &1477938536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477938527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b2881918e530543a8101ce4f64c956, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
-  - {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
-  - {fileID: 11400000, guid: 541d6deeeaf30f640b64b15d075e7ef1, type: 2}
-  weapons: []
 --- !u!114 &1477938537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4186,7 +4169,7 @@ Transform:
   - {fileID: 8879528567371140537}
   - {fileID: 5160191583907618823}
   m_Father: {fileID: 1477938531}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &623179381595416723
 Transform:
