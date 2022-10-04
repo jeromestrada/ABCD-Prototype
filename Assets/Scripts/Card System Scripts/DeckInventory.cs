@@ -10,7 +10,6 @@ public class DeckInventory : CardSystemHolder
     [SerializeField] List<Weapon> weaponsInDeck;
 
     public event System.Action<Weapon> OnWeaponAdd;
-
     public List<Weapon> WeaponsInDeck => weaponsInDeck;
 
     protected override void Awake()
@@ -21,9 +20,8 @@ public class DeckInventory : CardSystemHolder
 
     private void LoadDeck(SaveData data)
     {
-        // check the save data for this deck, if it exists load it in
         if(data.deckDictionary.TryGetValue(GetComponent<UniqueID>().ID, out DeckSaveData deckData))
-        {
+        {   // check the save data for this deck, if it exists load it in
             cardSystem = deckData.cardSystem;
         }
     }
@@ -56,23 +54,17 @@ public class DeckInventory : CardSystemHolder
         {
             cardSystem.AddToCardSystem(card);
         }
-        Debug.Log("Starting cards loaded");
         var deckSaveData = new DeckSaveData(cardSystem);
-        Debug.Log(GetComponent<UniqueID>().ID);
         SaveGameManager.data.deckDictionary.Add(GetComponent<UniqueID>().ID, deckSaveData);
-
-        
     }
 
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
-        {
-            // open deck of cards
+        {   // open deck of cards
             OnDynamicCardSystemDisplayRequested?.Invoke(cardSystem);
         }
     }
-
 }
 
 [System.Serializable]

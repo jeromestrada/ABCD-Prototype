@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     // will manage equipping a weapon, 
-    // this includes updating the character animator's animation based on the weapon
+    // this includes providing a delegate to the character animator to deal with animation changes
     // handles the MeshRenderer to display the weapon being wielded by the player.
 
     public event System.Action<Weapon> onWeaponChanged;

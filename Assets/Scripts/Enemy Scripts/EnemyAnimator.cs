@@ -5,9 +5,7 @@ using UnityEngine;
 public class EnemyAnimator : MonoBehaviour
 {
     Animator animator;
-
     Enemy enemy;
-
     EnemyAI enemyAI;
 
     public float locomotionSmoothTime = 0.1f;

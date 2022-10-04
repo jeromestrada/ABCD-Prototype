@@ -25,7 +25,6 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public virtual void Interact(InteractableScanner interactor, out bool interactSuccessful)
     {
-        // start the interaction logic here.
         hasInteracted = true;
         interactSuccessful = true;
     }
@@ -35,9 +34,9 @@ public class Interactable : MonoBehaviour, IInteractable
 
     }
 
-    public void WhenInRange(Transform playerTransform) // activates the interactable by setting isInRange to true
+    public void WhenInRange(Transform playerTransform) // readies the interactable by setting isInRange to true
     {
-        if (!isInRange) // if we're not in range already
+        if (!isInRange)
         {
             player = playerTransform;
             if (player != null && !hasInteracted)

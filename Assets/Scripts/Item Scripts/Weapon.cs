@@ -14,8 +14,7 @@ public class Weapon : Item
     public SkinnedMeshRenderer mesh;
 
     public override void Use()
-    {
-        // this part seems wrong, it gives this weapon access to the weaponManager but it just doesn't look right.
+    {// this part seems wrong, it gives this weapon access to the weaponManager but it just doesn't look right.
         weaponManager = GameObject.Find("Player").GetComponent<WeaponManager>();
         weaponManager.EquipWeapon(this);
         base.Use();

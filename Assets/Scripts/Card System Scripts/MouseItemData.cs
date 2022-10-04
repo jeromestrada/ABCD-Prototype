@@ -20,9 +20,8 @@ public class MouseItemData : MonoBehaviour
     }
     public void UpdateMouseSlot(CardSlot cardSlot)
     {
-        AssignedCardSlot.AssignCard(cardSlot); // system
-        // UI
-        ItemSprite.sprite = cardSlot.Card.cardIcon;
+        AssignedCardSlot.AssignCard(cardSlot); // system slot assignment
+        ItemSprite.sprite = cardSlot.Card.cardIcon; //following deals with UI
         ItemSprite.color = Color.white;
         ItemCount.text = cardSlot.RemainingUses.ToString();
         transform.SetAsLastSibling(); // makes sure that the mouse icon is drawn last
@@ -40,13 +39,13 @@ public class MouseItemData : MonoBehaviour
             transform.position = Input.mousePosition;
             inUI = true;
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
-            {
+            {// left click
                 AssignedCardSlot.UseCardInSlot();
                 if (AssignedCardSlot.RemainingUses > 0) ReturnToSlot();
                 else ClearSlot();
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
-            {
+            {// right click
                 ReturnToSlot();
             }
         }

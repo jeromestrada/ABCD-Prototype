@@ -33,7 +33,6 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
@@ -58,7 +57,6 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = false;
         }
     }
-
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -85,9 +83,7 @@ public class EnemyAI : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
-
     }
-
     private void ResetAttack()
     {
         alreadyAttacked = false;

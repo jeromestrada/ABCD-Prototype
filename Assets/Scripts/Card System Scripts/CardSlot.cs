@@ -7,9 +7,7 @@ public class CardSlot
 {
     [SerializeField] private Card card;
     [SerializeField] private int remainingUses;
-
     public int RemainingUses => remainingUses;
-
     public Card Card => card;
 
     public CardSlot(Card source)

@@ -21,8 +21,6 @@ public class CharacterAnimator : MonoBehaviour
 
     float motionSmoothness = 0.1f;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -36,17 +34,15 @@ public class CharacterAnimator : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         combat = GetComponent<CharacterCombat>();
 
-        deck = GetComponentInChildren<DeckInventory>();
-        deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
-
         playerController.OnDash += OnDash;
-        combat.OnAttack += OnAttack; // subscribe to the delegate
+        combat.OnAttack += OnAttack;
 
         weaponManager = GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += OnWeaponChanged;
 
-        // handle the animations
-        // TODO: call the same logic whenever the player adds/removes a weapon card in the deck.
+        deck = GetComponentInChildren<DeckInventory>();
+        deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
+
         weaponAnimationsDict = new Dictionary<Weapon, AnimationClip[]>();
     }
 
@@ -61,11 +57,9 @@ public class CharacterAnimator : MonoBehaviour
         {
             if(weaponAnimationsDict.ContainsKey(newWeapon)) currentAttackAnimSet = weaponAnimationsDict[newWeapon];
         }
-
     }
 
-        // Update is called once per frame
-        void LateUpdate()
+    void LateUpdate()
     {
         
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
@@ -89,15 +83,16 @@ public class CharacterAnimator : MonoBehaviour
         if (slot.Card.cardType == CardType.ItemCard)
         {
             var itemCard = (ItemCard)slot.Card;
-            if (itemCard.item is Weapon) weaponAnimationsDict.Add((Weapon)itemCard.item, ((Weapon)itemCard.item).weaponAnimations.clips);
-            Debug.Log("Added animation to dictionary!");
+            var weapon = (Weapon)itemCard.item;
+            if (itemCard.item is Weapon && !weaponAnimationsDict.ContainsKey(weapon)) 
+                weaponAnimationsDict.Add(weapon, (weapon.weaponAnimations.clips));
         }
         else return;
     }
 
     protected virtual void OnAttack(int attackString)
     {
-        animator.SetTrigger("attackTrigger"); // trigger in the animator
+        animator.SetTrigger("attackTrigger");
         overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
         playerController.isAttacking = true;
     }
@@ -109,7 +104,7 @@ public class CharacterAnimator : MonoBehaviour
 
     protected virtual void OnDash()
     {
-        animator.SetTrigger("dashTrigger"); // trigger in the animator
+        animator.SetTrigger("dashTrigger");
         
     }
 }

@@ -14,7 +14,7 @@ public class InteractableScanner : MonoBehaviour
     public bool IsInteracting { get; private set; }
 
     private List<Interactable> interactables;
-    // Start is called before the first frame update
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -46,7 +46,8 @@ public class InteractableScanner : MonoBehaviour
         {
             ResetClosestInteractable();
             float closestDist = float.MaxValue;
-            foreach (Interactable i in interactables) // finds the closest interactable detected
+            // find the closest interactable detected
+            foreach (Interactable i in interactables) 
             {
                 if(i == null) // since some of interactables can Destroy themselves, we check for nulls
                 {
@@ -59,7 +60,7 @@ public class InteractableScanner : MonoBehaviour
                     closestDist = distance;
                     closestInteractable = i;
                 }
-                i.WhenInRange(transform); // we're in range if we haven't exited the trigger, so we activate the interactable.
+                i.WhenInRange(transform); // we're in range if we haven't exited the trigger, so we ready the interactable.
             }
             alreadyScanned = true;
             Invoke(nameof(ResetScan), interactableScanInterval); // reset scan for interactables after given seconds lapsed.
