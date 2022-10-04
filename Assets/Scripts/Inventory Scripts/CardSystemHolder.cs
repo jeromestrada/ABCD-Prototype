@@ -13,7 +13,7 @@ public class CardSystemHolder : MonoBehaviour
 
     public static UnityAction<CardSystem> OnDynamicCardSystemDisplayRequested;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         cardSystem = new CardSystem(cardSystemSize);
     }
