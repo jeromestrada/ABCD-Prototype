@@ -14,11 +14,6 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int damage)
     {
         if (OnTakingDamage != null)

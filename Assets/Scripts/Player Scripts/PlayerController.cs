@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
                 if (isAttacking)
                 {
-                    speed /= 10;
+                    speed = 0;
                 }
                 controller.Move(move * speed * Time.deltaTime);
             }
