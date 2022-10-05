@@ -18,3 +18,14 @@ public class CardSystemHolder : MonoBehaviour
         cardSystem = new CardSystem(cardSystemSize);
     }
 }
+
+[System.Serializable]
+public struct CardSystemHolderSaveData
+{
+    public CardSystem cardSystem;
+
+    public CardSystemHolderSaveData(CardSystem _cardSystem)
+    {
+        cardSystem = _cardSystem;
+    }
+}

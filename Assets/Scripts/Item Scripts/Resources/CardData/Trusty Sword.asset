@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7dc94d9ae7a229409e201d5dca52d48, type: 3}
-  m_Name: Orb of Protection
+  m_Name: Trusty Sword
   m_EditorClassIdentifier: 
-  name: Orb of Protection
-  description: Equips an Orb of Protection
+  ID: 5
+  name: Trusty Sword
+  cardIcon: {fileID: 21300000, guid: 5f8eadf6d26aec84abe03814b6a8c6f7, type: 3}
+  description: Equips a Trusty Sword
   cardType: 0
   numOfUses: 1
   exhaustable: 0
-  item: {fileID: 11400000, guid: 4fdaee708ab7b6f4db151f2946869020, type: 2}
+  item: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}

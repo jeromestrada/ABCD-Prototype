@@ -32,7 +32,7 @@ public class WeaponManager : MonoBehaviour
         {
             Debug.Log("Test equip reverse");
             EquipWeapon(testEquipReverse);
-        }
+        } 
     }
 
     public void EquipWeapon(Weapon weapon)
@@ -50,7 +50,6 @@ public class WeaponManager : MonoBehaviour
             equippedWeaponMesh = newMesh;
             onWeaponChanged?.Invoke(equippedWeapon);
         }
-        
     }
 
     public void UnequipWeapon()

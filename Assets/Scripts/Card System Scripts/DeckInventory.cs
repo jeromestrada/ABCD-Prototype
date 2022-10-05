@@ -20,7 +20,7 @@ public class DeckInventory : CardSystemHolder
 
     private void LoadDeck(SaveData data)
     {
-        if(data.deckDictionary.TryGetValue(GetComponent<UniqueID>().ID, out DeckSaveData deckData))
+        if(data.deckDictionary.TryGetValue(GetComponent<UniqueID>().ID, out CardSystemHolderSaveData deckData))
         {   // check the save data for this deck, if it exists load it in
             cardSystem = deckData.cardSystem;
         }
@@ -54,7 +54,7 @@ public class DeckInventory : CardSystemHolder
         {
             cardSystem.AddToCardSystem(card);
         }
-        var deckSaveData = new DeckSaveData(cardSystem);
+        var deckSaveData = new CardSystemHolderSaveData(cardSystem);
         SaveGameManager.data.deckDictionary.Add(GetComponent<UniqueID>().ID, deckSaveData);
     }
 
@@ -67,13 +67,4 @@ public class DeckInventory : CardSystemHolder
     }
 }
 
-[System.Serializable]
-public struct DeckSaveData
-{
-    public CardSystem cardSystem;
-    
-    public DeckSaveData(CardSystem _cardSystem)
-    {
-        cardSystem = _cardSystem;
-    }
-}
+

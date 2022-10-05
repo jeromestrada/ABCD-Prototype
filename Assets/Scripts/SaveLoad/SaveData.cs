@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SaveData
 {
-    public SerializableDictionary<string, DeckSaveData> deckDictionary;
+    public SerializableDictionary<string, CardSystemHolderSaveData> deckDictionary;
 
     public SaveData()
     {
-        deckDictionary = new SerializableDictionary<string, DeckSaveData>();
+        deckDictionary = new SerializableDictionary<string, CardSystemHolderSaveData>();
     } 
 }

@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8ce314783194640b536872b6efd095, type: 3}
-  m_Name: Attack
+  m_Script: {fileID: 11500000, guid: c7dc94d9ae7a229409e201d5dca52d48, type: 3}
+  m_Name: Orb of Protection
   m_EditorClassIdentifier: 
-  name: Attack
-  cardIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  description: Attack with your current weapon, limited
-  cardType: 1
-  numOfUses: 3
+  ID: 3
+  name: Orb of Protection
+  cardIcon: {fileID: 0}
+  description: Equips an Orb of Protection
+  cardType: 0
+  numOfUses: 1
   exhaustable: 0
+  item: {fileID: 11400000, guid: 4fdaee708ab7b6f4db151f2946869020, type: 2}

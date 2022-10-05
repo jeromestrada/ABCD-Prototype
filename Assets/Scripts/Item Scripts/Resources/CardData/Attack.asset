@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af8ce314783194640b536872b6efd095, type: 3}
-  m_Name: Defend
+  m_Name: Attack
   m_EditorClassIdentifier: 
-  name: Defend
-  cardIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  description: Gain defense to block an instance of damage
-  cardType: 2
-  numOfUses: 2
+  ID: 0
+  name: Attack
+  cardIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  description: Attack with your current weapon, limited
+  cardType: 1
+  numOfUses: 3
   exhaustable: 0

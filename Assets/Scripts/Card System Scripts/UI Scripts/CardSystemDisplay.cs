@@ -7,7 +7,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
     [SerializeField] MouseItemData mouseInventoryItem;
     protected CardSystem cardSystem;
     protected Dictionary<CardSlot_UI, CardSlot> slotDictionary;
-    protected CardSystemDisplayType cardSystemDisplayType;
+    [SerializeField] protected CardSystemDisplayType cardSystemDisplayType;
 
     public CardSystem CardSystem => cardSystem;
     public Dictionary<CardSlot_UI, CardSlot> SlotDictionary => slotDictionary;
