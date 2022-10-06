@@ -14,7 +14,7 @@ public class PickableCard : Interactable
 
     void Pickup()
     {
-        var deck = player.GetComponentInChildren<DeckInventory>();
+        var deck = player.GetComponentInChildren<DeckOfCards>();
         if(deck != null)
         {
             if (deck.CardSystem.AddToCardSystem(card))

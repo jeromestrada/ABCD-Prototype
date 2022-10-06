@@ -32,8 +32,14 @@ public class CardSystem
             freeSlot.InitCardSlot(cardToAdd);
             OnInventorySlotChanged?.Invoke(freeSlot);
             return true;
+        } 
+        else // if there is no available slot we add a new one to put the card in.
+        {
+            freeSlot = new CardSlot(cardToAdd);
+            cardSlots.Add(freeSlot); // add the new slot into the system.
+            OnInventorySlotChanged?.Invoke(freeSlot);
+            return true;
         }
-        return false;
     }
     public bool HasFreeSlot(out CardSlot freeSlot)
     {

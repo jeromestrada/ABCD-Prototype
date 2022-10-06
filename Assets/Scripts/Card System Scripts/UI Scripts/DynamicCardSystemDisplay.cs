@@ -29,7 +29,7 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
             var uiSlot = Instantiate(slotPrefab, transform);
             slotDictionary.Add(uiSlot, sysToDisplay.CardSlots[i]);
             uiSlot.Init(sysToDisplay.CardSlots[i]);
-            uiSlot.UpdateUISlot();
+            // uiSlot.UpdateUISlot();
         }
     }
 

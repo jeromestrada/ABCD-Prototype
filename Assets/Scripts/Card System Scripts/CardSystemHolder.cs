@@ -6,16 +6,21 @@ using UnityEngine.Events;
 [System.Serializable]
 public class CardSystemHolder : MonoBehaviour
 {
-    [SerializeField] private int cardSystemSize;
-    [SerializeField] protected CardSystem cardSystem;
+    [SerializeField] protected int _cardSystemSize;
+    [SerializeField] protected CardSystem _cardSystem;
 
-    public CardSystem CardSystem => cardSystem;
+    public CardSystem CardSystem => _cardSystem;
 
     public static UnityAction<CardSystem> OnDynamicCardSystemDisplayRequested;
 
     protected virtual void Awake()
     {
-        cardSystem = new CardSystem(cardSystemSize);
+        _cardSystem = new CardSystem(_cardSystemSize);
+    }
+
+    protected virtual void Update()
+    {
+        _cardSystemSize = _cardSystem.CardSystemSize;
     }
 }
 

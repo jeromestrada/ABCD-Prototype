@@ -8,6 +8,11 @@ public class CardSlot : ISerializationCallbackReceiver
     private Card card;
     [SerializeField] private int _cardID = -1; // keeps track of what card is in this slot based on ID.
     [SerializeField] private int remainingUses;
+
+    [SerializeField] private int slotNumber; // a number used to indicate the position of the slot in the card System
+    // this number is arbitrary and is used to aid the shuffling of the card slots without changing their position in the system list.
+
+    public int SlotNumber => slotNumber;
     public int RemainingUses => remainingUses;
     public Card Card => card;
 
@@ -20,6 +25,11 @@ public class CardSlot : ISerializationCallbackReceiver
     public CardSlot()
     {
         ClearSlot();
+    }
+
+    public void AssignSlotNumber(int numberToAssign)
+    {
+        slotNumber = numberToAssign;
     }
 
     public void ClearSlot()
