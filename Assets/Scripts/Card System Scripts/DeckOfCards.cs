@@ -8,9 +8,7 @@ using System.Linq;
 public class DeckOfCards : CardSystemHolder
 {
     [SerializeField] List<Card> startingCards;
-    [SerializeField] private List<int> slotNumbersList; // we will use this to access the cards using Linq functions 
-    // like: ...   cardSystem.Find(cardSlot).Where(i => i.slotNumber == slotNumbersList[0])
-    // remove number from slotNumbersList and DrawCard from the deck into the hand.
+    [SerializeField] private List<int> slotNumbersList;
     public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
 
     protected override void Awake()
@@ -29,9 +27,6 @@ public class DeckOfCards : CardSystemHolder
 
     public void ShuffleDeck() // shuffle the deck by assigning a randomly genereated number to each slot and
     {
-        // generate a random number and assign it to a slot
-        // add generated number to the slotNumbersList while maintaining order
-
         foreach(CardSlot slot in CardSystem.CardSlots)
         {
             int rand = Random.Range(0, CardSystem.CardSlots.Count);
@@ -44,7 +39,6 @@ public class DeckOfCards : CardSystemHolder
 
     public Card GetTopCard()
     {
-        Debug.Log("Getting top card");
         if(CardSystem.CardSystemSize == 0) return null;
 
         CardSlot cardSlot = CardSystem.CardSlots.Find(s => s.SlotNumber == slotNumbersList[0]);
@@ -52,7 +46,6 @@ public class DeckOfCards : CardSystemHolder
         Card card = cardSlot.Card;
         slotNumbersList.RemoveAt(0);
         CardSystem.CardSlots.RemoveAt(index);
-        Debug.Log("${card.name} on Top, returning it");
         return card;
     }
 
