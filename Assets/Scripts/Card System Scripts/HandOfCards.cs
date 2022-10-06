@@ -9,10 +9,25 @@ public class HandOfCards : CardSystemHolder
     [SerializeField] private DeckOfCards deck;
     public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        SaveLoad.OnLoadGame += LoadHand;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        var handSaveData = new CardSystemHolderSaveData(_cardSystem);
+        SaveGameManager.data.handDictionary.Add(GetComponent<UniqueID>().ID, handSaveData);
+    }
+
+    private void LoadHand(SaveData data)
+    {
+        if (data.handDictionary.TryGetValue(GetComponent<UniqueID>().ID, out CardSystemHolderSaveData handData))
+        {   // check the save data for this deck, if it exists load it in
+            _cardSystem = handData.cardSystem;
+        }
     }
 
     // Update is called once per frame
