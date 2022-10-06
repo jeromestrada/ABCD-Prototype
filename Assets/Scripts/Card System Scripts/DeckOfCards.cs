@@ -8,9 +8,10 @@ using System.Linq;
 public class DeckOfCards : CardSystemHolder
 {
     [SerializeField] List<Card> startingCards;
-    private List<int> slotNumbersList; // we will use this to access the cards using Linq functions 
+    [SerializeField] private List<int> slotNumbersList; // we will use this to access the cards using Linq functions 
     // like: ...   cardSystem.Find(cardSlot).Where(i => i.slotNumber == slotNumbersList[0])
     // remove number from slotNumbersList and DrawCard from the deck into the hand.
+    public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
 
     protected override void Awake()
     {
@@ -26,11 +27,33 @@ public class DeckOfCards : CardSystemHolder
         }
     }
 
-    public void ShuffleDeck(int seed) // shuffle the deck by assigning a randomly genereated number to each slot and
+    public void ShuffleDeck() // shuffle the deck by assigning a randomly genereated number to each slot and
     {
         // generate a random number and assign it to a slot
         // add generated number to the slotNumbersList while maintaining order
-        // an algorithm similar to bubble sort will suffice as we add the numbers one by one anyway
+
+        foreach(CardSlot slot in CardSystem.CardSlots)
+        {
+            int rand = Random.Range(0, CardSystem.CardSlots.Count);
+            slot.AssignSlotNumber(rand);
+            int index = slotNumbersList.BinarySearch(rand);
+            if (index < 0) index = ~index;
+            slotNumbersList.Insert(index, rand);
+        }
+    }
+
+    public Card GetTopCard()
+    {
+        Debug.Log("Getting top card");
+        if(CardSystem.CardSystemSize == 0) return null;
+
+        CardSlot cardSlot = CardSystem.CardSlots.Find(s => s.SlotNumber == slotNumbersList[0]);
+        var index = CardSystem.CardSlots.FindIndex(s => s.SlotNumber == slotNumbersList[0]);
+        Card card = cardSlot.Card;
+        slotNumbersList.RemoveAt(0);
+        CardSystem.CardSlots.RemoveAt(index);
+        Debug.Log("${card.name} on Top, returning it");
+        return card;
     }
 
     private void Start()
@@ -42,6 +65,7 @@ public class DeckOfCards : CardSystemHolder
         }
 
         slotNumbersList = new List<int>();
+        ShuffleDeck();
 
         var deckSaveData = new CardSystemHolderSaveData(_cardSystem);
         SaveGameManager.data.deckDictionary.Add(GetComponent<UniqueID>().ID, deckSaveData);
@@ -52,7 +76,11 @@ public class DeckOfCards : CardSystemHolder
         base.Update();
         if (Input.GetKeyDown(KeyCode.C))
         {   // open deck of cards
-            OnDynamicCardSystemDisplayRequested?.Invoke(_cardSystem);
+            OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {   // open deck of cards
+            ShuffleDeck();
         }
     }
 }

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HandOfCards : CardSystemHolder
 {
     [SerializeField] private int maxHandSize;
     [SerializeField] private DeckOfCards deck;
+    public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +20,17 @@ public class HandOfCards : CardSystemHolder
     {
         base.Update();
 
-        if (Input.GetKey(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            // Deal a card to the hand
+            DrawCard();
         }
     }
 
-    public void DrawCard(int amountToDraw)
+    public void DrawCard()
     {
-
+        Card card = deck.GetTopCard();
+        if (card == null) return;
+        _cardSystem.AddToCardSystem(card);
+        OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
     }
 }

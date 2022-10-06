@@ -5,29 +5,41 @@ using UnityEngine;
 
 public class CardSystemUIController : MonoBehaviour
 {
-    public DynamicCardSystemDisplay inventoryPanel;
+    public DynamicCardSystemDisplay DeckPanel;
+    public DynamicCardSystemDisplay HandPanel;
+
 
     private void Awake()
     {
-        inventoryPanel.gameObject.SetActive(false);
+        DeckPanel.gameObject.SetActive(false);
+        HandPanel.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
-        CardSystemHolder.OnDynamicCardSystemDisplayRequested += DisplayInventory;
+        DeckOfCards.OnDeckOfCardsDisplayRequested += DisplayDeck;
+        HandOfCards.OnHandOfCardsDisplayRequested += DisplayHand;
     }
     private void OnDisable()
     {
-        CardSystemHolder.OnDynamicCardSystemDisplayRequested -= DisplayInventory;
+        DeckOfCards.OnDeckOfCardsDisplayRequested -= DisplayDeck;
+        HandOfCards.OnHandOfCardsDisplayRequested -= DisplayHand;
     }
     // Update is called once per frame
     void Update()
     {
-        if(inventoryPanel.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape)) inventoryPanel.gameObject.SetActive(false);
+        if(DeckPanel.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape)) DeckPanel.gameObject.SetActive(false);
     }
 
-    void DisplayInventory(CardSystem invToDisplay)
+    void DisplayDeck(CardSystem cardSysToDisplay)
     {
-        inventoryPanel.gameObject.SetActive(true); 
-        inventoryPanel.RefreshDynamicInventory(invToDisplay);
+        DeckPanel.gameObject.SetActive(true); 
+        DeckPanel.RefreshDynamicInventory(cardSysToDisplay);
     }
+
+    void DisplayHand(CardSystem cardSysToDisplay)
+    {
+        HandPanel.gameObject.SetActive(true);
+        HandPanel.RefreshDynamicInventory(cardSysToDisplay);
+    }
+
 }

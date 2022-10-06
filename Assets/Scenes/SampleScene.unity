@@ -280,6 +280,7 @@ MonoBehaviour:
   _cardSystem:
     cardSlots: []
   maxHandSize: 10
+  deck: {fileID: 547087588}
 --- !u!1 &314570274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7067b55ecf5c6a34f881022f525b5d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 1608129807}
+  DeckPanel: {fileID: 1608129807}
+  HandPanel: {fileID: 551017339}
 --- !u!1 &1150768216
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,6 +3009,7 @@ MonoBehaviour:
   AssignedCardSlot:
     _cardID: -1
     remainingUses: -1
+    slotNumber: 0
   inUI: 0
 --- !u!95 &1912389607
 Animator:
