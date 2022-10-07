@@ -12,6 +12,14 @@ public class MouseItemData : MonoBehaviour
     public CardSlot AssignedCardSlot;
     private CardSlot_UI pickedFromSlot;
     public bool inUI;
+    private CardSystemUIController cardSystemUIController;
+    [SerializeField] private CardSystemHolder handOfCards;
+
+
+    private void Start()
+    {
+        cardSystemUIController = GetComponentInParent<CardSystemUIController>();
+    }
 
     private void Awake()
     {
@@ -42,7 +50,12 @@ public class MouseItemData : MonoBehaviour
             {// left click
                 AssignedCardSlot.UseCardInSlot();
                 if (AssignedCardSlot.RemainingUses > 0) ReturnToSlot();
-                else ClearSlot();
+                else
+                {   // remove the slot from the card system, refresh the hand display and clear the mouse slot.
+                    handOfCards.CardSystem.CardSlots.Remove(pickedFromSlot.AssignedInventorySlot);
+                    cardSystemUIController.HandPanel.RefreshDynamicInventory(handOfCards.CardSystem);
+                    ClearSlot();
+                }
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
             {// right click

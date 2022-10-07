@@ -19,6 +19,7 @@ public class CardSlot : ISerializationCallbackReceiver
     public CardSlot(Card source)
     {
         card = source;
+        remainingUses = card.NumOfUses;
         _cardID = card.ID;
     }
 

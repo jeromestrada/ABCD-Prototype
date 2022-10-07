@@ -10,6 +10,8 @@ public class DeckOfCards : CardSystemHolder
     [SerializeField] List<Card> startingCards;
     [SerializeField] private List<int> slotNumbersList;
     public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
+    public static UnityAction<bool> OnDeckOfCardsDisplayHideRequested;
+    private bool isHidden;
 
     protected override void Awake()
     {
@@ -27,7 +29,8 @@ public class DeckOfCards : CardSystemHolder
 
     public void ShuffleDeck() // shuffle the deck by assigning a randomly genereated number to each slot and
     {
-        foreach(CardSlot slot in CardSystem.CardSlots)
+        slotNumbersList.Clear();
+        foreach (CardSlot slot in CardSystem.CardSlots)
         {
             int rand = Random.Range(0, CardSystem.CardSlots.Count);
             slot.AssignSlotNumber(rand);
@@ -42,15 +45,16 @@ public class DeckOfCards : CardSystemHolder
         if(CardSystem.CardSystemSize == 0) return null;
 
         CardSlot cardSlot = CardSystem.CardSlots.Find(s => s.SlotNumber == slotNumbersList[0]);
-        var index = CardSystem.CardSlots.FindIndex(s => s.SlotNumber == slotNumbersList[0]);
         Card card = cardSlot.Card;
         slotNumbersList.RemoveAt(0);
-        CardSystem.CardSlots.RemoveAt(index);
+        CardSystem.CardSlots.Remove(cardSlot);
+        OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
         return card;
     }
 
     private void Start()
     {
+        isHidden = true;
         // add the starting cards into the deck
         foreach (Card card in startingCards)
         {
@@ -70,11 +74,13 @@ public class DeckOfCards : CardSystemHolder
         if (Input.GetKeyDown(KeyCode.C))
         {   // open deck of cards
             OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
+            isHidden = false;
         }
         if (Input.GetKeyDown(KeyCode.L))
         {   // open deck of cards
             ShuffleDeck();
         }
+        if (CardSystem.CardSlots.Count <= 0 && !isHidden) OnDeckOfCardsDisplayHideRequested?.Invoke(isHidden);
     }
 }
 

@@ -9,6 +9,7 @@ public class HandOfCards : CardSystemHolder
     [SerializeField] private DeckOfCards deck;
     public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -26,7 +27,12 @@ public class HandOfCards : CardSystemHolder
     {
         if (data.handDictionary.TryGetValue(GetComponent<UniqueID>().ID, out CardSystemHolderSaveData handData))
         {   // check the save data for this deck, if it exists load it in
+            Debug.Log("hand data found!");
             _cardSystem = handData.cardSystem;
+        }
+        if(_cardSystem.CardSystemSize > 0)
+        {
+            OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
         }
     }
 
