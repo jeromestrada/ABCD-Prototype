@@ -8,7 +8,8 @@ public class CharacterCombat : MonoBehaviour
     [SerializeField] Weapon equippedWeapon;
     public bool canStringAttack;
     public int CurrentAttackString;
-    private Transform currentAttackPoint;
+    private Transform currentStringAttackPoint;
+    private Vector3 attackPoint;
     
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
@@ -43,7 +44,6 @@ public class CharacterCombat : MonoBehaviour
     {
         // TODO: will use full animation instead, and have a separate recovery animation for each attack
         // this will eliminate the need to use events to sync different attack string animations.
-        
         if ((Time.time - finalStringTime) >= cooldownDuration)
         {
             isCoolingDown = false;
@@ -52,21 +52,29 @@ public class CharacterCombat : MonoBehaviour
         {
             ResetAttackString();
         }
+        attackPoint = PlaceAttackPoint();
         if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !mouseItemData.inUI && canStringAttack && !isCoolingDown)
         {
             canStringAttack = false; // we wait for the animation to hit before we can attack again
             lastAttackStringTime = float.MaxValue; 
             if (OnAttack != null)
             {
-                currentAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
+                currentStringAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
                 OnAttack(CurrentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
             }
-            
             if (controller.isDashing)
             {
                 controller.OnEndDash();
             }
         }
+    }
+
+    public Vector3 PlaceAttackPoint()
+    {
+        return transform.position +
+            (transform.right * currentStringAttackPoint.position.x) +
+            (transform.up * currentStringAttackPoint.position.y) +
+            (transform.forward * currentStringAttackPoint.position.z);
     }
 
     private void OnWeaponChanged(Weapon weapon)
@@ -75,10 +83,10 @@ public class CharacterCombat : MonoBehaviour
         ResetAttackString();
     }
 
-    private void ResetAttackString()
+    public void ResetAttackString()
     {
         CurrentAttackString = 0;
-        if(equippedWeapon != null) currentAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
+        if(equippedWeapon != null) currentStringAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
     }
 
     public void AttackFinish_AnimationEvent()
@@ -98,9 +106,8 @@ public class CharacterCombat : MonoBehaviour
     public void AttackHit_AnimationEvent()
     {
         // access a corresponding attackPoint for the current attack string instead of using a set attackPoint
-        Collider[] hitEnemies = Physics.OverlapSphere(currentAttackPoint.position, attackRadius, enemyMask);
-
-        foreach(Collider enemy in hitEnemies)
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, enemyMask);
+        foreach (Collider enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
         }
@@ -108,11 +115,11 @@ public class CharacterCombat : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if(currentAttackPoint == null)
+        if(currentStringAttackPoint == null)
         {
             return;
         }
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(currentAttackPoint.position, attackRadius);
+        Gizmos.DrawWireSphere(attackPoint, attackRadius);
     }
 }

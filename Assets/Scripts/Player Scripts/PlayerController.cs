@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         dashStartTime = 0;
         combat.canStringAttack = true;
-        combat.CurrentAttackString = 0; // reset the attack string to the beginning after a dash
+        combat.ResetAttackString(); // reset the attack string to the beginning after a dash
     }
     void OnAttack(int attackString)
     {
