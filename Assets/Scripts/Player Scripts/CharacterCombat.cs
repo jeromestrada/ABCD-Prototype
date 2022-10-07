@@ -7,7 +7,7 @@ public class CharacterCombat : MonoBehaviour
     WeaponManager weaponManager;
     [SerializeField] Weapon equippedWeapon;
     public bool canStringAttack;
-    private int currentAttackString;
+    public int CurrentAttackString;
     private Transform currentAttackPoint;
     
     private float lastAttackStringTime;
@@ -58,8 +58,8 @@ public class CharacterCombat : MonoBehaviour
             lastAttackStringTime = float.MaxValue; 
             if (OnAttack != null)
             {
-                currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
-                OnAttack(currentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
+                currentAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
+                OnAttack(CurrentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
             }
             
             if (controller.isDashing)
@@ -77,16 +77,16 @@ public class CharacterCombat : MonoBehaviour
 
     private void ResetAttackString()
     {
-        currentAttackString = 0;
-        if(equippedWeapon != null) currentAttackPoint = equippedWeapon.attackPoints[currentAttackString];
+        CurrentAttackString = 0;
+        if(equippedWeapon != null) currentAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
     }
 
     public void AttackFinish_AnimationEvent()
     {
         lastAttackStringTime = Time.time;
         canStringAttack = true;
-        currentAttackString++; // increment to the next attack string
-        if (currentAttackString == equippedWeapon.stringAttacksCount) // if we've reached the last string we cooldown
+        CurrentAttackString++; // increment to the next attack string
+        if (CurrentAttackString == equippedWeapon.stringAttacksCount) // if we've reached the last string we cooldown
         {
             isCoolingDown = true;
             finalStringTime = Time.time;
