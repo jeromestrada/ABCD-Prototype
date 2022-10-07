@@ -19,7 +19,7 @@ MonoBehaviour:
   stringAttacksCount: 2
   attackPoints:
   - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
-  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
+  - {fileID: 1062047230199363204, guid: 9cadee8b9f0b32140b5903b4324d1422, type: 3}
   weaponAnimations:
     weapon: {fileID: 11400000}
     clips:
