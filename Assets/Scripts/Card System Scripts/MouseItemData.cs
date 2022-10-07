@@ -52,7 +52,7 @@ public class MouseItemData : MonoBehaviour
                 if (AssignedCardSlot.RemainingUses > 0) ReturnToSlot();
                 else
                 {   // remove the slot from the card system, refresh the hand display and clear the mouse slot.
-                    handOfCards.CardSystem.CardSlots.Remove(pickedFromSlot.AssignedInventorySlot);
+                    handOfCards.CardSystem.RemoveCardSlot(pickedFromSlot.AssignedInventorySlot);
                     cardSystemUIController.HandPanel.RefreshDynamicInventory(handOfCards.CardSystem);
                     ClearSlot();
                 }

@@ -27,12 +27,19 @@ public class DeckOfCards : CardSystemHolder
         }
     }
 
+    public bool AddCardToDeck(Card cardToAdd)
+    {
+        var addSuccess = CardSystem.AddToCardSystem(cardToAdd);
+        if (addSuccess) ShuffleDeck(); // if the card is added, we reshuffle the Deck
+        return addSuccess;
+    }
+
     public void ShuffleDeck() // shuffle the deck by assigning a randomly genereated number to each slot and
     {
         slotNumbersList.Clear();
         foreach (CardSlot slot in CardSystem.CardSlots)
-        {
-            int rand = Random.Range(0, CardSystem.CardSlots.Count);
+        {   // some random way of generating a random number.. could be better
+            int rand = Random.Range(1, CardSystem.CardSlots.Count * Random.Range(11, 24)) * Random.Range(7, 18);
             slot.AssignSlotNumber(rand);
             int index = slotNumbersList.BinarySearch(rand);
             if (index < 0) index = ~index;
@@ -47,7 +54,7 @@ public class DeckOfCards : CardSystemHolder
         CardSlot cardSlot = CardSystem.CardSlots.Find(s => s.SlotNumber == slotNumbersList[0]);
         Card card = cardSlot.Card;
         slotNumbersList.RemoveAt(0);
-        CardSystem.CardSlots.Remove(cardSlot);
+        CardSystem.RemoveCardSlot(cardSlot);
         OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
         return card;
     }

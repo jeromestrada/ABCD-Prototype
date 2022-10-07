@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 75225265}
   - component: {fileID: 75225266}
   m_Layer: 7
-  m_Name: Hand
+  m_Name: Hand System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 547087589}
   - component: {fileID: 547087588}
   m_Layer: 7
-  m_Name: Deck
+  m_Name: Deck System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 551017336}
   - component: {fileID: 551017335}
   m_Layer: 5
-  m_Name: D Hand Card System
+  m_Name: D Hand Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1753,7 +1753,7 @@ GameObject:
   - component: {fileID: 1112102604}
   - component: {fileID: 1112102605}
   m_Layer: 5
-  m_Name: DynamicCardSystemsUIController
+  m_Name: DynamicPanelsUIController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2419,7 +2419,7 @@ GameObject:
   - component: {fileID: 1608129811}
   - component: {fileID: 1608129810}
   m_Layer: 5
-  m_Name: D Deck Card System
+  m_Name: D Deck Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

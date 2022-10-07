@@ -17,7 +17,7 @@ public class PickableCard : Interactable
         var deck = player.GetComponentInChildren<DeckOfCards>();
         if(deck != null)
         {
-            if (deck.CardSystem.AddToCardSystem(card))
+            if (deck.AddCardToDeck(card))
             {
                 Destroy(gameObject); // destroy the game object
             }

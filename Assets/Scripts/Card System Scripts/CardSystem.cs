@@ -25,6 +25,11 @@ public class CardSystem
         }
     }
 
+    public void RemoveCardSlot(CardSlot cardSlotToRemove)
+    {
+        cardSlots.Remove(cardSlotToRemove);
+    }
+
     public bool AddToCardSystem(Card cardToAdd)
     {
         if(HasFreeSlot(out CardSlot freeSlot))
