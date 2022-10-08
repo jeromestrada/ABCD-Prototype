@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ee5cf9111fcdb4a906058f35231bc6, type: 3}
   m_Name: Default Shop List
   m_EditorClassIdentifier: 
-  _cardsInStock: []
-  _maxGold: 0
-  _sellMarkUp: 0
-  _buyMarkUp: 0
+  _cardsInStock:
+  - Card: {fileID: 11400000, guid: 541d6deeeaf30f640b64b15d075e7ef1, type: 2}
+    StockAmount: 1
+  - Card: {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
+    StockAmount: 1
+  - Card: {fileID: 11400000, guid: 184f6c6e817c3ff42926fec6d66cf764, type: 2}
+    StockAmount: 2
+  _maxGold: 1000
+  _sellMarkUp: 0.25
+  _buyMarkUp: 0.5

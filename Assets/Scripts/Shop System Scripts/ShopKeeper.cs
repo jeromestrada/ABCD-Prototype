@@ -8,7 +8,7 @@ public class ShopKeeper : MonoBehaviour , IInteractable
 {
 
     [SerializeField] private ShopStockList _shopStockList; // stock list of this shop
-    private ShopSystem _shopSystem;
+    [SerializeField] private ShopSystem _shopSystem;
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
 
