@@ -37,7 +37,7 @@ public class DeckOfCards : CardSystemHolder
     public void ShuffleDeck() // shuffle the deck by assigning a randomly genereated number to each slot and
     {
         slotNumbersList.Clear();
-        foreach (CardSlot slot in CardSystem.CardSlots)
+        foreach (PlayerCardSlot slot in CardSystem.CardSlots)
         {   // some random way of generating a random number.. could be better
             int rand = Random.Range(1, CardSystem.CardSlots.Count * Random.Range(11, 24)) * Random.Range(7, 18);
             slot.AssignSlotNumber(rand);
@@ -51,7 +51,7 @@ public class DeckOfCards : CardSystemHolder
     {
         if(CardSystem.CardSystemSize == 0) return null;
 
-        CardSlot cardSlot = CardSystem.CardSlots.Find(s => s.SlotNumber == slotNumbersList[0]);
+        PlayerCardSlot cardSlot = CardSystem.CardSlots.Find(s => s.SlotNumber == slotNumbersList[0]);
         Card card = cardSlot.Card;
         slotNumbersList.RemoveAt(0);
         CardSystem.RemoveCardSlot(cardSlot);

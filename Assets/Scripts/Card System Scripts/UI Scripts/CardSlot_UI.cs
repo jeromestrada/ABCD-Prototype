@@ -6,11 +6,11 @@ public class CardSlot_UI : MonoBehaviour
 {
     [SerializeField] private Image cardSprite;
     [SerializeField] private TextMeshProUGUI cardCount;
-    [SerializeField] private CardSlot assignedInventorySlot;
+    [SerializeField] private PlayerCardSlot assignedInventorySlot;
 
     private Button button;
 
-    public CardSlot AssignedInventorySlot => assignedInventorySlot;
+    public PlayerCardSlot AssignedInventorySlot => assignedInventorySlot;
     public CardSystemDisplay ParentDisplay {get; private set;}
 
     private void Awake()
@@ -22,13 +22,13 @@ public class CardSlot_UI : MonoBehaviour
         ParentDisplay = transform.parent.GetComponent<CardSystemDisplay>(); 
     }
 
-    public void Init(CardSlot slot)
+    public void Init(PlayerCardSlot slot)
     {
         assignedInventorySlot = slot; // ties the ui to the system.
         UpdateUISlot(slot);
     }
 
-    public void UpdateUISlot(CardSlot slot)
+    public void UpdateUISlot(PlayerCardSlot slot)
     {
         if(slot.Card != null)
         {

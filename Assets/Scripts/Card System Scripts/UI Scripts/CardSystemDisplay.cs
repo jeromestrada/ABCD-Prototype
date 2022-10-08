@@ -6,11 +6,11 @@ public abstract class CardSystemDisplay : MonoBehaviour
 {
     [SerializeField] MouseItemData mouseInventoryItem;
     protected CardSystem cardSystem;
-    protected Dictionary<CardSlot_UI, CardSlot> slotDictionary;
+    protected Dictionary<CardSlot_UI, PlayerCardSlot> slotDictionary;
     [SerializeField] protected CardSystemDisplayType cardSystemDisplayType;
 
     public CardSystem CardSystem => cardSystem;
-    public Dictionary<CardSlot_UI, CardSlot> SlotDictionary => slotDictionary;
+    public Dictionary<CardSlot_UI, PlayerCardSlot> SlotDictionary => slotDictionary;
     public CardSystemDisplayType CardSystemDisplayType => cardSystemDisplayType;
 
     protected virtual void Start()
@@ -25,7 +25,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
         cardSystemDisplayType = type;
     }
 
-    protected virtual void UpdateSlot(CardSlot updatedSlot)
+    protected virtual void UpdateSlot(PlayerCardSlot updatedSlot)
     {
         foreach(var slot in SlotDictionary)
         {
@@ -83,7 +83,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
 
     public void SwapSlots(CardSlot_UI clickedUISlot)
     {
-        var clonedSlot = new CardSlot(mouseInventoryItem.AssignedCardSlot.Card);
+        var clonedSlot = new PlayerCardSlot(mouseInventoryItem.AssignedCardSlot.Card);
         mouseInventoryItem.ClearSlot();
         mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
 

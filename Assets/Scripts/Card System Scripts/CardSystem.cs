@@ -9,30 +9,30 @@ public class CardSystem
 {
     // This Inventory system can be used in multiple scenarios
     // i.e. the current hand of the player, their deck, and the shop system
-    [SerializeField] private List<CardSlot> cardSlots = new List<CardSlot>();
+    [SerializeField] private List<PlayerCardSlot> cardSlots = new List<PlayerCardSlot>();
 
-    public List<CardSlot> CardSlots => cardSlots;
+    public List<PlayerCardSlot> CardSlots => cardSlots;
     public int CardSystemSize => cardSlots.Count;
-    public UnityAction<CardSlot> OnInventorySlotChanged;
+    public UnityAction<PlayerCardSlot> OnInventorySlotChanged;
 
     public CardSystem(int size)
     {
-        cardSlots = new List<CardSlot>(size);
+        cardSlots = new List<PlayerCardSlot>(size);
 
         for(int i = 0; i < size; i++)
         {
-            cardSlots.Add(new CardSlot());
+            cardSlots.Add(new PlayerCardSlot());
         }
     }
 
-    public void RemoveCardSlot(CardSlot cardSlotToRemove)
+    public void RemoveCardSlot(PlayerCardSlot cardSlotToRemove)
     {
         cardSlots.Remove(cardSlotToRemove);
     }
 
     public bool AddToCardSystem(Card cardToAdd)
     {
-        if(HasFreeSlot(out CardSlot freeSlot))
+        if(HasFreeSlot(out PlayerCardSlot freeSlot))
         {
             freeSlot.InitCardSlot(cardToAdd);
             OnInventorySlotChanged?.Invoke(freeSlot);
@@ -40,13 +40,13 @@ public class CardSystem
         } 
         else // if there is no available slot we add a new one to put the card in.
         {
-            freeSlot = new CardSlot(cardToAdd);
+            freeSlot = new PlayerCardSlot(cardToAdd);
             cardSlots.Add(freeSlot); // add the new slot into the system.
             OnInventorySlotChanged?.Invoke(freeSlot);
             return true;
         }
     }
-    public bool HasFreeSlot(out CardSlot freeSlot)
+    public bool HasFreeSlot(out PlayerCardSlot freeSlot)
     {
         freeSlot = CardSlots.FirstOrDefault(i => i.Card == null);
         return freeSlot == null ? false : true;

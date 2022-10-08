@@ -20,7 +20,7 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
 
     public override void AssignSlots(CardSystem sysToDisplay)
     {
-        slotDictionary = new Dictionary<CardSlot_UI, CardSlot>();
+        slotDictionary = new Dictionary<CardSlot_UI, PlayerCardSlot>();
 
         if (sysToDisplay == null) return;
 

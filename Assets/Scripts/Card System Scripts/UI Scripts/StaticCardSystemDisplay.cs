@@ -25,7 +25,7 @@ public class StaticCardSystemDisplay : CardSystemDisplay
     }
     public override void AssignSlots(CardSystem invToDisplay) // ties the UI slot and the System slot together in a Dictionary<UI,System>
     {
-        slotDictionary = new Dictionary<CardSlot_UI, CardSlot>();
+        slotDictionary = new Dictionary<CardSlot_UI, PlayerCardSlot>();
 
         if (slotsUI.Length != cardSystem.CardSystemSize) Debug.Log($"Inventory UI slots out of sync on {this.gameObject} --- Length: {slotsUI.Length} SystemSize: {cardSystem.CardSystemSize}");
 

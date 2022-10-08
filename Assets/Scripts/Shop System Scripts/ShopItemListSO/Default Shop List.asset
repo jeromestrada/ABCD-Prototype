@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ee5cf9111fcdb4a906058f35231bc6, type: 3}
+  m_Name: Default Shop List
+  m_EditorClassIdentifier: 
+  _cardsInStock: []
+  _maxGold: 0
+  _sellMarkUp: 0
+  _buyMarkUp: 0

@@ -9,7 +9,7 @@ public class MouseItemData : MonoBehaviour
 {
     public Image ItemSprite;
     public TextMeshProUGUI ItemCount;
-    public CardSlot AssignedCardSlot;
+    public PlayerCardSlot AssignedCardSlot;
     private CardSlot_UI pickedFromSlot;
     public bool inUI;
     private CardSystemUIController cardSystemUIController;
@@ -26,7 +26,7 @@ public class MouseItemData : MonoBehaviour
         ItemSprite.color = Color.clear;
         ItemCount.text = "";
     }
-    public void UpdateMouseSlot(CardSlot cardSlot)
+    public void UpdateMouseSlot(PlayerCardSlot cardSlot)
     {
         AssignedCardSlot.AssignCard(cardSlot); // system slot assignment
         ItemSprite.sprite = cardSlot.Card.cardIcon; //following deals with UI

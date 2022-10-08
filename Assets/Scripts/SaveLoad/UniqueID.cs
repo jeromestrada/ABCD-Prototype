@@ -24,6 +24,7 @@ public class UniqueID : MonoBehaviour
         if(idDataBase.ContainsKey(_id)) idDataBase.Remove(_id);
     }
 
+    [ContextMenu("Generate ID")]
     private void Generate()
     {
         _id = Guid.NewGuid().ToString();

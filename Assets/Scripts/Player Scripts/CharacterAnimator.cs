@@ -78,7 +78,7 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetBool("canMove", playerController.isMoving);
     }
 
-    public void AddWeaponAnimation(CardSlot slot)
+    public void AddWeaponAnimation(PlayerCardSlot slot)
     {
         if (slot.Card.cardType == CardType.ItemCard)
         {

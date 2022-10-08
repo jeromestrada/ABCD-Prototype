@@ -12,6 +12,7 @@ public class Card : ScriptableObject
     [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
     private int remainingUses;
+
     public int NumOfUses => numOfUses;
 
     private void Awake()
