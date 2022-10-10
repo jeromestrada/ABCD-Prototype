@@ -17,5 +17,6 @@ MonoBehaviour:
   cardIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   description: Gain defense to block an instance of damage
   cardType: 2
+  _cardPrice: 5
   numOfUses: 2
   exhaustable: 0

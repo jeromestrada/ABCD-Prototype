@@ -136,6 +136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e906f672fe9fae1409d9fc2318b48eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cardSprite: {fileID: 1374722778200344291}
+  _cardName: {fileID: 1374722778903582606}
+  _assignedShopSlot:
+    _cardID: -1
+    _stackSize: -1
+  _cardPrice: {fileID: 629809253515049584}
+  _buyButton: {fileID: 1374722777036257794}
 --- !u!1 &1374722778200344289
 GameObject:
   m_ObjectHideFlags: 0

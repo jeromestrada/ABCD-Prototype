@@ -18,7 +18,7 @@ MonoBehaviour:
   - Card: {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
     StockAmount: 1
   - Card: {fileID: 11400000, guid: 184f6c6e817c3ff42926fec6d66cf764, type: 2}
-    StockAmount: 2
+    StockAmount: 1
   _maxGold: 1000
   _sellMarkUp: 0.25
   _buyMarkUp: 0.5

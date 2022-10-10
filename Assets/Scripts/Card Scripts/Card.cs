@@ -9,10 +9,12 @@ public class Card : ScriptableObject
     [TextArea(4,4)]
     public string description;
     public CardType cardType;
+    [SerializeField] private int _cardPrice;
     [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
     private int remainingUses;
 
+    public int CardPrice => _cardPrice;
     public int NumOfUses => numOfUses;
 
     private void Awake()
