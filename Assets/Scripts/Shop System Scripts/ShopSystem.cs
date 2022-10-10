@@ -54,7 +54,6 @@ public class ShopSystem
         }
         return freeSlot;
     }
-
     public bool ContainsCard(Card cardToAdd, out ShopSlot shopSlot)
     {
         shopSlot = _shopInventory.Find(i => i.Card == cardToAdd);

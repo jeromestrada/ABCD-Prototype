@@ -54,15 +54,13 @@ public abstract class CardSlot : ISerializationCallbackReceiver
         _stackSize = 1;
     }
 
-
     public void OnAfterDeserialize()
     {
-        if (_cardID == -1) return; // the slot doesn't have any cards in it
+        if (_cardID == -1) return;
 
         var db = Resources.Load<Database>("Card Database");
         card = db.GetCard(_cardID);
     }
-
     public void OnBeforeSerialize()
     {
 

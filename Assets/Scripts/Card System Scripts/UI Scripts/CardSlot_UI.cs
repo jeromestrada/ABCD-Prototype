@@ -57,11 +57,7 @@ public class CardSlot_UI : MonoBehaviour
     }
 
     public void OnUISlotClick()
-    {
-        // access display class function.
+    {   // access display class function.
         ParentDisplay?.SlotClicked(this);
-        // functionality will depend on the type of display this slot's display parent is.
-        // see parentDisplay's SlotClicked for more details
-        
     }
 }

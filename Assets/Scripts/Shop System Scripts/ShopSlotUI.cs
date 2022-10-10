@@ -27,14 +27,12 @@ public class ShopSlotUI : MonoBehaviour
         _buyButton?.onClick.AddListener(OpenConfirmWindow);
         ParentDisplay = transform.parent.GetComponent<ShopKeeperDisplay>();
     }
-
     public void Init(ShopSlot slot, float markUp)
     {
         _assignedShopSlot = slot;
         MarkUp = markUp;
         UpdateUISlot();
     }
-
     private void UpdateUISlot()
     {
         if(_assignedShopSlot.Card != null)
@@ -50,16 +48,12 @@ public class ShopSlotUI : MonoBehaviour
             _cardSprite.preserveAspect = true;
             _cardSprite.color = Color.clear;
             _cardName.text = "";
-
             _cardPrice.text = "";
         }
     }
-
     private void OpenConfirmWindow()
     {
         // Open the purchase confirm window.
         Debug.Log($"Opening up confirmation window for {_cardName.text}");
     }
-
-    
 }
