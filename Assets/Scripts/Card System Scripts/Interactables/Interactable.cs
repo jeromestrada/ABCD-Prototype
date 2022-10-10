@@ -29,7 +29,7 @@ public class Interactable : MonoBehaviour, IInteractable
         interactSuccessful = true;
     }
 
-    public void EndInteraction()
+    public virtual void EndInteraction()
     {
 
     }

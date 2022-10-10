@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(UniqueID))]
-public class ShopKeeper : MonoBehaviour , IInteractable
+public class ShopKeeper : Interactable
 {
 
     [SerializeField] private ShopStockList _shopStockList; // stock list of this shop
     [SerializeField] private ShopSystem _shopSystem;
-    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
-
+    public static UnityAction<ShopSystem, DeckOfCards> OnShopWindowRequested;
 
     private void Awake()
     {
@@ -22,13 +21,25 @@ public class ShopKeeper : MonoBehaviour , IInteractable
         }
     }
 
-    public void EndInteraction()
+    public override void EndInteraction()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public void Interact(InteractableScanner scanner, out bool interactSuccessful)
+    public override void Interact(InteractableScanner scanner, out bool interactSuccessful)
     {
-        throw new System.NotImplementedException();
+        // display the shop when interacted with
+        var deck = scanner.GetComponentInChildren<DeckOfCards>(); // get the deck from the scanner
+
+        if(deck != null)
+        {
+            OnShopWindowRequested?.Invoke(_shopSystem, deck);
+            interactSuccessful = true;
+        }
+        else
+        {
+            interactSuccessful = false;
+            Debug.LogError("Player inventory not found!");
+        }
     }
 }
