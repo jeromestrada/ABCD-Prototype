@@ -23,7 +23,7 @@ public class ShopSlot_UI : Slot_UI
         _cardName.text = "";
 
         _cardPrice.text = "";
-        _buyButton?.onClick.AddListener(OpenConfirmWindow);
+        _buyButton?.onClick.AddListener(OnUISlotClick);
     }
     public void Init(ShopSlot slot, float markUp)
     {
@@ -48,11 +48,5 @@ public class ShopSlot_UI : Slot_UI
             _cardName.text = "";
             _cardPrice.text = "";
         }
-    }
-    private void OpenConfirmWindow()
-    {
-        // Open the purchase confirm window.
-        Debug.Log($"Opening up confirmation window for {_cardName.text}");
-        ParentDisplay?.SlotClicked(this);
-    }
+    } 
 }

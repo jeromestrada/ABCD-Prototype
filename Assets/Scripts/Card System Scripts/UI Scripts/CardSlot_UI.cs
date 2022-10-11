@@ -55,9 +55,4 @@ public class CardSlot_UI : Slot_UI
         cardSprite.color = Color.clear;
         cardCount.text = "";
     }
-
-    public void OnUISlotClick()
-    {   // access display class function.
-        ParentDisplay?.SlotClicked(this);
-    }
 }

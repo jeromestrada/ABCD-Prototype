@@ -10,4 +10,9 @@ public class Slot_UI : MonoBehaviour
     {
         ParentDisplay = transform.parent.GetComponent<CardSystemDisplay>();
     }
+
+    protected void OnUISlotClick()
+    {
+        ParentDisplay?.SlotClicked(this);
+    }
 }
