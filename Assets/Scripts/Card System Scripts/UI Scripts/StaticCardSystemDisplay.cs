@@ -35,4 +35,9 @@ public class StaticCardSystemDisplay : CardSystemDisplay
             slotsUI[i].Init(cardSystem.CardSlots[i]); // Init will assign the system slot to the UI slot
         }
     }
+
+    public override void ClearSlots()
+    {
+        
+    }
 }

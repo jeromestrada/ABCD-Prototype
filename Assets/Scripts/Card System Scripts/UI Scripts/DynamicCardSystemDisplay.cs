@@ -33,7 +33,7 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
         }
     }
 
-    private void ClearSlots()
+    public override void ClearSlots()
     {
         foreach (var item in transform.Cast<Transform>())
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(UniqueID))]
-public class ShopKeeper : Interactable
+public class ShopKeeper : Interactable // Shop system holder...
 {
 
     [SerializeField] private ShopStockList _shopStockList; // stock list of this shop

@@ -20,6 +20,8 @@ public abstract class CardSystemDisplay : MonoBehaviour
 
     public abstract void AssignSlots(CardSystem invToDisplay);
 
+    public abstract void ClearSlots();
+
     public void AssignInventoryType(CardSystemDisplayType type)
     {
         cardSystemDisplayType = type;

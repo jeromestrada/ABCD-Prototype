@@ -7,6 +7,7 @@ using UnityEngine;
 public class ShopSystem
 {
     [SerializeField] private List<ShopSlot> _shopInventory;
+
     [SerializeField] private int _availableGold;
     [SerializeField] private float _buyMarkUp;
     [SerializeField] private float _sellMarkUp;
