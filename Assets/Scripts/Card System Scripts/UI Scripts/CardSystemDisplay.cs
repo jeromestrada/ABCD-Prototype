@@ -43,7 +43,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
         // if it is the Player's hand, then we treat UI clicks as Use,
         if(this.CardSystemDisplayType == CardSystemDisplayType.HandInventory)
         {
-            var clickedUISlotCasted = (CardSlot_UI)clickedUISlot;
+            CardSlot_UI clickedUISlotCasted = (CardSlot_UI) clickedUISlot;
             // if the card slot in the hand has a card and the mouse doesn't
             if (clickedUISlotCasted.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card == null)
             {
@@ -80,8 +80,8 @@ public abstract class CardSystemDisplay : MonoBehaviour
          */
         else if (this.CardSystemDisplayType == CardSystemDisplayType.ShopInventory)
         {
-            Debug.Log("Trying to buy Card!");
             var clickedUISlotCasted = (ShopSlot_UI)clickedUISlot;
+            Debug.Log($"Trying to buy {clickedUISlotCasted.AssignedShopSlot.Card.name}!");
         }
     }
 

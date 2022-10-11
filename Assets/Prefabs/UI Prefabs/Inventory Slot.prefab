@@ -272,8 +272,11 @@ MonoBehaviour:
   cardSprite: {fileID: 7825826885929173507}
   cardCount: {fileID: 495499685845921508}
   assignedInventorySlot:
-    card: {fileID: 0}
+    _cardID: -1
+    _stackSize: -1
     remainingUses: -1
+    slotNumber: 0
+  _button: {fileID: 7825826883999305798}
 --- !u!1 &7825826885929173505
 GameObject:
   m_ObjectHideFlags: 0

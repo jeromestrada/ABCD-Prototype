@@ -14,16 +14,14 @@ public class ShopSlot_UI : Slot_UI
     [SerializeField] private Button _buyButton;
 
     public float MarkUp { get; private set; }
+    public ShopSlot AssignedShopSlot => _assignedShopSlot;
 
     private void Awake()
     {
-        _cardSprite.sprite = null;
-        _cardSprite.preserveAspect = true;
-        _cardSprite.color = Color.clear;
-        _cardName.text = "";
+        ClearSlot();
 
-        _cardPrice.text = "";
         _buyButton?.onClick.AddListener(OnUISlotClick);
+        SetParentDisplay();
     }
     public void Init(ShopSlot slot, float markUp)
     {
@@ -48,5 +46,14 @@ public class ShopSlot_UI : Slot_UI
             _cardName.text = "";
             _cardPrice.text = "";
         }
-    } 
+    }
+
+    public void ClearSlot()
+    {
+        _cardSprite.sprite = null;
+        _cardSprite.preserveAspect = true;
+        _cardSprite.color = Color.clear;
+        _cardName.text = "";
+        _cardPrice.text = "";
+    }
 }

@@ -8,7 +8,7 @@ public class CardSlot_UI : Slot_UI
     [SerializeField] private TextMeshProUGUI cardCount;
     [SerializeField] private PlayerCardSlot assignedInventorySlot;
 
-    private Button button;
+    [SerializeField] private Button _button;
 
     public PlayerCardSlot AssignedInventorySlot => assignedInventorySlot;
     
@@ -17,9 +17,8 @@ public class CardSlot_UI : Slot_UI
     {
         ClearSlot();
 
-        button = GetComponent<Button>();
-        button?.onClick.AddListener(OnUISlotClick);
-        
+        _button?.onClick.AddListener(OnUISlotClick);
+        SetParentDisplay();
     }
 
     public void Init(PlayerCardSlot slot)

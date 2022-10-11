@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cf303a3c71e754a984c8d504670d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shopKeeperDisplay: {fileID: 1352821496}
+  _shopKeeperDisplay: {fileID: 1718697146}
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,7 +2577,6 @@ GameObject:
   - component: {fileID: 1352821493}
   - component: {fileID: 1352821495}
   - component: {fileID: 1352821494}
-  - component: {fileID: 1352821496}
   m_Layer: 5
   m_Name: Shop Panel
   m_TagString: Untagged
@@ -2642,23 +2641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &1352821496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352821492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72aa35dc82aaa4a4c95b2bd4896f9ed1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseInventoryItem: {fileID: 0}
-  cardSystemDisplayType: 0
-  _shopSlotPrefab: {fileID: 808594183, guid: 0e772baff43f7314d9a4d3d18fc4d177, type: 3}
-  _closeButton: {fileID: 306529294}
-  _cardListShopWindow: {fileID: 1352821492}
 --- !u!1 &1393592103
 GameObject:
   m_ObjectHideFlags: 3
@@ -3568,6 +3550,7 @@ GameObject:
   - component: {fileID: 1718697143}
   - component: {fileID: 1718697145}
   - component: {fileID: 1718697144}
+  - component: {fileID: 1718697146}
   m_Layer: 5
   m_Name: Shop Panel Parent
   m_TagString: Untagged
@@ -3634,6 +3617,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718697142}
   m_CullTransparentMesh: 1
+--- !u!114 &1718697146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718697142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72aa35dc82aaa4a4c95b2bd4896f9ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseInventoryItem: {fileID: 1863707525}
+  cardSystemDisplayType: 2
+  _shopSlotPrefab: {fileID: 808594183, guid: 0e772baff43f7314d9a4d3d18fc4d177, type: 3}
+  _closeButton: {fileID: 306529294}
+  _cardListShopWindow: {fileID: 1352821492}
 --- !u!1 &1773779211
 GameObject:
   m_ObjectHideFlags: 0
