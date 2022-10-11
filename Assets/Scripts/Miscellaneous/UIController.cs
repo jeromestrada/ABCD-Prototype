@@ -11,6 +11,11 @@ public class UIController : MonoBehaviour
     {
         _shopKeeperDisplay.gameObject.SetActive(false);
     }
+
+    private void Update()
+    {
+        
+    }
     private void OnEnable()
     {
         ShopKeeper.OnShopWindowRequested += DisplayShopWindow;

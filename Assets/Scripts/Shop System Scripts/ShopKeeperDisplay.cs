@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 public class ShopKeeperDisplay : CardSystemDisplay
 {
-    [SerializeField] private ShopSlotUI _shopSlotPrefab;
+    [SerializeField] private ShopSlot_UI _shopSlotPrefab;
     [SerializeField] private Button _closeButton;
 
     [SerializeField] private GameObject _cardListShopWindow;

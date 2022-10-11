@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CardSlot_UI : MonoBehaviour
+public class CardSlot_UI : Slot_UI
 {
     [SerializeField] private Image cardSprite;
     [SerializeField] private TextMeshProUGUI cardCount;
@@ -11,7 +11,7 @@ public class CardSlot_UI : MonoBehaviour
     private Button button;
 
     public PlayerCardSlot AssignedInventorySlot => assignedInventorySlot;
-    public CardSystemDisplay ParentDisplay {get; private set;}
+    
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class CardSlot_UI : MonoBehaviour
 
         button = GetComponent<Button>();
         button?.onClick.AddListener(OnUISlotClick);
-        ParentDisplay = transform.parent.GetComponent<CardSystemDisplay>(); 
+        
     }
 
     public void Init(PlayerCardSlot slot)

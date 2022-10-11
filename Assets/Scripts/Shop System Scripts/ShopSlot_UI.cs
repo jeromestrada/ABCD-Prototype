@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopSlotUI : MonoBehaviour
+public class ShopSlot_UI : Slot_UI
 {
     [SerializeField] private Image _cardSprite;
     [SerializeField] private Text _cardName;
@@ -13,7 +13,6 @@ public class ShopSlotUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _cardPrice;
     [SerializeField] private Button _buyButton;
 
-    public ShopKeeperDisplay ParentDisplay { get; private set; }
     public float MarkUp { get; private set; }
 
     private void Awake()
@@ -25,7 +24,6 @@ public class ShopSlotUI : MonoBehaviour
 
         _cardPrice.text = "";
         _buyButton?.onClick.AddListener(OpenConfirmWindow);
-        ParentDisplay = transform.parent.GetComponent<ShopKeeperDisplay>();
     }
     public void Init(ShopSlot slot, float markUp)
     {
@@ -55,5 +53,6 @@ public class ShopSlotUI : MonoBehaviour
     {
         // Open the purchase confirm window.
         Debug.Log($"Opening up confirmation window for {_cardName.text}");
+        ParentDisplay?.SlotClicked(this);
     }
 }

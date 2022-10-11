@@ -38,31 +38,32 @@ public abstract class CardSystemDisplay : MonoBehaviour
         }
     }
 
-    public void SlotClicked(CardSlot_UI clickedUISlot)
+    public void SlotClicked(Slot_UI clickedUISlot)
     {
         // if it is the Player's hand, then we treat UI clicks as Use,
         if(this.CardSystemDisplayType == CardSystemDisplayType.HandInventory)
         {
+            var clickedUISlotCasted = (CardSlot_UI)clickedUISlot;
             // if the card slot in the hand has a card and the mouse doesn't
-            if(clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card == null)
+            if (clickedUISlotCasted.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card == null)
             {
-                mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
-                mouseInventoryItem.SavePickedFrom(clickedUISlot); // save the UI slot in case the player wants to return the card by right clicking
-                clickedUISlot.ClearSlot();
+                mouseInventoryItem.UpdateMouseSlot(clickedUISlotCasted.AssignedInventorySlot);
+                mouseInventoryItem.SavePickedFrom(clickedUISlotCasted); // save the UI slot in case the player wants to return the card by right clicking
+                clickedUISlotCasted.ClearSlot();
                 return;
             }
             // if the mouse has a card and the slot doesn't
-            else if(clickedUISlot.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedCardSlot.Card != null)
+            else if(clickedUISlotCasted.AssignedInventorySlot.Card == null && mouseInventoryItem.AssignedCardSlot.Card != null)
             {
-                clickedUISlot.AssignedInventorySlot.AssignCard(mouseInventoryItem.AssignedCardSlot);
-                clickedUISlot.UpdateUISlot();
+                clickedUISlotCasted.AssignedInventorySlot.AssignCard(mouseInventoryItem.AssignedCardSlot);
+                clickedUISlotCasted.UpdateUISlot();
                 mouseInventoryItem.ClearSlot();
                 return;
             }
             // Both have items 
-            else if (clickedUISlot.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card != null)
+            else if (clickedUISlotCasted.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card != null)
             {
-                SwapSlots(clickedUISlot);
+                SwapSlots(clickedUISlotCasted);
             }
         }
 
@@ -80,6 +81,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
         else if (this.CardSystemDisplayType == CardSystemDisplayType.ShopInventory)
         {
             Debug.Log("Trying to buy Card!");
+            var clickedUISlotCasted = (ShopSlot_UI)clickedUISlot;
         }
     }
 
