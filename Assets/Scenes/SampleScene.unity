@@ -2513,6 +2513,7 @@ MonoBehaviour:
     _sellMarkUp: 0
   _buyButton: {fileID: 2084882532}
   _windowPanel: {fileID: 1264369242}
+  _deckOfCards: {fileID: 547087588}
 --- !u!1 &1337976092
 GameObject:
   m_ObjectHideFlags: 0

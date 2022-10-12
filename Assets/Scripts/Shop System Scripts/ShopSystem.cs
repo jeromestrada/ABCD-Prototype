@@ -46,13 +46,14 @@ public class ShopSystem
         freeSlot.AssignCard(cardToAdd, amount);
     }
 
-    public bool BuyFromShop(ShopSlot shopSlot)
+    public bool BuyFromShop(ShopSlot shopSlot, DeckOfCards deck)
     {
         if (shopSlot.StackSize <= 0)
         {
             Debug.Log($"{shopSlot.Card.name} is out of stock!");
             return false;
         }
+        deck.AddCardToDeck(shopSlot.Card);
         shopSlot.RemoveFromStack(1);
         return true;
     }

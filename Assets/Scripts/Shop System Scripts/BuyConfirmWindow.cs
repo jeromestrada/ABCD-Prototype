@@ -12,6 +12,7 @@ public class BuyConfirmWindow : MonoBehaviour
     [SerializeField] private ShopSystem _shopSystem;
     [SerializeField] private Button _buyButton;
     [SerializeField] private GameObject _windowPanel;
+    [SerializeField] private DeckOfCards _deckOfCards;
 
     public GameObject WindowPanel => _windowPanel;
     private void Awake()
@@ -23,6 +24,7 @@ public class BuyConfirmWindow : MonoBehaviour
     {
         Debug.Log($"Confirming buy: {_cardToDisplay.name}");
         // buy the card from the shop system here. use the _shopSystem cached in this object
+        _shopSystem.BuyFromShop(_shopSlotDisplayed, _deckOfCards);
     }
 
     public void UpdateConfirmImage(ShopSlot shopSlot)
