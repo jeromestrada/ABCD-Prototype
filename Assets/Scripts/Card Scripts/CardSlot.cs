@@ -47,6 +47,11 @@ public abstract class CardSlot : ISerializationCallbackReceiver
         _stackSize += amount;
     }
 
+    public void RemoveFromStack(int amount)
+    {
+        _stackSize -= amount;
+    }
+
     public virtual void InitCardSlot(Card cardToAdd)
     {
         card = cardToAdd;

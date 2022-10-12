@@ -19,16 +19,23 @@ public class UIController : MonoBehaviour
     private void OnEnable()
     {
         ShopKeeper.OnShopWindowRequested += DisplayShopWindow;
+        ShopKeeperDisplay.OnBuyConfirmWindowRequested += DisplayBuyConfirmWindow;
     }
 
     private void OnDisable()
     {
         ShopKeeper.OnShopWindowRequested -= DisplayShopWindow;
+        ShopKeeperDisplay.OnBuyConfirmWindowRequested -= DisplayBuyConfirmWindow;
     }
 
     private void DisplayShopWindow(ShopSystem shopSystem, DeckOfCards deck)
     {
         _shopKeeperDisplay.gameObject.SetActive(true);
         _shopKeeperDisplay.DisplayShopWindow(shopSystem, deck);
+    }
+
+    private void DisplayBuyConfirmWindow()
+    {
+        _shopKeeperDisplay.BuyConfirmationWindow.WindowPanel.SetActive(true);
     }
 }

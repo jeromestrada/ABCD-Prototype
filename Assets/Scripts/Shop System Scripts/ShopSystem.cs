@@ -25,6 +25,7 @@ public class ShopSystem
         SetShopSize(size);
     }
 
+
     private void SetShopSize(int size)
     {
         _shopInventory = new List<ShopSlot>();
@@ -43,6 +44,17 @@ public class ShopSystem
 
         var freeSlot = GetFreeSlot();
         freeSlot.AssignCard(cardToAdd, amount);
+    }
+
+    public bool BuyFromShop(ShopSlot shopSlot)
+    {
+        if (shopSlot.StackSize <= 0)
+        {
+            Debug.Log($"{shopSlot.Card.name} is out of stock!");
+            return false;
+        }
+        shopSlot.RemoveFromStack(1);
+        return true;
     }
 
     private ShopSlot GetFreeSlot()

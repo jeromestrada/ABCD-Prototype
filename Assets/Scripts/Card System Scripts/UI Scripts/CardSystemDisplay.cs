@@ -72,19 +72,18 @@ public abstract class CardSystemDisplay : MonoBehaviour
         {
             Debug.Log("Inspecting Card!");
         }
-
         // > we can add similar other types of Player Deck display (parent display)
         /*
             for instance, an edit tab, where we can add or remove cards, like a rest site/service stop/event that allows us to do so
-            
          */
         else if (this.CardSystemDisplayType == CardSystemDisplayType.ShopInventory)
         {
             var clickedUISlotCasted = (ShopSlot_UI)clickedUISlot;
             Debug.Log($"Trying to buy {clickedUISlotCasted.AssignedShopSlot.Card.name}!");
+            // Open up confirmation window and wait for Buy button to be clicked
+           ShopKeeperDisplay.DisplayBuyConfirmWindow(clickedUISlotCasted);
         }
     }
-
     public void SwapSlots(CardSlot_UI clickedUISlot)
     {
         var clonedSlot = new PlayerCardSlot(mouseInventoryItem.AssignedCardSlot.Card);

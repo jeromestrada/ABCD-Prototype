@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ShopKeeperDisplay : CardSystemDisplay
 {
@@ -11,11 +12,16 @@ public class ShopKeeperDisplay : CardSystemDisplay
     [SerializeField] private Button _closeButton;
 
     [SerializeField] private GameObject _cardListShopWindow;
+    [SerializeField] private BuyConfirmWindow _buyConfirmationWindow;
 
     private ShopSystem _shopSystem;
     private DeckOfCards _playerDeck;
     private Dictionary<ShopSlot, int> _shopList = new Dictionary<ShopSlot, int>();
     private Dictionary<ShopSlot, CardSlot_UI> _shopListUI = new Dictionary<ShopSlot, CardSlot_UI>();
+
+    public static UnityAction OnBuyConfirmWindowRequested;
+
+    public BuyConfirmWindow BuyConfirmationWindow => _buyConfirmationWindow;
     private void RefreshShopDisplay()
     {
         ClearSlots();
@@ -29,6 +35,17 @@ public class ShopKeeperDisplay : CardSystemDisplay
         {
             Destroy(card.gameObject);
         }
+    }
+
+    public static void DisplayBuyConfirmWindow(ShopSlot_UI shopSlot)
+    {
+        // update the buy confirm window's sprite and texts here 
+        SetBuyConfirmDetails(shopSlot);
+        OnBuyConfirmWindowRequested?.Invoke();
+    }
+    public static void SetBuyConfirmDetails(ShopSlot_UI shopSlot)
+    {
+        BuyConfirmationWindow.UpdateConfirmImage(shopSlot.AssignedShopSlot);
     }
     public void DisplayShopWindow(ShopSystem shopSystem, DeckOfCards deck)
     {

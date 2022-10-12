@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerCardSlot : CardSlot, ISerializationCallbackReceiver
+public class PlayerCardSlot : CardSlot
 {
     
     [SerializeField] private int remainingUses;
