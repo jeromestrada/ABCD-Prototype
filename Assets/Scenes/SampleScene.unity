@@ -2624,7 +2624,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 849.4, y: -300}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352821494
 MonoBehaviour:
@@ -3017,9 +3017,9 @@ MonoBehaviour:
   minSpeed: 3.5
   maxSpeed: 7
   isDashing: 1
-  dashSpeed: 20
+  dashSpeed: 30
   dashStartTime: 0
-  dashDuration: 0.2
+  dashDuration: 0.175
   speed: 0
   jumpSpeed: 2.5
   gravity: -19.62
@@ -3580,7 +3580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1718697143
 RectTransform:
   m_ObjectHideFlags: 0

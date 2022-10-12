@@ -17,7 +17,7 @@ public class CharacterAnimator : MonoBehaviour
     public AnimatorOverrideController overrideController;
     CharacterCombat combat;
 
-    [SerializeField] DeckOfCards deck;
+    [SerializeField] private DeckOfCards deck;
 
     float motionSmoothness = 0.1f;
 
@@ -40,7 +40,7 @@ public class CharacterAnimator : MonoBehaviour
         weaponManager = GetComponent<WeaponManager>();
         weaponManager.onWeaponChanged += OnWeaponChanged;
 
-        deck = GetComponentInChildren<DeckOfCards>();
+        if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
         deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
 
         weaponAnimationsDict = new Dictionary<Weapon, AnimationClip[]>();
