@@ -2,41 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : CharacterStats
 {
-    public int maxHealth = 100;
-    int currentHealth;
-
-    public event System.Action OnTakingDamage;
-    public event System.Action OnDying;
-
-    private void Start()
+    public override void TakeDamage(int damage)
     {
-        currentHealth = maxHealth;
-    }
-    public void TakeDamage(int damage)
-    {
-        if (OnTakingDamage != null)
-        {
-            OnTakingDamage();
-            currentHealth -= damage;
-
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
-        }        
+        Debug.Log($"{gameObject.name} is taking damage...");
+        base.TakeDamage(damage);
     }
 
-    void Die()
+    public override void Die()
     {
-        Debug.Log("Enemy died!");
-        if(OnDying != null)
-        {
-            OnDying();
-        }
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<EnemyAI>().enabled = false;
-        this.enabled = false;
+        base.Die();
     }
 }

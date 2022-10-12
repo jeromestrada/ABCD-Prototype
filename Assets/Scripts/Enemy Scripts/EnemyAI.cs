@@ -20,10 +20,13 @@ public class EnemyAI : MonoBehaviour
     // Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    public int enemyDamage;
 
     // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    public Vector3 attackPoint;
+    public float attackRadius;
 
     public event System.Action OnEnemyAttack;
 
@@ -35,6 +38,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        attackPoint = transform.position;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
@@ -72,6 +76,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void Attacking()
     {
+        
         agent.SetDestination(transform.position);
         transform.LookAt(playerTrans);
         if (!alreadyAttacked)
@@ -87,6 +92,27 @@ public class EnemyAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void EnemyAttackHit_AnimationEvent()
+    {   // this even triggers when the animation event reciever fires an attack hit event.
+        // access a corresponding attackPoint for the current attack string instead of using a set attackPoint
+        Collider[] hitPlayers = Physics.OverlapSphere(attackPoint, attackRadius, Player);
+        foreach (Collider player in hitPlayers) // setting up for multiplayer? maybe this makes sense...
+        {
+            Debug.Log("hitting something");
+            player.GetComponent<PlayerStats>().TakeDamage(enemyDamage);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint, attackRadius);
     }
 }
 

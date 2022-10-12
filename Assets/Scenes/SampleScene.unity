@@ -2514,6 +2514,24 @@ MonoBehaviour:
   _buyButton: {fileID: 2084882532}
   _windowPanel: {fileID: 1264369242}
   _deckOfCards: {fileID: 547087588}
+--- !u!1 &1329260021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3822000143950647337, guid: 2e639774744ada044bb6f96fd9112e0f, type: 3}
+  m_PrefabInstance: {fileID: 4164441179446713165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1329260022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329260021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04037ecebd58da64284ecbc4091cae58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAI: {fileID: 1434756281}
 --- !u!1 &1337976092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2873,7 +2891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1434756276
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2915,7 +2933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca877bb08f48464e969c9e413bbf58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  _maxHealth: 100
 --- !u!114 &1434756279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2975,10 +2993,13 @@ MonoBehaviour:
   walkPointRange: 20
   speedPercent: 0
   timeBetweenAttacks: 1.5
+  enemyDamage: 50
   sightRange: 15
   attackRange: 1.25
   playerInSightRange: 0
   playerInAttackRange: 0
+  attackPoint: {x: 0, y: 0, z: 0}
+  attackRadius: 3
 --- !u!1 &1477938527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,6 +3010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1477938531}
   - component: {fileID: 1477938530}
+  - component: {fileID: 1477938536}
   - component: {fileID: 1477938535}
   - component: {fileID: 1477938533}
   - component: {fileID: 1477938534}
@@ -3060,7 +3082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477938527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.37, y: 0, z: -11.26}
+  m_LocalPosition: {x: 0.3, y: 0, z: 2.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450653079166247}
@@ -3105,7 +3127,7 @@ MonoBehaviour:
   - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
   - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
   overrideController: {fileID: 0}
-  deck: {fileID: 0}
+  deck: {fileID: 547087588}
 --- !u!114 &1477938534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3145,6 +3167,20 @@ MonoBehaviour:
   testEquip: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
   testEquipReverse: {fileID: 11400000, guid: 01be133a8b63ce6419c6ec4b81322446, type: 2}
   targetMesh: {fileID: 3248816037825387173}
+--- !u!114 &1477938536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477938527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f22a9cfe5cf3d4bacbd1556f9a799f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentArmor: 0
 --- !u!1 &1608129805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,8 +3558,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4557154, y: 1e-45, z: -1e-45, w: 0.8901256}
-  m_LocalPosition: {x: 3.37, y: 25.48, z: -27.460001}
+  m_LocalRotation: {x: 0.4557154, y: 0.00000003424725, z: -0.000000017533482, w: 0.89012563}
+  m_LocalPosition: {x: 0.3, y: 25.48, z: -14.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4175,8 +4211,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4557154, y: 1e-45, z: -1e-45, w: 0.8901256}
-  m_LocalPosition: {x: 3.37, y: 25.48, z: -27.460001}
+  m_LocalRotation: {x: 0.4557154, y: 0.00000003424725, z: -0.000000017533482, w: 0.89012563}
+  m_LocalPosition: {x: 0.3, y: 25.48, z: -14.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1393592104}
