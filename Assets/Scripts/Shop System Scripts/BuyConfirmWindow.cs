@@ -8,6 +8,7 @@ public class BuyConfirmWindow : MonoBehaviour
 {
     [SerializeField] private Image _cardSprite;
     private Card _cardToDisplay;
+    private ShopSlot _shopSlotDisplayed;
     [SerializeField] private ShopSystem _shopSystem;
     [SerializeField] private Button _buyButton;
     [SerializeField] private GameObject _windowPanel;
@@ -20,15 +21,14 @@ public class BuyConfirmWindow : MonoBehaviour
 
     private void OnBuyConfirm()
     {
-        
+        Debug.Log($"Confirming buy: {_cardToDisplay.name}");
+        // buy the card from the shop system here. use the _shopSystem cached in this object
     }
 
     public void UpdateConfirmImage(ShopSlot shopSlot)
     {
-        Debug.Log($"Updating the confirm image with {shopSlot.Card.name}");
-        _cardToDisplay = shopSlot.Card;
-        Debug.Log($"Card to display is now set to {shopSlot.Card.name}");
-        Debug.Log($"Testing card sprite {_cardSprite.sprite}");
+        _shopSlotDisplayed = shopSlot;
+        _cardToDisplay = _shopSlotDisplayed.Card;
         _cardSprite.sprite = _cardToDisplay.cardIcon;
     }
     
