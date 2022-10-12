@@ -25,7 +25,10 @@ public class BuyConfirmWindow : MonoBehaviour
 
     public void UpdateConfirmImage(ShopSlot shopSlot)
     {
+        Debug.Log($"Updating the confirm image with {shopSlot.Card.name}");
         _cardToDisplay = shopSlot.Card;
+        Debug.Log($"Card to display is now set to {shopSlot.Card.name}");
+        Debug.Log($"Testing card sprite {_cardSprite.sprite}");
         _cardSprite.sprite = _cardToDisplay.cardIcon;
     }
     

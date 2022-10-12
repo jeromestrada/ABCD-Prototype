@@ -81,7 +81,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
             var clickedUISlotCasted = (ShopSlot_UI)clickedUISlot;
             Debug.Log($"Trying to buy {clickedUISlotCasted.AssignedShopSlot.Card.name}!");
             // Open up confirmation window and wait for Buy button to be clicked
-           ShopKeeperDisplay.DisplayBuyConfirmWindow(clickedUISlotCasted);
+            ((ShopKeeperDisplay)this).DisplayBuyConfirmWindow(clickedUISlotCasted);
         }
     }
     public void SwapSlots(CardSlot_UI clickedUISlot)

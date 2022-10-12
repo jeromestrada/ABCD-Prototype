@@ -6,6 +6,10 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private ShopKeeperDisplay _shopKeeperDisplay;
+    [SerializeField] private BuyConfirmWindow _buyConfirmationWindow;
+
+    public BuyConfirmWindow BuyConfirmationWindow => _buyConfirmationWindow;
+    public ShopKeeperDisplay ShopKeeperDisplay => _shopKeeperDisplay;
 
     private void Awake()
     {
@@ -14,7 +18,8 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        
+        if (ShopKeeperDisplay.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape)) ShopKeeperDisplay.gameObject.SetActive(false);
+        if (BuyConfirmationWindow.gameObject.activeInHierarchy && Input.GetKeyDown(KeyCode.Z)) BuyConfirmationWindow.gameObject.SetActive(false);
     }
     private void OnEnable()
     {
@@ -34,8 +39,9 @@ public class UIController : MonoBehaviour
         _shopKeeperDisplay.DisplayShopWindow(shopSystem, deck);
     }
 
-    private void DisplayBuyConfirmWindow()
+    private void DisplayBuyConfirmWindow(ShopSlot_UI shopSlot)
     {
-        _shopKeeperDisplay.BuyConfirmationWindow.WindowPanel.SetActive(true);
+        BuyConfirmationWindow.UpdateConfirmImage(shopSlot.AssignedShopSlot);
+        BuyConfirmationWindow.WindowPanel.SetActive(true);
     }
 }
