@@ -12,17 +12,27 @@ public class ShopSlot_UI : Slot_UI
     [SerializeField] private ShopSlot _assignedShopSlot;
     [SerializeField] private TextMeshProUGUI _cardPrice;
     [SerializeField] private Button _buyButton;
-    private bool isSold;
-
+    private bool isSoldOut;
     public float MarkUp { get; private set; }
     public ShopSlot AssignedShopSlot => _assignedShopSlot;
 
     private void Awake()
     {
-        isSold = false;
+        isSoldOut = false;
         ClearSlot();
         _buyButton?.onClick.AddListener(OnUISlotClick);
         SetParentDisplay();
+    }
+    public void Update()
+    {
+        if(_assignedShopSlot.StackSize <= 0 && !isSoldOut)
+        {
+            isSoldOut = true;
+            _cardSprite.color = Color.gray;
+            _cardPrice.text = "SOLD OUT!";
+            _cardPrice.color = Color.red;
+            _buyButton.onClick.RemoveAllListeners();
+        }
     }
     public void Init(ShopSlot slot, float markUp)
     {

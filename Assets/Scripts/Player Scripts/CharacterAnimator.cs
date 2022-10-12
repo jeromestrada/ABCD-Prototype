@@ -80,11 +80,11 @@ public class CharacterAnimator : MonoBehaviour
 
     public void AddWeaponAnimation(PlayerCardSlot slot)
     {
-        if (slot.Card.cardType == CardType.ItemCard)
+        if (slot.Card.cardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Weapon)
         {
             var itemCard = (ItemCard)slot.Card;
             var weapon = (Weapon)itemCard.item;
-            if (itemCard.item is Weapon && !weaponAnimationsDict.ContainsKey(weapon)) 
+            if (itemCard.item is Weapon && !weaponAnimationsDict.ContainsKey(weapon))
                 weaponAnimationsDict.Add(weapon, (weapon.weaponAnimations.clips));
         }
         else return;

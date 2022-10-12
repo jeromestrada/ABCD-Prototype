@@ -25,6 +25,7 @@ public class BuyConfirmWindow : MonoBehaviour
         Debug.Log($"Confirming buy: {_cardToDisplay.name}");
         // buy the card from the shop system here. use the _shopSystem cached in this object
         _shopSystem.BuyFromShop(_shopSlotDisplayed, _deckOfCards);
+        gameObject.SetActive(false);
     }
 
     public void UpdateConfirmImage(ShopSlot shopSlot)
