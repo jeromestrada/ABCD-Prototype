@@ -15,7 +15,7 @@ public class EnemyAnimator : MonoBehaviour
         enemy = GetComponent<Enemy>();
         enemyAI = GetComponent<EnemyCombatAI>();
 
-        enemy.OnTakingDamage += OnTakingDamage;
+        Enemy.OnHealthChanged += OnTakingDamage;
         enemy.OnDying += OnDying;
 
         enemyAI.OnEnemyAttack += OnEnemyAttack;
@@ -26,7 +26,7 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetFloat("speedPercent", enemyAI.speedPercent, locomotionSmoothTime, Time.deltaTime);
     }
 
-    public void OnTakingDamage()
+    public void OnTakingDamage(int currentHealth, int maxHealth)
     {
         animator.SetTrigger("hurtTrigger");
     }

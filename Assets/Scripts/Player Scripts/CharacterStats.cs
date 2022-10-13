@@ -9,7 +9,7 @@ public class CharacterStats : MonoBehaviour
 
     public int MaxHealth => _maxHealth;
 
-    public event System.Action OnTakingDamage;
+    public static event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
 
     protected virtual void Start()
@@ -18,9 +18,9 @@ public class CharacterStats : MonoBehaviour
     }
     public virtual void TakeDamage(int damage)
     {
-        OnTakingDamage?.Invoke();
-
         _currentHealth -= damage;
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+
         if (_currentHealth <= 0)
         {
             Die();
