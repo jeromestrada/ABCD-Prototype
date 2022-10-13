@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAnimationEventReceiver : MonoBehaviour
 {
-    public EnemyAI enemyAI;
+    public EnemyCombatAI enemyAI;
 
     public void EnemyAttackHitEvent()
     {

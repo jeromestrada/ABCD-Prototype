@@ -12,7 +12,7 @@ public class CharacterStats : MonoBehaviour
     public event System.Action OnTakingDamage;
     public event System.Action OnDying;
 
-    private void Start()
+    protected virtual void Start()
     {
         _currentHealth = MaxHealth;
     }

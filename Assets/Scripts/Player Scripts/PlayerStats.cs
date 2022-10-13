@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    [SerializeField] private int _currentDamage;
     [SerializeField] private int _currentArmor;
 
+    public int CurrentDamage => _currentDamage;
     public int CurrentArmor => _currentArmor;
 
     public override void TakeDamage(int damage)
     {
-        Debug.Log($"Player is taking damage... {damage}");
-        base.TakeDamage(damage);
+        var reducedDamage = damage - _currentArmor;
+        Debug.Log($"Player is taking damage... {reducedDamage}");
+        base.TakeDamage(reducedDamage);
     }
     public override void Die()
     {

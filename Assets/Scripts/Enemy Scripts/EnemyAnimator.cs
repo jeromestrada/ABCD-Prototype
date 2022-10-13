@@ -6,14 +6,14 @@ public class EnemyAnimator : MonoBehaviour
 {
     Animator animator;
     Enemy enemy;
-    EnemyAI enemyAI;
+    EnemyCombatAI enemyAI;
 
     public float locomotionSmoothTime = 0.1f;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         enemy = GetComponent<Enemy>();
-        enemyAI = GetComponent<EnemyAI>();
+        enemyAI = GetComponent<EnemyCombatAI>();
 
         enemy.OnTakingDamage += OnTakingDamage;
         enemy.OnDying += OnDying;

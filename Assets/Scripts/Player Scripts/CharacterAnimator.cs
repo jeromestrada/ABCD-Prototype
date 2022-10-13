@@ -15,7 +15,7 @@ public class CharacterAnimator : MonoBehaviour
 
     PlayerController playerController;
     public AnimatorOverrideController overrideController;
-    CharacterCombat combat;
+    PlayerCombat combat;
 
     [SerializeField] private DeckOfCards deck;
 
@@ -32,13 +32,11 @@ public class CharacterAnimator : MonoBehaviour
         currentAttackAnimSet = defaultAttackAnimSet;
 
         playerController = GetComponent<PlayerController>();
-        combat = GetComponent<CharacterCombat>();
 
         playerController.OnDash += OnDash;
-        combat.OnAttack += OnAttack;
+        PlayerCombat.OnAttack += OnAttack;
 
-        weaponManager = GetComponent<WeaponManager>();
-        weaponManager.onWeaponChanged += OnWeaponChanged;
+        WeaponManager.onWeaponChanged += OnWeaponChanged;
 
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
         deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;

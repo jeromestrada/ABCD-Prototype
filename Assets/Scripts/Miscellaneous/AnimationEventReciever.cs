@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AnimationEventReciever : MonoBehaviour
 {
-    public CharacterCombat combat;
+    public PlayerCombat combat;
     public PlayerController controller;
 
     public void AttackFinishEvent()

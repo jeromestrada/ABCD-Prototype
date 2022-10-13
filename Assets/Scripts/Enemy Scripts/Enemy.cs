@@ -13,7 +13,7 @@ public class Enemy : CharacterStats
     public override void Die()
     {
         GetComponent<CapsuleCollider>().enabled = false;
-        GetComponent<EnemyAI>().enabled = false;
+        GetComponent<EnemyCombatAI>().enabled = false;
         base.Die();
     }
 }

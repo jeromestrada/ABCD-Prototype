@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterCombat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour
 {
     WeaponManager weaponManager;
     [SerializeField] Weapon equippedWeapon;
+    [SerializeField] PlayerStats playerStats;
     public bool canStringAttack;
     public int CurrentAttackString;
     private Transform currentStringAttackPoint;
@@ -13,8 +14,6 @@ public class CharacterCombat : MonoBehaviour
     
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
-
-    public int playerDamage = 50;
 
     public float attackRadius = 3f;
     public LayerMask enemyMask;
@@ -24,16 +23,13 @@ public class CharacterCombat : MonoBehaviour
     float finalStringTime;
     public float cooldownDuration = 3f;
 
-    public event System.Action<int> OnAttack;
+    public static event System.Action<int> OnAttack;
     PlayerController controller;
-
     [SerializeField] MouseItemData mouseItemData;
 
     private void Start()
     {
-        weaponManager = GetComponent<WeaponManager>();
-        weaponManager.onWeaponChanged += OnWeaponChanged;
-
+        WeaponManager.onWeaponChanged += OnWeaponChanged;
         controller = GetComponent<PlayerController>();
         lastAttackStringTime = 0;
         canStringAttack = true;
@@ -110,7 +106,7 @@ public class CharacterCombat : MonoBehaviour
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, enemyMask);
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(playerDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(playerStats.CurrentDamage);
         }
     }
 

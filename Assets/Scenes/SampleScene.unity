@@ -2984,15 +2984,15 @@ MonoBehaviour:
   agent: {fileID: 0}
   playerTrans: {fileID: 0}
   Ground:
-    serializedVersion: 2
     m_Bits: 8
   Player:
-    serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
+  walkPointSet: 0
   speedPercent: 0
   timeBetweenAttacks: 1.5
+  alreadyAttacked: 0
   enemyDamage: 50
   sightRange: 15
   attackRange: 1.25
@@ -3140,16 +3140,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab92b7d85194c33489f006a33554459f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponManager: {fileID: 0}
   equippedWeapon: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
   canStringAttack: 0
   CurrentAttackString: 0
+  currentStringAttackPoint: {fileID: 0}
+  attackPoint: {x: 0, y: 0, z: 0}
+  lastAttackStringTime: 0
   stringGracePeriod: 0.5
   playerDamage: 50
   attackRadius: 2
   enemyMask:
-    serializedVersion: 2
     m_Bits: 64
+  isCoolingDown: 0
+  finalStringTime: 0
   cooldownDuration: 0.5
+  controller: {fileID: 0}
   mouseItemData: {fileID: 1863707525}
 --- !u!114 &1477938535
 MonoBehaviour:
@@ -3180,7 +3186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentArmor: 0
+  _currentDamage: 11
+  _currentArmor: 5
 --- !u!1 &1608129805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,7 +3565,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4557154, y: 0.00000003424725, z: -0.000000017533482, w: 0.89012563}
+  m_LocalRotation: {x: 0.4557154, y: -0.00000003424725, z: 0.000000017533482, w: 0.89012563}
   m_LocalPosition: {x: 0.3, y: 25.48, z: -14.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4211,7 +4218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4557154, y: 0.00000003424725, z: -0.000000017533482, w: 0.89012563}
+  m_LocalRotation: {x: 0.4557154, y: -0.00000003424725, z: 0.000000017533482, w: 0.89012563}
   m_LocalPosition: {x: 0.3, y: 25.48, z: -14.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

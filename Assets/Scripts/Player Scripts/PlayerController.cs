@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     float turnSmoothness = 0.1f;
     float turnSmoothVelocity;
 
-    CharacterCombat combat;
+    PlayerCombat combat;
     public bool isAttacking = false;
     public bool isMoving = false;
 
@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         scanner = GetComponent<InteractableScanner>();
-        combat = GetComponent<CharacterCombat>();
-        combat.OnAttack += OnAttack;
+        combat = GetComponent<PlayerCombat>();
+        PlayerCombat.OnAttack += OnAttack;
         speed = maxSpeed;
         isDashing = false;
     }
