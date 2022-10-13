@@ -12,13 +12,13 @@ public class EnemyCombatAI : MonoBehaviour
 
     // Patroling
     public Vector3 walkPoint;
-    public float walkPointRange;
+    public float walkPointRange = 5f;
     bool walkPointSet;
 
     public float speedPercent;
 
     // Attacking
-    public float timeBetweenAttacks;
+    public float timeBetweenAttacks = 2;
     bool alreadyAttacked;
     public int enemyDamage;
 
@@ -26,7 +26,7 @@ public class EnemyCombatAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     public Vector3 attackPoint;
-    public float attackRadius;
+    public float attackRadius = 1.5f;
 
     public event System.Action OnEnemyAttack;
 

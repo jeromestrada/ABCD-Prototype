@@ -35,6 +35,6 @@ public class CharacterStats : MonoBehaviour
             OnDying();
         }
         this.enabled = false;
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
 }

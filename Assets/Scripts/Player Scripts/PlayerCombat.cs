@@ -40,27 +40,30 @@ public class PlayerCombat : MonoBehaviour
     {
         // TODO: will use full animation instead, and have a separate recovery animation for each attack
         // this will eliminate the need to use events to sync different attack string animations.
-        if ((Time.time - finalStringTime) >= cooldownDuration)
+        if(equippedWeapon != null)
         {
-            isCoolingDown = false;
-        }
-        if ((Time.time - lastAttackStringTime) >= stringGracePeriod)
-        {
-            ResetAttackString();
-        }
-        attackPoint = PlaceAttackPoint();
-        if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !mouseItemData.inUI && canStringAttack && !isCoolingDown)
-        {
-            canStringAttack = false; // we wait for the animation to hit before we can attack again
-            lastAttackStringTime = float.MaxValue; 
-            if (OnAttack != null)
+            if ((Time.time - finalStringTime) >= cooldownDuration)
             {
-                currentStringAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
-                OnAttack(CurrentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
+                isCoolingDown = false;
             }
-            if (controller.isDashing)
+            if ((Time.time - lastAttackStringTime) >= stringGracePeriod)
             {
-                controller.OnEndDash();
+                ResetAttackString();
+            }
+            attackPoint = PlaceAttackPoint();
+            if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !mouseItemData.inUI && canStringAttack && !isCoolingDown)
+            {
+                canStringAttack = false; // we wait for the animation to hit before we can attack again
+                lastAttackStringTime = float.MaxValue;
+                if (OnAttack != null)
+                {
+                    currentStringAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
+                    OnAttack(CurrentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
+                }
+                if (controller.isDashing)
+                {
+                    controller.OnEndDash();
+                }
             }
         }
     }
