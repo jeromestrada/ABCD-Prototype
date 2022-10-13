@@ -15,7 +15,7 @@ public class EnemyAnimator : MonoBehaviour
         enemy = GetComponent<Enemy>();
         enemyAI = GetComponent<EnemyCombatAI>();
 
-        Enemy.OnHealthChanged += OnTakingDamage;
+        enemy.OnHealthChanged += OnTakingDamage;
         enemy.OnDying += OnDying;
 
         enemyAI.OnEnemyAttack += OnEnemyAttack;

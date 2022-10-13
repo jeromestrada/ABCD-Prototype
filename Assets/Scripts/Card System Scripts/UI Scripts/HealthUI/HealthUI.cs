@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] private Transform _ui;
+    private Transform _ui;
     [SerializeField] private GameObject _healthBarPrefab;
     [SerializeField] private Transform _healthUITarget;
     [SerializeField] private Transform _cam;
@@ -19,7 +19,7 @@ public class HealthUI : MonoBehaviour
         _healthBarSlider = _ui.GetChild(0).GetComponent<Image>();
         _ui.gameObject.SetActive(true);
 
-        PlayerStats.OnHealthChanged += OnHealthChanged;
+        GetComponent<CharacterStats>().OnHealthChanged += OnHealthChanged;
     }
 
     private void OnHealthChanged(int currentHealth, int maxHealth)

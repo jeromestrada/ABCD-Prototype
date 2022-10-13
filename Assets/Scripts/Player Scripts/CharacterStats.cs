@@ -9,7 +9,7 @@ public class CharacterStats : MonoBehaviour
 
     public int MaxHealth => _maxHealth;
 
-    public static event System.Action<int, int> OnHealthChanged;
+    public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
 
     protected virtual void Start()
