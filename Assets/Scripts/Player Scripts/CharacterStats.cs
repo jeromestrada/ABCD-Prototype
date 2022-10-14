@@ -7,7 +7,12 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private int _maxHealth = 100;
     protected int _currentHealth;
 
+    [SerializeField] private int _damage;
+    [SerializeField] private int _armor;
+
     public int MaxHealth => _maxHealth;
+    public int Damage => _damage;
+    public int Armor => _armor;
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
@@ -26,7 +31,6 @@ public class CharacterStats : MonoBehaviour
             Die();
         }
     }
-
     public virtual void Die()
     {
         Debug.Log($"{gameObject.name} just died!");
@@ -35,6 +39,5 @@ public class CharacterStats : MonoBehaviour
             OnDying();
         }
         this.enabled = false;
-        //this.gameObject.SetActive(false);
     }
 }

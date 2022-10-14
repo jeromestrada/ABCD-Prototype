@@ -5,14 +5,14 @@ using UnityEngine;
 public class EnemyAnimator : MonoBehaviour
 {
     Animator animator;
-    Enemy enemy;
+    EnemyStats enemy;
     EnemyCombatAI enemyAI;
 
     public float locomotionSmoothTime = 0.1f;
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        enemy = GetComponent<Enemy>();
+        enemy = GetComponent<EnemyStats>();
         enemyAI = GetComponent<EnemyCombatAI>();
 
         enemy.OnHealthChanged += OnTakingDamage;
@@ -20,7 +20,6 @@ public class EnemyAnimator : MonoBehaviour
 
         enemyAI.OnEnemyAttack += OnEnemyAttack;
     }
-
     void Update()
     {
         animator.SetFloat("speedPercent", enemyAI.speedPercent, locomotionSmoothTime, Time.deltaTime);

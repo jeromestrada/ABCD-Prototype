@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyCombatAI : MonoBehaviour
 {
+    [SerializeField] private EnemyStats _myStats;
+
     public NavMeshAgent agent;
     public Transform playerTrans;
 
@@ -20,7 +22,7 @@ public class EnemyCombatAI : MonoBehaviour
     // Attacking
     public float timeBetweenAttacks = 2;
     bool alreadyAttacked;
-    public int enemyDamage;
+
 
     // States
     public float sightRange, attackRange;
@@ -95,13 +97,11 @@ public class EnemyCombatAI : MonoBehaviour
     }
 
     public void EnemyAttackHit_AnimationEvent()
-    {   // this even triggers when the animation event reciever fires an attack hit event.
-        // access a corresponding attackPoint for the current attack string instead of using a set attackPoint
+    {
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint, attackRadius, Player);
         foreach (Collider player in hitPlayers) // setting up for multiplayer? maybe this makes sense...
         {
-            Debug.Log("hitting something");
-            player.GetComponent<PlayerStats>().TakeDamage(enemyDamage);
+            player.GetComponent<PlayerStats>().TakeDamage(_myStats.Damage);
         }
     }
 

@@ -38,8 +38,6 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: will use full animation instead, and have a separate recovery animation for each attack
-        // this will eliminate the need to use events to sync different attack string animations.
         if(equippedWeapon != null)
         {
             if ((Time.time - finalStringTime) >= cooldownDuration)
@@ -104,12 +102,11 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public void AttackHit_AnimationEvent()
-    {   // this even triggers when the animation event reciever fires an attack hit event.
-        // access a corresponding attackPoint for the current attack string instead of using a set attackPoint
+    {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, enemyMask);
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(playerStats.CurrentDamage);
+            enemy.GetComponent<EnemyStats>().TakeDamage(playerStats.Damage);
         }
     }
 
