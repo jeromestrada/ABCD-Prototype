@@ -5,9 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Inventory/Weapon")]
 public class Weapon : Item
 {
-    
-    EquipmentManager weaponManager;
-
     [SerializeField] private int _damage;
     public int stringAttacksCount;
     public Transform[] attackPoints; // an array of attack points that we can access to resolve attack hits
@@ -21,8 +18,8 @@ public class Weapon : Item
 
     public override void Use()
     {// this part seems wrong, it gives this weapon access to the weaponManager but it just doesn't look right.
-        weaponManager = GameObject.Find("Player").GetComponent<EquipmentManager>();
-        weaponManager.Equip(this);
+        equipmentManager = GameObject.Find("Player").GetComponent<EquipmentManager>();
+        equipmentManager.Equip(this);
         base.Use();
     }
 }

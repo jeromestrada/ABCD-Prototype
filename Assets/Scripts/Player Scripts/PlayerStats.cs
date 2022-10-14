@@ -14,12 +14,12 @@ public class PlayerStats : CharacterStats
         if(newEquipment != null)
         {
             if (newEquipment.ItemType == ItemType.Weapon) Damage.AddModifier(((Weapon)newEquipment).Damage);
-            else if (newEquipment.ItemType == ItemType.Protection) Damage.AddModifier(((Protection)newEquipment).Armor);
+            else if (newEquipment.ItemType == ItemType.Protection) Armor.AddModifier(((Protection)newEquipment).Armor);
         }
         if (oldEquipment != null)
         {
             if (oldEquipment.ItemType == ItemType.Weapon) Damage.RemoveModifier(((Weapon)oldEquipment).Damage);
-            else if (oldEquipment.ItemType == ItemType.Protection) Damage.RemoveModifier(((Protection)oldEquipment).Armor);
+            else if (oldEquipment.ItemType == ItemType.Protection) Armor.RemoveModifier(((Protection)oldEquipment).Armor);
         }
     }
 

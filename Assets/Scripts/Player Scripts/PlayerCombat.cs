@@ -77,8 +77,11 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnWeaponChanged(Item oldWeapon, Item newWeapon)
     {
-        equippedWeapon = (Weapon)newWeapon;
-        ResetAttackString();
+        if (newWeapon.ItemType == ItemType.Weapon)
+        {
+            equippedWeapon = (Weapon)newWeapon;
+            ResetAttackString();
+        }
     }
 
     public void ResetAttackString()

@@ -97,6 +97,7 @@ public class CharacterAnimator : MonoBehaviour
 
     protected virtual void OnWeaponChanged(Item oldWeapon, Item newWeapon)
     {
+        if(newWeapon.ItemType == 0)
         ChangeCurrentAttackAnimSet((Weapon)newWeapon);
     }
 

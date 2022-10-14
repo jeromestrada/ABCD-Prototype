@@ -4,6 +4,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName ="New Item", menuName ="Inventory/Item")]
 public class Item : ScriptableObject
 {
+    protected EquipmentManager equipmentManager;
     new public string name;
     [TextArea(4,4)]
     public string description;

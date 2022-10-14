@@ -25,39 +25,31 @@ public class EquipmentManager : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Test equip");
-            Equip(testEquip);
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Test equip reverse");
-            Equip(testEquipReverse);
-        } 
-    }
-
     public void Equip(Item equipment)
     {
         int itemType = (int)equipment.ItemType;
 
         // only proceed when the weapon being equipped isn't the same as the equipped
-        if(equipment != equippedWeapon)
+        if(equipment != null)
         {
             int equipmentType = (int)equipment.ItemType;
             Item oldEquipment = Unequip(equipmentType);
 
             OnEquipmentChanged?.Invoke(oldEquipment, equipment);
-            equippedWeapon = (Weapon)equipment;
-
-            // Render the weapon mesh
-            SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
-            newMesh.transform.parent = targetMesh.transform;
-            newMesh.bones = targetMesh.bones;
-            newMesh.rootBone = targetMesh.rootBone;
-            equippedWeaponMesh = newMesh;
+            if(equipmentType == 0)
+            {
+                equippedWeapon = (Weapon)equipment;
+                SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
+                newMesh.transform.parent = targetMesh.transform;
+                newMesh.bones = targetMesh.bones;
+                newMesh.rootBone = targetMesh.rootBone;
+                equippedWeaponMesh = newMesh;
+            }
+            else if (equipmentType == 1)
+            {
+                //SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
+                equippedProtection = (Protection)equipment;
+            }
         }
     }
 
