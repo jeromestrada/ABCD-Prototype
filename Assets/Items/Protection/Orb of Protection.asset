@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Orb of Protection
   description: Protects the bearer from minor impacts
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  armor: 3
+  mesh: {fileID: 0}
+  _armor: 10

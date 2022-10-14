@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    WeaponManager weaponManager;
+    EquipmentManager weaponManager;
     [SerializeField] Weapon equippedWeapon;
     [SerializeField] PlayerStats playerStats;
     public bool canStringAttack;
@@ -29,7 +29,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
-        WeaponManager.onWeaponChanged += OnWeaponChanged;
+        EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
         controller = GetComponent<PlayerController>();
         lastAttackStringTime = 0;
         canStringAttack = true;
@@ -75,9 +75,9 @@ public class PlayerCombat : MonoBehaviour
             (transform.forward * currentStringAttackPoint.position.z);
     }
 
-    private void OnWeaponChanged(Weapon weapon)
+    private void OnWeaponChanged(Item oldWeapon, Item newWeapon)
     {
-        equippedWeapon = weapon;
+        equippedWeapon = (Weapon)newWeapon;
         ResetAttackString();
     }
 
@@ -106,7 +106,7 @@ public class PlayerCombat : MonoBehaviour
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, enemyMask);
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyStats>().TakeDamage(playerStats.Damage);
+            enemy.GetComponent<EnemyStats>().TakeDamage(playerStats.Damage.GetValue());
         }
     }
 

@@ -7,22 +7,25 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private int _maxHealth = 100;
     protected int _currentHealth;
 
-    [SerializeField] private int _damage;
-    [SerializeField] private int _armor;
+    [SerializeField] private Stat _damage;
+    [SerializeField] private Stat _armor;
 
     public int MaxHealth => _maxHealth;
-    public int Damage => _damage;
-    public int Armor => _armor;
+    public Stat Damage => _damage;
+    public Stat Armor => _armor;
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
 
-    protected virtual void Start()
+    protected void Awake()
     {
         _currentHealth = MaxHealth;
     }
     public virtual void TakeDamage(int damage)
     {
+        damage -= Armor.GetValue();
+        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+
         _currentHealth -= damage;
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
 

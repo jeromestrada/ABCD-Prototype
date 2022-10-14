@@ -101,7 +101,7 @@ public class EnemyCombatAI : MonoBehaviour
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint, attackRadius, Player);
         foreach (Collider player in hitPlayers) // setting up for multiplayer? maybe this makes sense...
         {
-            player.GetComponent<PlayerStats>().TakeDamage(_myStats.Damage);
+            player.GetComponent<PlayerStats>().TakeDamage(_myStats.Damage.GetValue());
         }
     }
 

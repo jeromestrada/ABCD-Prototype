@@ -5,5 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Protection", menuName = "Inventory/Protection")]
 public class Protection : Item
 {
-    public int armor;
+    [SerializeField] private int _armor;
+
+    public int Armor => Armor; 
+    private void Awake()
+    {
+        _itemType = ItemType.Protection;
+    }
 }

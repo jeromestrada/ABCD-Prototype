@@ -38,9 +38,8 @@ public class CardSystemUIController : MonoBehaviour
         DeckPanel.RefreshDynamicInventory(cardSysToDisplay);
     }
 
-    void HideDeck(bool isHidden)
+    void HideDeck()
     {
-        isHidden = false;
         DeckPanel.gameObject.SetActive(false);
     }
 

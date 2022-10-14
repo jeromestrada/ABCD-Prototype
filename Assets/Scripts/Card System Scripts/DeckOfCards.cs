@@ -10,7 +10,7 @@ public class DeckOfCards : CardSystemHolder
     [SerializeField] List<Card> startingCards;
     [SerializeField] private List<int> slotNumbersList;
     public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
-    public static UnityAction<bool> OnDeckOfCardsDisplayHideRequested;
+    public static UnityAction OnDeckOfCardsDisplayHideRequested;
     private bool isHidden;
 
     protected override void Awake()
@@ -55,7 +55,7 @@ public class DeckOfCards : CardSystemHolder
         Card card = cardSlot.Card;
         slotNumbersList.RemoveAt(0);
         CardSystem.RemoveCardSlot(cardSlot);
-        OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
+        //OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
         return card;
     }
 
@@ -79,15 +79,25 @@ public class DeckOfCards : CardSystemHolder
     {
         base.Update();
         if (Input.GetKeyDown(KeyCode.C))
-        {   // open deck of cards
-            OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
-            isHidden = false;
+        {   // open/close deck of cards
+            if (isHidden)
+            {
+                OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
+                isHidden = false;
+            }
+            else
+            {
+                OnDeckOfCardsDisplayHideRequested?.Invoke();
+                isHidden = true;
+            }
+            
+            
         }
         if (Input.GetKeyDown(KeyCode.L))
         {   // open deck of cards
             ShuffleDeck();
         }
-        if (CardSystem.CardSlots.Count <= 0 && !isHidden) OnDeckOfCardsDisplayHideRequested?.Invoke(isHidden);
+        if (CardSystem.CardSlots.Count <= 0 && !isHidden) OnDeckOfCardsDisplayHideRequested?.Invoke();
     }
 }
 

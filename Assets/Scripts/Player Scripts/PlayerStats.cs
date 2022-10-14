@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-    [SerializeField] List<int> _attackModifiers;
-    [SerializeField] List<int> _armorModifiers;
+    protected void Start()
+    {
+        EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
+    }
 
-    public List<int> AttackModifiers => _attackModifiers;
-    public List<int> ArmorModifiers => _armorModifiers;
+    private void UpdatePlayerStats(Item oldEquipment, Item newEquipment)
+    {
+        if(newEquipment != null)
+        {
+            if (newEquipment.ItemType == ItemType.Weapon) Damage.AddModifier(((Weapon)newEquipment).Damage);
+            else if (newEquipment.ItemType == ItemType.Protection) Damage.AddModifier(((Protection)newEquipment).Armor);
+        }
+        if (oldEquipment != null)
+        {
+            if (oldEquipment.ItemType == ItemType.Weapon) Damage.RemoveModifier(((Weapon)oldEquipment).Damage);
+            else if (oldEquipment.ItemType == ItemType.Protection) Damage.RemoveModifier(((Protection)oldEquipment).Armor);
+        }
+    }
 
     public override void TakeDamage(int damage)
     {
-        var reducedDamage = Mathf.Clamp((damage - Armor), 0, damage);
-        Debug.Log($"{gameObject.name} is taking damage... {reducedDamage}");
-        base.TakeDamage(reducedDamage);
+        // call a hurt animation here for the player to play
+        Debug.Log($"{gameObject.name} is taking damage... {damage}");
+        base.TakeDamage(damage);
     }
     public override void Die()
     {

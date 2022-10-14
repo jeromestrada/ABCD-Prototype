@@ -10,7 +10,7 @@ public class CharacterAnimator : MonoBehaviour
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
 
-    WeaponManager weaponManager;
+    EquipmentManager weaponManager;
     Dictionary<Weapon, AnimationClip[]> weaponAnimationsDict;
 
     PlayerController playerController;
@@ -36,7 +36,7 @@ public class CharacterAnimator : MonoBehaviour
         playerController.OnDash += OnDash;
         PlayerCombat.OnAttack += OnAttack;
 
-        WeaponManager.onWeaponChanged += OnWeaponChanged;
+        EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
 
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
         deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
@@ -95,9 +95,9 @@ public class CharacterAnimator : MonoBehaviour
         playerController.isAttacking = true;
     }
 
-    protected virtual void OnWeaponChanged(Weapon weapon)
+    protected virtual void OnWeaponChanged(Item oldWeapon, Item newWeapon)
     {
-        ChangeCurrentAttackAnimSet(weapon);
+        ChangeCurrentAttackAnimSet((Weapon)newWeapon);
     }
 
     protected virtual void OnDash()

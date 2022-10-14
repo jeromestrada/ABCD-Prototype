@@ -3095,8 +3095,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _damage: 25
-  _armor: 5
+  _damage:
+    baseValue: 15
+    modifiers: 
+  _armor:
+    baseValue: 10
+    modifiers: 
 --- !u!114 &1434756279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3347,6 +3351,7 @@ MonoBehaviour:
   equippedWeapon: {fileID: 0}
   testEquip: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
   testEquipReverse: {fileID: 11400000, guid: 01be133a8b63ce6419c6ec4b81322446, type: 2}
+  equippedProtection: {fileID: 0}
   targetMesh: {fileID: 3248816037825387173}
 --- !u!114 &1477938536
 MonoBehaviour:
@@ -3361,10 +3366,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _damage: 20
-  _armor: 10
-  _attackModifiers: 
-  _armorModifiers: 
+  _damage:
+    baseValue: 10
+    modifiers: 
+  _armor:
+    baseValue: 5
+    modifiers: 
 --- !u!114 &1477938537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3758,7 +3765,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000024344413, z: -0.000000013322863, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4411,7 +4418,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000024344413, z: -0.000000013322863, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
