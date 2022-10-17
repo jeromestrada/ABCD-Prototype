@@ -38,7 +38,7 @@ public class DeckOfCards : CardSystemHolder
     {
         slotNumbersList.Clear();
         foreach (PlayerCardSlot slot in CardSystem.CardSlots)
-        {   // some random way of generating a random number.. could be better
+        {   // some random way of generating a random number.. could be better | still affected by the seed consistently
             int rand = Random.Range(1, CardSystem.CardSlots.Count * Random.Range(11, 24)) * Random.Range(7, 18);
             slot.AssignSlotNumber(rand);
             int index = slotNumbersList.BinarySearch(rand);
@@ -55,7 +55,6 @@ public class DeckOfCards : CardSystemHolder
         Card card = cardSlot.Card;
         slotNumbersList.RemoveAt(0);
         CardSystem.RemoveCardSlot(cardSlot);
-        //OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
         return card;
     }
 
@@ -94,7 +93,7 @@ public class DeckOfCards : CardSystemHolder
             
         }
         if (Input.GetKeyDown(KeyCode.L))
-        {   // open deck of cards
+        {   // shuffle the deck of cards
             ShuffleDeck();
         }
         if (CardSystem.CardSlots.Count <= 0 && !isHidden) OnDeckOfCardsDisplayHideRequested?.Invoke();

@@ -62,8 +62,8 @@ public abstract class CardSlot : ISerializationCallbackReceiver
         _stackSize = 1;
     }
 
-    private void AdjustCardLevel(int levelAmount)
-    {
+    private void AdjustCardLevel(int levelAmount) // adjustment instead of just a oneway level "up", so curses can work
+    {// when inflicted with certain curses, a card can lose levels or stats
         int tempLevel = _cardLevel;
         if(tempLevel + levelAmount <= 0) // do math with a temp just in case
         {
