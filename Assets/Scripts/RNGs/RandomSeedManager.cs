@@ -25,7 +25,7 @@ public class RandomSeedManager : MonoBehaviour
         Debug.Log("new seed set!");
     }
 
-    //Select the Seed for the System
+
     public void SetRandomSeed(string seed = "test")
     {
         _currentSeed = seed;
@@ -46,10 +46,8 @@ public class RandomSeedManager : MonoBehaviour
         Random.InitState(tempSeed);
     }
 
-    //Copy Seed to Clipboard
     public void CopySeedToClipboard() => GUIUtility.systemCopyBuffer = _currentSeed;
 
-    //Check if Seed is All numbers
     public static bool isNumeric(string s)
     {
         return int.TryParse(s, out int n);

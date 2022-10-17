@@ -7,8 +7,10 @@ public abstract class CardSlot : ISerializationCallbackReceiver
     protected Card card;
     [SerializeField] protected int _cardID = -1; // keeps track of what card is in this slot based on ID.
     [SerializeField] private int _stackSize;
+    [SerializeField] private int _cardLevel;
 
     public Card Card => card;
+    public int CardLevel => _cardLevel;
     public int StackSize => _stackSize;
 
     public virtual void ClearSlot()
@@ -26,6 +28,7 @@ public abstract class CardSlot : ISerializationCallbackReceiver
             card = cardSlot.card;
             _cardID = card.ID;
             _stackSize = 0;
+            _cardLevel = 0;
             AddToStack(cardSlot.StackSize);
         }
     }
@@ -57,6 +60,19 @@ public abstract class CardSlot : ISerializationCallbackReceiver
         card = cardToAdd;
         _cardID = card.ID;
         _stackSize = 1;
+    }
+
+    private void AdjustCardLevel(int levelAmount)
+    {
+        int tempLevel = _cardLevel;
+        if(tempLevel + levelAmount <= 0) // do math with a temp just in case
+        {
+            Debug.LogWarning($"Cannot adjust card level ({_cardLevel}) with {levelAmount}!");
+        }
+        else
+        {
+            _cardLevel += levelAmount;
+        }
     }
 
     public void OnAfterDeserialize()
