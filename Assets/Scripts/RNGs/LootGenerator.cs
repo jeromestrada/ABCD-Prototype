@@ -14,7 +14,6 @@ public class LootGenerator : ScriptableObject
 
     private void Awake()
     {
-        SetUpTable();
         CalculateTotalWeight();
     }
 
@@ -38,7 +37,7 @@ public class LootGenerator : ScriptableObject
     public Card GenerateLoot()
     {
         randomNumber = Random.Range(0, totalWeight);
-
+        Card card = null;
         for (int i = 0; i <= table.Length; i++)
         {
             if (randomNumber <= table[i])
@@ -49,7 +48,8 @@ public class LootGenerator : ScriptableObject
             {
                 randomNumber -= table[i];
             }
+            card = cardPool[i];
         }
-        return null;
+        return card;
     }
 }

@@ -3585,6 +3585,8 @@ MonoBehaviour:
   player: {fileID: 0}
   _lootGenerator: {fileID: 11400000, guid: 6c18dcfeb7d5b9d46b92b031d3ad3757, type: 2}
   deck: {fileID: 0}
+  _cardLootGenerated: []
+  _cardLootCount: 4
 --- !u!135 &1639339509
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3844,7 +3846,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.000000011681934, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4326,6 +4328,7 @@ MonoBehaviour:
   AssignedCardSlot:
     _cardID: -1
     _stackSize: -1
+    _cardLevel: 0
     remainingUses: -1
     slotNumber: 0
   inUI: 0
@@ -4497,7 +4500,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.000000011681934, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
