@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f17687b1d321ac419aea1682d33b757, type: 3}
+  m_Name: EarlyChestLoots
+  m_EditorClassIdentifier: 
+  cardPool:
+  - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
+  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
+  - {fileID: 11400000, guid: 184f6c6e817c3ff42926fec6d66cf764, type: 2}
+  - {fileID: 11400000, guid: 541d6deeeaf30f640b64b15d075e7ef1, type: 2}
+  - {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
+  - {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
+  totalWeight: 120
+  randomNumber: 2
+  table: 2300000023000000140000000f0000000a00000005000000

@@ -5,6 +5,7 @@ using UnityEngine;
 public class RandomSeedManager : MonoBehaviour
 {
     [SerializeField] private string _currentSeed;
+    [SerializeField] private string _newSeed;
     public string GetCurrentSeed => _currentSeed;
 
     private void Awake() => GenerateRandomSeed();
@@ -17,11 +18,11 @@ public class RandomSeedManager : MonoBehaviour
         Random.InitState(tempSeed);
     }
 
-    [ContextMenu("Generate test seed")]
-    public void GenerateTestSeed()
+    [ContextMenu("Set new seed")]
+    public void SetNewSeed()
     {
-        SetRandomSeed("test");
-        Debug.Log("test seed generated!");
+        SetRandomSeed(_newSeed);
+        Debug.Log("new seed set!");
     }
 
     //Select the Seed for the System
