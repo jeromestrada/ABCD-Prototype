@@ -10,13 +10,13 @@ public class Item : ScriptableObject
     public string description;
     public Sprite icon;
     public SkinnedMeshRenderer mesh;
-    protected ItemType _itemType;
+    protected EquipmentType _itemType;
 
-    public ItemType ItemType => _itemType;
+    public EquipmentType ItemType => _itemType;
     public virtual void Use()
     {
         // use item, when inherited define usage in sub class.
     }
 }
 
-public enum ItemType { Weapon, Protection, Utility}
+public enum EquipmentType { Weapon, Protection, Utility}

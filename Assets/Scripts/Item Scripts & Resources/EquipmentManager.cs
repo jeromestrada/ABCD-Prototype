@@ -8,13 +8,13 @@ public class EquipmentManager : MonoBehaviour
     // this includes providing a delegate to the character animator to deal with animation changes
     // handles the MeshRenderer to display the weapon being wielded by the player.
 
-    public static event System.Action<Item, Item> OnEquipmentChanged; // <old, new>
-    public Weapon equippedWeapon;
-    public Weapon testEquip;
-    public Weapon testEquipReverse;
+    public static event System.Action<Equipment, Equipment> OnEquipmentChanged; // <old, new>
+    public Equipment equippedWeapon;
+    public Equipment testEquip;
+    public Equipment testEquipReverse;
     SkinnedMeshRenderer equippedWeaponMesh;
 
-    [SerializeField] private Protection equippedProtection;
+    [SerializeField] private Equipment equippedProtection;
     SkinnedMeshRenderer equippedProtectionMesh;
 
     public SkinnedMeshRenderer targetMesh;
@@ -22,23 +22,20 @@ public class EquipmentManager : MonoBehaviour
     private void Start()
     {
         equippedWeaponMesh = new SkinnedMeshRenderer();
-        
     }
 
-    public void Equip(Item equipment)
+    public void Equip(Equipment equipment)
     {
-        int itemType = (int)equipment.ItemType;
+        int equipmentType = (int)equipment.ItemType;
 
-        // only proceed when the weapon being equipped isn't the same as the equipped
-        if(equipment != null)
+        if (equipment != null)
         {
-            int equipmentType = (int)equipment.ItemType;
-            Item oldEquipment = Unequip(equipmentType);
+            Equipment oldEquipment = Unequip(equipmentType);
 
             OnEquipmentChanged?.Invoke(oldEquipment, equipment);
             if(equipmentType == 0)
             {
-                equippedWeapon = (Weapon)equipment;
+                equippedWeapon = (Equipment)equipment;
                 SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
                 newMesh.transform.parent = targetMesh.transform;
                 newMesh.bones = targetMesh.bones;
@@ -47,32 +44,33 @@ public class EquipmentManager : MonoBehaviour
             }
             else if (equipmentType == 1)
             {
+                // TODO: add a mesh logic for armor meshes to be rendered
                 //SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
-                equippedProtection = (Protection)equipment;
+                equippedProtection = (Equipment)equipment;
             }
         }
     }
 
-    public Item Unequip(int itemType)
+    public Equipment Unequip(int equipmentType)
     {
-        if(itemType == 0 && equippedWeapon != null)
+        if(equipmentType == 0 && equippedWeapon != null)
         {
             if (equippedWeaponMesh != null)
             {
                 if(equippedWeaponMesh != null) Destroy(equippedWeaponMesh.gameObject);
             }
-            Item oldEquipment = equippedWeapon;
+            Equipment oldEquipment = equippedWeapon;
             equippedWeapon = null;
             OnEquipmentChanged?.Invoke(equippedWeapon, null);
             return oldEquipment;
         }
-        else if (itemType == 1 && equippedProtection != null)
+        else if (equipmentType == 1 && equippedProtection != null)
         {
             if (equippedProtectionMesh != null)
             {
                 if (equippedProtectionMesh != null) Destroy(equippedProtectionMesh.gameObject);
             }
-            Item oldEquipment = equippedProtection;
+            Equipment oldEquipment = equippedProtection;
             equippedProtection = null;
             OnEquipmentChanged?.Invoke(equippedProtection, null);
             return oldEquipment;

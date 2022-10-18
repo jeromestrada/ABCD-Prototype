@@ -9,17 +9,17 @@ public class PlayerStats : CharacterStats
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
     }
 
-    private void UpdatePlayerStats(Item oldEquipment, Item newEquipment)
+    private void UpdatePlayerStats(Equipment oldEquipment, Equipment newEquipment)
     {
         if(newEquipment != null)
         {
-            if (newEquipment.ItemType == ItemType.Weapon) Damage.AddModifier(((Weapon)newEquipment).Damage);
-            else if (newEquipment.ItemType == ItemType.Protection) Armor.AddModifier(((Protection)newEquipment).Armor);
+            if (newEquipment.ItemType == EquipmentType.Weapon) Damage.AddModifier(newEquipment.Damage);
+            else if (newEquipment.ItemType == EquipmentType.Protection) Armor.AddModifier(newEquipment.Armor);
         }
         if (oldEquipment != null)
         {
-            if (oldEquipment.ItemType == ItemType.Weapon) Damage.RemoveModifier(((Weapon)oldEquipment).Damage);
-            else if (oldEquipment.ItemType == ItemType.Protection) Armor.RemoveModifier(((Protection)oldEquipment).Armor);
+            if (oldEquipment.ItemType == EquipmentType.Weapon) Damage.RemoveModifier(oldEquipment.Damage);
+            else if (oldEquipment.ItemType == EquipmentType.Protection) Armor.RemoveModifier(oldEquipment.Armor);
         }
     }
 

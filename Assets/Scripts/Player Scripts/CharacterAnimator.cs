@@ -11,7 +11,7 @@ public class CharacterAnimator : MonoBehaviour
     protected AnimationClip[] currentAttackAnimSet;
 
     EquipmentManager weaponManager;
-    Dictionary<Weapon, AnimationClip[]> weaponAnimationsDict;
+    Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict;
 
     PlayerController playerController;
     public AnimatorOverrideController overrideController;
@@ -41,10 +41,10 @@ public class CharacterAnimator : MonoBehaviour
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
         deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
 
-        weaponAnimationsDict = new Dictionary<Weapon, AnimationClip[]>();
+        weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
     }
 
-    void ChangeCurrentAttackAnimSet(Weapon newWeapon)
+    void ChangeCurrentAttackAnimSet(Equipment newWeapon)
     {
         if (newWeapon == null)
         {
@@ -78,12 +78,12 @@ public class CharacterAnimator : MonoBehaviour
 
     public void AddWeaponAnimation(PlayerCardSlot slot)
     {
-        if (slot.Card.cardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Weapon)
+        if (slot.Card.cardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Equipment)
         {
             var itemCard = (ItemCard)slot.Card;
-            var weapon = (Weapon)itemCard.item;
-            if (itemCard.item is Weapon && !weaponAnimationsDict.ContainsKey(weapon))
-                weaponAnimationsDict.Add(weapon, (weapon.weaponAnimations.clips));
+            var weapon = (Equipment)itemCard.item;
+            if (itemCard.item is Equipment && !weaponAnimationsDict.ContainsKey(weapon))
+                weaponAnimationsDict.Add(weapon, (weapon.WeaponAnimations.clips));
         }
         else return;
     }
@@ -95,10 +95,9 @@ public class CharacterAnimator : MonoBehaviour
         playerController.isAttacking = true;
     }
 
-    protected virtual void OnWeaponChanged(Item oldWeapon, Item newWeapon)
+    protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
     {
-        if(newWeapon.ItemType == 0)
-        ChangeCurrentAttackAnimSet((Weapon)newWeapon);
+        ChangeCurrentAttackAnimSet(newWeapon);
     }
 
     protected virtual void OnDash()
@@ -111,6 +110,6 @@ public class CharacterAnimator : MonoBehaviour
 [System.Serializable]
 public struct WeaponAnimations
 {
-    public Weapon weapon;
+    public Equipment weapon;
     public AnimationClip[] clips;
 }

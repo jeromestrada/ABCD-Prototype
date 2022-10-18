@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     EquipmentManager weaponManager;
-    [SerializeField] Weapon equippedWeapon;
+    [SerializeField] Equipment equippedWeapon;
     [SerializeField] PlayerStats playerStats;
     public bool canStringAttack;
     public int CurrentAttackString;
@@ -55,8 +55,8 @@ public class PlayerCombat : MonoBehaviour
                 lastAttackStringTime = float.MaxValue;
                 if (OnAttack != null)
                 {
-                    currentStringAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
-                    OnAttack(CurrentAttackString % equippedWeapon.stringAttacksCount); // invoke the delegate
+                    currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
+                    OnAttack(CurrentAttackString % equippedWeapon.StringAttacksCount); // invoke the delegate
                 }
                 if (controller.isDashing)
                 {
@@ -77,17 +77,21 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnWeaponChanged(Item oldWeapon, Item newWeapon)
     {
-        if (newWeapon.ItemType == ItemType.Weapon)
+        if(newWeapon != null)
         {
-            equippedWeapon = (Weapon)newWeapon;
-            ResetAttackString();
+            if (newWeapon.ItemType == EquipmentType.Weapon)
+            {
+                equippedWeapon = (Equipment)newWeapon;
+                ResetAttackString();
+            }
         }
+        
     }
 
     public void ResetAttackString()
     {
         CurrentAttackString = 0;
-        if(equippedWeapon != null) currentStringAttackPoint = equippedWeapon.attackPoints[CurrentAttackString];
+        if(equippedWeapon != null) currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
     }
 
     public void AttackFinish_AnimationEvent()
@@ -95,7 +99,7 @@ public class PlayerCombat : MonoBehaviour
         lastAttackStringTime = Time.time;
         canStringAttack = true;
         CurrentAttackString++; // increment to the next attack string
-        if (CurrentAttackString == equippedWeapon.stringAttacksCount) // if we've reached the last string we cooldown
+        if (CurrentAttackString == equippedWeapon.StringAttacksCount) // if we've reached the last string we cooldown
         {
             isCoolingDown = true;
             finalStringTime = Time.time;

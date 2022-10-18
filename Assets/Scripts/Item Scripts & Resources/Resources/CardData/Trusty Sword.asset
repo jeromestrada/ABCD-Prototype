@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Trusty Sword
   m_EditorClassIdentifier: 
   ID: 5
+  _cardRarity: 4
   name: Trusty Sword
   cardIcon: {fileID: 21300000, guid: 5f8eadf6d26aec84abe03814b6a8c6f7, type: 3}
   description: Equips a Trusty Sword
@@ -20,4 +21,4 @@ MonoBehaviour:
   _cardPrice: 20
   numOfUses: 1
   exhaustable: 0
-  item: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
+  item: {fileID: 11400000, guid: 033a7adf9cf690144ba3773a50a7a6a6, type: 2}

@@ -9,19 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0039459066ca640b28c8a3189dd6b8, type: 3}
-  m_Name: Reverse Trusty
+  m_Script: {fileID: 11500000, guid: af9ff0478ba02174fa82cf4df53430c9, type: 3}
+  m_Name: Reverse Trusty Sword
   m_EditorClassIdentifier: 
   name: Reverse Trusty Sword
-  description: A not so typical sword
+  description: 
   icon: {fileID: 21300000, guid: 9e47e17380468004aa41e7854579bd9d, type: 3}
   mesh: {fileID: 402616743014682421, guid: a21ff9b00362dfc43968e1edad50ae54, type: 3}
-  _damage: 20
-  stringAttacksCount: 2
-  attackPoints:
+  _damage: 30
+  _armor: 5
+  _type: 0
+  _stringAttacksCount: 2
+  _attackPoints:
+  - {fileID: 1062047230199363204, guid: 9cadee8b9f0b32140b5903b4324d1422, type: 3}
   - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
-  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
-  weaponAnimations:
+  _weaponAnimations:
     weapon: {fileID: 11400000}
     clips:
     - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
