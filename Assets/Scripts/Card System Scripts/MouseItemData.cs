@@ -54,7 +54,6 @@ public class MouseItemData : MonoBehaviour
                 if (AssignedCardSlot.RemainingUses > 0) ReturnToSlot();
                 else
                 {   // remove the slot from the card system, refresh the hand display and clear the mouse slot.
-                    Debug.Log($"{tempCard.name} is now being discarded");
                     discardPile.Discard(tempCard);
                     handOfCards.CardSystem.RemoveCardSlot(pickedFromSlot.AssignedInventorySlot);
                     cardSystemUIController.HandPanel.RefreshDynamicInventory(handOfCards.CardSystem);

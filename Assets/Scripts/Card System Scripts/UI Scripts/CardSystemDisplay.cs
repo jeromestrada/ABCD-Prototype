@@ -44,7 +44,6 @@ public abstract class CardSystemDisplay : MonoBehaviour
         if(this.CardSystemDisplayType == CardSystemDisplayType.HandInventory)
         {
             CardSlot_UI clickedUISlotCasted = (CardSlot_UI) clickedUISlot;
-            Debug.Log($"Clicked on {clickedUISlotCasted.AssignedInventorySlot.Card.name}");
             // if the card slot in the hand has a card and the mouse doesn't
             if (clickedUISlotCasted.AssignedInventorySlot.Card != null && mouseInventoryItem.AssignedCardSlot.Card == null)
             {

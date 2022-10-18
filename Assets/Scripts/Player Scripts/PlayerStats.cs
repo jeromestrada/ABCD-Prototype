@@ -26,7 +26,6 @@ public class PlayerStats : CharacterStats
 
     private void UpdatePlayerStats(Card statCard)
     {
-        Debug.Log($"Hand is updating stats with {statCard.name}");
         if(statCard.CardType == CardType.StatCard)
         {
             StatCard statCardCasted = (StatCard) statCard;
