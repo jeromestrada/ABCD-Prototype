@@ -13,16 +13,10 @@ public class Card : ScriptableObject
     [SerializeField] private int _cardPrice;
     [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
-    private int remainingUses;
 
     public int CardPrice => _cardPrice;
     public int NumOfUses => numOfUses;
     public CardRarity CardRarity => _cardRarity;
-
-    private void Awake()
-    {
-        remainingUses = numOfUses;
-    }
 
     private void SetRarity(CardRarity rarity)
     {

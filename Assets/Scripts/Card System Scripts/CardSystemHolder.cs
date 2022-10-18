@@ -10,6 +10,7 @@ public class CardSystemHolder : MonoBehaviour
     [SerializeField] protected CardSystem _cardSystem;
 
     public CardSystem CardSystem => _cardSystem;
+    public int CardSystemSize => _cardSystemSize;
 
     
 

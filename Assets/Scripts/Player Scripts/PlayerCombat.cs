@@ -85,7 +85,6 @@ public class PlayerCombat : MonoBehaviour
                 ResetAttackString();
             }
         }
-        
     }
 
     public void ResetAttackString()
@@ -105,7 +104,6 @@ public class PlayerCombat : MonoBehaviour
             finalStringTime = Time.time;
             ResetAttackString();
         }
-        
     }
 
     public void AttackHit_AnimationEvent()

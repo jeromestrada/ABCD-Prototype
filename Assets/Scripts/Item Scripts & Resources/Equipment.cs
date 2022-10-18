@@ -20,7 +20,6 @@ public class Equipment : Item
     public WeaponAnimations WeaponAnimations => _weaponAnimations;
     
 
-
     public override void Use()
     {// this part seems wrong, it gives this weapon access to the weaponManager but it just doesn't look right.
         equipmentManager = GameObject.Find("Player").GetComponent<EquipmentManager>();

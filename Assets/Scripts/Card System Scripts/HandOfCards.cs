@@ -49,9 +49,13 @@ public class HandOfCards : CardSystemHolder
 
     public void DrawCard()
     {
-        Card card = deck.GetTopCard();
-        if (card == null) return;
-        _cardSystem.AddToCardSystem(card);
-        OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
+        if (CardSystemSize < maxHandSize)
+        {
+            Card card = deck.GetTopCard();
+            if (card == null) return;
+            _cardSystem.AddToCardSystem(card);
+            OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
+        }
+        else Debug.Log("Player hand is full!");
     }
 }
