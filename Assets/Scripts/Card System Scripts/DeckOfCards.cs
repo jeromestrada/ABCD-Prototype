@@ -7,6 +7,7 @@ using System.Linq;
 [RequireComponent(typeof(UniqueID))]
 public class DeckOfCards : CardSystemHolder
 {
+    [SerializeField] CardSystem _viewOnlyDeck;
     [SerializeField] List<Card> startingCards;
     [SerializeField] private List<int> slotNumbersList;
     public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
@@ -24,6 +25,10 @@ public class DeckOfCards : CardSystemHolder
         if(data.deckDictionary.TryGetValue(GetComponent<UniqueID>().ID, out CardSystemHolderSaveData deckData))
         {   // check the save data for this deck, if it exists load it in
             _cardSystem = deckData.cardSystem;
+        }
+        if (data.viewOnlyDeckDictionary.TryGetValue(GetComponent<UniqueID>().ID, out CardSystemHolderSaveData viewDeckData))
+        {   // check the save data for this deck, if it exists load it in
+            _viewOnlyDeck = viewDeckData.cardSystem;
         }
     }
 
@@ -67,11 +72,18 @@ public class DeckOfCards : CardSystemHolder
             _cardSystem.AddToCardSystem(card);
         }
 
+        foreach (Card card in startingCards)
+        {
+            _viewOnlyDeck.AddToCardSystem(card);
+        }
+
         slotNumbersList = new List<int>();
         ShuffleDeck();
 
         var deckSaveData = new CardSystemHolderSaveData(_cardSystem);
+        var viewOnlyDeckSaveData = new CardSystemHolderSaveData(_viewOnlyDeck);
         SaveGameManager.data.deckDictionary.Add(GetComponent<UniqueID>().ID, deckSaveData);
+        SaveGameManager.data.viewOnlyDeckDictionary.Add(GetComponent<UniqueID>().ID, viewOnlyDeckSaveData);
     }
 
     protected override void Update()
@@ -89,8 +101,19 @@ public class DeckOfCards : CardSystemHolder
                 OnDeckOfCardsDisplayHideRequested?.Invoke();
                 isHidden = true;
             }
-            
-            
+        }
+        else if (Input.GetKeyDown(KeyCode.V))
+        {   // open/close deck of cards
+            if (isHidden)
+            {
+                OnDeckOfCardsDisplayRequested?.Invoke(_viewOnlyDeck);
+                isHidden = false;
+            }
+            else
+            {
+                OnDeckOfCardsDisplayHideRequested?.Invoke();
+                isHidden = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.L))
         {   // shuffle the deck of cards
