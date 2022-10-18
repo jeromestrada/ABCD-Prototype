@@ -7,6 +7,7 @@ public class CardSystemUIController : MonoBehaviour
 {
     public DynamicCardSystemDisplay DeckPanel;
     public DynamicCardSystemDisplay HandPanel;
+    public DynamicCardSystemDisplay DiscardPanel;
 
 
     private void Awake()
@@ -19,12 +20,14 @@ public class CardSystemUIController : MonoBehaviour
         DeckOfCards.OnDeckOfCardsDisplayRequested += DisplayDeck;
         DeckOfCards.OnDeckOfCardsDisplayHideRequested += HideDeck;
         HandOfCards.OnHandOfCardsDisplayRequested += DisplayHand;
+        DiscardedCards.OnDiscardPileDisplayRequested += DisplayDiscarPile;
     }
     private void OnDisable()
     {
         DeckOfCards.OnDeckOfCardsDisplayRequested -= DisplayDeck;
         DeckOfCards.OnDeckOfCardsDisplayHideRequested -= HideDeck;
         HandOfCards.OnHandOfCardsDisplayRequested -= DisplayHand;
+        DiscardedCards.OnDiscardPileDisplayRequested -= DisplayDiscarPile;
     }
     // Update is called once per frame
     void Update()
@@ -36,6 +39,12 @@ public class CardSystemUIController : MonoBehaviour
     {
         DeckPanel.gameObject.SetActive(true); 
         DeckPanel.RefreshDynamicInventory(cardSysToDisplay);
+    }
+
+    void DisplayDiscarPile(CardSystem cardSysToDisplay)
+    {
+        DiscardPanel.gameObject.SetActive(true);
+        DiscardPanel.RefreshDynamicInventory(cardSysToDisplay);
     }
 
     void HideDeck()

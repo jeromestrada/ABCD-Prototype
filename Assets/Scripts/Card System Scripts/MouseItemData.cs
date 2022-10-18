@@ -14,6 +14,7 @@ public class MouseItemData : MonoBehaviour
     public bool inUI;
     private CardSystemUIController cardSystemUIController;
     [SerializeField] private CardSystemHolder handOfCards;
+    [SerializeField] private DiscardedCards discardPile;
 
 
     private void Start()
@@ -48,10 +49,13 @@ public class MouseItemData : MonoBehaviour
             inUI = true;
             if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObjects())
             {// left click
+                var tempCard = AssignedCardSlot.Card;
                 AssignedCardSlot.UseCardInSlot();
                 if (AssignedCardSlot.RemainingUses > 0) ReturnToSlot();
                 else
                 {   // remove the slot from the card system, refresh the hand display and clear the mouse slot.
+                    Debug.Log($"{tempCard.name} is now being discarded");
+                    discardPile.Discard(tempCard);
                     handOfCards.CardSystem.RemoveCardSlot(pickedFromSlot.AssignedInventorySlot);
                     cardSystemUIController.HandPanel.RefreshDynamicInventory(handOfCards.CardSystem);
                     ClearSlot();
