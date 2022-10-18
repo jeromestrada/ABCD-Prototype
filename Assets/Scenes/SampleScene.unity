@@ -1503,17 +1503,17 @@ MonoBehaviour:
   _cardSystem:
     cardSlots: []
   startingCards:
-  - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
-  - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
-  - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
-  - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
-  - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
+  - {fileID: 11400000, guid: 4325d14fba49550409ad82171e96bfde, type: 2}
+  - {fileID: 11400000, guid: 4325d14fba49550409ad82171e96bfde, type: 2}
+  - {fileID: 11400000, guid: 4325d14fba49550409ad82171e96bfde, type: 2}
+  - {fileID: 11400000, guid: 4325d14fba49550409ad82171e96bfde, type: 2}
+  - {fileID: 11400000, guid: 4325d14fba49550409ad82171e96bfde, type: 2}
   - {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
-  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
-  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
-  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
-  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
-  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
+  - {fileID: 11400000, guid: 298d5538baf7648429f6368e86811410, type: 2}
+  - {fileID: 11400000, guid: 298d5538baf7648429f6368e86811410, type: 2}
+  - {fileID: 11400000, guid: 298d5538baf7648429f6368e86811410, type: 2}
+  - {fileID: 11400000, guid: 298d5538baf7648429f6368e86811410, type: 2}
+  - {fileID: 11400000, guid: 298d5538baf7648429f6368e86811410, type: 2}
   - {fileID: 11400000, guid: 541d6deeeaf30f640b64b15d075e7ef1, type: 2}
   - {fileID: 11400000, guid: 184f6c6e817c3ff42926fec6d66cf764, type: 2}
   slotNumbersList: 

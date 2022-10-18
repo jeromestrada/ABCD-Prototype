@@ -9,7 +9,7 @@ public class Card : ScriptableObject
     public Sprite cardIcon;
     [TextArea(4,4)]
     public string description;
-    public CardType cardType;
+    [SerializeField] private CardType _cardType;
     [SerializeField] private int _cardPrice;
     [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
@@ -17,6 +17,8 @@ public class Card : ScriptableObject
     public int CardPrice => _cardPrice;
     public int NumOfUses => numOfUses;
     public CardRarity CardRarity => _cardRarity;
+    public CardType CardType => _cardType;
+
 
     private void SetRarity(CardRarity rarity)
     {
@@ -29,5 +31,5 @@ public class Card : ScriptableObject
     }
 }
 
-public enum CardType { ItemCard, AttackCard, DefendCard, UtilityCard}
+public enum CardType { ItemCard, AttackCard, DefendCard, AbilityCard, StatCard }
 public enum CardRarity { Legendary, Mythical, Rare, Uncommon, Common }

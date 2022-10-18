@@ -9,6 +9,7 @@ public class EquipmentManager : MonoBehaviour
     // handles the MeshRenderer to display the weapon being wielded by the player.
 
     public static event System.Action<Equipment, Equipment> OnEquipmentChanged; // <old, new>
+
     public Equipment equippedWeapon;
     public Equipment testEquip;
     public Equipment testEquipReverse;

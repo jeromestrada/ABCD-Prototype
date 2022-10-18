@@ -7,6 +7,7 @@ public class PlayerStats : CharacterStats
     protected void Start()
     {
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
+        HandOfCards.OnHandChanged += UpdatePlayerStats;
     }
 
     private void UpdatePlayerStats(Equipment oldEquipment, Equipment newEquipment)
@@ -20,6 +21,17 @@ public class PlayerStats : CharacterStats
         {
             if (oldEquipment.ItemType == EquipmentType.Weapon) Damage.RemoveModifier(oldEquipment.Damage);
             else if (oldEquipment.ItemType == EquipmentType.Protection) Armor.RemoveModifier(oldEquipment.Armor);
+        }
+    }
+
+    private void UpdatePlayerStats(Card statCard)
+    {
+        Debug.Log($"Hand is updating stats with {statCard.name}");
+        if(statCard.CardType == CardType.StatCard)
+        {
+            StatCard statCardCasted = (StatCard) statCard;
+            if (statCardCasted.StatCardType == StatCardType.DamageStat) Damage.AddModifier(statCardCasted.StatBonus.GetValue());
+            else if (statCardCasted.StatCardType == StatCardType.ArmorStat) Armor.AddModifier(statCardCasted.StatBonus.GetValue());
         }
     }
 

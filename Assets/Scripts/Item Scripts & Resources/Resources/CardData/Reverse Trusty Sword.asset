@@ -17,7 +17,7 @@ MonoBehaviour:
   name: Reverse Trusty Sword
   cardIcon: {fileID: 21300000, guid: 9e47e17380468004aa41e7854579bd9d, type: 3}
   description: Equips a Reverse Trusty Sword
-  cardType: 0
+  _cardType: 0
   _cardPrice: 25
   numOfUses: 1
   exhaustable: 0

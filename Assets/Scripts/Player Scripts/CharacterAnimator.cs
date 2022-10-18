@@ -78,7 +78,7 @@ public class CharacterAnimator : MonoBehaviour
 
     public void AddWeaponAnimation(PlayerCardSlot slot)
     {
-        if (slot.Card.cardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Equipment)
+        if (slot.Card.CardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Equipment)
         {
             var itemCard = (ItemCard)slot.Card;
             var weapon = (Equipment)itemCard.item;

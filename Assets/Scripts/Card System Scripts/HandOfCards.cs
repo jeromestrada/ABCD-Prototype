@@ -8,6 +8,7 @@ public class HandOfCards : CardSystemHolder
     [SerializeField] private int maxHandSize;
     [SerializeField] private DeckOfCards deck;
     public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
+    public static event System.Action<Card> OnHandChanged;
 
 
     protected override void Awake()
@@ -55,6 +56,7 @@ public class HandOfCards : CardSystemHolder
             if (card == null) return;
             _cardSystem.AddToCardSystem(card);
             OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
+            OnHandChanged?.Invoke(card);
         }
         else Debug.Log("Player hand is full!");
     }
