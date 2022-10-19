@@ -36,7 +36,7 @@ public class Chest : Interactable
         for (int i = 0; i < optionsCount; i++)
         {
             var card = _lootGenerator.GenerateLoot();
-            while (_cardLootGenerated.Contains(card)) card = _lootGenerator.GenerateLoot(); // prevents duplicates
+            while (_cardLootGenerated.Contains(card)) card = _lootGenerator.GenerateLoot(); // prevents duplicates, might change it to allow atleast 1 duplicate
             _cardLootGenerated.Add(card);
         }
     }

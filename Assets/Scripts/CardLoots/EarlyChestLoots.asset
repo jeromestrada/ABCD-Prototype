@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 541d6deeeaf30f640b64b15d075e7ef1, type: 2}
   - {fileID: 11400000, guid: d3bcf9cbffc646a4ea1b20c4c5fc7cd2, type: 2}
   - {fileID: 11400000, guid: 28bfc20baff3bbe4c97d09d203e6b046, type: 2}
-  totalWeight: 120
+  totalWeight: 210
   randomNumber: 8
-  table: 2300000023000000140000000f0000000a00000005000000
+  table: 3c00000032000000280000001e000000140000000a000000
