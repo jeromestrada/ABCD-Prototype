@@ -21,11 +21,6 @@ public class ShopKeeper : Interactable // Shop system holder...
         }
     }
 
-    public override void EndInteraction()
-    {
-        
-    }
-
     public override void Interact(InteractableScanner scanner, out bool interactSuccessful)
     {
         // display the shop when interacted with

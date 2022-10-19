@@ -1145,8 +1145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiPanel: {fileID: 315973682}
   _promptText: {fileID: 81548171}
-  _fadeInSpeed: 0
-  _fadeOutSpeed: 0
+  _fadeInSpeed: 0.06
+  _fadeOutSpeed: 0.065
   isDisplayed: 0
 --- !u!1 &320733511
 GameObject:

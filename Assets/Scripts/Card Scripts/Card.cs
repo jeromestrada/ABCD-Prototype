@@ -10,7 +10,7 @@ public class Card : ScriptableObject
     [TextArea(4,4)]
     public string description;
     [SerializeField] private CardType _cardType;
-    [SerializeField] private int _cardPrice;
+    [SerializeField] private int _cardPrice; // TODO: have a modifiable card price in the shop slot based on this
     [SerializeField] private int numOfUses = 1; // a card can be used atleast once
     [SerializeField] private bool exhaustable;
 

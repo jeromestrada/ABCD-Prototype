@@ -84,6 +84,14 @@ public abstract class CardSystemDisplay : MonoBehaviour
             // Open up confirmation window and wait for Buy button to be clicked
             ((ShopKeeperDisplay)this).DisplayBuyConfirmWindow(clickedUISlotCasted);
         }
+
+        else if (this.CardSystemDisplayType == CardSystemDisplayType.LootInventory)
+        {
+            var clickedUISlotCasted = (LootSlot_UI)clickedUISlot;
+            Debug.Log($"Trying to buy {clickedUISlotCasted.AssignedLootSlot.Card.name}!");
+            // Open up confirmation window and wait for Loot button to be clicked
+            ((LootSystemDisplay)this).DisplayLootConfirmWindow(clickedUISlotCasted);
+        }
     }
     public void SwapSlots(CardSlot_UI clickedUISlot)
     {
@@ -96,4 +104,4 @@ public abstract class CardSystemDisplay : MonoBehaviour
     }
 }
 
-public enum CardSystemDisplayType { HandInventory, DeckInventory, ShopInventory }
+public enum CardSystemDisplayType { HandInventory, DeckInventory, ShopInventory, LootInventory }
