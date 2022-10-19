@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(SphereCollider))]
 public class Interactable : MonoBehaviour, IInteractable
 {
+    [SerializeField] private string _prompt;
     public float radius = 2f;
     public Transform interactionTransform; // so we can set a variable location when we want to
 
@@ -16,6 +17,7 @@ public class Interactable : MonoBehaviour, IInteractable
     private SphereCollider myCollider;
 
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
+    public string Prompt => _prompt;
 
     private void Awake()
     {

@@ -1,15 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 [RequireComponent(typeof(CharacterController))]
 public class InteractableScanner : MonoBehaviour
 {
-    [SerializeField] float scannerRadius;
+    [SerializeField] private float scannerRadius;
+    [SerializeField] InteractionPromptUI _promptUI;
     private CharacterController characterController;
     public Interactable closestInteractable = null;
-    float interactableScanInterval = 0.5f;
+    [SerializeField] private float interactableScanInterval = 0.2f;
     bool alreadyScanned = false;
+
+
 
     public bool IsInteracting { get; private set; }
 
@@ -24,13 +27,20 @@ public class InteractableScanner : MonoBehaviour
 
     void Update()
     {
-        if(interactables.Count > 0)
+        if(interactables.Count > 0) // scanning for closest when there's atleast 1 interactable
         {
             ScanForClosestInteractable();
+            if (closestInteractable != null)
+            {
+                if (!_promptUI.isDisplayed) _promptUI.SetUp(closestInteractable.Prompt);
+
+                if (Input.GetKeyDown(KeyCode.E)) StartInteraction(closestInteractable);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        else
         {
-            if (closestInteractable != null) StartInteraction(closestInteractable);
+            if (closestInteractable != null) closestInteractable = null;
+            if(_promptUI.isDisplayed) _promptUI.Close();
         }
     }
 
@@ -59,6 +69,7 @@ public class InteractableScanner : MonoBehaviour
                 {
                     closestDist = distance;
                     closestInteractable = i;
+                    _promptUI.SetUp(closestInteractable.Prompt);
                 }
                 i.WhenInRange(transform); // we're in range if we haven't exited the trigger, so we ready the interactable.
             }
@@ -92,7 +103,7 @@ public class InteractableScanner : MonoBehaviour
         var interactableObj = other.transform.GetComponent<Interactable>();
         if (interactableObj != null)
         {
-            interactableObj.WhenNotInRange();
+            interactableObj.WhenNotInRange(); // reset the interactables state when it exits the players scanner radius
             interactables.Remove(interactableObj);
         }
         if (interactables.Count == 0) // null the closest if the interactables list is empty
