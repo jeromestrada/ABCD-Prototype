@@ -59,6 +59,11 @@ public class ShopKeeperDisplay : CardSystemDisplay
         }
     }
 
+    public void CloseShopWindow()
+    {
+        gameObject.SetActive(false);
+    }
+
     public override void AssignSlots(CardSystem invToDisplay)
     {
         

@@ -34,5 +34,10 @@ public class BuyConfirmWindow : MonoBehaviour
         _cardToDisplay = _shopSlotDisplayed.Card;
         _cardSprite.sprite = _cardToDisplay.cardIcon;
     }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
     
 }
