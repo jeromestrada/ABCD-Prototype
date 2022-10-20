@@ -19,7 +19,7 @@ public class Interactable : MonoBehaviour, IInteractable
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
     public string Prompt => _prompt;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         myCollider = GetComponent<SphereCollider>();
         myCollider.radius = radius;

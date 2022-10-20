@@ -88,7 +88,7 @@ public abstract class CardSystemDisplay : MonoBehaviour
         else if (this.CardSystemDisplayType == CardSystemDisplayType.LootInventory)
         {
             var clickedUISlotCasted = (LootSlot_UI)clickedUISlot;
-            Debug.Log($"Trying to buy {clickedUISlotCasted.AssignedLootSlot.Card.name}!");
+            Debug.Log($"Trying to loot {clickedUISlotCasted.AssignedLootSlot.Card.name}!");
             // Open up confirmation window and wait for Loot button to be clicked
             ((LootSystemDisplay)this).DisplayLootConfirmWindow(clickedUISlotCasted);
         }

@@ -13,8 +13,9 @@ public class Chest : Interactable
 
     public static UnityAction<LootSystem, DeckOfCards> OnLootWindowRequested;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _cardLootGenerated = new List<Card>();
         _lootSystem = new LootSystem(_cardLootCount);
         GenerateLootOptions(_cardLootCount);
@@ -22,6 +23,7 @@ public class Chest : Interactable
 
     public override void Interact(InteractableScanner scanner, out bool interactSuccessful)
     {
+        Debug.Log("Chest interacting");
         deck = scanner.GetComponentInChildren<DeckOfCards>(); // get the deck from the scanner
 
         if (deck != null)
