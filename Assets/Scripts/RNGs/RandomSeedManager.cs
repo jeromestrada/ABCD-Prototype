@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class RandomSeedManager : MonoBehaviour
 {
-    [SerializeField] private string _currentSeed;
-    [SerializeField] private string _newSeed;
+    private string _currentSeed;
+    [SerializeField] private string _seed;
+    public bool setMySeed;
     public string GetCurrentSeed => _currentSeed;
 
     private void Awake() => GenerateRandomSeed();
 
     public void GenerateRandomSeed()
     {
-        int tempSeed = (int)System.DateTime.Now.Ticks;
-        _currentSeed = tempSeed.ToString();
+        if (!setMySeed)
+        {
+            int tempSeed = (int)System.DateTime.Now.Ticks;
+            _currentSeed = tempSeed.ToString();
 
-        Random.InitState(tempSeed);
+            Random.InitState(tempSeed);
+        }
+        else SetSeed();
     }
 
-    [ContextMenu("Set new seed")]
-    public void SetNewSeed()
+    [ContextMenu("Set seed")]
+    public void SetSeed()
     {
-        SetRandomSeed(_newSeed);
+        SetRandomSeed(_seed);
         Debug.Log("new seed set!");
     }
 
