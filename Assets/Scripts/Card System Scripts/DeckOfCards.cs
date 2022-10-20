@@ -8,7 +8,7 @@ using System.Linq;
 public class DeckOfCards : CardSystemHolder
 {
     [SerializeField] CardSystem _viewOnlyDeck;
-    [SerializeField] List<Card> startingCards;
+    [SerializeField] List<Card> _startingCards;
     [SerializeField] private List<int> slotNumbersList;
     public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
     public static UnityAction OnDeckOfCardsDisplayHideRequested;
@@ -35,7 +35,11 @@ public class DeckOfCards : CardSystemHolder
     public bool AddCardToDeck(Card cardToAdd)
     {
         var addSuccess = CardSystem.AddToCardSystem(cardToAdd);
-        if (addSuccess) ShuffleDeck(); // if the card is added, we reshuffle the Deck
+        if (addSuccess)
+        {
+            _viewOnlyDeck.AddToCardSystem(cardToAdd); // add the new card into the view only deck as well
+            ShuffleDeck(); // if the card is added, we reshuffle the Deck
+        }
         return addSuccess;
     }
 
@@ -63,16 +67,31 @@ public class DeckOfCards : CardSystemHolder
         return card;
     }
 
+    public void RemoveCard(PlayerCardSlot cardSlot)
+    {
+        CardSystem.RemoveCardSlot(cardSlot);
+        UpdateViewOnlyDeck();
+    }
+
+    public void UpdateViewOnlyDeck()
+    {
+        _viewOnlyDeck.CardSlots.Clear();
+        foreach(var c in _cardSystem.CardSlots)
+        {
+            _viewOnlyDeck.AddToCardSystem(c.Card);
+        }
+    }
+
     private void Start()
     {
         isHidden = true;
         // add the starting cards into the deck
-        foreach (Card card in startingCards)
+        foreach (Card card in _startingCards)
         {
             _cardSystem.AddToCardSystem(card);
         }
 
-        foreach (Card card in startingCards)
+        foreach (Card card in _startingCards)
         {
             _viewOnlyDeck.AddToCardSystem(card);
         }

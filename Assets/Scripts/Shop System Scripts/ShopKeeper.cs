@@ -11,8 +11,9 @@ public class ShopKeeper : Interactable // Shop system holder...
     [SerializeField] private ShopSystem _shopSystem;
     public static UnityAction<ShopSystem, DeckOfCards> OnShopWindowRequested;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _shopSystem = new ShopSystem(_shopStockList.CardsInStock.Count, _shopStockList.MaxGold, _shopStockList.BuyMarkUp, _shopStockList.SellMarkUp);
 
         foreach(var stockCard in _shopStockList.CardsInStock)
