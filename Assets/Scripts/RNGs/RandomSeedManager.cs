@@ -7,6 +7,7 @@ public class RandomSeedManager : MonoBehaviour
     private string _currentSeed;
     [SerializeField] private string _seed;
     public bool setMySeed;
+    public bool copySeedToClipboard;
     public string GetCurrentSeed => _currentSeed;
 
     private void Awake() => GenerateRandomSeed();
@@ -21,6 +22,7 @@ public class RandomSeedManager : MonoBehaviour
             Random.InitState(tempSeed);
         }
         else SetSeed();
+        if(copySeedToClipboard) CopySeedToClipboard();
     }
 
     [ContextMenu("Set seed")]
