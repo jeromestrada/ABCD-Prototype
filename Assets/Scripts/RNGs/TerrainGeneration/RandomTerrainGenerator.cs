@@ -13,6 +13,7 @@ public class RandomTerrainGenerator : MonoBehaviour
     [ContextMenu("Generate terrain")]
     public void Generate()
     {
+        Debug.Log($"Max array size is {System.Int32.MaxValue}");
         Mesh mesh = new Mesh();
         mesh.vertices = CreateVertices();
         mesh.triangles = CreateTriangles();
@@ -24,7 +25,7 @@ public class RandomTerrainGenerator : MonoBehaviour
     private Vector3[] CreateVertices()
     {
         Vector3[] vertices = new Vector3[(_terrainSize.x + 1) * (_terrainSize.y + 1)];
-        for(int z = 0, i = 0 ; z <= _terrainSize.y; z++)
+        for(int z = 0, i = 0; z <= _terrainSize.y; z++)
         {
             for(int x = 0; x <= _terrainSize.x; x++)
             {
