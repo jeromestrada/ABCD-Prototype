@@ -32,6 +32,16 @@ public class EquipmentManager : MonoBehaviour
 
     public SkinnedMeshRenderer targetMesh;
 
+    private void OnEnable()
+    {
+        Equipment.OnEquipmentUse += Equip;
+    }
+
+    private void OnDisable()
+    {
+        Equipment.OnEquipmentUse -= Equip;
+    }
+
     private void Start()
     {
         equippedWeaponMesh = new SkinnedMeshRenderer();

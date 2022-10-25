@@ -18,12 +18,13 @@ public class Equipment : Item
     public int StringAttacksCount => _stringAttacksCount;
     public Transform[] AttackPoints => _attackPoints;
     public WeaponAnimations WeaponAnimations => _weaponAnimations;
+
+    public static System.Action<Equipment> OnEquipmentUse;
     
     // TODO: refactor this to use an Action pattern. OnItemUse will be invoked when this function is called and any classes that listens to it will trigger accordingly
     public override void Use()
-    {// this part seems wrong, it gives this weapon access to the weaponManager but it just doesn't look right.
-        equipmentManager = GameObject.Find("Player").GetComponent<EquipmentManager>();
-        equipmentManager.Equip(this);
+    {
+        OnEquipmentUse?.Invoke(this);
         base.Use();
     }
 }
