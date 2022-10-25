@@ -14,6 +14,15 @@ public class DeckOfCards : CardSystemHolder
     public static UnityAction OnDeckOfCardsDisplayHideRequested;
     private bool isHidden;
 
+    private void OnEnable()
+    {
+        PickableCard.OnCardPickup += PickCard;
+    }
+    private void OnDisable()
+    {
+        PickableCard.OnCardPickup -= PickCard;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -32,15 +41,22 @@ public class DeckOfCards : CardSystemHolder
         }
     }
 
-    public bool AddCardToDeck(Card cardToAdd)
+    // this allows the deck to destroy the pickable when picking it up
+    public void PickCard(PickableCard pickable)
     {
+        AddCardToDeck(pickable.card);
+        Destroy(pickable.gameObject);
+    }
+
+    public void AddCardToDeck(Card cardToAdd)
+    {
+        Debug.Log($"Adding {cardToAdd.name}");
         var addSuccess = CardSystem.AddToCardSystem(cardToAdd);
         if (addSuccess)
         {
             _viewOnlyDeck.AddToCardSystem(cardToAdd); // add the new card into the view only deck as well
             ShuffleDeck(); // if the card is added, we reshuffle the Deck
         }
-        return addSuccess;
     }
 
     public void ShuffleDeck() // shuffle the deck by assigning a randomly genereated number to each slot and
