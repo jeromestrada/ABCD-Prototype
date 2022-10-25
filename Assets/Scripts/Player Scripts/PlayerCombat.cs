@@ -53,11 +53,10 @@ public class PlayerCombat : MonoBehaviour
             {
                 canStringAttack = false; // we wait for the animation to hit before we can attack again
                 lastAttackStringTime = float.MaxValue;
-                if (OnAttack != null)
-                {
-                    currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
-                    OnAttack(CurrentAttackString % equippedWeapon.StringAttacksCount); // invoke the delegate
-                }
+                
+                currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
+                OnAttack?.Invoke(CurrentAttackString % equippedWeapon.StringAttacksCount); // invoke the action
+                
                 if (controller.isDashing)
                 {
                     controller.OnEndDash();

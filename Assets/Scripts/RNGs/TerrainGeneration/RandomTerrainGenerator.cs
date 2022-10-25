@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomTerrainGenerator : MonoBehaviour
-{
+{   // this class is a test and will be refactored to use the system in the Procedural-Terrain-Generation project.
     [SerializeField] private GameObject _terrainPrefabs;
 
     [Header("Terrain Size refers to the number of prefabs along an axis")]
