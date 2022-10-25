@@ -21,7 +21,6 @@ public class Equipment : Item
 
     public static System.Action<Equipment> OnEquipmentUse;
     
-    // TODO: refactor this to use an Action pattern. OnItemUse will be invoked when this function is called and any classes that listens to it will trigger accordingly
     public override void Use()
     {
         OnEquipmentUse?.Invoke(this);

@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 7825826883999305796}
   - component: {fileID: 7825826883999305798}
   - component: {fileID: 1299409078070864899}
+  - component: {fileID: 4862911251944186328}
   m_Layer: 5
   m_Name: Inventory Slot
   m_TagString: Untagged
@@ -274,9 +275,23 @@ MonoBehaviour:
   assignedInventorySlot:
     _cardID: -1
     _stackSize: -1
+    _cardLevel: 0
     remainingUses: -1
     slotNumber: 0
   _button: {fileID: 7825826883999305798}
+--- !u!114 &4862911251944186328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7825826883999305818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adeebb1f997e45249a277505ebcff0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: Test text
 --- !u!1 &7825826885929173505
 GameObject:
   m_ObjectHideFlags: 0
