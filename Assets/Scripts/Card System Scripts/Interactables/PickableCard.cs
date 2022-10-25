@@ -13,13 +13,13 @@ public class PickableCard : Interactable
     }
 
     void Pickup()
-    {
-        var deck = player.GetComponentInChildren<DeckOfCards>();
+    {   // TODO: consider refactoring to Action pattern. Will trigger an OnPickUp action and deck will be listening to it for adding.
+        var deck = player.GetComponentInChildren<DeckOfCards>(); // refactoring will eliminate the need for this object to refer to the deck this way
         if(deck != null)
         {
             if (deck.AddCardToDeck(card))
-            {
-                Destroy(gameObject); // destroy the game object
+            {   // destroy the game object, we can pass in the object into the action to destroy it in DeckOfCards when successfully adding it in.
+                Destroy(gameObject); 
             }
         }
     }

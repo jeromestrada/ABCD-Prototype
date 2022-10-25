@@ -19,7 +19,7 @@ public class Equipment : Item
     public Transform[] AttackPoints => _attackPoints;
     public WeaponAnimations WeaponAnimations => _weaponAnimations;
     
-
+    // TODO: refactor this to use an Action pattern. OnItemUse will be invoked when this function is called and any classes that listens to it will trigger accordingly
     public override void Use()
     {// this part seems wrong, it gives this weapon access to the weaponManager but it just doesn't look right.
         equipmentManager = GameObject.Find("Player").GetComponent<EquipmentManager>();

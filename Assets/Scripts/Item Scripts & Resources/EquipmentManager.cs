@@ -10,6 +10,18 @@ public class EquipmentManager : MonoBehaviour
 
     public static event System.Action<Equipment, Equipment> OnEquipmentChanged; // <old, new>
 
+    /*
+     *  if we refactor Item to have an action like OnItemUse invoked instead of calling a Use() function and resolving the logic up a chain of refs
+     *  we can then have a subscription to the action here in the EquipmentManager like:
+     *  void OnEnable/Disable(){
+     *  
+     *  Item.OnItemUse +/- = Equip;
+     *  
+     *  }
+     *  
+     *  then we can still invoke OnEquipmentChanged inside Equip and have a chain of Action calls instead of a chain of refs.
+     */
+
     public Equipment equippedWeapon;
     public Equipment testEquip;
     public Equipment testEquipReverse;

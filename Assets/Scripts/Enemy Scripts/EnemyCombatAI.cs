@@ -63,6 +63,7 @@ public class EnemyCombatAI : MonoBehaviour
             walkPointSet = false;
         }
     }
+
     private void SearchWalkPoint()
     {
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -72,21 +73,19 @@ public class EnemyCombatAI : MonoBehaviour
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground)) walkPointSet = true;
     }
+
     private void Chasing()
     {
         agent.SetDestination(playerTrans.position);
     }
+
     private void Attacking()
     {
-        
         agent.SetDestination(transform.position);
         transform.LookAt(playerTrans);
         if (!alreadyAttacked)
         {
-            if (OnEnemyAttack != null)
-            {
-                OnEnemyAttack();
-            }
+            OnEnemyAttack?.Invoke();
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

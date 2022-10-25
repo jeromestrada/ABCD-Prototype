@@ -7,7 +7,7 @@ public class ItemCard : Card
 
     public override bool Use()
     {
-        item.Use();
+        item.Use(); // can this be refactored to an Action pattern? i.e. calling an OnItemUse action then passing in this card, 
         return base.Use();
     }
 }
