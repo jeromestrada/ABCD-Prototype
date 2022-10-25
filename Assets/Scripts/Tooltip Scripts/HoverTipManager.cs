@@ -31,9 +31,13 @@ public class HoverTipManager : MonoBehaviour
     {
         tipText.text = tip;
         tipWindow.sizeDelta = new Vector2(tipText.preferredWidth > 200 ? 200 : tipText.preferredWidth, tipText.preferredHeight);
+        float xOffset = tipWindow.sizeDelta.x;
+        float yOffset = tipText.preferredHeight * 0.8f;
+        if (mousePos.x + (tipWindow.sizeDelta.x * 2) >= Screen.width) xOffset *= -1; // handles tooltip edging over the screen
+        if(mousePos.y + (tipText.preferredHeight * 2) >= Screen.height) yOffset *= -1;
 
         tipWindow.gameObject.SetActive(true);
-        tipWindow.transform.position = new Vector2(mousePos.x + tipWindow.sizeDelta.x, mousePos.y + tipText.preferredHeight * 0.8f);
+        tipWindow.transform.position = new Vector2(mousePos.x + xOffset, mousePos.y + yOffset);
     }
 
     private void HideTip()

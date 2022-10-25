@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
+    [TextArea(6,5)]
     public string tipToShow;
     private float timeToWait = 0.5f;
 
