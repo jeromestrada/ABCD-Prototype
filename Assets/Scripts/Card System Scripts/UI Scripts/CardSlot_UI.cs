@@ -10,6 +10,8 @@ public class CardSlot_UI : Slot_UI
 
     [SerializeField] private Button _button;
 
+    [SerializeField] private HoverTip hoverTip;
+
     public PlayerCardSlot AssignedInventorySlot => assignedInventorySlot;
     
 
@@ -35,6 +37,7 @@ public class CardSlot_UI : Slot_UI
             cardSprite.color = Color.white;
             if (slot.RemainingUses > 1) cardCount.text = slot.RemainingUses.ToString();
             else cardCount.text = "";
+            hoverTip.tipToShow = slot.Card.description;
         }
         else
         {
@@ -53,5 +56,6 @@ public class CardSlot_UI : Slot_UI
         cardSprite.sprite = null;
         cardSprite.color = Color.clear;
         cardCount.text = "";
+        hoverTip.tipToShow = "";
     }
 }

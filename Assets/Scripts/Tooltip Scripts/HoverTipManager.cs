@@ -45,11 +45,13 @@ public class HoverTipManager : MonoBehaviour
         isTipShown = true;
         mousePos = _mousePos;
         tipText.text = tip;
-        tipWindow.sizeDelta = new Vector2(tipText.preferredWidth > 200 ? 200 : tipText.preferredWidth, tipText.preferredHeight);
-        xOffset = tipWindow.sizeDelta.x;
-        yOffset = tipText.preferredHeight * 0.8f;
+        float windowWidth = tipText.preferredWidth > 200 ? 200 : tipText.preferredWidth;
+        float windowHeight = tipText.preferredHeight > 100 ? 100 : tipText.preferredHeight;
+        tipWindow.sizeDelta = new Vector2(windowWidth, windowHeight);
+        xOffset = tipWindow.sizeDelta.x + 10;
+        yOffset = tipWindow.sizeDelta.y * 0.8f - 10;
         if (mousePos.x + (tipWindow.sizeDelta.x * 2) >= Screen.width) xOffset *= -1; // handles tooltip edging over the screen
-        if(mousePos.y + (tipText.preferredHeight * 2) >= Screen.height) yOffset *= -1;
+        if(mousePos.y + (tipWindow.sizeDelta.y * 2) >= Screen.height) yOffset *= -1;
 
         tipWindow.gameObject.SetActive(true);
         UpdateTipPosition();

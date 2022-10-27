@@ -279,6 +279,7 @@ MonoBehaviour:
     remainingUses: -1
     slotNumber: 0
   _button: {fileID: 7825826883999305798}
+  hoverTip: {fileID: 4862911251944186328}
 --- !u!114 &4862911251944186328
 MonoBehaviour:
   m_ObjectHideFlags: 0
