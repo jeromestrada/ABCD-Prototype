@@ -47,9 +47,9 @@ public class CardSystemUIController : MonoBehaviour
         DiscardPanel.RefreshDynamicInventory(cardSysToDisplay);
     }
 
-    void HideDeck()
+    void HideDeck(CardSystem cardSysToHide)
     {
-        DeckPanel.gameObject.SetActive(false);
+        if(cardSysToHide.CardSystemSize != 0) DeckPanel.gameObject.SetActive(false);
     }
 
     void DisplayHand(CardSystem cardSysToDisplay)

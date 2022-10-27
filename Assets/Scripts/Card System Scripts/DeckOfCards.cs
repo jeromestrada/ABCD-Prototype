@@ -11,7 +11,7 @@ public class DeckOfCards : CardSystemHolder
     [SerializeField] List<Card> _startingCards;
     [SerializeField] private List<int> slotNumbersList;
     public static UnityAction<CardSystem> OnDeckOfCardsDisplayRequested;
-    public static UnityAction OnDeckOfCardsDisplayHideRequested;
+    public static UnityAction<CardSystem> OnDeckOfCardsDisplayHideRequested;
     private bool isHidden;
 
     private void OnEnable()
@@ -126,27 +126,28 @@ public class DeckOfCards : CardSystemHolder
         base.Update();
         if (Input.GetKeyDown(KeyCode.C))
         {   // open/close deck of cards
-            if (isHidden)
+            if (isHidden && _cardSystem.CardSystemSize != 0)
             {
                 OnDeckOfCardsDisplayRequested?.Invoke(_cardSystem);
                 isHidden = false;
             }
             else
             {
-                OnDeckOfCardsDisplayHideRequested?.Invoke();
+                OnDeckOfCardsDisplayHideRequested?.Invoke(_cardSystem);
                 isHidden = true;
             }
         }
         else if (Input.GetKeyDown(KeyCode.V))
         {   // open/close deck of cards
-            if (isHidden)
+            Debug.Log($"viewing, isHidden is {isHidden}, vod has {_viewOnlyDeck.CardSystemSize}");
+            if (isHidden && _viewOnlyDeck.CardSystemSize != 0)
             {
                 OnDeckOfCardsDisplayRequested?.Invoke(_viewOnlyDeck);
                 isHidden = false;
             }
             else
             {
-                OnDeckOfCardsDisplayHideRequested?.Invoke();
+                OnDeckOfCardsDisplayHideRequested?.Invoke(_viewOnlyDeck);
                 isHidden = true;
             }
         }
@@ -154,7 +155,7 @@ public class DeckOfCards : CardSystemHolder
         {   // shuffle the deck of cards
             ShuffleDeck();
         }
-        if (CardSystem.CardSlots.Count <= 0 && !isHidden) OnDeckOfCardsDisplayHideRequested?.Invoke();
+        if (CardSystem.CardSlots.Count <= 0 && !isHidden) OnDeckOfCardsDisplayHideRequested?.Invoke(_cardSystem);
     }
 }
 
