@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ca73735a11ac64baaa859f87544b51, type: 3}
-  m_Name: Dash
+  m_Script: {fileID: 11500000, guid: 94ffbc1dedd3f3549b1739327c37cc29, type: 3}
+  m_Name: Block
   m_EditorClassIdentifier: 
-  _name: Dash
-  _description: Move quickly towards a direction
-  _cooldownTime: 1
-  _castCost: 1
+  _name: Block
+  _description: Bolsters defenses significantly for a short while
+  _cooldownTime: 5
+  _castCost: 5
   _state: 0
-  _key: 32
+  _key: 103
   isActivated: 0
-  _dashSpeed: 15
-  isDashing: 0
-  dashStartTime: 0
-  dashDuration: 0.2
+  _blockAmount: 50
+  isBlocking: 0
+  blockStartTime: 0
+  blockDuration: 5

@@ -31,7 +31,6 @@ public class PlayerCombat : MonoBehaviour
     private void Start()
     {
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
-
         DashAbility.OnDashEnd += OnDashEnd;
 
         controller = GetComponent<PlayerMovement>();
@@ -40,7 +39,8 @@ public class PlayerCombat : MonoBehaviour
         ResetAttackString();
     }
 
-    private void OnDashEnd()
+
+    private void OnDashEnd() // this can be refactored to allow dash attacks.
     {
         canStringAttack = true;
         ResetAttackString(); // reset the attack string to the beginning after a dash
@@ -67,11 +67,6 @@ public class PlayerCombat : MonoBehaviour
                 
                 currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
                 OnAttack?.Invoke(CurrentAttackString % equippedWeapon.StringAttacksCount); // invoke the action
-                
-                /*if (controller.isDashing)
-                {
-                    controller.OnEndDash();
-                }*/
             }
         }
     }

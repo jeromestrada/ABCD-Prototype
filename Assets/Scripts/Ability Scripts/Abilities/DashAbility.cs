@@ -1,18 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ Dash ability allows the ability holder move quickly for a given time.
+ 
+ */
 [CreateAssetMenu(fileName ="Dash", menuName ="Abilities/Dash")]
 public class DashAbility : Ability
 {
-    [SerializeField] private float _dashVelocity;
+    [SerializeField] private float _dashSpeed;
+
+    public float DashSpeed => _dashSpeed;
 
     public bool isDashing;
-    public float dashSpeed;
     public float dashStartTime;
     public float dashDuration;
-
-    
 
     PlayerCombat combat;
 
@@ -28,13 +32,13 @@ public class DashAbility : Ability
         OnStartDash();
     }
 
-    public override void UpdateAbility(PlayerMovement movement)
+    public override void UpdateAbility(PlayerMovement movement, CharacterStats stats)
     {
         if (isActivated)
         {
             if (Time.time - dashStartTime <= dashDuration)
             {
-                movement.dashSpeed = dashSpeed;
+                movement.dashSpeed = DashSpeed;
             }
             else
             {

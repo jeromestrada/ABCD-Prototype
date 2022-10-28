@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
-    [SerializeField] Ability ability; // change to a list so holder can cast multiple different abilities
+    [SerializeField] Ability[] ability; // change to a list so holder can cast multiple different abilities
     float cooldownTime;
 
     [SerializeField] private PlayerMovement movement;
+    [SerializeField] private CharacterStats characterStats;
 
     private void Update()
     {
-        if (Input.GetKeyDown(ability.Key))
+        foreach(var a in ability)
         {
-            ability.Activate();
+            if (Input.GetKeyDown(a.Key))
+            {
+                a.Activate();
+            }
+            if (a.isActivated) a.UpdateAbility(movement, characterStats);
         }
-        if(ability.isActivated) ability.UpdateAbility(movement);
+        
     }
 }
 
