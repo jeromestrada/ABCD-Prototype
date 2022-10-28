@@ -12,6 +12,8 @@ public class DashAbility : Ability
     public float dashStartTime;
     public float dashDuration;
 
+    
+
     PlayerCombat combat;
 
     public static event System.Action OnDash;
@@ -24,6 +26,22 @@ public class DashAbility : Ability
     public override void Activate()
     {
         OnStartDash();
+    }
+
+    public void UpdateAbility(PlayerMovement movement)
+    {
+        if (isDashing)
+        {
+            if (Time.time - dashStartTime <= dashDuration)
+            {
+                movement.dashSpeed = dashSpeed;
+            }
+            else
+            {
+                OnEndDash();
+                movement.dashSpeed = 0;
+            }
+        }
     }
 
     void OnStartDash()

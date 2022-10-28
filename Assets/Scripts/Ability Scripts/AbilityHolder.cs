@@ -6,14 +6,8 @@ public class AbilityHolder : MonoBehaviour
 {
     [SerializeField] Ability ability; // change to a list so holder can cast multiple different abilities
     float cooldownTime;
-    private CharacterController controller;
-    private PlayerMovement movement;
 
-    private void Start()
-    {
-        controller = GetComponent<CharacterController>();
-        movement = GetComponent<PlayerMovement>();
-    }
+    [SerializeField] private PlayerMovement movement;
 
     private void Update()
     {
@@ -22,18 +16,7 @@ public class AbilityHolder : MonoBehaviour
         {
             dash.Activate();
         }
-        if (dash.isDashing)
-        {
-            if (Time.time - dash.dashStartTime <= dash.dashDuration)
-            {
-                movement.dashSpeed = dash.dashSpeed;
-            }
-            else
-            {
-                dash.OnEndDash();
-                movement.dashSpeed = 0;
-            }
-        }
+        if(dash.isDashing) dash.UpdateAbility(movement);
     }
 }
 
