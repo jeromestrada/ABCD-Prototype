@@ -104,6 +104,9 @@ public class CharacterAnimator : MonoBehaviour
     {
         animator.SetTrigger("dashTrigger");
     }
+
+    // Character animator will have to have logic for all existing abilities so that when they fire their rexpective actions
+    // the animator can listen to each and trigger the corresponding animation
 }
 
 [System.Serializable]
