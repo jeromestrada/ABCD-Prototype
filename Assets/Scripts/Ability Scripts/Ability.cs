@@ -24,6 +24,8 @@ public class Ability : ScriptableObject
     public KeyCode Key => _key;
 
     public virtual void Activate() { }
+
+    public virtual void UpdateAbility(PlayerMovement movement) { }
 }
 
 public enum AbilityState

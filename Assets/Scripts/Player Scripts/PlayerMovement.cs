@@ -69,7 +69,6 @@ public class PlayerMovement : MonoBehaviour
                 speed = 0;
             }
             controller.Move(move * (speed + dashSpeed) * Time.deltaTime);
-            
         }
         else
         {

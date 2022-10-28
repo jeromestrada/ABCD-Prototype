@@ -11,12 +11,11 @@ public class AbilityHolder : MonoBehaviour
 
     private void Update()
     {
-        var dash = ((DashAbility)ability);
-        if (Input.GetKeyDown(dash.Key))
+        if (Input.GetKeyDown(ability.Key))
         {
-            dash.Activate();
+            ability.Activate();
         }
-        if(dash.isActivated) dash.UpdateAbility(movement);
+        if(ability.isActivated) ability.UpdateAbility(movement);
     }
 }
 

@@ -18,8 +18,9 @@ MonoBehaviour:
   _castCost: 1
   _state: 0
   _key: 32
+  isActivated: 0
   _dashVelocity: 50
   isDashing: 0
-  dashSpeed: 20
+  dashSpeed: 1000
   dashStartTime: 0
-  dashDuration: 0.2
+  dashDuration: 0

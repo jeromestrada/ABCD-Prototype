@@ -28,7 +28,7 @@ public class DashAbility : Ability
         OnStartDash();
     }
 
-    public void UpdateAbility(PlayerMovement movement)
+    public override void UpdateAbility(PlayerMovement movement)
     {
         if (isActivated)
         {
