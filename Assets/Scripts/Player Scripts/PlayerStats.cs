@@ -42,7 +42,7 @@ public class PlayerStats : CharacterStats
     }
     public override void Die()
     {
-        GetComponent<PlayerController>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
         base.Die();
     }
 }

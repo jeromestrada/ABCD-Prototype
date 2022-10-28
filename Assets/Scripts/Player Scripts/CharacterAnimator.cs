@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(PlayerMovement))]
 public class CharacterAnimator : MonoBehaviour
 {
     Animator animator;
@@ -13,7 +13,7 @@ public class CharacterAnimator : MonoBehaviour
     EquipmentManager weaponManager;
     Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict;
 
-    PlayerController playerController;
+    PlayerMovement playerController;
     public AnimatorOverrideController overrideController;
     PlayerCombat combat;
 
@@ -31,7 +31,7 @@ public class CharacterAnimator : MonoBehaviour
         animator.runtimeAnimatorController = overrideController;
         currentAttackAnimSet = defaultAttackAnimSet;
 
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerMovement>();
 
         playerController.OnDash += OnDash;
         PlayerCombat.OnAttack += OnAttack;

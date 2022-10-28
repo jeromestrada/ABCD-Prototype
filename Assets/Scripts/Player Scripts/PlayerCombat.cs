@@ -24,13 +24,13 @@ public class PlayerCombat : MonoBehaviour
     public float cooldownDuration = 3f;
 
     public static event System.Action<int> OnAttack;
-    PlayerController controller;
+    PlayerMovement controller;
     [SerializeField] MouseItemData mouseItemData;
 
     private void Start()
     {
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
-        controller = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerMovement>();
         lastAttackStringTime = 0;
         canStringAttack = true;
         ResetAttackString();
