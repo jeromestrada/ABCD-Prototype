@@ -12,8 +12,10 @@ public class AbilityHolder : MonoBehaviour
 
     private void Update()
     {
+        // cast time can be added so that abilities can be cancelled skillfully when needed.
+        // TODO: add the cast time mechanic in the abilities themselves, Coroutines seems to be a good approach
         foreach(var a in ability)
-        {
+        {// cycle through all the abilites in the list and listen for their key down
             if (Input.GetKeyDown(a.Key))
             {
                 a.Activate();
