@@ -13,6 +13,7 @@ public class Ability : ScriptableObject
     [SerializeField] private float _castCost;
     [SerializeField] private AbilityState _state;
     [SerializeField] private KeyCode _key;
+    public bool isActivated;
 
     // Accessors
     public string Name => _name;

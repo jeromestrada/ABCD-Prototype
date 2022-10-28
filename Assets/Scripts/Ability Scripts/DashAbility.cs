@@ -21,7 +21,7 @@ public class DashAbility : Ability
 
     private void Awake()
     {
-        isDashing = false;
+        isActivated = false;
     }
     public override void Activate()
     {
@@ -30,7 +30,7 @@ public class DashAbility : Ability
 
     public void UpdateAbility(PlayerMovement movement)
     {
-        if (isDashing)
+        if (isActivated)
         {
             if (Time.time - dashStartTime <= dashDuration)
             {
@@ -46,7 +46,7 @@ public class DashAbility : Ability
 
     void OnStartDash()
     {
-        isDashing = true;
+        isActivated = true;
         dashStartTime = Time.time;
         if (OnDash != null)
         {
@@ -55,7 +55,7 @@ public class DashAbility : Ability
     }
     public void OnEndDash()
     {
-        isDashing = false;
+        isActivated = false;
         dashStartTime = 0;
         OnDashEnd?.Invoke();
     }

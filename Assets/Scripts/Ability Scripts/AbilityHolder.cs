@@ -16,7 +16,7 @@ public class AbilityHolder : MonoBehaviour
         {
             dash.Activate();
         }
-        if(dash.isDashing) dash.UpdateAbility(movement);
+        if(dash.isActivated) dash.UpdateAbility(movement);
     }
 }
 
