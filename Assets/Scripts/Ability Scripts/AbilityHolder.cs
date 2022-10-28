@@ -6,12 +6,32 @@ public class AbilityHolder : MonoBehaviour
 {
     [SerializeField] Ability ability; // change to a list so holder can cast multiple different abilities
     float cooldownTime;
+    private CharacterController controller;
+    private PlayerMovement movement;
+
+    private void Start()
+    {
+        controller = GetComponent<CharacterController>();
+        movement = GetComponent<PlayerMovement>();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(ability.Key))
+        var dash = ((DashAbility)ability);
+        if (Input.GetKeyDown(dash.Key))
         {
-            Debug.Log($"Casting {ability.Name}!");
+            dash.Activate();
+        }
+        if (dash.isDashing)
+        {
+            if (Time.time - dash.dashStartTime <= dash.dashDuration)
+            {
+                controller.velocity = movement.move * dash.dashSpeed;
+            }
+            else
+            {
+                dash.OnEndDash();
+            }
         }
     }
 }

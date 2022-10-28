@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,11 +31,21 @@ public class PlayerCombat : MonoBehaviour
     private void Start()
     {
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
+
+        DashAbility.OnDashEnd += OnDashEnd;
+
         controller = GetComponent<PlayerMovement>();
         lastAttackStringTime = 0;
         canStringAttack = true;
         ResetAttackString();
     }
+
+    private void OnDashEnd()
+    {
+        canStringAttack = true;
+        ResetAttackString(); // reset the attack string to the beginning after a dash
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -57,10 +68,10 @@ public class PlayerCombat : MonoBehaviour
                 currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
                 OnAttack?.Invoke(CurrentAttackString % equippedWeapon.StringAttacksCount); // invoke the action
                 
-                if (controller.isDashing)
+                /*if (controller.isDashing)
                 {
                     controller.OnEndDash();
-                }
+                }*/
             }
         }
     }

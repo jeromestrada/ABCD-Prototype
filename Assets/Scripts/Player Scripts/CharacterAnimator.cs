@@ -33,7 +33,7 @@ public class CharacterAnimator : MonoBehaviour
 
         playerController = GetComponent<PlayerMovement>();
 
-        playerController.OnDash += OnDash;
+        DashAbility.OnDash += OnDash;
         PlayerCombat.OnAttack += OnAttack;
 
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
@@ -61,7 +61,7 @@ public class CharacterAnimator : MonoBehaviour
     {
         
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
-        if (playerController.isDashing)
+        /*if (playerController.isDashing)
         {
             animator.SetTrigger("attackCancel"); // whenever the player is moving trigger this so we can cancel attack animations
             //combat.canStringAttack = true;
@@ -71,7 +71,7 @@ public class CharacterAnimator : MonoBehaviour
         {
             animator.ResetTrigger("dashTrigger");
             animator.ResetTrigger("attackCancel");
-        }
+        }*/
         animator.SetBool("isAttacking", playerController.isAttacking);
         animator.SetBool("canMove", playerController.isMoving);
     }
@@ -103,7 +103,6 @@ public class CharacterAnimator : MonoBehaviour
     protected virtual void OnDash()
     {
         animator.SetTrigger("dashTrigger");
-        
     }
 }
 

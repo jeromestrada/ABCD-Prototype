@@ -5495,10 +5495,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 3.5
   maxSpeed: 7
-  isDashing: 1
-  dashSpeed: 30
-  dashStartTime: 0
-  dashDuration: 0.175
   speed: 0
   jumpSpeed: 2.5
   gravity: -19.62
@@ -6353,7 +6349,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7087,7 +7083,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

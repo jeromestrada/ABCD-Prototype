@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Vector3 move;
     public float minSpeed = 3.5f;
     public float maxSpeed = 7f;
-    public bool isDashing;
-    public float dashSpeed;
-    public float dashStartTime;
-    public float dashDuration;
+    
     public float speed;
     
     public float jumpSpeed = 3f;
@@ -27,8 +25,6 @@ public class PlayerMovement : MonoBehaviour
     public bool isAttacking = false;
     public bool isMoving = false;
 
-    public event System.Action OnDash;
-
     InteractableScanner scanner;
 
 
@@ -39,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         combat = GetComponent<PlayerCombat>();
         PlayerCombat.OnAttack += OnAttack;
         speed = maxSpeed;
-        isDashing = false;
+
     }
 
     // Update is called once per frame
@@ -49,27 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
         CharacterController controller = GetComponent<CharacterController>();
         HandleMovement(controller);
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
-        {
-            OnStartDash();
-        }
-        if (isDashing)
-        {
-            if (Time.time - dashStartTime <= dashDuration)
-            {
-                isMoving = true;
-                controller.Move(transform.forward * dashSpeed * Time.deltaTime);
-            }
-            else
-            {
-                OnEndDash();
-            }
-        }
     }
 
     void HandleMovement(CharacterController controller)
     {
-        Vector3 move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+        move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 
         if (move.magnitude >= 0.1f)
         {
@@ -82,15 +62,13 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
-            if(!isDashing)
+            isMoving = true;
+            if (isAttacking)
             {
-                isMoving = true;
-                if (isAttacking)
-                {
-                    speed = 0;
-                }
-                controller.Move(move * speed * Time.deltaTime);
+                speed = 0;
             }
+            controller.Move(move * speed * Time.deltaTime);
+            
         }
         else
         {
@@ -99,22 +77,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    void OnStartDash()
-    {
-        isDashing = true;
-        dashStartTime = Time.time;
-        if(OnDash != null)
-        {
-            OnDash();
-        }
-    }
-    public void OnEndDash()
-    {
-        isDashing = false;
-        dashStartTime = 0;
-        combat.canStringAttack = true;
-        combat.ResetAttackString(); // reset the attack string to the beginning after a dash
-    }
+    
     void OnAttack(int attackString)
     {
         isAttacking = true;
