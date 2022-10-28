@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 7f;
     
     public float speed;
+    public float dashSpeed;
     
     public float jumpSpeed = 3f;
     public float gravity = -20f;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         combat = GetComponent<PlayerCombat>();
         PlayerCombat.OnAttack += OnAttack;
         speed = maxSpeed;
-
+        dashSpeed = 0;
     }
 
     // Update is called once per frame
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = 0;
             }
-            controller.Move(move * speed * Time.deltaTime);
+            controller.Move(move * (speed + dashSpeed) * Time.deltaTime);
             
         }
         else

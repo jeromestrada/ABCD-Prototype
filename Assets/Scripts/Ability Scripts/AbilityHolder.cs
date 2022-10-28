@@ -26,11 +26,12 @@ public class AbilityHolder : MonoBehaviour
         {
             if (Time.time - dash.dashStartTime <= dash.dashDuration)
             {
-                controller.velocity = movement.move * dash.dashSpeed;
+                movement.dashSpeed = dash.dashSpeed;
             }
             else
             {
                 dash.OnEndDash();
+                movement.dashSpeed = 0;
             }
         }
     }
