@@ -6,6 +6,8 @@ using System.Linq;
 public class DynamicCardSystemDisplay : CardSystemDisplay
 {
     [SerializeField] protected CardSlot_UI slotPrefab;
+    
+
     protected override void Start()
     {
         base.Start();
