@@ -7,8 +7,6 @@ using System.Linq;
 [System.Serializable]
 public class CardSystem
 {
-    // This Inventory system can be used in multiple scenarios
-    // i.e. the current hand of the player, their deck, and the shop system
     [SerializeField] private List<PlayerCardSlot> cardSlots = new List<PlayerCardSlot>();
 
     public List<PlayerCardSlot> CardSlots => cardSlots;

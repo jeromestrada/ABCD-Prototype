@@ -31,6 +31,7 @@ public class PlayerStats : CharacterStats
             StatCard statCardCasted = (StatCard) statCard;
             if (statCardCasted.StatCardType == StatCardType.DamageStat) Damage.AddModifier(statCardCasted.StatBonus.GetValue());
             else if (statCardCasted.StatCardType == StatCardType.ArmorStat) Armor.AddModifier(statCardCasted.StatBonus.GetValue());
+            // more stat type handling can be added here, i.e. movespeed, cooldown reduction, hp/mana regen stats, etc..
         }
     }
 

@@ -9,6 +9,7 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField] private Stat _damage;
     [SerializeField] private Stat _armor;
+    // stats like movespeed, hp/mana regen, cdr, etc can be added here.
 
     public int MaxHealth => _maxHealth;
     public Stat Damage => _damage;

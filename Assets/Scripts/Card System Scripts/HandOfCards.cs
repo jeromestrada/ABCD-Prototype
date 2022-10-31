@@ -56,7 +56,7 @@ public class HandOfCards : CardSystemHolder
             if (card == null) return;
             _cardSystem.AddToCardSystem(card);
             OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
-            OnHandChanged?.Invoke(card);
+            OnHandChanged?.Invoke(card); // this invocation handles the player's stats affected by the cards currently at hand
         }
         else Debug.Log("Player hand is full!");
     }

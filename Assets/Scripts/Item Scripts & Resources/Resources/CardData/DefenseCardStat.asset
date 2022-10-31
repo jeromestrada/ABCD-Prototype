@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f202c8b23c3164f42b40fc108a162e1c, type: 3}
-  m_Name: DefendCardStat
+  m_Name: DefenseCardStat
   m_EditorClassIdentifier: 
   ID: 7
   _cardRarity: 0
-  name: Defend Stat
+  name: Defense Stat
   cardIcon: {fileID: 0}
   description: Bolsters defenses by a little bit
   _cardType: 4
