@@ -19,7 +19,7 @@ MonoBehaviour:
   _state: 0
   _key: 32
   isActivated: 0
-  _dashSpeed: 15
+  _dashSpeed: 20
   isDashing: 0
   dashStartTime: 0
   dashDuration: 0.2

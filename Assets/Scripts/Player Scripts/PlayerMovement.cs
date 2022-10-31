@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Vector3 move;
+    public Vector3 dashForward;
     public float minSpeed = 3.5f;
     public float maxSpeed = 7f;
     
     public float speed;
     public float dashSpeed;
+    public bool IsDashing;
     
     public float jumpSpeed = 3f;
     public float gravity = -20f;
@@ -37,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         PlayerCombat.OnAttack += OnAttack;
         speed = maxSpeed;
         dashSpeed = 0;
+        dashForward = Vector3.zero;
+        IsDashing = false;
     }
 
     // Update is called once per frame
@@ -51,8 +55,11 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement(CharacterController controller)
     {
         move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-
-        if (move.magnitude >= 0.1f)
+        if (IsDashing)
+        {
+            controller.Move(dashForward * dashSpeed * Time.deltaTime);
+        }
+        else if (move.magnitude >= 0.1f)
         {
             speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
@@ -75,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             speed = 0;
             isMoving = false;
         }
+        
     }
     
     

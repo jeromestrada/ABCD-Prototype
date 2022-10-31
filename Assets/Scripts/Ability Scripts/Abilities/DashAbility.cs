@@ -38,12 +38,16 @@ public class DashAbility : Ability
         {
             if (Time.time - dashStartTime <= dashDuration)
             {
+                movement.IsDashing = true;
                 movement.dashSpeed = DashSpeed;
+                movement.dashForward = movement.transform.forward;
             }
             else
             {
                 OnEndDash();
+                movement.IsDashing = false;
                 movement.dashSpeed = 0;
+                movement.dashForward = Vector3.zero;
             }
         }
     }

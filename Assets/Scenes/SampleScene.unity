@@ -2733,9 +2733,10 @@ MonoBehaviour:
   _startingCards:
   - {fileID: 11400000, guid: 2b385cfd79aa7914ab658c26e1311f77, type: 2}
   - {fileID: 11400000, guid: 4325d14fba49550409ad82171e96bfde, type: 2}
-  - {fileID: 11400000, guid: 2fda889c4c06df348bd18f1068fac328, type: 2}
+  - {fileID: 11400000, guid: 741a73f4951ee83418ac8c5d37d74888, type: 2}
   - {fileID: 11400000, guid: 298d5538baf7648429f6368e86811410, type: 2}
   - {fileID: 11400000, guid: 184f6c6e817c3ff42926fec6d66cf764, type: 2}
+  - {fileID: 11400000, guid: 8956dd9f1874e5842b21e514966da499, type: 2}
   slotNumbersList: 
 --- !u!114 &547087589
 MonoBehaviour:
@@ -5494,10 +5495,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {x: 0, y: 0, z: 0}
+  dashForward: {x: 0, y: 0, z: 0}
   minSpeed: 3.5
   maxSpeed: 7
   speed: 0
   dashSpeed: 0
+  IsDashing: 0
   jumpSpeed: 2.5
   gravity: -19.62
   groundDistance: 0.1
@@ -6357,7 +6360,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345993, z: -0.000000011681933, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7091,7 +7094,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345993, z: -0.000000011681933, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
