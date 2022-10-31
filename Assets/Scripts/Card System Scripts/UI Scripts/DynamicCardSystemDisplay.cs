@@ -6,11 +6,33 @@ using System.Linq;
 public class DynamicCardSystemDisplay : CardSystemDisplay
 {
     [SerializeField] protected CardSlot_UI slotPrefab;
-    
+
+    private KeyCode[] hotKeys = new KeyCode[] // default hot keys for the hand are the numbers on top of the keyboard
+    {
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4,
+        KeyCode.Alpha5,
+        KeyCode.Alpha6,
+        KeyCode.Alpha7,
+        KeyCode.Alpha8,
+        KeyCode.Alpha9,
+        KeyCode.Alpha0
+    };
+
+    private int selectedHotKeyIndex;
+    private int previousHotKeyPressed;
 
     protected override void Start()
     {
+        previousHotKeyPressed = -1;
         base.Start();
+    }
+
+    private void Update()
+    {
+        HandleHotKeys();
     }
 
     public void RefreshDynamicInventory(CardSystem sysToDisplay)
@@ -43,5 +65,30 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
         }
 
         if(slotDictionary != null) slotDictionary.Clear();
+    }
+
+    public void HandleHotKeys()
+    {
+        if (CardSystemDisplayType == CardSystemDisplayType.HandInventory)
+        {
+            for (int i = 0; i < hotKeys.Length; i++)
+            {
+                if (Input.GetKeyDown(hotKeys[i]))
+                {
+
+                    Debug.Log($"Selecting {hotKeys[i]} in hand");
+                    selectedHotKeyIndex = i;
+                    if (previousHotKeyPressed == selectedHotKeyIndex) // if a hotkey is pressed twice in a row, use the item.
+                    {
+                        var cardSlot = cardSystem.CardSlots[i];
+                        Debug.Log($"Confirmed use of {hotKeys[i]} in hand");
+                        cardSlot.UseCardInSlot();
+                        if (cardSlot.RemainingUses <= 0) cardSystem.RemoveCardSlot(cardSlot);
+                        RefreshDynamicInventory(cardSystem);
+                    }
+                    previousHotKeyPressed = selectedHotKeyIndex;
+                }
+            }
+        }
     }
 }

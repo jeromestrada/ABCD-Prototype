@@ -51,6 +51,7 @@ public class PlayerCardSlot : CardSlot
 
     public void UseCardInSlot()
     {
+        Debug.Log($"Using card {card.name}");
         card.Use();
         remainingUses--;
         if (remainingUses == 0) ClearSlot();
