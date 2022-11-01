@@ -17,7 +17,9 @@ public class ConsumableManager : MonoBehaviour
 
     public void Consume(Consumable consumable)
     {
+        Debug.Log("In Consume");
         if (consumable == null) return;
+        Debug.Log("Consumable isn't null");
         // mesh, particles, etc handling to be done here.
         // then we can trigger the actual consumable afterwards.
         OnConsumableHandled?.Invoke(consumable);
