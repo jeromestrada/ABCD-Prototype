@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7dc94d9ae7a229409e201d5dca52d48, type: 3}
+  m_Name: Procure Healing Vial
+  m_EditorClassIdentifier: 
+  ID: 9
+  _cardRarity: 4
+  name: Procure Healing Vial
+  cardIcon: {fileID: 0}
+  description: Procues a Healing Vial that heals for a small amount. Soothe cuts
+    and bruises.
+  _cardType: 0
+  _cardPrice: 10
+  numOfUses: 1
+  exhaustable: 1
+  item: {fileID: 11400000, guid: 295807844e7ea5d49afd28677c7a14da, type: 2}

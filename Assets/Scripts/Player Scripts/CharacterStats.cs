@@ -35,6 +35,16 @@ public class CharacterStats : MonoBehaviour
             Die();
         }
     }
+
+    public virtual void Heal(int healing)
+    {
+        healing = Mathf.Clamp(healing, 0, int.MaxValue); // look out for negative healing.
+
+        _currentHealth += healing;
+        OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+        Debug.Log($"Healed for {healing} amount");
+    }
+
     public virtual void Die()
     {
         Debug.Log($"{gameObject.name} just died!");

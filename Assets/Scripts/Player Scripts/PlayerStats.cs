@@ -6,8 +6,21 @@ public class PlayerStats : CharacterStats
 {
     protected void Start()
     {
+        
+    }
+
+    private void OnEnable()
+    {
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
         HandOfCards.OnHandChanged += UpdatePlayerStats;
+        ConsumableManager.OnConsumableHandled += TakeConsumable;
+    }
+
+    private void OnDisable()
+    {
+        EquipmentManager.OnEquipmentChanged -= UpdatePlayerStats;
+        HandOfCards.OnHandChanged -= UpdatePlayerStats;
+        ConsumableManager.OnConsumableHandled -= TakeConsumable;
     }
 
     private void UpdatePlayerStats(Equipment oldEquipment, Equipment newEquipment)
@@ -40,6 +53,24 @@ public class PlayerStats : CharacterStats
         // call a hurt animation here for the player to play
         Debug.Log($"{gameObject.name} is taking damage... {damage}");
         base.TakeDamage(damage);
+    }
+
+    public void TakeConsumable(Consumable consumable)
+    {
+        switch(consumable.Type)
+        {
+            case ConsumableType.Healing:
+                Debug.Log("That was some relief!");
+                Heal(consumable.HealAmount); break;
+            default:
+                Debug.Log("That was an empty bottle");
+                break;
+        }
+    }
+
+    public override void Heal(int healing)
+    {
+        base.Heal(healing);
     }
     public override void Die()
     {
