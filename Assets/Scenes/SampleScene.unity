@@ -2851,7 +2851,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 80, y: 80}
-  m_Spacing: {x: 7, y: 7}
+  m_Spacing: {x: -36.7, y: 7}
   m_Constraint: 1
   m_ConstraintCount: 10
 --- !u!114 &551017338
@@ -6374,7 +6374,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7108,7 +7108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: 0.3, y: 25, z: -13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
