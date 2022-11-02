@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsDashing)
         {
             controller.Move(dashForward * dashSpeed * Time.deltaTime);
+            isAttacking = false;
         }
         else if (move.magnitude >= 0.1f)
         {
