@@ -18,6 +18,7 @@ public class BlockAbility : Ability
     public float blockDuration;
 
     public static event System.Action OnBlock;
+    public static event System.Action OnBlockEnd;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class BlockAbility : Ability
     public override void Activate()
     {
         OnStartBlock();
+        
     }
 
     public override void UpdateAbility(PlayerMovement movement, CharacterStats stats)
@@ -60,5 +62,6 @@ public class BlockAbility : Ability
         isActivated = false;
         isBlocking = false;
         blockStartTime = 0;
+        OnBlockEnd?.Invoke();
     }
 }
