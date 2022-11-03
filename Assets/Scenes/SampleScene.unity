@@ -1314,7 +1314,7 @@ RectTransform:
   m_Children:
   - {fileID: 748503761}
   m_Father: {fileID: 1477938531}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4992,7 +4992,7 @@ Transform:
   m_Children:
   - {fileID: 1914264768}
   m_Father: {fileID: 1477938531}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1329260021 stripped
 GameObject:
@@ -5584,8 +5584,8 @@ Transform:
   - {fileID: 1077236089}
   - {fileID: 653080488}
   - {fileID: 17419375}
-  - {fileID: 315973683}
   - {fileID: 1264747059}
+  - {fileID: 315973683}
   m_Father: {fileID: 205027063}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6406,7 +6406,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: -2.98, y: 25, z: -12.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7089,7 +7089,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
@@ -11944,7 +11944,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: -2.98, y: 25, z: -12.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
