@@ -6,19 +6,21 @@ using UnityEngine;
 public class VFXManager : MonoBehaviour
 {
     private ParticleSystem _shieldEffect;
-    private bool _shielded;
+    [SerializeField] private bool _shielded;
+    [SerializeField] private CharacterStats _characterStats;
+
     private void OnEnable()
     {
         BlockAbility.OnBlock += StartShieldEffect;
         BlockAbility.OnBlockEnd += EndShieldEffect;
-        CharacterStats.OnTakeDamage += PlayBloodSpray;
+        _characterStats.OnTakeDamage += PlayBloodSpray;
     }
 
     private void OnDisable()
     {
         BlockAbility.OnBlock -= StartShieldEffect;
         BlockAbility.OnBlockEnd -= EndShieldEffect;
-        CharacterStats.OnTakeDamage -= PlayBloodSpray;
+        _characterStats.OnTakeDamage -= PlayBloodSpray;
     }
 
     private void StartShieldEffect()
@@ -29,7 +31,7 @@ public class VFXManager : MonoBehaviour
             if (s.CompareTag("Shield") && s != null)
             {
                 _shieldEffect = s;
-                s?.Play();
+                _shieldEffect.Play();
                 _shielded = true;
                 break;
             }
@@ -39,18 +41,23 @@ public class VFXManager : MonoBehaviour
     private void EndShieldEffect()
     {
         _shieldEffect?.Stop();
+        Debug.Log($"Setting {gameObject.name}'s {_shielded} to false");
         _shielded = false;
     }
 
     private void PlayBloodSpray(CharacterStats character)
     {
+        Debug.Log($"{gameObject.name} has shielded set to {_shielded}");
         var bloodspray = character.GetComponentsInChildren<ParticleSystem>();
         foreach(var b in bloodspray)
         {
             if (b.CompareTag("Blood"))
             {
-                if(!_shielded)b?.Play();
-                break;
+                if(!_shielded)
+                {
+                    b?.Play();
+                    break;
+                }
             }
         }
     }

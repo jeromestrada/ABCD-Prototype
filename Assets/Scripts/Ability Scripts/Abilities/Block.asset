@@ -18,8 +18,8 @@ MonoBehaviour:
   _castCost: 5
   _state: 0
   _key: 103
-  isActivated: 0
+  isActivated: 1
   _blockAmount: 50
-  isBlocking: 0
-  blockStartTime: 0
+  isBlocking: 1
+  blockStartTime: 11.137415
   blockDuration: 5

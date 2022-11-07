@@ -17,7 +17,7 @@ public class CharacterStats : MonoBehaviour
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
-    public static event System.Action<CharacterStats> OnTakeDamage;
+    public event System.Action<CharacterStats> OnTakeDamage;
 
     protected void Awake()
     {
