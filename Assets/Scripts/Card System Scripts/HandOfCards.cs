@@ -5,10 +5,13 @@ using UnityEngine.Events;
 
 public class HandOfCards : CardSystemHolder
 {
-    [SerializeField] private int maxHandSize;
+    [SerializeField] private int _maxHandSize;
     [SerializeField] private DeckOfCards deck;
+    [SerializeField] DrawManager drawManager;
+
     public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
     public static event System.Action<Card> OnHandChanged;
+    public int MaxHandSize => _maxHandSize;
 
 
     protected override void Awake()
@@ -41,7 +44,6 @@ public class HandOfCards : CardSystemHolder
     protected override void Update()
     {
         base.Update();
-
         if (Input.GetKeyDown(KeyCode.X))
         {
             DrawCard();
@@ -50,7 +52,7 @@ public class HandOfCards : CardSystemHolder
 
     public void DrawCard()
     {
-        if (CardSystemSize < maxHandSize)
+        if (CardSystemSize < _maxHandSize)
         {
             Card card = deck.GetTopCard();
             if (card == null) return;
@@ -59,5 +61,21 @@ public class HandOfCards : CardSystemHolder
             OnHandChanged?.Invoke(card); // this invocation handles the player's stats affected by the cards currently at hand
         }
         else Debug.Log("Player hand is full!");
+    }
+
+    public void DrawNCards(int amountToDraw)
+    {
+        for(int i = 0; i < amountToDraw; i++)
+        {
+            DrawCard();
+        }
+    }
+
+    public void DiscardNCards(int amountToDiscard)
+    {
+        for(int i = 0; i < amountToDiscard; i++)
+        {
+
+        }
     }
 }
