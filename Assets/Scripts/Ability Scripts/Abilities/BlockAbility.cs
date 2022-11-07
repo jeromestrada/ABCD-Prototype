@@ -20,7 +20,7 @@ public class BlockAbility : Ability
     public static event System.Action OnBlock;
     public static event System.Action OnBlockEnd;
 
-    private void Awake()
+    public void Awake()
     {
         isActivated = false;
     }
@@ -33,6 +33,7 @@ public class BlockAbility : Ability
     {
         if (isActivated)
         {
+            Debug.Log("Blocking");
             if (Time.time - blockStartTime <= blockDuration)
             {
                 if (!isBlocking)

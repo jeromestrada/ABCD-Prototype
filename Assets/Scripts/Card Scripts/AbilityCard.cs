@@ -13,7 +13,6 @@ public class AbilityCard : Card
     }
     public override bool Use()
     {
-        Debug.Log($"Activating ability in {this.name}!");
         ability.Activate();
         return base.Use();
     }

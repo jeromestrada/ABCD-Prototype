@@ -42,13 +42,11 @@ public class VFXManager : MonoBehaviour
     private void EndShieldEffect()
     {
         _shieldEffect?.Stop();
-        Debug.Log($"Setting {gameObject.name}'s {_shielded} to false");
         _shielded = false;
     }
 
     private void PlayBloodSpray(CharacterStats character)
     {
-        Debug.Log($"{gameObject.name} has shielded set to {_shielded}");
         var bloodspray = character.GetComponentsInChildren<ParticleSystem>();
         foreach(var b in bloodspray)
         {
