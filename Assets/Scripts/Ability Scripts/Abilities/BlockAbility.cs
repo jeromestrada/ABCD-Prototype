@@ -27,7 +27,6 @@ public class BlockAbility : Ability
     public override void Activate()
     {
         OnStartBlock();
-        
     }
 
     public override void UpdateAbility(PlayerMovement movement, CharacterStats stats)

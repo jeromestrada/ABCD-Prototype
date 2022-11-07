@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class VFXManager : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _shieldEffects;
-    //[SerializeField] private ParticleSystem _bloodSpray;
-
+    private ParticleSystem _shieldEffect;
+    private bool _shielded;
     private void OnEnable()
     {
         BlockAbility.OnBlock += StartShieldEffect;
@@ -19,16 +18,28 @@ public class VFXManager : MonoBehaviour
     {
         BlockAbility.OnBlock -= StartShieldEffect;
         BlockAbility.OnBlockEnd -= EndShieldEffect;
+        CharacterStats.OnTakeDamage -= PlayBloodSpray;
     }
 
     private void StartShieldEffect()
     {
-        _shieldEffects?.Play();
+        var shieldEffects = GetComponentsInChildren<ParticleSystem>();
+        foreach (var s in shieldEffects)
+        {
+            if (s.CompareTag("Shield") && s != null)
+            {
+                _shieldEffect = s;
+                s?.Play();
+                _shielded = true;
+                break;
+            }
+        }
     }
 
     private void EndShieldEffect()
     {
-        _shieldEffects?.Stop();
+        _shieldEffect?.Stop();
+        _shielded = false;
     }
 
     private void PlayBloodSpray(CharacterStats character)
@@ -38,7 +49,7 @@ public class VFXManager : MonoBehaviour
         {
             if (b.CompareTag("Blood"))
             {
-                b.Play();
+                if(!_shielded)b?.Play();
                 break;
             }
         }
