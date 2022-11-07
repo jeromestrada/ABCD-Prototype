@@ -28,4 +28,5 @@ public class DrawManager : MonoBehaviour
     {
         hand.DrawNCards(_drawAmount);
     }
+
 }

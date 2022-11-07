@@ -7,7 +7,7 @@ public class HandOfCards : CardSystemHolder
 {
     [SerializeField] private int _maxHandSize;
     [SerializeField] private DeckOfCards deck;
-    [SerializeField] DrawManager drawManager;
+    [SerializeField] private DiscardedCards discardPile;
 
     public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
     public static event System.Action<Card> OnHandChanged;
@@ -75,7 +75,14 @@ public class HandOfCards : CardSystemHolder
     {
         for(int i = 0; i < amountToDiscard; i++)
         {
-
+            discardPile.Discard(CardSystem.CardSlots[0].Card);
+            CardSystem.CardSlots.RemoveAt(0);
+            OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
         }
+    }
+
+    public void DiscardAll()
+    {
+        DiscardNCards(CardSystemSize);
     }
 }
