@@ -6,11 +6,13 @@ using UnityEngine;
 public class VFXManager : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _shieldEffects;
+    //[SerializeField] private ParticleSystem _bloodSpray;
 
     private void OnEnable()
     {
         BlockAbility.OnBlock += StartShieldEffect;
         BlockAbility.OnBlockEnd += EndShieldEffect;
+        CharacterStats.OnTakeDamage += PlayBloodSpray;
     }
 
     private void OnDisable()
@@ -27,5 +29,18 @@ public class VFXManager : MonoBehaviour
     private void EndShieldEffect()
     {
         _shieldEffects?.Stop();
+    }
+
+    private void PlayBloodSpray(CharacterStats character)
+    {
+        var bloodspray = character.GetComponentsInChildren<ParticleSystem>();
+        foreach(var b in bloodspray)
+        {
+            if (b.CompareTag("Blood"))
+            {
+                b.Play();
+                break;
+            }
+        }
     }
 }

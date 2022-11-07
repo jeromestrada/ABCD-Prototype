@@ -17,6 +17,7 @@ public class CharacterStats : MonoBehaviour
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
+    public static event System.Action<CharacterStats> OnTakeDamage;
 
     protected void Awake()
     {
@@ -29,6 +30,7 @@ public class CharacterStats : MonoBehaviour
 
         _currentHealth -= damage;
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+        OnTakeDamage?.Invoke(this);
 
         if (_currentHealth <= 0)
         {
