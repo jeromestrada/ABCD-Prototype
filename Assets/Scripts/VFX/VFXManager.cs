@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterStats))]
 public class VFXManager : MonoBehaviour
 {
     private ParticleSystem _shieldEffect;
