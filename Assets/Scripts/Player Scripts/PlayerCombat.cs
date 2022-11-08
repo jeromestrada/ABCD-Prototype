@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
     
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
+    // TODO: replace the grace period system with a transition phase in between attacks
 
     public float attackRadius = 3f;
     public LayerMask enemyMask;
@@ -81,7 +82,7 @@ public class PlayerCombat : MonoBehaviour
 
     // TODO: figure out if theres a better system to set this, right now it just uses the raw values of the attack point and directly sets the offset
     public Vector3 PlaceAttackPoint()
-    {   // the position of the current string's attack point is added to the player's transform
+    {   // the position of the current string's attack point is placed relative to the player's transform
         return transform.position +
             (transform.right * currentStringAttackPoint.position.x) +
             (transform.up * currentStringAttackPoint.position.y) +
@@ -106,7 +107,7 @@ public class PlayerCombat : MonoBehaviour
         if(equippedWeapon != null) currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
     }
 
-    public void AttackFinish_AnimationEvent()
+    public void AttackFinish_AnimationEvent() // TODO: when this event fires, we play a transition phase where the next attack can be triggered
     {
         lastAttackStringTime = Time.time;
         canStringAttack = true;
