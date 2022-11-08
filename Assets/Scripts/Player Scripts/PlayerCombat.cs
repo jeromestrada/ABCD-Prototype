@@ -28,17 +28,25 @@ public class PlayerCombat : MonoBehaviour
     PlayerMovement controller;
     [SerializeField] MouseItemData mouseItemData;
 
-    private void Start()
+    void OnEnable()
     {
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
         DashAbility.OnDashEnd += OnDashEnd;
+    }
 
+    void OnDisable()
+    {
+        EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
+        DashAbility.OnDashEnd -= OnDashEnd;
+    }
+
+    private void Start()
+    {
         controller = GetComponent<PlayerMovement>();
         lastAttackStringTime = 0;
         canStringAttack = true;
         ResetAttackString();
     }
-
 
     private void OnDashEnd() // this can be refactored to allow dash attacks.
     {

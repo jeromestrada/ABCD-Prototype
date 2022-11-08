@@ -7705,6 +7705,10 @@ PrefabInstance:
       value: Blood
       objectReference: {fileID: 0}
     - target: {fileID: 1052954148680115461, guid: a1a69dfaab156844ebd7ae1d2459d6d0, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052954148680115461, guid: a1a69dfaab156844ebd7ae1d2459d6d0, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
