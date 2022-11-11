@@ -32,22 +32,20 @@ public class DashAbility : Ability
         OnStartDash();
     }
 
-    public override void UpdateAbility(PlayerMovement movement, CharacterStats stats)
+    public override void UpdateAbility(CharacterController controller, PlayerMovement movement, CharacterStats stats)
     {
         if (isActivated)
         {
             if (Time.time - dashStartTime <= dashDuration)
             {
                 movement.IsDashing = true;
-                movement.dashSpeed = DashSpeed;
-                movement.dashForward = movement.transform.forward;
+                movement.isAttacking = false;
+                controller.Move(movement.transform.forward * DashSpeed * Time.deltaTime);
             }
             else
             {
                 OnEndDash();
                 movement.IsDashing = false;
-                movement.dashSpeed = 0;
-                movement.dashForward = Vector3.zero;
             }
         }
     }

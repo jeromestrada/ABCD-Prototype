@@ -55,12 +55,8 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement(CharacterController controller)
     {
         move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        if (IsDashing)
-        {
-            controller.Move(dashForward * dashSpeed * Time.deltaTime);
-            isAttacking = false;
-        }
-        else if (move.magnitude >= 0.1f)
+        
+        if (move.magnitude >= 0.1f)
         {
             speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))

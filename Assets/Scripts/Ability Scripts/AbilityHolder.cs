@@ -7,6 +7,7 @@ public class AbilityHolder : MonoBehaviour
     [SerializeField] Ability[] abilities; // change to a list so holder can cast multiple different abilities
     float cooldownTime;
 
+    [SerializeField] private CharacterController controller;
     [SerializeField] private PlayerMovement movement;
     [SerializeField] private CharacterStats characterStats;
 
@@ -20,7 +21,7 @@ public class AbilityHolder : MonoBehaviour
             {
                 a.Activate();
             }
-            if (a.isActivated) a.UpdateAbility(movement, characterStats);
+            if (a.isActivated) a.UpdateAbility(controller, movement, characterStats);
         }
         
     }

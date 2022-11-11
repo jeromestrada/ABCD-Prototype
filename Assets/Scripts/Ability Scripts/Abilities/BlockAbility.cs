@@ -29,7 +29,7 @@ public class BlockAbility : Ability
         OnStartBlock();
     }
 
-    public override void UpdateAbility(PlayerMovement movement, CharacterStats stats)
+    public override void UpdateAbility(CharacterController controller, PlayerMovement movement, CharacterStats stats)
     {
         if (isActivated)
         {

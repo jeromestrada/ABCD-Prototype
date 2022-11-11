@@ -25,7 +25,7 @@ public class Ability : ScriptableObject
 
     public virtual void Activate() { }
 
-    public virtual void UpdateAbility(PlayerMovement movement, CharacterStats stats) { }
+    public virtual void UpdateAbility(CharacterController controller, PlayerMovement movement, CharacterStats stats) { }
 
     public virtual void AssignKey(KeyCode key)
     {
