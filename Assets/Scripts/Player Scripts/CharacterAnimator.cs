@@ -78,7 +78,6 @@ public class CharacterAnimator : MonoBehaviour
         
         animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
         animator.SetBool("isAttacking", playerController.isAttacking);
-        animator.SetBool("canMove", playerController.isMoving);
     }
 
     public void AddWeaponAnimation(PlayerCardSlot slot)
