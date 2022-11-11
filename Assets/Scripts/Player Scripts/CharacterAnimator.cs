@@ -9,9 +9,11 @@ public class CharacterAnimator : MonoBehaviour
     public AnimationClip replaceableAttackAnim;
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
+    protected AnimationClip[] currentAttackTransitionAnimSet;
 
     EquipmentManager weaponManager;
-    Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict;
+    Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict , weaponTransitionAnimsDict;
+
 
     PlayerMovement playerController;
     public AnimatorOverrideController overrideController;
@@ -51,6 +53,7 @@ public class CharacterAnimator : MonoBehaviour
         deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
 
         weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
+        weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();
     }
 
     void ChangeCurrentAttackAnimSet(Equipment newWeapon)
@@ -62,7 +65,11 @@ public class CharacterAnimator : MonoBehaviour
         }
         else
         {
-            if(weaponAnimationsDict.ContainsKey(newWeapon)) currentAttackAnimSet = weaponAnimationsDict[newWeapon];
+            if (weaponAnimationsDict.ContainsKey(newWeapon))
+            {
+                currentAttackAnimSet = weaponAnimationsDict[newWeapon];
+                currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
+            }
         }
     }
 
@@ -81,11 +88,15 @@ public class CharacterAnimator : MonoBehaviour
             var itemCard = (ItemCard)slot.Card;
             var weapon = (Equipment)itemCard.item;
             if (itemCard.item is Equipment && !weaponAnimationsDict.ContainsKey(weapon))
+            {
                 weaponAnimationsDict.Add(weapon, (weapon.WeaponAnimations.clips));
+                weaponTransitionAnimsDict.Add(weapon, (weapon.WeaponTransitions.clips));
+            }
         }
         else return;
     }
 
+    // Attack animations
     protected virtual void OnAttack(int attackString)
     {
         animator.SetTrigger("attackTrigger");
@@ -98,6 +109,7 @@ public class CharacterAnimator : MonoBehaviour
         ChangeCurrentAttackAnimSet(newWeapon);
     }
 
+    // Dash animations
     protected virtual void OnDash()
     {
         animator.SetTrigger("dashTrigger");
