@@ -67,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
-            isMoving = true;
             if (isAttacking)
             {
                 speed = 0;
@@ -77,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             speed = 0;
-            isMoving = false;
         }
         
     }
