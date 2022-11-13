@@ -14,7 +14,6 @@ public class DashAbility : Ability
 
     public float DashSpeed => _dashSpeed;
 
-    public bool isDashing;
     public float dashStartTime;
     public float dashDuration;
 

@@ -15,7 +15,7 @@ public class CharacterAnimator : MonoBehaviour
     Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict , weaponTransitionAnimsDict;
 
 
-    PlayerMovement playerController;
+    PlayerMovement playerMovement;
     public AnimatorOverrideController overrideController;
     PlayerCombat combat;
 
@@ -45,7 +45,7 @@ public class CharacterAnimator : MonoBehaviour
         animator.runtimeAnimatorController = overrideController;
         currentAttackAnimSet = defaultAttackAnimSet;
 
-        playerController = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
 
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
 
@@ -76,8 +76,8 @@ public class CharacterAnimator : MonoBehaviour
     void LateUpdate()
     {
         
-        animator.SetFloat("speed", playerController.speed / playerController.maxSpeed, motionSmoothness, Time.deltaTime);
-        animator.SetBool("isAttacking", playerController.isAttacking);
+        animator.SetFloat("speed", playerMovement.speed / playerMovement.maxSpeed, motionSmoothness, Time.deltaTime);
+        animator.SetBool("isAttacking", playerMovement.isAttacking);
     }
 
     public void AddWeaponAnimation(PlayerCardSlot slot)
@@ -100,7 +100,6 @@ public class CharacterAnimator : MonoBehaviour
     {
         animator.SetTrigger("attackTrigger");
         overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
-        playerController.isAttacking = true;
     }
 
     protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
