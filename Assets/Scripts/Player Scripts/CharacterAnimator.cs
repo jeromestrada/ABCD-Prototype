@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,12 +28,21 @@ public class CharacterAnimator : MonoBehaviour
     {
         DashAbility.OnDash += OnDash;
         PlayerCombat.OnAttack += OnAttack;
+        AttackStringState.OnAnimationPlayRequest += OnAttackString;
+    }
+
+    private void OnAttackString(int attackString)
+    {
+        Debug.Log($"Triggered OnAttackString with the {attackString} string");
+        //animator.SetTrigger("attackTrigger");
+        //overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
     }
 
     private void OnDisable()
     {
         DashAbility.OnDash -= OnDash;
         PlayerCombat.OnAttack -= OnAttack;
+        AttackStringState.OnAnimationPlayRequest -= OnAttackString;
     }
 
     void Start()

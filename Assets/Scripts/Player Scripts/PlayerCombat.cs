@@ -12,7 +12,7 @@ public class PlayerCombat : MonoBehaviour
     public int CurrentAttackString;
     private Transform currentStringAttackPoint;
     private Vector3 attackPoint;
-    
+
     private float lastAttackStringTime;
     public float stringGracePeriod = 0.5f;
     // TODO: replace the grace period system with a transition phase in between attacks
@@ -20,6 +20,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRadius = 3f;
     public LayerMask enemyMask;
 
+    [SerializeField] ComboCharacter combo;
 
     bool isCoolingDown = false;
     float finalStringTime;
@@ -96,6 +97,7 @@ public class PlayerCombat : MonoBehaviour
             if (newWeapon.ItemType == EquipmentType.Weapon)
             {
                 equippedWeapon = (Equipment)newWeapon;
+                combo.SetMaxCombo(equippedWeapon);
                 ResetAttackString();
             }
         }
