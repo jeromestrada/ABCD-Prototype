@@ -7,7 +7,7 @@ public class ComboBaseState : State
 
     public float duration; // might not be needed because there will be an animation event listener attached to the animator.
     protected Animator animator; // can probably refactored so that the animator listens for a comboBaseState invoking an OnRequestAnimationPlay or something.
-    protected bool shouldCombo; // replaces the canStringAttack in the player combat?
+    protected bool shouldCombo = false; // replaces the canStringAttack in the player combat?
     protected int attackIndex; // will contain which attack string the combo is currently on?
 
 
@@ -24,7 +24,7 @@ public class ComboBaseState : State
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if(Input.GetButton("Fire1")) shouldCombo = true;
+        if(Input.GetMouseButton(0)) shouldCombo = true;
     }
 
     public override void OnExit()

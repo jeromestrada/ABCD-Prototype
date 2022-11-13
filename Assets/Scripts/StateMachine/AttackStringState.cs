@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackStringState : ComboBaseState
 {
     public static event System.Action<int> OnAnimationPlayRequest;
-
+    private bool attackFinished = false;
 
     public AttackStringState(int _attackIndex) : base(_attackIndex)
     {
@@ -14,8 +14,8 @@ public class AttackStringState : ComboBaseState
 
     public override void OnEnter(StateMachine _stateMachine)
     {
-        AnimationEventReciever.OnAttackFinished -= UpdateState;
-        AnimationEventReciever.OnAttackFinished += UpdateState;
+        AnimationEventReciever.OnAttackFinished -= AttackFinished;
+        AnimationEventReciever.OnAttackFinished += AttackFinished;
         base.OnEnter(_stateMachine);
         OnAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
     }
@@ -23,18 +23,23 @@ public class AttackStringState : ComboBaseState
     public override void OnUpdate()
     {
         base.OnUpdate();
+        if(attackFinished)
+        {
+            if (shouldCombo)
+            {
+                stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates));
+            }
+            if (fixedtime >= 1f)
+            {
+                stateMachine.SetNextStateToMain();
+            }
+        }
     }
 
-    public void UpdateState()
+    public void AttackFinished()
     {
-        if (shouldCombo)
-        {
-            stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates));
-        }
-        else
-        {
-            stateMachine.SetNextStateToMain();
-        }
+        Debug.Log("Attack ended");
+        attackFinished = true;
     }
 }
 

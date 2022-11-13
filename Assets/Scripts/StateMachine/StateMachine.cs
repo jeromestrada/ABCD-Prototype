@@ -33,7 +33,11 @@ public class StateMachine : MonoBehaviour
 
     public void SetState(State _newState)
     {
-        if(CurrentState != null) CurrentState.OnExit();
+        nextState = null;
+        if (CurrentState != null)
+        {
+            CurrentState.OnExit();
+        }
         CurrentState = _newState;
         CurrentState.OnEnter(this);
     }
