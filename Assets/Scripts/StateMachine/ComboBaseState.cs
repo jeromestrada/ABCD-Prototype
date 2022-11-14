@@ -7,7 +7,7 @@ public class ComboBaseState : State
 
     public float duration; // might not be needed because there will be an animation event listener attached to the animator.
     protected Animator animator; // can probably refactored so that the animator listens for a comboBaseState invoking an OnRequestAnimationPlay or something.
-    protected bool shouldCombo = false; // replaces the canStringAttack in the player combat?
+    protected static bool shouldCombo = false; // replaces the canStringAttack in the player combat?
     protected int attackIndex; // will contain which attack string the combo is currently on?
 
 
@@ -18,6 +18,7 @@ public class ComboBaseState : State
 
     public override void OnEnter(StateMachine _stateMachine)
     {
+        shouldCombo = false;
         base.OnEnter(_stateMachine);
     }
 

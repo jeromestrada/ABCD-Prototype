@@ -15,10 +15,12 @@ public class AttackStringState : ComboBaseState
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
-        duration = 0.5f;
-        Debug.Log($"Invoking attack with {attackIndex}");
-        OnAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
         attackFinished = false;
+        shouldCombo = false;
+        duration = 0.5f;
+        Debug.Log($"Invoking attack with {attackIndex} and sc: {shouldCombo}");
+        OnAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
+        
     }
 
     public override void OnUpdate()
@@ -26,17 +28,18 @@ public class AttackStringState : ComboBaseState
         base.OnUpdate();
         if (attackFinished)
         {
-            Debug.Log("Attack finished moving to next string!");
+            //Debug.Log($"Attack finished moving to next string! Should combo? {shouldCombo}");
             if (shouldCombo)
             {
                 stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates));
             }
         }
-        if (fixedtime >= 1f)
+        if (fixedtime >= 2f)
         {
             Debug.Log("combo expired will now go to idle");
             stateMachine.SetNextStateToMain();
             attackFinished = false;
+            shouldCombo = false;
         }
 
     }
@@ -44,6 +47,7 @@ public class AttackStringState : ComboBaseState
     public static void AttackFinished()
     {
         attackFinished = true;
+        shouldCombo = false;
     }
 }
 
