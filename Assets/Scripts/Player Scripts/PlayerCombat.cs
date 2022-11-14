@@ -70,7 +70,7 @@ public class PlayerCombat : MonoBehaviour
                 ResetAttackString();
             }
             attackPoint = PlaceAttackPoint();
-            if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !mouseItemData.inUI && canStringAttack && !isCoolingDown)
+            if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && canStringAttack && !isCoolingDown)
             {
                 canStringAttack = false; // we wait for the animation to hit before we can attack again
                 lastAttackStringTime = float.MaxValue;
@@ -111,6 +111,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void AttackFinish_AnimationEvent() // TODO: when this event fires, we play a transition phase where the next attack can be triggered
     {
+        Debug.Log("Attack ended from player combat");
         lastAttackStringTime = Time.time;
         canStringAttack = true;
         CurrentAttackString++; // increment to the next attack string

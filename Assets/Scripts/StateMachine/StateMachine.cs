@@ -50,14 +50,14 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    public void LateUpdate()
     {
         if(CurrentState != null)
         {
             CurrentState.OnLateUpdate();
         }
     }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if (CurrentState != null)
             CurrentState.OnFixedUpdate();
@@ -65,16 +65,17 @@ public class StateMachine : MonoBehaviour
 
     public void SetNextStateToMain()
     {
+        Debug.Log("Set to idle");
         nextState = mainStateType;
     }
 
-    private void Awake()
+    public void Awake()
     {
         SetState(mainStateType);
         SetNextStateToMain();
     }
 
-    private void OnValidate()
+    public void OnValidate()
     {
         if (mainStateType == null)
         {

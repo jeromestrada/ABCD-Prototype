@@ -24,7 +24,7 @@ public class ComboBaseState : State
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if(Input.GetMouseButton(0)) shouldCombo = true;
+        if(Input.GetMouseButtonDown(0)) shouldCombo = true;
     }
 
     public override void OnExit()

@@ -11,7 +11,7 @@ public class MouseItemData : MonoBehaviour
     public TextMeshProUGUI ItemCount;
     public PlayerCardSlot AssignedCardSlot;
     private CardSlot_UI pickedFromSlot;
-    public bool inUI;
+    public static bool inUI;
     private CardSystemUIController cardSystemUIController;
     [SerializeField] private CardSystemHolder handOfCards;
     [SerializeField] private DiscardedCards discardPile;

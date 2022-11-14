@@ -11,8 +11,8 @@ public abstract class State
     public StateMachine stateMachine;
     public virtual void OnEnter(StateMachine _stateMachine) { stateMachine = _stateMachine; }
     public virtual void OnUpdate() { time += Time.deltaTime; }
-    public virtual void OnLateUpdate() { time += Time.deltaTime; }
-    public virtual void OnFixedUpdate() { time += Time.deltaTime; }
+    public virtual void OnLateUpdate() { fixedtime += Time.deltaTime; }
+    public virtual void OnFixedUpdate() { latetime += Time.deltaTime; }
     public virtual void OnExit() { }
 
     #region Passthrough Methods
