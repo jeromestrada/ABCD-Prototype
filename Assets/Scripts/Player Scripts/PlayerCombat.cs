@@ -70,14 +70,14 @@ public class PlayerCombat : MonoBehaviour
                 ResetAttackString();
             }
             attackPoint = PlaceAttackPoint();
-            if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && canStringAttack && !isCoolingDown)
+            /*if (Input.GetButton("Fire1") && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && canStringAttack && !isCoolingDown)
             {
                 canStringAttack = false; // we wait for the animation to hit before we can attack again
                 lastAttackStringTime = float.MaxValue;
                 
                 currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
                 OnAttack?.Invoke(CurrentAttackString % equippedWeapon.StringAttacksCount); // invoke the action
-            }
+            }*/
         }
     }
 

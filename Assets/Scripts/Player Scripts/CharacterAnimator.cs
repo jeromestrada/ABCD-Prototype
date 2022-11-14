@@ -34,8 +34,8 @@ public class CharacterAnimator : MonoBehaviour
     private void OnAttackString(int attackString)
     {
         Debug.Log($"Triggered OnAttackString with the {attackString} string");
-        //animator.SetTrigger("attackTrigger");
-        //overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
+        animator.SetTrigger("attackTrigger");
+        overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
     }
 
     private void OnDisable()
