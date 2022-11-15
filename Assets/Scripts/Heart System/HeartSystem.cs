@@ -49,7 +49,7 @@ public class HeartSystem
 
     public bool RemoveHeart()
     {
-        if (_currentHeartCount > 0)
+        if (_currentHeartCount >= 0)
         {
             _currentHeartCount--;
             return true;

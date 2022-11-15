@@ -31,13 +31,12 @@ public class HeartSystemHolder : MonoBehaviour
 
     private void LoseHeart()
     {
-        if(_heartSystem.CurrentHeartCount > 0)
+        if(_heartSystem.CurrentHeartCount >= 0)
         {
             _heartSystem.RemoveHeart();
-            OnHeartsChanged?.Invoke(_heartSystem.CurrentHeartCount);
             OnHeartsDisplayRequested?.Invoke(_heartSystem);
         }
-        
+        OnHeartsChanged?.Invoke(_heartSystem.CurrentHeartCount);
     }
 
     private void GainHeart()
@@ -45,10 +44,9 @@ public class HeartSystemHolder : MonoBehaviour
         if (_heartSystem.CurrentHeartCount < _maxHearts)
         {
             _heartSystem.AddHeart();
-            OnHeartsChanged?.Invoke(_heartSystem.CurrentHeartCount);
             OnHeartsDisplayRequested?.Invoke(_heartSystem);
         }
-        
+        OnHeartsChanged?.Invoke(_heartSystem.CurrentHeartCount);
     }
 
 }

@@ -80,6 +80,7 @@ public class PlayerStats : CharacterStats
     {
         base.Die();
         Debug.Log("Losing a heart...");
+        _currentHealth = 0; // set the current hp to 0 because a fatal blow can overkill
         // player will lose a heart first when reaching 0 hp.
         // only dies when there is no more heart to lose
         OnPlayerDying?.Invoke();
@@ -93,6 +94,7 @@ public class PlayerStats : CharacterStats
         {
             Debug.Log("Doom approaches");
             GetComponent<PlayerMovement>().enabled = false;
+            this.gameObject.SetActive(false);
             this.enabled = false;
         }
         else
