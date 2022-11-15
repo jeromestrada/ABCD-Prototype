@@ -54,6 +54,5 @@ public class CharacterStats : MonoBehaviour
         {
             OnDying();
         }
-        this.enabled = false;
     }
 }

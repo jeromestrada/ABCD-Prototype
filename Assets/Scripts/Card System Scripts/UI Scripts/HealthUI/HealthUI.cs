@@ -17,7 +17,7 @@ public class HealthUI : MonoBehaviour
     {
         _ui = Instantiate(_healthBarPrefab, _canvas.transform).transform;
         _healthBarSlider = _ui.GetChild(0).GetComponent<Image>();
-        _ui.gameObject.SetActive(true);
+        _ui.gameObject.SetActive(false);
 
         GetComponent<CharacterStats>().OnHealthChanged += OnHealthChanged;
     }
@@ -32,7 +32,7 @@ public class HealthUI : MonoBehaviour
 
             if(currentHealth <= 0)
             {
-                Destroy(_ui.gameObject);
+                _ui.gameObject.SetActive(false);
             }
         }
     }

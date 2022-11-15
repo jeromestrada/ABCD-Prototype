@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+
+    public static event System.Action OnPlayerDying;
     protected void Start()
     {
         
@@ -14,6 +16,7 @@ public class PlayerStats : CharacterStats
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
         HandOfCards.OnHandChanged += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
+        HeartSystemHolder.OnHeartsChanged += RealDeath;
     }
 
     private void OnDisable()
@@ -21,6 +24,7 @@ public class PlayerStats : CharacterStats
         EquipmentManager.OnEquipmentChanged -= UpdatePlayerStats;
         HandOfCards.OnHandChanged -= UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
+        HeartSystemHolder.OnHeartsChanged -= RealDeath;
     }
 
     private void UpdatePlayerStats(Equipment oldEquipment, Equipment newEquipment)
@@ -74,7 +78,26 @@ public class PlayerStats : CharacterStats
     }
     public override void Die()
     {
-        GetComponent<PlayerMovement>().enabled = false;
         base.Die();
+        Debug.Log("Losing a heart...");
+        // player will lose a heart first when reaching 0 hp.
+        // only dies when there is no more heart to lose
+        OnPlayerDying?.Invoke();
+        // disable movement temporarily, slow down the game
+        // animate a revive animation, get some hp back etc...
+    }
+
+    public void RealDeath(int hearts) // if hearts dips below 0, really die
+    {
+        if(hearts < 0)
+        {
+            Debug.Log("Doom approaches");
+            GetComponent<PlayerMovement>().enabled = false;
+            this.enabled = false;
+        }
+        else
+        {
+            Heal((int)(MaxHealth / 2));
+        }
     }
 }
