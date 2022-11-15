@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &26391095
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6190,7 +6190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1434756276
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6236,7 +6236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _damage:
-    baseValue: 15
+    baseValue: 70
     modifiers: 
   _armor:
     baseValue: 10
@@ -6923,7 +6923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1622184926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7315,7 +7315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8122,7 +8122,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345993, z: 0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

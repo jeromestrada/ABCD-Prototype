@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeartSystemHolder : MonoBehaviour
 {
-    [SerializeField] private protected HeartSystem _heartSystem;
+    [SerializeField] private HeartSystem _heartSystem;
     [SerializeField] private int _maxHearts;
     [SerializeField] private int _startingHearts;
 
