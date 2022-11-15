@@ -9,6 +9,7 @@ public class HeartSystem
     protected int _currentHeartCount;
 
     public int MaxHeartCount => _maxHeartCount;
+    public int CurrentHeartCount => _currentHeartCount;
 
     public HeartSystem(int maxHeartCount, int startingHeartCount)
     {
