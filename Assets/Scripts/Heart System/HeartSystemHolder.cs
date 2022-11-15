@@ -16,6 +16,7 @@ public class HeartSystemHolder : MonoBehaviour
     protected virtual void Awake()
     {
         _heartSystem = new HeartSystem(_maxHearts, _startingHearts);
+        OnHeartsDisplayRequested?.Invoke(_heartSystem);
     }
 
     private void LoseHeart()

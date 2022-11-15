@@ -23,8 +23,9 @@ public class HeartSystemUIController : MonoBehaviour
         HeartSystemHolder.OnHeartsDisplayRequested -= DisplayHearts;
     }
 
-    private void DisplayHearts(HeartSystem obj)
+    private void DisplayHearts(HeartSystem heartSysToDisplay)
     {
         HeartsPanel.gameObject.SetActive(true);
+        HeartsPanel.RefreshHeartSystemDisplay(heartSysToDisplay);
     }
 }
