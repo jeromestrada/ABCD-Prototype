@@ -21,6 +21,7 @@ public class MoonPhaseSystem : MonoBehaviour
     {
         _moon = new Moon();
         startColor = Color.red;
+        _light.color = startColor;
     }
 
     private void Start()
@@ -46,26 +47,26 @@ public class MoonPhaseSystem : MonoBehaviour
     {
         changeColor = true;
         startColor = _light.color;
-        
+        startTime = Time.time;
         switch (_moon.CurrentMoon)
         {
             case MoonPhase.New:
                 endColor = Color.red;
                 break;
             case MoonPhase.WaxingCrescent:
-                endColor = Color.magenta;
+                endColor = Color.grey;
                 break;
             case MoonPhase.FirstHalf:
-                endColor = Color.grey;
+                endColor = Color.cyan;
                 break;
             case MoonPhase.Full:
                 endColor = Color.white;
                 break;
             case MoonPhase.SecondHalf:
-                endColor = Color.grey;
+                endColor = Color.cyan;
                 break;
             case MoonPhase.WaningCrescent:
-                endColor = Color.magenta;
+                endColor = Color.grey;
                 break;
             default:
                 break;
