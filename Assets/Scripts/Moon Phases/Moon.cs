@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Moon
 {
-    private MoonPhase _currentMoon;
+    [SerializeField] private MoonPhase _currentMoon;
 
     public MoonPhase CurrentMoon => _currentMoon;
     

@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class MoonPhaseSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Moon _moon;
+
+    public Moon Moon => _moon;
+
+    protected virtual void Awake()
     {
-        
+        _moon = new Moon();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            _moon.Transition();
+        }
     }
 }
