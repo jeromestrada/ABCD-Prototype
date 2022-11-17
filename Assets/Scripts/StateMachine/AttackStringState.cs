@@ -20,7 +20,6 @@ public class AttackStringState : ComboBaseState
         duration = 0.5f;
         //Debug.Log($"Invoking attack with {attackIndex} and sc: {shouldCombo}");
         OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
-        
     }
 
     public override void OnUpdate()

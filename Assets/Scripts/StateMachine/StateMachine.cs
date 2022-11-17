@@ -16,7 +16,7 @@ public class StateMachine : MonoBehaviour
     public int NumOfStates => numOfStates;
 
 
-    public void Update()
+    public virtual void Update()
     {
         if (nextState != null)
         {

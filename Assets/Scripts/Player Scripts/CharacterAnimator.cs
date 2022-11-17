@@ -18,7 +18,6 @@ public class CharacterAnimator : MonoBehaviour
 
     PlayerMovement playerMovement;
     public AnimatorOverrideController overrideController;
-    PlayerCombat combat;
 
     [SerializeField] private DeckOfCards deck;
 
@@ -27,21 +26,12 @@ public class CharacterAnimator : MonoBehaviour
     private void OnEnable()
     {
         DashAbility.OnDash += OnDash;
-        PlayerCombat.OnAttack += OnAttack;
         AttackStringState.OnAttackAnimationPlayRequest += OnAttackString;
-    }
-
-    private void OnAttackString(int attackString)
-    {
-        Debug.Log($"Triggered OnAttackString with the {attackString} string");
-        animator.SetTrigger("attackTrigger");
-        overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
     }
 
     private void OnDisable()
     {
         DashAbility.OnDash -= OnDash;
-        PlayerCombat.OnAttack -= OnAttack;
         AttackStringState.OnAttackAnimationPlayRequest -= OnAttackString;
     }
 
@@ -64,6 +54,13 @@ public class CharacterAnimator : MonoBehaviour
 
         weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
         weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();
+    }
+
+    private void OnAttackString(int attackString)
+    {
+        // Debug.Log($"Triggered OnAttackString with the {attackString} string");
+        animator.SetTrigger("attackTrigger");
+        overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
     }
 
     void ChangeCurrentAttackAnimSet(Equipment newWeapon)
