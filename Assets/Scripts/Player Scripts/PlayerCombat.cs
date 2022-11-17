@@ -111,15 +111,17 @@ public class PlayerCombat : MonoBehaviour
 
     public void AttackFinish_AnimationEvent() // TODO: when this event fires, we play a transition phase where the next attack can be triggered
     {
-        Debug.Log("Attack ended from player combat");
-        lastAttackStringTime = Time.time;
-        canStringAttack = true;
-        CurrentAttackString++; // increment to the next attack string
-        if (CurrentAttackString == equippedWeapon.StringAttacksCount) // if we've reached the last string we cooldown
+        if(equippedWeapon != null)
         {
-            isCoolingDown = true;
-            finalStringTime = Time.time;
-            ResetAttackString();
+            lastAttackStringTime = Time.time;
+            canStringAttack = true;
+            CurrentAttackString++; // increment to the next attack string
+            if (CurrentAttackString == equippedWeapon.StringAttacksCount) // if we've reached the last string we cooldown
+            {
+                isCoolingDown = true;
+                finalStringTime = Time.time;
+                ResetAttackString();
+            }
         }
     }
 

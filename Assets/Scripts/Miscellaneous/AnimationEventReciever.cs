@@ -7,6 +7,17 @@ public class AnimationEventReciever : MonoBehaviour
 
     public static event System.Action OnAttackFinished;
 
+    private void OnEnable()
+    {
+        DashAbility.OnDashEnd += AttackFinishEvent;
+        DashAbility.OnDash += AttackFinishEvent;
+    }
+    private void OnDisable()
+    {
+        DashAbility.OnDashEnd -= AttackFinishEvent;
+        DashAbility.OnDash -= AttackFinishEvent;
+    }
+
     public void AttackFinishEvent()
     {   // should be triggered towards the very end of each animation so that it prompts the animator to increment to the next animation if possible.
         combat.AttackFinish_AnimationEvent();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,13 +31,23 @@ public class PlayerMovement : MonoBehaviour
 
     InteractableScanner scanner;
 
+    private void OnEnable()
+    {
+        AttackStringState.OnAttackAnimationPlayRequest += OnAttack;
+        //PlayerCombat.OnAttack += OnAttack;
+    }
+
+    private void OnDisable()
+    {
+        AttackStringState.OnAttackAnimationPlayRequest -= OnAttack;
+        //PlayerCombat.OnAttack -= OnAttack;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         scanner = GetComponent<InteractableScanner>();
         combat = GetComponent<PlayerCombat>();
-        PlayerCombat.OnAttack += OnAttack;
         speed = maxSpeed;
         dashSpeed = 0;
         dashForward = Vector3.zero;
@@ -79,8 +90,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
-    
-    
+
     void OnAttack(int attackString)
     {
         isAttacking = true;

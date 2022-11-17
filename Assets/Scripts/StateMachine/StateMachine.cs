@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[System.Serializable]
 public class StateMachine : MonoBehaviour
 {
     public string customName;
@@ -13,6 +14,7 @@ public class StateMachine : MonoBehaviour
     private int numOfStates;
 
     public int NumOfStates => numOfStates;
+
 
     public void Update()
     {
@@ -79,10 +81,11 @@ public class StateMachine : MonoBehaviour
     {
         if (mainStateType == null)
         {
-            if (customName == "Combat")
+            if (customName == null)
             {
-                mainStateType = new IdleCombatState();
+                customName = "Combat";
             }
+            mainStateType = new IdleCombatState();
         }
     }
 }

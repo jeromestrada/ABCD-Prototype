@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackStringState : ComboBaseState
 {
-    public static event System.Action<int> OnAnimationPlayRequest;
+    public static event System.Action<int> OnAttackAnimationPlayRequest;
     public static bool attackFinished = false;
 
     public AttackStringState(int _attackIndex) : base(_attackIndex)
@@ -18,8 +18,8 @@ public class AttackStringState : ComboBaseState
         attackFinished = false;
         shouldCombo = false;
         duration = 0.5f;
-        Debug.Log($"Invoking attack with {attackIndex} and sc: {shouldCombo}");
-        OnAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
+        //Debug.Log($"Invoking attack with {attackIndex} and sc: {shouldCombo}");
+        OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
         
     }
 
@@ -36,7 +36,7 @@ public class AttackStringState : ComboBaseState
         }
         if (fixedtime >= 2f)
         {
-            Debug.Log("combo expired will now go to idle");
+            //Debug.Log("combo expired will now go to idle");
             stateMachine.SetNextStateToMain();
             attackFinished = false;
             shouldCombo = false;

@@ -28,7 +28,7 @@ public class CharacterAnimator : MonoBehaviour
     {
         DashAbility.OnDash += OnDash;
         PlayerCombat.OnAttack += OnAttack;
-        AttackStringState.OnAnimationPlayRequest += OnAttackString;
+        AttackStringState.OnAttackAnimationPlayRequest += OnAttackString;
     }
 
     private void OnAttackString(int attackString)
@@ -42,7 +42,7 @@ public class CharacterAnimator : MonoBehaviour
     {
         DashAbility.OnDash -= OnDash;
         PlayerCombat.OnAttack -= OnAttack;
-        AttackStringState.OnAnimationPlayRequest -= OnAttackString;
+        AttackStringState.OnAttackAnimationPlayRequest -= OnAttackString;
     }
 
     void Start()

@@ -53,10 +53,7 @@ public class DashAbility : Ability
     {
         isActivated = true;
         dashStartTime = Time.time;
-        if (OnDash != null)
-        {
-            OnDash();
-        }
+        OnDash?.Invoke();
     }
     public void OnEndDash()
     {

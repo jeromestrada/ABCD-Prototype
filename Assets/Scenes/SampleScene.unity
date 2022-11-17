@@ -6364,21 +6364,21 @@ GameObject:
   m_Component:
   - component: {fileID: 1477938531}
   - component: {fileID: 1477938530}
-  - component: {fileID: 1477938536}
-  - component: {fileID: 1477938535}
   - component: {fileID: 1477938538}
+  - component: {fileID: 1477938536}
+  - component: {fileID: 1477938544}
+  - component: {fileID: 1477938543}
+  - component: {fileID: 1477938537}
+  - component: {fileID: 1477938541}
+  - component: {fileID: 1477938534}
+  - component: {fileID: 1477938535}
   - component: {fileID: 1477938528}
+  - component: {fileID: 1477938532}
   - component: {fileID: 1477938533}
   - component: {fileID: 1477938529}
-  - component: {fileID: 1477938532}
-  - component: {fileID: 1477938537}
   - component: {fileID: 1477938539}
   - component: {fileID: 1477938540}
-  - component: {fileID: 1477938534}
-  - component: {fileID: 1477938541}
   - component: {fileID: 1477938542}
-  - component: {fileID: 1477938543}
-  - component: {fileID: 1477938544}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -6629,6 +6629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec690e0cb3735644eaa8ea0e6a8e38fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeStateMachine: {fileID: 1477938542}
   hitbox: {fileID: 0}
   Hiteffect: {fileID: 0}
 --- !u!114 &1477938542
@@ -7352,7 +7353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000021345993, z: -0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8159,7 +8160,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: 0.000000021345993, z: -0.000000011681933, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
