@@ -14,9 +14,9 @@ public class ComboCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && combatStateMachine.CurrentState.GetType() == typeof(IdleCombatState) && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
+        if (Input.GetMouseButtonDown(0) && combatStateMachine.CurrentState.GetType() == typeof(IdleCombatState) 
+            && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
-            Debug.Log("CC has detected an attack");
             combatStateMachine.SetNextState(new AttackStringState(0, combatStateMachine.PlaceAttackPoint(), combatStateMachine.AttackRadius));
         }
     }

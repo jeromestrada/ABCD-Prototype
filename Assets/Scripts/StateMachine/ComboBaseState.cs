@@ -7,6 +7,7 @@ public class ComboBaseState : State
 {
     protected static bool shouldCombo = false; // replaces the canStringAttack in the player combat?
     protected static bool attackFinished = false;
+    protected static float attackEndTime;
 
     protected int attackIndex; // will contain which attack string the combo is currently on?
     public Vector3 attackPoint;
@@ -64,5 +65,6 @@ public class ComboBaseState : State
     {
         attackFinished = true;
         shouldCombo = false;
+        attackEndTime = fixedtime;
     }
 }

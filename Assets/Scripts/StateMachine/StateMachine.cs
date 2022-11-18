@@ -67,7 +67,7 @@ public class StateMachine : MonoBehaviour
 
     public void SetNextStateToMain()
     {
-        Debug.Log("Set to idle");
+        // Debug.Log("Set to idle");
         nextState = mainStateType;
     }
 

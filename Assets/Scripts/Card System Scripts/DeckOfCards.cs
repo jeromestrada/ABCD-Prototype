@@ -50,7 +50,7 @@ public class DeckOfCards : CardSystemHolder
 
     public void AddCardToDeck(Card cardToAdd)
     {
-        Debug.Log($"Adding {cardToAdd.name}");
+        // Debug.Log($"Adding {cardToAdd.name}");
         var addSuccess = CardSystem.AddToCardSystem(cardToAdd);
         if (addSuccess)
         {

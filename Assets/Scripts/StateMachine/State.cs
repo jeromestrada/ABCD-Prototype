@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public abstract class State
 {
-    protected float time { get; set; }
-    protected float fixedtime { get; set; }
-    protected float latetime { get; set; }
+    protected static float time { get; set; }
+    protected static float fixedtime { get; set; }
+    protected static float latetime { get; set; }
 
     protected StateMachine stateMachine;
     public virtual void OnEnter(StateMachine _stateMachine) { stateMachine = _stateMachine; }

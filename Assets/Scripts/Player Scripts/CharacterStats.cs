@@ -49,7 +49,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log($"{gameObject.name} just died!");
+        // Debug.Log($"{gameObject.name} just died!");
         if (OnDying != null)
         {
             OnDying();

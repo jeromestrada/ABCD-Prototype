@@ -6,7 +6,7 @@ public class AttackStringState : ComboBaseState
 {
     public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) : base(_attackIndex, _attackPoint, _attackRadius)
     {
-        Debug.Log("Creating AttackString...");
+        
     }
 
     public override void OnEnter(StateMachine _stateMachine)
@@ -14,6 +14,7 @@ public class AttackStringState : ComboBaseState
         base.OnEnter(_stateMachine);
         attackFinished = false;
         shouldCombo = false;
+        csm.comboExpired = false;
     }
 
     public override void OnUpdate()
@@ -24,16 +25,17 @@ public class AttackStringState : ComboBaseState
             //Debug.Log($"Attack finished moving to next string! Should combo? {shouldCombo}");
             if (shouldCombo)
             {
-                stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates, csm.PlaceAttackPoint(), attackRadius));
+                stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates, csm.AttackPoint, attackRadius));
+            }
+            if (fixedtime - attackEndTime >= csm.gracePeriod)
+            {
+                csm.comboExpired = true;
+                stateMachine.SetNextStateToMain();
+                attackFinished = false;
+                shouldCombo = false;
             }
         }
-        if (fixedtime >= 2f)
-        {
-            //Debug.Log("combo expired will now go to idle");
-            stateMachine.SetNextStateToMain();
-            attackFinished = false;
-            shouldCombo = false;
-        }
+        
     }
 }
 

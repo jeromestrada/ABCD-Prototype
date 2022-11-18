@@ -10,12 +10,13 @@ public class CombatStateMachine : StateMachine
 
     public LayerMask enemyMask;
 
-    EquipmentManager weaponManager;
     [SerializeField] protected Equipment equippedWeapon;
-    public bool canStringAttack;
+    protected Vector3 attackPoint;
+    public bool comboExpired;
 
     [SerializeField] ComboCharacter combo;
-    public float cooldownDuration = 3f;
+    public float gracePeriod = 1f;
+
 
     public static event System.Action<int> OnAttack;
 
@@ -23,6 +24,7 @@ public class CombatStateMachine : StateMachine
     public Equipment EquippedWeapon => equippedWeapon;
     public Transform CurrentStringAttackPoint => currentStringAttackPoint;
     public float AttackRadius => attackRadius;
+    public Vector3 AttackPoint => attackPoint;
 
     void OnEnable()
     {
@@ -37,6 +39,8 @@ public class CombatStateMachine : StateMachine
     public override void Update()
     {
         base.Update();
+        if(equippedWeapon != null)
+            attackPoint = PlaceAttackPoint();
     }
 
     private void OnWeaponChanged(Item oldWeapon, Item newWeapon)
@@ -55,6 +59,7 @@ public class CombatStateMachine : StateMachine
     public void UpdateAttackPoint(Transform newAttackPoint)
     {
         currentStringAttackPoint = newAttackPoint;
+        attackPoint = PlaceAttackPoint();
     }
 
     // TODO: figure out if theres a better system to set this, right now it just uses the raw values of the attack point and directly sets the offset
@@ -78,11 +83,11 @@ public class CombatStateMachine : StateMachine
 
     void OnDrawGizmosSelected()
     {
-        if (currentStringAttackPoint == null)
+        if (attackPoint == null)
         {
             return;
         }
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(PlaceAttackPoint(), attackRadius);
+        Gizmos.DrawWireSphere(attackPoint, attackRadius);
     }
 }

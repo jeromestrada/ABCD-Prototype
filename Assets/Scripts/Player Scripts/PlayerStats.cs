@@ -55,7 +55,7 @@ public class PlayerStats : CharacterStats
     public override void TakeDamage(int damage)
     {
         // call a hurt animation here for the player to play
-        Debug.Log($"{gameObject.name} is taking damage... {damage}");
+        // Debug.Log($"{gameObject.name} is taking damage... {damage}");
         base.TakeDamage(damage);
     }
 

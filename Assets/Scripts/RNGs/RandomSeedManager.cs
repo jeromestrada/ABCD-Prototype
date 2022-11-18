@@ -29,7 +29,7 @@ public class RandomSeedManager : MonoBehaviour
     public void SetSeed()
     {
         SetRandomSeed(_seed);
-        Debug.Log("new seed set!");
+        // Debug.Log("new seed set!");
     }
 
 
