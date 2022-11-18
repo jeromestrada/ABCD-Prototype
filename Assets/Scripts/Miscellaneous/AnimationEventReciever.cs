@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AnimationEventReciever : MonoBehaviour
 {
-    public CombatStateMachine combatSM;
-    public PlayerCombat combat;
+    public CombatStateMachine csm;
+    public ComboBaseState comboBaseState;
     public PlayerMovement controller;
 
     public static event System.Action OnAttackFinished;
@@ -28,6 +28,7 @@ public class AnimationEventReciever : MonoBehaviour
 
     public void AttackHitEvent()
     {
-        combatSM.AttackHit_AnimationEvent();
+        comboBaseState = (ComboBaseState)csm.CurrentState;
+        comboBaseState.AttackHit_AnimationEvent();
     }
 }

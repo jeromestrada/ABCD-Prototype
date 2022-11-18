@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class CombatStateMachine : StateMachine
 {
-    [SerializeField] private PlayerStats playerStats;
-    private Vector3 attackPoint;
-    private Transform currentStringAttackPoint;
+    [SerializeField] protected PlayerStats playerStats;
+    protected Transform currentStringAttackPoint;
+    protected float attackRadius = 3f;
 
-    public float attackRadius = 3f;
     public LayerMask enemyMask;
 
     EquipmentManager weaponManager;
-    [SerializeField] Equipment equippedWeapon;
+    [SerializeField] protected Equipment equippedWeapon;
     public bool canStringAttack;
-    public int CurrentAttackString;
-
-
-
-    private float lastAttackStringTime;
-    public float stringGracePeriod = 0.5f;
-    // TODO: replace the grace period system with a transition phase in between attacks
 
     [SerializeField] ComboCharacter combo;
 
@@ -31,6 +23,11 @@ public class CombatStateMachine : StateMachine
     public static event System.Action<int> OnAttack;
     PlayerMovement controller;
     [SerializeField] MouseItemData mouseItemData;
+
+    public PlayerStats PlayerStats => playerStats;
+    public Equipment EquippedWeapon => equippedWeapon;
+    public Transform CurrentStringAttackPoint => currentStringAttackPoint;
+    public float AttackRadius => attackRadius;
 
     void OnEnable()
     {
@@ -45,9 +42,6 @@ public class CombatStateMachine : StateMachine
     private void Start()
     {
         controller = GetComponent<PlayerMovement>();
-        lastAttackStringTime = 0;
-        canStringAttack = true;
-        ResetAttackString();
     }
 
     public override void Update()
@@ -63,42 +57,32 @@ public class CombatStateMachine : StateMachine
             {
                 equippedWeapon = (Equipment)newWeapon;
                 combo.SetMaxCombo(equippedWeapon);
-                ResetAttackString();
+                currentStringAttackPoint = equippedWeapon.AttackPoints[0];
             }
         }
+    }
+
+    public void UpdateAttackPoint(Transform newAttackPoint)
+    {
+        currentStringAttackPoint = newAttackPoint;
     }
 
     // TODO: figure out if theres a better system to set this, right now it just uses the raw values of the attack point and directly sets the offset
     public Vector3 PlaceAttackPoint()
     {   // the position of the current string's attack point is placed relative to the player's transform
         return transform.position +
-            (transform.right * currentStringAttackPoint.position.x) +
-            (transform.up * currentStringAttackPoint.position.y) +
-            (transform.forward * currentStringAttackPoint.position.z);
+            (transform.right * CurrentStringAttackPoint.position.x) +
+            (transform.up * CurrentStringAttackPoint.position.y) +
+            (transform.forward * CurrentStringAttackPoint.position.z);
     }
 
-    public void AttackHit_AnimationEvent()
+    public override void OnValidate()
     {
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, enemyMask);
-        foreach (Collider enemy in hitEnemies)
+        base.OnValidate();
+        if (customName == null)
         {
-            enemy.GetComponent<EnemyStats>().TakeDamage(playerStats.Damage.GetValue());
+            customName = "Combat";
         }
-    }
-
-    public void ResetAttackString()
-    {
-        CurrentAttackString = 0;
-        if (equippedWeapon != null) currentStringAttackPoint = equippedWeapon.AttackPoints[CurrentAttackString];
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (currentStringAttackPoint == null)
-        {
-            return;
-        }
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(attackPoint, attackRadius);
+        mainStateType = new IdleCombatState();
     }
 }

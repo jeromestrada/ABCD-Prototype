@@ -6,6 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class MoonPhaseSystem : MonoBehaviour
 {
+    [SerializeField] private MoonPhase _startingPhase;
     [SerializeField] private Moon _moon;
     [SerializeField] private Light _light;
     [SerializeField] private float _transitionSpeed;
@@ -19,9 +20,10 @@ public class MoonPhaseSystem : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _moon = new Moon();
+        _moon = new Moon(_startingPhase);
         startColor = Color.red;
         _light.color = startColor;
+        ChangeLight();
     }
 
     private void Start()

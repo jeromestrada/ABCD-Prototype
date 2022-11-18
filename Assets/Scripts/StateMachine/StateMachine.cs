@@ -6,12 +6,12 @@ public class StateMachine : MonoBehaviour
 {
     public string customName;
 
-    private State mainStateType;
+    protected State mainStateType;
     public State CurrentState { get; private set; }
 
-    private State nextState;
+    protected State nextState;
 
-    private int numOfStates;
+    protected int numOfStates;
 
     public int NumOfStates => numOfStates;
 
@@ -77,14 +77,10 @@ public class StateMachine : MonoBehaviour
         SetNextStateToMain();
     }
 
-    public void OnValidate()
+    public virtual void OnValidate()
     {
         if (mainStateType == null)
         {
-            if (customName == null)
-            {
-                customName = "Combat";
-            }
             mainStateType = new IdleCombatState();
         }
     }

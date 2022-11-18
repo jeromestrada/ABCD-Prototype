@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class State
 {
     protected float time { get; set; }
     protected float fixedtime { get; set; }
     protected float latetime { get; set; }
 
-    public StateMachine stateMachine;
+    protected StateMachine stateMachine;
     public virtual void OnEnter(StateMachine _stateMachine) { stateMachine = _stateMachine; }
     public virtual void OnUpdate() { time += Time.deltaTime; }
     public virtual void OnLateUpdate() { fixedtime += Time.deltaTime; }

@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class AttackStringState : ComboBaseState
 {
-    public static event System.Action<int> OnAttackAnimationPlayRequest;
-    public static bool attackFinished = false;
-
-    public AttackStringState(int _attackIndex) : base(_attackIndex)
+    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) : base(_attackIndex, _attackPoint, _attackRadius)
     {
-        attackIndex = _attackIndex;
+        Debug.Log("Creating AttackString...");
     }
 
     public override void OnEnter(StateMachine _stateMachine)
@@ -17,9 +14,6 @@ public class AttackStringState : ComboBaseState
         base.OnEnter(_stateMachine);
         attackFinished = false;
         shouldCombo = false;
-        duration = 0.5f;
-        //Debug.Log($"Invoking attack with {attackIndex} and sc: {shouldCombo}");
-        OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
     }
 
     public override void OnUpdate()
@@ -30,7 +24,7 @@ public class AttackStringState : ComboBaseState
             //Debug.Log($"Attack finished moving to next string! Should combo? {shouldCombo}");
             if (shouldCombo)
             {
-                stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates));
+                stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates, csm.PlaceAttackPoint(), attackRadius));
             }
         }
         if (fixedtime >= 2f)
@@ -40,13 +34,6 @@ public class AttackStringState : ComboBaseState
             attackFinished = false;
             shouldCombo = false;
         }
-
-    }
-
-    public static void AttackFinished()
-    {
-        attackFinished = true;
-        shouldCombo = false;
     }
 }
 

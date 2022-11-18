@@ -2772,6 +2772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b125705ffe9eb42a1573a974a39acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startingPhase: 3
   _moon:
     _currentMoon: 0
   _light: {fileID: 2138677392}
@@ -4456,7 +4457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6e8dac9b660bf47959b17459a76097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _drawAmount: 0
+  _drawAmount: 7
   drawText: {fileID: 368060470}
   hand: {fileID: 75225266}
 --- !u!1 &848140982
@@ -6207,7 +6208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1434756276
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6230,7 +6231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434756275}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.89, y: 0, z: 1.6700001}
+  m_LocalPosition: {x: 7.06, y: 0, z: 6.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450652948681182}
@@ -6253,7 +6254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _damage:
-    baseValue: 70
+    baseValue: 25
     modifiers: 
   _armor:
     baseValue: 10
@@ -6369,8 +6370,8 @@ GameObject:
   - component: {fileID: 1477938544}
   - component: {fileID: 1477938543}
   - component: {fileID: 1477938537}
-  - component: {fileID: 1477938541}
   - component: {fileID: 1477938534}
+  - component: {fileID: 1477938541}
   - component: {fileID: 1477938535}
   - component: {fileID: 1477938528}
   - component: {fileID: 1477938532}
@@ -6378,7 +6379,6 @@ GameObject:
   - component: {fileID: 1477938529}
   - component: {fileID: 1477938539}
   - component: {fileID: 1477938540}
-  - component: {fileID: 1477938542}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -6506,20 +6506,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1477938527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adadfd56c2f81264896d329b278a535b, type: 3}
+  m_Script: {fileID: 11500000, guid: e17cab8ba6414044c934be17cf502e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 0}
+  customName: Combat
   playerStats: {fileID: 1477938536}
-  canStringAttack: 0
-  CurrentAttackString: 0
-  stringGracePeriod: 0.5
-  attackRadius: 3
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  equippedWeapon: {fileID: 0}
+  canStringAttack: 0
   combo: {fileID: 1477938541}
-  cooldownDuration: 0.25
+  cooldownDuration: 1.5
   mouseItemData: {fileID: 1863707525}
 --- !u!114 &1477938535
 MonoBehaviour:
@@ -6629,22 +6627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec690e0cb3735644eaa8ea0e6a8e38fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeStateMachine: {fileID: 1477938542}
+  combatStateMachine: {fileID: 1477938534}
   hitbox: {fileID: 0}
   Hiteffect: {fileID: 0}
---- !u!114 &1477938542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1477938527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77c762afc9904bb43856cb5e22d77918, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  customName: Combat
 --- !u!114 &1477938543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7353,7 +7338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345993, z: -0.000000011681933, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.000000011681934, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7950,7 +7935,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed72992324014c242b706964ddb41ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combat: {fileID: 1477938534}
+  csm: {fileID: 1477938534}
+  comboBaseState:
+    attackPoint: {x: 0, y: 0, z: 0}
+    attackRadius: 3
   controller: {fileID: 1477938528}
 --- !u!1001 &1930773872
 PrefabInstance:
@@ -8160,7 +8148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345993, z: -0.000000011681933, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.000000011681934, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
