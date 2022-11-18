@@ -5,8 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class ComboBaseState : State
 {
-    protected Animator animator; // can probably refactored so that the animator listens for a comboBaseState invoking an OnRequestAnimationPlay or something.
-
     protected static bool shouldCombo = false; // replaces the canStringAttack in the player combat?
     protected static bool attackFinished = false;
 
@@ -66,15 +64,5 @@ public class ComboBaseState : State
     {
         attackFinished = true;
         shouldCombo = false;
-    }
-
-    void OnDrawGizmos()
-    {
-        if (attackPoint == null)
-        {
-            return;
-        }
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(attackPoint, attackRadius);
     }
 }

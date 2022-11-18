@@ -15,14 +15,9 @@ public class CombatStateMachine : StateMachine
     public bool canStringAttack;
 
     [SerializeField] ComboCharacter combo;
-
-    bool isCoolingDown = false;
-    float finalStringTime;
     public float cooldownDuration = 3f;
 
     public static event System.Action<int> OnAttack;
-    PlayerMovement controller;
-    [SerializeField] MouseItemData mouseItemData;
 
     public PlayerStats PlayerStats => playerStats;
     public Equipment EquippedWeapon => equippedWeapon;
@@ -37,11 +32,6 @@ public class CombatStateMachine : StateMachine
     void OnDisable()
     {
         EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
-    }
-
-    private void Start()
-    {
-        controller = GetComponent<PlayerMovement>();
     }
 
     public override void Update()
@@ -84,5 +74,15 @@ public class CombatStateMachine : StateMachine
             customName = "Combat";
         }
         mainStateType = new IdleCombatState();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (currentStringAttackPoint == null)
+        {
+            return;
+        }
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(PlaceAttackPoint(), attackRadius);
     }
 }
