@@ -9,8 +9,6 @@ public class ComboBaseState : State
     protected static bool attackFinished = false;
     protected static float attackEndTime;
 
-    protected float gracePeriodExtension;
-
     protected int attackIndex; // will contain which attack string the combo is currently on?
     public Vector3 attackPoint;
     public float attackRadius = 3f;
@@ -21,12 +19,11 @@ public class ComboBaseState : State
     public static event System.Action<int> OnAttackAnimationPlayRequest;
 
 
-    public ComboBaseState(int _attackIndex, Vector3 _attackPoint, float _attackRadius, float _gracePeriodExtension)
+    public ComboBaseState(int _attackIndex, Vector3 _attackPoint, float _attackRadius)
     {
         attackIndex = _attackIndex;
         attackPoint = _attackPoint;
         attackRadius = _attackRadius;
-        gracePeriodExtension = _gracePeriodExtension;
     }
 
     public override void OnEnter(StateMachine _stateMachine)

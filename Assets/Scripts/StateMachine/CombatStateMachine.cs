@@ -15,8 +15,8 @@ public class CombatStateMachine : StateMachine
     public bool comboExpired;
     
     [SerializeField] ComboCharacter combo;
-    public float gracePeriod = 1f;
-    public float gracePeriodExtension;
+    public float globalGracePeriod = 1f;
+    public float weaponGracePeriodExtension;
 
 
     public static event System.Action<int> OnAttack;

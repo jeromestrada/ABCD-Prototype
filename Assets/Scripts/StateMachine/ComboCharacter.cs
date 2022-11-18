@@ -17,7 +17,7 @@ public class ComboCharacter : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && csm.CurrentState.GetType() == typeof(IdleCombatState) 
             && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
-            csm.SetNextState(new AttackStringState(0, csm.PlaceAttackPoint(), csm.AttackRadius, csm.GracePeriodExtensions[0]));
+            csm.SetNextState(new AttackStringState(0, csm.PlaceAttackPoint(), csm.AttackRadius));
         }
     }
 
