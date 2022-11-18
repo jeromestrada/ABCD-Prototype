@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackStringState : ComboBaseState
 {
-    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) : base(_attackIndex, _attackPoint, _attackRadius)
+    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius, float _extension) : base(_attackIndex, _attackPoint, _attackRadius, _extension)
     {
         
     }
@@ -22,12 +22,12 @@ public class AttackStringState : ComboBaseState
         base.OnUpdate();
         if (attackFinished)
         {
-            //Debug.Log($"Attack finished moving to next string! Should combo? {shouldCombo}");
             if (shouldCombo)
             {
-                stateMachine.SetNextState(new AttackStringState((attackIndex + 1) % stateMachine.NumOfStates, csm.AttackPoint, attackRadius));
+                var index = (attackIndex + 1) % stateMachine.NumOfStates;
+                stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, attackRadius, csm.GracePeriodExtensions[index]));
             }
-            if (fixedtime - attackEndTime >= csm.gracePeriod)
+            if (fixedtime - attackEndTime >= GracePeriod())
             {
                 csm.comboExpired = true;
                 stateMachine.SetNextStateToMain();
@@ -35,7 +35,12 @@ public class AttackStringState : ComboBaseState
                 shouldCombo = false;
             }
         }
-        
+    }
+
+    public float GracePeriod()
+    {
+        csm.gracePeriodExtension = csm.gracePeriod + gracePeriodExtension;
+        return csm.gracePeriodExtension;
     }
 }
 

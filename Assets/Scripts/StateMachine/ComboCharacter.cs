@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComboCharacter : MonoBehaviour
 {
 
-    [SerializeField] private CombatStateMachine combatStateMachine;
+    [SerializeField] private CombatStateMachine csm;
 
     [SerializeField] public Collider2D hitbox;
     [SerializeField] public GameObject Hiteffect;
@@ -14,16 +14,16 @@ public class ComboCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && combatStateMachine.CurrentState.GetType() == typeof(IdleCombatState) 
+        if (Input.GetMouseButtonDown(0) && csm.CurrentState.GetType() == typeof(IdleCombatState) 
             && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
-            combatStateMachine.SetNextState(new AttackStringState(0, combatStateMachine.PlaceAttackPoint(), combatStateMachine.AttackRadius));
+            csm.SetNextState(new AttackStringState(0, csm.PlaceAttackPoint(), csm.AttackRadius, csm.GracePeriodExtensions[0]));
         }
     }
 
     public void SetMaxCombo(Equipment weapon)
     {
         hasWeapon = true;
-        combatStateMachine.SetNumOfStates(weapon.StringAttacksCount);
+        csm.SetNumOfStates(weapon.StringAttacksCount);
     }
 }

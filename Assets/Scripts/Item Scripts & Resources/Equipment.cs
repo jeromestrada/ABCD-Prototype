@@ -13,6 +13,8 @@ public class Equipment : Item
     [SerializeField] private Transform[] _attackPoints; // an array of attack points that we can access to resolve attack hits
     [SerializeField] private WeaponAnimations _weaponAnimations;
     [SerializeField] private WeaponAnimations _weaponTransitionAnims;
+    [Tooltip("If certain weapon transitions take time, extensions can be provided so the combo state machine can adjust accordingly - floats")]
+    [SerializeField] private float[] gracePeriodExtensions;
 
     public int Damage => _damage;
     public int Armor => _armor;
@@ -20,6 +22,7 @@ public class Equipment : Item
     public Transform[] AttackPoints => _attackPoints;
     public WeaponAnimations WeaponAnimations => _weaponAnimations;
     public WeaponAnimations WeaponTransitions => _weaponTransitionAnims;
+    public float[] GracePeriodExtensions => gracePeriodExtensions;
 
     public static System.Action<Equipment> OnEquipmentUse;
     

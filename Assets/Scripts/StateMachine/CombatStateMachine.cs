@@ -13,9 +13,10 @@ public class CombatStateMachine : StateMachine
     [SerializeField] protected Equipment equippedWeapon;
     protected Vector3 attackPoint;
     public bool comboExpired;
-
+    
     [SerializeField] ComboCharacter combo;
     public float gracePeriod = 1f;
+    public float gracePeriodExtension;
 
 
     public static event System.Action<int> OnAttack;
@@ -25,6 +26,7 @@ public class CombatStateMachine : StateMachine
     public Transform CurrentStringAttackPoint => currentStringAttackPoint;
     public float AttackRadius => attackRadius;
     public Vector3 AttackPoint => attackPoint;
+    public float[] GracePeriodExtensions => equippedWeapon.GracePeriodExtensions;
 
     void OnEnable()
     {

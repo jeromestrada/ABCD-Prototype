@@ -28,3 +28,9 @@ MonoBehaviour:
     clips:
     - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
     - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+  _weaponTransitionAnims:
+    weapon: {fileID: 0}
+    clips: []
+  gracePeriodExtensions:
+  - 5
+  - 0
