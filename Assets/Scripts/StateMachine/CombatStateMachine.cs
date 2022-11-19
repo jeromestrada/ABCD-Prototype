@@ -60,8 +60,8 @@ public class CombatStateMachine : StateMachine
 
     public float TotalGracePeriod(int _index)
     {
-        CurrentGracePeriodExtension = WeaponGracePeriodExtensions[_index];
-        return globalGracePeriod + CurrentGracePeriodExtension;
+        CurrentGracePeriodExtension = globalGracePeriod + WeaponGracePeriodExtensions[_index];
+        return CurrentGracePeriodExtension;
     }
 
     public void UpdateAttackPoint(Transform newAttackPoint)
