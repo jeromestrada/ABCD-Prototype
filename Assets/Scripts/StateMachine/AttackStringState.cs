@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AttackStringState : ComboBaseState
 {
-    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) : base(_attackIndex, _attackPoint, _attackRadius)
+    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) 
+        : base(_attackIndex, _attackPoint, _attackRadius)
     {
         
     }
@@ -23,12 +24,11 @@ public class AttackStringState : ComboBaseState
         if (attackFinished)
         {
             var index = (attackIndex + 1) % stateMachine.NumOfStates;
-            var gracePeriod = TotalGracePeriod(index);
             if (shouldCombo)
             {
                 stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, attackRadius));
             }
-            if (fixedtime - attackEndTime >= gracePeriod)
+            if (fixedtime - attackEndTime >= csm.CurrentGracePeriodExtension)
             {
                 csm.comboExpired = true;
                 stateMachine.SetNextStateToMain();
@@ -38,10 +38,6 @@ public class AttackStringState : ComboBaseState
         }
     }
 
-    public float TotalGracePeriod(int _index)
-    {
-        csm.weaponGracePeriodExtension = csm.GracePeriodExtensions[_index];
-        return csm.globalGracePeriod + csm.weaponGracePeriodExtension;
-    }
+    
 }
 

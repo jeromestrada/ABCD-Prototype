@@ -32,5 +32,5 @@ MonoBehaviour:
     weapon: {fileID: 0}
     clips: []
   gracePeriodExtensions:
-  - 5
+  - 2
   - 0
