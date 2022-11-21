@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : MonoBehaviour , MoonBound
 {
     [SerializeField] private int _maxHealth = 100;
     protected int _currentHealth;
@@ -54,5 +54,10 @@ public class CharacterStats : MonoBehaviour
         {
             OnDying();
         }
+    }
+
+    public virtual void Buff(Moon moon)
+    {
+        Debug.Log($"{gameObject.name} affected by new moon phase.");
     }
 }

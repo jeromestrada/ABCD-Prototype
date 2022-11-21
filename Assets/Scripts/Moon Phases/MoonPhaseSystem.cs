@@ -18,6 +18,8 @@ public class MoonPhaseSystem : MonoBehaviour
     public Moon Moon => _moon;
     public Light Light => _light;
 
+    public static event System.Action<Moon> OnMoonPhaseChange;
+
     protected virtual void Awake()
     {
         _moon = new Moon(_startingPhase);
@@ -36,6 +38,7 @@ public class MoonPhaseSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             _moon.Transition();
+            OnMoonPhaseChange?.Invoke(_moon);
             ChangeLight();
         }
         if (changeColor)

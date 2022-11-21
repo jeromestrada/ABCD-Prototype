@@ -6,15 +6,12 @@ public class PlayerStats : CharacterStats
 {
 
     public static event System.Action OnPlayerDying;
-    protected void Start()
-    {
-        
-    }
 
     private void OnEnable()
     {
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
         HandOfCards.OnHandChanged += UpdatePlayerStats;
+        MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
     }
@@ -23,8 +20,21 @@ public class PlayerStats : CharacterStats
     {
         EquipmentManager.OnEquipmentChanged -= UpdatePlayerStats;
         HandOfCards.OnHandChanged -= UpdatePlayerStats;
+        MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
+    }
+
+    private void UpdatePlayerStats(Moon moon)
+    {
+        Buff(moon);
+    }
+
+    public override void Buff(Moon moon)
+    {
+        base.Buff(moon);
+        // Player specific buff logic should be here.
+        Debug.Log($"PlayerStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
     }
 
     private void UpdatePlayerStats(Equipment oldEquipment, Equipment newEquipment)
