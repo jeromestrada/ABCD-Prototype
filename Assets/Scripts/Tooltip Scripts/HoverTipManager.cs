@@ -12,18 +12,17 @@ public class HoverTipManager : MonoBehaviour
     private Vector2 mousePos;
     private bool isTipShown = false;
 
-    public static System.Action<string, Vector2> OnMouseHover;
-    public static System.Action OnMouseLoseFocus;
+    
 
     private void OnEnable()
     {
-        OnMouseHover += ShowTip;
-        OnMouseLoseFocus += HideTip;
+        HoverTip.OnMouseHover += ShowTip;
+        HoverTip.OnMouseLoseFocus += HideTip;
     }
     private void OnDisable()
     {
-        OnMouseHover -= ShowTip;
-        OnMouseLoseFocus -= HideTip;
+        HoverTip.OnMouseHover -= ShowTip;
+        HoverTip.OnMouseLoseFocus -= HideTip;
     }
 
     void Start()

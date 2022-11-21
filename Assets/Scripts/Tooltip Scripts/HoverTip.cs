@@ -9,6 +9,9 @@ public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public string tipToShow;
     private float timeToWait = 0.5f;
 
+    public static System.Action<string, Vector2> OnMouseHover;
+    public static System.Action OnMouseLoseFocus;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         StopAllCoroutines();
@@ -18,12 +21,12 @@ public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit(PointerEventData eventData)
     {
         StopAllCoroutines();
-        HoverTipManager.OnMouseLoseFocus();
+        OnMouseLoseFocus?.Invoke();
     }
 
     private void ShowMessage()
     {
-        HoverTipManager.OnMouseHover(tipToShow, Input.mousePosition);
+        OnMouseHover?.Invoke(tipToShow, Input.mousePosition);
     }
 
     private IEnumerator StartTimer()
