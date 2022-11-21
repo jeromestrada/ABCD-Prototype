@@ -40,7 +40,7 @@ public class MoonPhaseSystem : MonoBehaviour
         }
         if (changeColor)
         {
-            float t = Mathf.Sin(Time.time - startTime * _transitionSpeed);
+            float t = Mathf.Sin((Time.time - startTime) * _transitionSpeed);
             LerpColor(startColor, endColor, t);
         }
     }
