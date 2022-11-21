@@ -26,6 +26,7 @@ public class MoonPhaseSystem : MonoBehaviour
         startColor = Color.red;
         _light.color = startColor;
         ChangeLight();
+        OnMoonPhaseChange?.Invoke(_moon);
     }
 
     private void Start()
