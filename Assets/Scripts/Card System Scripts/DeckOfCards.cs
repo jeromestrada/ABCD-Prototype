@@ -125,6 +125,16 @@ public class DeckOfCards : CardSystemHolder
     protected override void Update()
     {
         base.Update();
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            _cardSystem.CardSlots.Clear();
+            foreach(PlayerCardSlot p in _viewOnlyDeck.CardSlots)
+            {
+                _cardSystem.AddToCardSystem(p.Card);
+            }
+            ShuffleDeck();
+            Debug.Log("Playing deck reset");
+        }
         if (Input.GetKeyDown(KeyCode.C))
         {   // open/close deck of cards
             if (isHidden && _cardSystem.CardSystemSize != 0)

@@ -71,24 +71,27 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
     {
         if (CardSystemDisplayType == CardSystemDisplayType.HandInventory)
         {
-            for (int i = 0; i < hotKeys.Length; i++)
+            if(CardSystem.CardSystemSize > 0)
             {
-                if (Input.GetKeyDown(hotKeys[i]))
+                for (int i = 0; i < hotKeys.Length; i++)
                 {
-
-                    Debug.Log($"Selecting {hotKeys[i]} in hand");
-                    selectedHotKeyIndex = i;
-                    if (previousHotKeyPressed == selectedHotKeyIndex) // if a hotkey is pressed twice in a row, use the item.
+                    if (Input.GetKeyDown(hotKeys[i]))
                     {
-                        var cardSlot = cardSystem.CardSlots[i];
-                        Debug.Log($"Confirmed use of {hotKeys[i]} in hand");
-                        cardSlot.UseCardInSlot();
-                        if (cardSlot.RemainingUses <= 0) cardSystem.RemoveCardSlot(cardSlot);
-                        RefreshDynamicInventory(cardSystem);
+
+                        Debug.Log($"Selecting {hotKeys[i]} in hand");
+                        selectedHotKeyIndex = i;
+                        if (previousHotKeyPressed == selectedHotKeyIndex) // if a hotkey is pressed twice in a row, use the item.
+                        {
+                            var cardSlot = cardSystem.CardSlots[i];
+                            Debug.Log($"Confirmed use of {hotKeys[i]} in hand");
+                            cardSlot.UseCardInSlot();
+                            if (cardSlot.RemainingUses <= 0) cardSystem.RemoveCardSlot(cardSlot);
+                            RefreshDynamicInventory(cardSystem);
+                        }
+                        previousHotKeyPressed = selectedHotKeyIndex;
                     }
-                    previousHotKeyPressed = selectedHotKeyIndex;
                 }
-            }
+            } 
         }
     }
 }
