@@ -9,15 +9,18 @@ public class CharacterStats : MonoBehaviour , MoonBound
 
     [SerializeField] private Stat _damage;
     [SerializeField] private Stat _armor;
+    [SerializeField] private Stat _movespeed;
     // stats like movespeed, hp/mana regen, cdr, etc can be added here.
 
     public int MaxHealth => _maxHealth;
     public Stat Damage => _damage;
     public Stat Armor => _armor;
+    public Stat Movespeed => _movespeed;
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
     public event System.Action<CharacterStats> OnTakeDamage;
+    public static event System.Action OnStatChange;
 
     protected void Awake()
     {
@@ -59,5 +62,6 @@ public class CharacterStats : MonoBehaviour , MoonBound
     public virtual void Buff(Moon moon)
     {
         Debug.Log($"{gameObject.name} affected by new moon phase.");
+        OnStatChange?.Invoke();
     }
 }

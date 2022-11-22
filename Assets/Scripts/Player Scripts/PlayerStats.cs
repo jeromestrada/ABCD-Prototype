@@ -32,9 +32,20 @@ public class PlayerStats : CharacterStats
 
     public override void Buff(Moon moon)
     {
-        base.Buff(moon);
+        
         // Player specific buff logic should be here.
+        if(moon.CurrentMoon == MoonPhase.Full)
+        {
+            Damage.AddModifier(50);
+            Movespeed.AddModifier(5);
+        }
+        else
+        {
+            Damage.RemoveModifier(50);
+            Movespeed.RemoveModifier(5);
+        }
         Debug.Log($"PlayerStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
+        base.Buff(moon);
     }
 
     private void UpdatePlayerStats(Equipment oldEquipment, Equipment newEquipment)

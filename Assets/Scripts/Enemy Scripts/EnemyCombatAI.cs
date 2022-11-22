@@ -32,10 +32,26 @@ public class EnemyCombatAI : MonoBehaviour
 
     public event System.Action OnEnemyAttack;
 
+    private void OnEnable()
+    {
+        EnemyStats.OnStatChange += UpdateMoveSpeed;
+    }
+
+    private void OnDisable()
+    {
+        EnemyStats.OnStatChange -= UpdateMoveSpeed;
+    }
+
+    private void UpdateMoveSpeed()
+    {
+        agent.speed = _myStats.Movespeed.GetValue();
+    }
+
     private void Awake()
     {
         playerTrans = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = _myStats.Movespeed.GetValue();
     }
 
     void Update()

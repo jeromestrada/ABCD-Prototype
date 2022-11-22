@@ -21,9 +21,20 @@ public class EnemyStats : CharacterStats
 
     public override void Buff(Moon moon)
     {
-        base.Buff(moon);
+        
         // Enemy specific buff logic here.
+        if (moon.CurrentMoon == MoonPhase.New)
+        {
+            Damage.AddModifier(15);
+            Movespeed.AddModifier(5);
+        }
+        else
+        {
+            Damage.RemoveModifier(15);
+            Movespeed.RemoveModifier(5);
+        }
         Debug.Log($"EnemyStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
+        base.Buff(moon);
     }
 
     public override void TakeDamage(int damage)

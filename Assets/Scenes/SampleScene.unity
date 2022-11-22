@@ -6237,10 +6237,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _damage:
-    baseValue: 25
+    baseValue: 15
     modifiers: 
   _armor:
     baseValue: 10
+    modifiers: 
+  _movespeed:
+    baseValue: 7
     modifiers: 
 --- !u!114 &1434756279
 MonoBehaviour:
@@ -6381,6 +6384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b6418bb247bed4a943317888d107e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myStats: {fileID: 1477938536}
   move: {x: 0, y: 0, z: 0}
   dashForward: {x: 0, y: 0, z: 0}
   minSpeed: 3.5
@@ -6537,6 +6541,9 @@ MonoBehaviour:
     modifiers: 
   _armor:
     baseValue: 5
+    modifiers: 
+  _movespeed:
+    baseValue: 7
     modifiers: 
 --- !u!114 &1477938537
 MonoBehaviour:
@@ -8771,7 +8778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b125705ffe9eb42a1573a974a39acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingPhase: 0
+  _startingPhase: 3
   _moon:
     _currentMoon: 0
   _light: {fileID: 2138677392}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerStats myStats;
+
     public Vector3 move;
     public Vector3 dashForward;
     public float minSpeed = 3.5f;
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         AttackStringState.OnAttackAnimationPlayRequest += OnAttack;
+        PlayerStats.OnStatChange += UpdateMoveSpeed;
         //PlayerCombat.OnAttack += OnAttack;
     }
 
@@ -48,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         scanner = GetComponent<InteractableScanner>();
         combat = GetComponent<PlayerCombat>();
-        speed = maxSpeed;
+        maxSpeed = myStats.Movespeed.GetValue();
         dashSpeed = 0;
         dashForward = Vector3.zero;
         IsDashing = false;
@@ -89,6 +92,11 @@ public class PlayerMovement : MonoBehaviour
             speed = 0;
         }
         
+    }
+
+    void UpdateMoveSpeed()
+    {
+        maxSpeed = myStats.Movespeed.GetValue();
     }
 
     void OnAttack(int attackString)
