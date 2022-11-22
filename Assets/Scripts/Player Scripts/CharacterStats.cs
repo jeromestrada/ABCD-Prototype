@@ -25,6 +25,7 @@ public class CharacterStats : MonoBehaviour , MoonBound
     protected void Awake()
     {
         _currentHealth = MaxHealth;
+        OnStatChange?.Invoke();
     }
     public virtual void TakeDamage(int damage)
     {
@@ -59,7 +60,7 @@ public class CharacterStats : MonoBehaviour , MoonBound
         }
     }
 
-    public virtual void Buff(Moon moon)
+    public virtual void Buff(Moon moon) // Moon bound buff, overriden by a specific unit type: player, different enemies, neutrals, etc...
     {
         Debug.Log($"{gameObject.name} affected by new moon phase.");
         OnStatChange?.Invoke();
