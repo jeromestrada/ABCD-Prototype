@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundChecker;
     public LayerMask groundMask;
     bool isGrounded;
-    Vector3 velocity;
+    [SerializeField] Vector3 velocity;
 
     float turnSmoothness = 0.1f;
     float turnSmoothVelocity;
@@ -61,7 +61,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundChecker.position, groundDistance, groundMask);
-
+        if (isGrounded)
+        {
+            velocity.y = -1f;
+        }
         CharacterController controller = GetComponent<CharacterController>();
         HandleMovement(controller);
     }
@@ -69,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement(CharacterController controller)
     {
         move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        
+        velocity.y += gravity * Time.deltaTime;
         if (move.magnitude >= 0.1f)
         {
             speed = maxSpeed;
@@ -91,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 0;
         }
-        
+        controller.Move(velocity * Time.deltaTime);
     }
 
     void UpdateMoveSpeed()
