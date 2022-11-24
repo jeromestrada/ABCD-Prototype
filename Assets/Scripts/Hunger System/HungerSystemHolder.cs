@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HungrySystemHolder : MonoBehaviour
+public class HungerSystemHolder : MonoBehaviour
 {
     [SerializeField] private HungerSystem _hungerSystem;
     [SerializeField] private float _satietyLimit;
     [SerializeField] private float _metabolism;
+    [SerializeField] private float _digestionInterval = 5f;
 
     [SerializeField] private List<Ration> _rations;
     [SerializeField] private int _maxRations;
     [SerializeField] HungerState _state;
     [SerializeField] float _satiety;
 
-    private int _digestionInterval = 5;
+    public HungerSystem HungerSystem => _hungerSystem;
+
     private bool digesting;
 
     protected virtual void Awake()
