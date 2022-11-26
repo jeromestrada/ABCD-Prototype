@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 1549560e-bc9b-481f-9b1e-7918b9c96440
+  _id: 38ecdb1a-69d5-486d-bb64-d76b3a751161
 --- !u!135 &159000275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2902,7 +2902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14effabce6b85b74fb7ce228330021ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: noni
+  _seed: nono
   setMySeed: 1
   copySeedToClipboard: 0
 --- !u!1 &524249062
@@ -7960,7 +7960,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.000000011681934, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8994,7 +8994,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.000000011681934, w: 0.8772268}
+  m_LocalRotation: {x: 0.4800762, y: -0.000000021345995, z: 0.0000000116819345, w: 0.8772268}
   m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
