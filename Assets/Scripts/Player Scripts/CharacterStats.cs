@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour , MoonBound
+public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
 {
     [SerializeField] private int _maxHealth = 100;
     protected int _currentHealth;
@@ -63,6 +63,11 @@ public class CharacterStats : MonoBehaviour , MoonBound
     public virtual void Buff(Moon moon) // Moon bound buff, overriden by a specific unit type: player, different enemies, neutrals, etc...
     {
         Debug.Log($"{gameObject.name} affected by new moon phase.");
+        OnStatChange?.Invoke();
+    }
+
+    public virtual void ApplyHungerStatus(HungerSystem hungerSystem)
+    {
         OnStatChange?.Invoke();
     }
 }

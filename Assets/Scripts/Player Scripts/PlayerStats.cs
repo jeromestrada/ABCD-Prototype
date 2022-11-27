@@ -14,6 +14,7 @@ public class PlayerStats : CharacterStats
         MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
+        HungerSystem.OnHungerStatusChanged += UpdatePlayerStats;
     }
 
     private void OnDisable()
@@ -23,6 +24,38 @@ public class PlayerStats : CharacterStats
         MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
+        HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
+    }
+
+    private void UpdatePlayerStats(HungerSystem hungerSystem)
+    {
+        ApplyHungerStatus(hungerSystem);
+    }
+
+    public override void ApplyHungerStatus(HungerSystem hungerSystem)
+    {
+        switch (hungerSystem.HungerStatus)
+        {
+            case HungerState.Full:
+                Debug.Log("FULL status!");
+                Movespeed.AddModifier(-3);
+                Damage.RemoveModifier(10);
+                Damage.RemoveModifier(5);
+                break;
+            case HungerState.Hungry:
+                Debug.Log("HUNGRY status!");
+                Movespeed.RemoveModifier(-3);
+                Damage.AddModifier(5);
+                break;
+            case HungerState.Starving:
+                Debug.Log("STARVING status!");
+                Damage.AddModifier(10);
+                break;
+            default:
+                Debug.Log("DEFAULT status!");
+                break;
+        }
+        base.ApplyHungerStatus(hungerSystem);
     }
 
     private void UpdatePlayerStats(Moon moon)

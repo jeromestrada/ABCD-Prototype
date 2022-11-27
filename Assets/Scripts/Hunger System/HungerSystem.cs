@@ -10,10 +10,13 @@ public class HungerSystem
     private float _metabolism;
 
     private HungerState _hungerStatus;
+    private HungerState _previousHungerStatus;
 
     public float CurrentSatiety => _currentSatiety;
     public HungerState HungerStatus => _hungerStatus;
     public float SatietyPercent => _currentSatiety / _maxSatiety;
+
+    public static event System.Action<HungerSystem> OnHungerStatusChanged;
 
     public HungerSystem(float maxSatiety, float metabolism)
     {
@@ -21,6 +24,7 @@ public class HungerSystem
         _currentSatiety = maxSatiety;
 
         _hungerStatus = HungerState.Full;
+        _previousHungerStatus = HungerState.Starving;
         _metabolism = metabolism;
     }
 
@@ -41,9 +45,12 @@ public class HungerSystem
     public void UpdateSatietyPercent()
     {
         var _satietyPercentage = SatietyPercent; // caching calculation for slight optimization
+        
         if (_satietyPercentage > 0.8f) _hungerStatus = HungerState.Full;
         else if (_satietyPercentage <= 0.5f && _satietyPercentage > 0f) _hungerStatus = HungerState.Hungry;
-        else if (_satietyPercentage == 0f) _hungerStatus = HungerState.Starving;
+        else if (_satietyPercentage <= 0f) _hungerStatus = HungerState.Starving;
+        if (_previousHungerStatus != HungerStatus) OnHungerStatusChanged?.Invoke(this);
+        _previousHungerStatus = HungerStatus;
     }
 }
 
