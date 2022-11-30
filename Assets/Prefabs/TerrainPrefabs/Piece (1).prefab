@@ -968,7 +968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8876696585350143093}
-  - component: {fileID: -2251220855924488610}
+  - component: {fileID: -5173957714597058840}
   m_Layer: 3
   m_Name: Piece (1)
   m_TagString: Untagged
@@ -994,7 +994,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2251220855924488610
+--- !u!114 &-5173957714597058840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1009,8 +1009,13 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
   - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
+  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
   - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
+  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &8876696585353737127
 GameObject:

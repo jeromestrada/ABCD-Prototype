@@ -8,7 +8,7 @@ public class RandomRoomPiece : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             GeneratePiece();
         }
