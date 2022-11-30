@@ -65,7 +65,6 @@ public class PlayerStats : CharacterStats
 
     public override void Buff(Moon moon)
     {
-        
         // Player specific buff logic should be here.
         if(moon.CurrentMoon == MoonPhase.Full)
         {
