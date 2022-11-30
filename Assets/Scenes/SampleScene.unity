@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: ec7748b0-5fca-4e23-ba46-27acd9490532
+  _id: 0364ddb1-3a59-46b6-8bd4-1c9a69f57699
 --- !u!135 &159000275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2180,6 +2180,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &414080592
 GameObject:
@@ -2903,8 +2905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14effabce6b85b74fb7ce228330021ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: nono
-  setMySeed: 1
+  _seed: 
+  setMySeed: 0
   copySeedToClipboard: 0
 --- !u!1 &524249062
 GameObject:
@@ -3348,6 +3350,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &547087586
 GameObject:
@@ -4510,6 +4514,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &748503760
 GameObject:
@@ -5172,6 +5178,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &863745796
 GameObject:
@@ -6198,6 +6206,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &1264369242
 GameObject:
@@ -6672,7 +6682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 25, z: -16}
+  m_FollowOffset: {x: 0, y: 30, z: -16}
   m_XDamping: 2
   m_YDamping: 2
   m_ZDamping: 2
@@ -7960,8 +7970,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.000000011681934, w: 0.8772268}
-  m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
+  m_LocalRotation: {x: 0.51449573, y: 0.000000007377174, z: -0.0000000044263047, w: 0.8574929}
+  m_LocalPosition: {x: -2.21, y: 30, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8285,6 +8295,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &1773779211
 GameObject:
@@ -8749,6 +8761,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!95 &1912389607
 Animator:
@@ -8994,8 +9008,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.4800762, y: 0.000000021345995, z: -0.000000011681934, w: 0.8772268}
-  m_LocalPosition: {x: -2.21, y: 25, z: -11.74}
+  m_LocalRotation: {x: 0.51449573, y: 0.000000007377174, z: -0.0000000044263047, w: 0.8574929}
+  m_LocalPosition: {x: -2.21, y: 30, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1393592104}
@@ -9750,6 +9764,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &2134289863
 GameObject:
@@ -10440,6 +10456,8 @@ MonoBehaviour:
   _piecePrefabs:
   - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
   - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
   - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!33 &1335667699869087036
 MeshFilter:
