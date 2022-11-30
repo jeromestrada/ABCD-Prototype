@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
+    public static System.Action OnEnemyDied;
     private void OnEnable()
     {
         MoonPhaseSystem.OnMoonPhaseChange += UpdateEnemyStats;
@@ -47,6 +48,7 @@ public class EnemyStats : CharacterStats
     public override void Die()
     {
         base.Die();
+        OnEnemyDied?.Invoke();
         GetComponent<CapsuleCollider>().enabled = false;
         GetComponent<EnemyCombatAI>().enabled = false;
         this.enabled = false;
