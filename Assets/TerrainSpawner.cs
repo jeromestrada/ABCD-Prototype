@@ -8,6 +8,10 @@ public class TerrainSpawner : MonoBehaviour
     [SerializeField] private int openingDirection;
 
     [SerializeField] private RoomTemplates roomTemplates;
+    private TerrainManager terrainManager;
+
+    public static System.Action OnTerrainSpawned;
+    public static System.Action OnTerrainDespawned;
 
     private bool hasSpawned = false;
     private int rand;
@@ -15,12 +19,13 @@ public class TerrainSpawner : MonoBehaviour
     private void Start()
     {
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+        terrainManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<TerrainManager>();
         Invoke(nameof(SpawnTerrain), 0.2f);
     }
 
     public void SpawnTerrain()
     {
-        if(!hasSpawned)
+        if(!hasSpawned && terrainManager.HasRoom)
         {
             switch (openingDirection)
             {
@@ -48,6 +53,7 @@ public class TerrainSpawner : MonoBehaviour
                     break;
             }
             hasSpawned = true;
+            OnTerrainSpawned?.Invoke();
         }
     }
 
@@ -55,6 +61,7 @@ public class TerrainSpawner : MonoBehaviour
     {
         if(other.CompareTag("Terrain Spawner"))
         {
+            /*OnTerrainDespawned?.Invoke();*/
             Destroy(gameObject);
         }
     }
