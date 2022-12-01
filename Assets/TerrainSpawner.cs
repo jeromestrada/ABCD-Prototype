@@ -15,7 +15,7 @@ public class TerrainSpawner : MonoBehaviour
     private void Start()
     {
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke(nameof(SpawnTerrain), 0.1f);
+        Invoke(nameof(SpawnTerrain), 0.2f);
     }
 
     public void SpawnTerrain()
