@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Blood
   - Shield
+  - Terrain Spawner
+  - Terrain Chunk
+  - Rooms
   layers:
   - Default
   - TransparentFX
