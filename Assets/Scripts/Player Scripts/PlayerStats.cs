@@ -10,7 +10,7 @@ public class PlayerStats : CharacterStats
     private void OnEnable()
     {
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
-        HandOfCards.OnHandChanged += UpdatePlayerStats;
+        HandOfCards.OnStatCardDrawnDiscarded += UpdatePlayerStats;
         MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
@@ -20,8 +20,8 @@ public class PlayerStats : CharacterStats
     private void OnDisable()
     {
         EquipmentManager.OnEquipmentChanged -= UpdatePlayerStats;
-        HandOfCards.OnHandChanged -= UpdatePlayerStats;
-        MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
+        HandOfCards.OnStatCardDrawnDiscarded -= UpdatePlayerStats;
+        MoonPhaseSystem.OnMoonPhaseChange -= UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
         HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
@@ -94,15 +94,20 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    private void UpdatePlayerStats(Card statCard)
+    private void UpdatePlayerStats(StatCard statCard, bool isDrawn)
     {
-        if(statCard.CardType == CardType.StatCard)
+        if (isDrawn)
         {
-            StatCard statCardCasted = (StatCard) statCard;
-            if (statCardCasted.StatCardType == StatCardType.DamageStat) Damage.AddModifier(statCardCasted.StatBonus.GetValue());
-            else if (statCardCasted.StatCardType == StatCardType.ArmorStat) Armor.AddModifier(statCardCasted.StatBonus.GetValue());
+            if (statCard.StatCardType == StatCardType.DamageStat) Damage.AddModifier(statCard.StatBonus.GetValue());
+            else if (statCard.StatCardType == StatCardType.ArmorStat) Armor.AddModifier(statCard.StatBonus.GetValue());
             // more stat type handling can be added here, i.e. movespeed, cooldown reduction, hp/mana regen stats, etc..
         }
+        else // the stat card is either being discarded / used (which is a form of discard)
+        {
+            if (statCard.StatCardType == StatCardType.DamageStat) Damage.RemoveModifier(statCard.StatBonus.GetValue());
+            else if (statCard.StatCardType == StatCardType.ArmorStat) Armor.RemoveModifier(statCard.StatBonus.GetValue());
+        }
+
     }
 
     public override void TakeDamage(int damage)

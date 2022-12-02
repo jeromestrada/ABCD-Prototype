@@ -10,7 +10,7 @@ public class HandOfCards : CardSystemHolder
     [SerializeField] private DiscardedCards discardPile;
 
     public static UnityAction<CardSystem> OnHandOfCardsDisplayRequested;
-    public static event System.Action<Card> OnHandChanged;
+    public static event System.Action<StatCard, bool> OnStatCardDrawnDiscarded;
     public int MaxHandSize => _maxHandSize;
 
 
@@ -58,7 +58,10 @@ public class HandOfCards : CardSystemHolder
             if (card == null) return;
             _cardSystem.AddToCardSystem(card);
             OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
-            OnHandChanged?.Invoke(card); // this invocation handles the player's stats affected by the cards currently at hand
+            if(card.CardType == CardType.StatCard)
+            {
+                OnStatCardDrawnDiscarded?.Invoke((StatCard)card, true); // this invocation handles the player's stats affected by the cards currently at hand
+            }
         }
         else Debug.Log("Player hand is full!");
     }
@@ -75,7 +78,12 @@ public class HandOfCards : CardSystemHolder
     {
         for(int i = 0; i < amountToDiscard; i++)
         {
-            discardPile.Discard(CardSystem.CardSlots[0].Card);
+            var card = CardSystem.CardSlots[0].Card;
+            discardPile.Discard(card);
+            if (card.CardType == CardType.StatCard)
+            {
+                OnStatCardDrawnDiscarded?.Invoke((StatCard)card, false); // this invocation handles the player's stats affected by the cards currently at hand
+            }
             CardSystem.CardSlots.RemoveAt(0);
             OnHandOfCardsDisplayRequested?.Invoke(_cardSystem);
         }
