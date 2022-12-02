@@ -2707,9 +2707,10 @@ GameObject:
   - component: {fileID: 519069858}
   - component: {fileID: 519069857}
   - component: {fileID: 519069859}
+  - component: {fileID: 519069860}
   m_Layer: 0
   m_Name: Game Manager
-  m_TagString: Untagged
+  m_TagString: Game Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2755,6 +2756,20 @@ MonoBehaviour:
   _seed: test
   setMySeed: 0
   copySeedToClipboard: 0
+--- !u!114 &519069860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519069856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1d3f1c9dc8323488b27d63751acb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxTerrainCount: 30
+  _currentTerrainCount: 0
 --- !u!1 &524249062
 GameObject:
   m_ObjectHideFlags: 0
@@ -5422,21 +5437,33 @@ MonoBehaviour:
   - {fileID: 3415282761290809270, guid: ca08249c153c17c4b86c6b6c6ce7aa9e, type: 3}
   - {fileID: 3415282761290809270, guid: e704b3461bbdcfd4184637de58be1c59, type: 3}
   - {fileID: 3415282761290809270, guid: 82b3709f25fdf35418e337c293777136, type: 3}
+  - {fileID: 3415282761290809270, guid: dd1fbe75cbfd58144b395c97c2a4b792, type: 3}
+  - {fileID: 3415282761290809270, guid: 564484008367b8642be78b310c1b494c, type: 3}
+  - {fileID: 3415282761290809270, guid: b2de9b8e991b9a64497e3b8ef8ea720f, type: 3}
   _bottomRooms:
   - {fileID: 3415282761290809270, guid: a9f4415cf94b32e4ea4763dc60d673a5, type: 3}
   - {fileID: 3415282761290809270, guid: 2d319c15cf7a1ce44b857cfe8e1b0a84, type: 3}
   - {fileID: 3415282761290809270, guid: dc081993e552e4940b303b6e1483b7cf, type: 3}
   - {fileID: 3415282761290809270, guid: ca08249c153c17c4b86c6b6c6ce7aa9e, type: 3}
+  - {fileID: 3415282761290809270, guid: dd1fbe75cbfd58144b395c97c2a4b792, type: 3}
+  - {fileID: 3415282761290809270, guid: f4666c6c0bd09f74eb27c0fe7e2b3c6b, type: 3}
+  - {fileID: 3415282761290809270, guid: b2de9b8e991b9a64497e3b8ef8ea720f, type: 3}
   _rightRooms:
   - {fileID: 3415282761290809270, guid: dc081993e552e4940b303b6e1483b7cf, type: 3}
   - {fileID: 3415282761290809270, guid: feb6ac18dcbd9e049b027216682f0f44, type: 3}
   - {fileID: 3415282761290809270, guid: 61bd30db593e4e444b5747982df5e2a9, type: 3}
   - {fileID: 3415282761290809270, guid: 82b3709f25fdf35418e337c293777136, type: 3}
+  - {fileID: 3415282761290809270, guid: 564484008367b8642be78b310c1b494c, type: 3}
+  - {fileID: 3415282761290809270, guid: f4666c6c0bd09f74eb27c0fe7e2b3c6b, type: 3}
+  - {fileID: 3415282761290809270, guid: b2de9b8e991b9a64497e3b8ef8ea720f, type: 3}
   _leftRooms:
   - {fileID: 3415282761290809270, guid: 2d319c15cf7a1ce44b857cfe8e1b0a84, type: 3}
   - {fileID: 3415282761290809270, guid: 806ae3a085895ac4da5b70f33e42fe96, type: 3}
   - {fileID: 3415282761290809270, guid: 61bd30db593e4e444b5747982df5e2a9, type: 3}
   - {fileID: 3415282761290809270, guid: e704b3461bbdcfd4184637de58be1c59, type: 3}
+  - {fileID: 3415282761290809270, guid: dd1fbe75cbfd58144b395c97c2a4b792, type: 3}
+  - {fileID: 3415282761290809270, guid: 564484008367b8642be78b310c1b494c, type: 3}
+  - {fileID: 3415282761290809270, guid: f4666c6c0bd09f74eb27c0fe7e2b3c6b, type: 3}
 --- !u!1 &1077236088
 GameObject:
   m_ObjectHideFlags: 0
@@ -7376,7 +7403,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.51449573, y: -0.000000007377177, z: 0.000000004426306, w: 0.8574929}
+  m_LocalRotation: {x: 0.51449573, y: 0.000000007377174, z: -0.0000000044263047, w: 0.8574929}
   m_LocalPosition: {x: -2.21, y: 30, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8186,7 +8213,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.51449573, y: -0.000000007377177, z: 0.000000004426306, w: 0.8574929}
+  m_LocalRotation: {x: 0.51449573, y: 0.000000007377174, z: -0.0000000044263047, w: 0.8574929}
   m_LocalPosition: {x: -2.21, y: 30, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

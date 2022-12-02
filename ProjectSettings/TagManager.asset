@@ -9,6 +9,7 @@ TagManager:
   - Terrain Spawner
   - Terrain Chunk
   - Rooms
+  - Game Manager
   layers:
   - Default
   - TransparentFX
