@@ -38,15 +38,16 @@ public class BlockAbility : Ability
             {
                 if (!isBlocking)
                 {
-                    stats.Armor.AddModifier(BlockAmount);
+                    stats.AddStatModifier(stats.Armor, new Modifier("Block Armor", BlockAmount));
+                    // stats.Armor.AddModifier(BlockAmount);
                     isBlocking = true;
                 }
-                
             }
             else
             {
                 OnEndBlock();
-                stats.Armor.RemoveModifier(BlockAmount);
+                stats.RemoveStatModifier(stats.Armor, stats.Modifiers.Find(x => x.ModifierName == "Block Armor"));
+                // stats.Armor.RemoveModifier(BlockAmount);
             }
         }
     }

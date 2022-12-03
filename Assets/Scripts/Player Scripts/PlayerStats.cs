@@ -38,18 +38,24 @@ public class PlayerStats : CharacterStats
         {
             case HungerState.Full:
                 Debug.Log("FULL status!");
-                Movespeed.AddModifier(-3);
-                Damage.RemoveModifier(10);
-                Damage.RemoveModifier(5);
+                AddStatModifier(Movespeed, new Modifier("Drowsy Movement", -3));
+                //Movespeed.AddModifier(-3);
+                RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Starving Damage Buff"));
+                //Damage.RemoveModifier(10);
+                RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Hungry Damage Buff"));
+                //Damage.RemoveModifier(5);
                 break;
             case HungerState.Hungry:
                 Debug.Log("HUNGRY status!");
-                Movespeed.RemoveModifier(-3);
-                Damage.AddModifier(5);
+                RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Drowsy Movement"));
+                //Movespeed.RemoveModifier(-3);
+                AddStatModifier(Damage, new Modifier("Hungry Damage Buff", 5));
+                //Damage.AddModifier(5);
                 break;
             case HungerState.Starving:
                 Debug.Log("STARVING status!");
-                Damage.AddModifier(10);
+                AddStatModifier(Damage, new Modifier("Starving Damage Buff", 10));
+                //Damage.AddModifier(10);
                 break;
             default:
                 Debug.Log("DEFAULT status!");
@@ -68,13 +74,17 @@ public class PlayerStats : CharacterStats
         // Player specific buff logic should be here.
         if(moon.CurrentMoon == MoonPhase.Full)
         {
-            Damage.AddModifier(50);
-            Movespeed.AddModifier(5);
+            AddStatModifier(Damage, new Modifier("Full Moon Damage", 50));
+            //Damage.AddModifier(50);
+            AddStatModifier(Movespeed, new Modifier("Full Moon Movespeed", 5));
+            //Movespeed.AddModifier(5);
         }
         else
         {
-            Damage.RemoveModifier(50);
-            Movespeed.RemoveModifier(5);
+            RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Full Moon Damage"));
+            //Damage.RemoveModifier(50);
+            RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Full Moon Movespeed"));
+            //Movespeed.RemoveModifier(5);
         }
         Debug.Log($"PlayerStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
         base.Buff(moon);
@@ -84,13 +94,15 @@ public class PlayerStats : CharacterStats
     {
         if(newEquipment != null)
         {
-            if (newEquipment.ItemType == EquipmentType.Weapon) Damage.AddModifier(newEquipment.Damage);
-            else if (newEquipment.ItemType == EquipmentType.Protection) Armor.AddModifier(newEquipment.Armor);
+            if (newEquipment.ItemType == EquipmentType.Weapon) AddStatModifier(Damage, new Modifier(newEquipment.name, newEquipment.Damage));
+            else if (newEquipment.ItemType == EquipmentType.Protection) AddStatModifier(Armor, new Modifier(newEquipment.name, newEquipment.Armor));
         }
         if (oldEquipment != null)
         {
-            if (oldEquipment.ItemType == EquipmentType.Weapon) Damage.RemoveModifier(oldEquipment.Damage);
-            else if (oldEquipment.ItemType == EquipmentType.Protection) Armor.RemoveModifier(oldEquipment.Armor);
+            if (oldEquipment.ItemType == EquipmentType.Weapon) RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == oldEquipment.name));
+            //Damage.RemoveModifier(oldEquipment.Damage);
+            else if (oldEquipment.ItemType == EquipmentType.Protection) RemoveStatModifier(Armor, _modifiers.Find(x => x.ModifierName == oldEquipment.name));
+            //Armor.RemoveModifier(oldEquipment.Armor);
         }
     }
 
@@ -98,14 +110,18 @@ public class PlayerStats : CharacterStats
     {
         if (isDrawn)
         {
-            if (statCard.StatCardType == StatCardType.DamageStat) Damage.AddModifier(statCard.StatBonus.GetValue());
-            else if (statCard.StatCardType == StatCardType.ArmorStat) Armor.AddModifier(statCard.StatBonus.GetValue());
+            if (statCard.StatCardType == StatCardType.DamageStat) AddStatModifier(Damage, new Modifier(statCard.name, statCard.StatBonus.GetValue()));
+            //Damage.AddModifier(statCard.StatBonus.GetValue());
+            else if (statCard.StatCardType == StatCardType.ArmorStat) AddStatModifier(Armor, new Modifier(statCard.name, statCard.StatBonus.GetValue()));
+            // Armor.AddModifier(statCard.StatBonus.GetValue());
             // more stat type handling can be added here, i.e. movespeed, cooldown reduction, hp/mana regen stats, etc..
         }
-        else // the stat card is either being discarded / used (which is a form of discard)
+        else // the stat card is either being discarded or used (which is a form of discard)
         {
-            if (statCard.StatCardType == StatCardType.DamageStat) Damage.RemoveModifier(statCard.StatBonus.GetValue());
-            else if (statCard.StatCardType == StatCardType.ArmorStat) Armor.RemoveModifier(statCard.StatBonus.GetValue());
+            if (statCard.StatCardType == StatCardType.DamageStat) RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == statCard.name));
+            //Damage.RemoveModifier(statCard.StatBonus.GetValue());
+            else if (statCard.StatCardType == StatCardType.ArmorStat) RemoveStatModifier(Armor, _modifiers.Find(x => x.ModifierName == statCard.name));
+            // Armor.RemoveModifier(statCard.StatBonus.GetValue());
         }
 
     }

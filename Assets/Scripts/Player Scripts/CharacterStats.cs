@@ -12,10 +12,15 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     [SerializeField] private Stat _movespeed;
     // stats like movespeed, hp/mana regen, cdr, etc can be added here.
 
+    // Add a list of Modifiers that the subclasses can reference to handle stat changes such as adding/removing modifiers based on their names.
+    protected List<Modifier> _modifiers;
+
     public int MaxHealth => _maxHealth;
     public Stat Damage => _damage;
     public Stat Armor => _armor;
     public Stat Movespeed => _movespeed;
+
+    public List<Modifier> Modifiers => _modifiers;
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
@@ -26,7 +31,21 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     {
         _currentHealth = MaxHealth;
         OnStatChange?.Invoke();
+        _modifiers = new List<Modifier>();
     }
+
+    public void AddStatModifier(Stat stat, Modifier modifier)
+    {
+        stat.AddModifier(modifier);
+        _modifiers.Add(modifier);
+    }
+
+    public void RemoveStatModifier(Stat stat, Modifier modifier)
+    {
+        stat.RemoveModifier(modifier);
+        _modifiers.Remove(modifier);
+    }
+
     public virtual void TakeDamage(int damage)
     {
         damage -= Armor.GetValue();
