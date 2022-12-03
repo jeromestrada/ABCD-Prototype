@@ -106,6 +106,7 @@ public class PlayerStats : CharacterStats
         }
     }
 
+    //. TODO: stat cards should remove their effects when used
     private void UpdatePlayerStats(StatCard statCard, bool isDrawn)
     {
         if (isDrawn)
