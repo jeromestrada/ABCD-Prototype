@@ -13,7 +13,7 @@ public class StatCard : Card
     {
         // have a bonus effect when using the stat card,
         // using a stat card is equivalent to discarding it, making space for other cards in the hand to be drawn
-        // player loses the stat benefit but will be rewarded with a very helpful effect i.e. next attacks deal 2x damage
+        // player loses the stat benefit but will be rewarded with a very helpful effect i.e. next attacks deal 2x damage or something similar
         OnStatCardUsed?.Invoke(this, false);
         return base.Use();
     }

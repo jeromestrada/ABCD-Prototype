@@ -23,10 +23,10 @@ public class AttackStringState : ComboBaseState
         base.OnUpdate();
         if (attackFinished)
         {
-            var index = (attackIndex + 1) % stateMachine.NumOfStates;
+            var index = (attackIndex + 1) % stateMachine.NumOfStates; // this sets up for the next attack animation
             if (shouldCombo)
             {
-                stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, attackRadius));
+                stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, csm.AttackRadius));
             }
             if (fixedtime - attackEndTime >= csm.CurrentGracePeriodExtension)
             {

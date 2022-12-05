@@ -37,7 +37,7 @@ public class ComboBaseState : State
             csm.UpdateAttackPoint(csm.EquippedWeapon.AttackPoints[attackIndex]);
             csm.TotalGracePeriod(attackIndex);
         }
-        OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this an will fire an animation based on the passed attackIndex
+        OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this and will fire an animation based on the passed attackIndex
     }
 
     public override void OnUpdate()
