@@ -11,6 +11,7 @@ public class PlayerStats : CharacterStats
     {
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
         HandOfCards.OnStatCardDrawnDiscarded += UpdatePlayerStats;
+        StatCard.OnStatCardUsed += UpdatePlayerStats;
         MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
@@ -21,6 +22,7 @@ public class PlayerStats : CharacterStats
     {
         EquipmentManager.OnEquipmentChanged -= UpdatePlayerStats;
         HandOfCards.OnStatCardDrawnDiscarded -= UpdatePlayerStats;
+        StatCard.OnStatCardUsed -= UpdatePlayerStats;
         MoonPhaseSystem.OnMoonPhaseChange -= UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
