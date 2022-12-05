@@ -11,13 +11,16 @@ public class ComboCharacter : MonoBehaviour
     [SerializeField] public GameObject Hiteffect;
     private bool hasWeapon = false;
 
+    public static event System.Action<int> OnAttack;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && csm.CurrentState.GetType() == typeof(IdleCombatState) 
             && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
-            csm.SetNextState(new AttackStringState(0, csm.PlaceAttackPoint(), csm.AttackRadius));
+            OnAttack?.Invoke(0);
+            //csm.SetNextState(new AttackStringState(0, csm.AttackPoint, csm.AttackRadius));
         }
     }
 

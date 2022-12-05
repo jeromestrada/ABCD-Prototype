@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AttackStringState : ComboBaseState
 {
+    public static System.Action<int> OnStringAttack;
+
     public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) 
         : base(_attackIndex, _attackPoint, _attackRadius)
     {
@@ -26,7 +28,8 @@ public class AttackStringState : ComboBaseState
             var index = (attackIndex + 1) % stateMachine.NumOfStates; // this sets up for the next attack animation
             if (shouldCombo)
             {
-                stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, csm.AttackRadius));
+                OnStringAttack.Invoke(index);
+                //stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, csm.AttackRadius));
             }
             if (fixedtime - attackEndTime >= csm.CurrentGracePeriodExtension)
             {

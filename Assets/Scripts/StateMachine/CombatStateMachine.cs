@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,8 +20,6 @@ public class CombatStateMachine : StateMachine
     public float CurrentGracePeriodExtension;
 
 
-    public static event System.Action<int> OnAttack;
-
     public PlayerStats PlayerStats => playerStats;
     public Equipment EquippedWeapon => equippedWeapon;
     public Transform CurrentStringAttackPoint => currentStringAttackPoint;
@@ -31,6 +30,13 @@ public class CombatStateMachine : StateMachine
     void OnEnable()
     {
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
+        ComboCharacter.OnAttack += OnAttack;
+        AttackStringState.OnStringAttack += OnAttack;
+    }
+
+    private void OnAttack(int attackIndex)
+    {
+        SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius));
     }
 
     void OnDisable()
