@@ -10,6 +10,8 @@ public class EnemyCombatAI : MonoBehaviour
     public NavMeshAgent agent;
     public Transform playerTrans;
 
+    private Transform previousTrans;
+
     public LayerMask Ground, Player;
 
     // Patroling
@@ -52,6 +54,7 @@ public class EnemyCombatAI : MonoBehaviour
         playerTrans = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = _myStats.Movespeed.GetValue();
+        previousTrans = transform;
     }
 
     void Update()
@@ -61,6 +64,8 @@ public class EnemyCombatAI : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
         speedPercent = agent.velocity.magnitude / agent.speed;
+
+        if (speedPercent <= 0) Invoke(nameof(SearchWalkPoint), 3f);
 
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) Chasing();
@@ -74,7 +79,7 @@ public class EnemyCombatAI : MonoBehaviour
         if (walkPointSet) agent.SetDestination(walkPoint);
         Vector3 distancToWalkPoint = transform.position - walkPoint;
 
-        if (distancToWalkPoint.magnitude < 1.3f)
+        if (distancToWalkPoint.magnitude < 2f)
         {
             walkPointSet = false;
         }
