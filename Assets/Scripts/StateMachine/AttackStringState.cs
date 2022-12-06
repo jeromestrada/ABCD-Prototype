@@ -6,18 +6,14 @@ public class AttackStringState : ComboBaseState
 {
     public static System.Action<int> OnStringAttack;
 
-    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius) 
-        : base(_attackIndex, _attackPoint, _attackRadius)
-    {
-        
-    }
+    public AttackStringState(int _attackIndex, Vector3 _attackPoint, float _attackRadius, int _attackDamage, float _gracePeriod, LayerMask _targetMask) 
+        : base(_attackIndex, _attackPoint, _attackRadius, _attackDamage, _gracePeriod, _targetMask) {}
 
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
         attackFinished = false;
         shouldCombo = false;
-        csm.comboExpired = false;
     }
 
     public override void OnUpdate()
@@ -31,9 +27,8 @@ public class AttackStringState : ComboBaseState
                 OnStringAttack.Invoke(index);
                 //stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, csm.AttackRadius));
             }
-            if (fixedtime - attackEndTime >= csm.CurrentGracePeriodExtension)
+            if (fixedtime - attackEndTime >= gracePeriod)
             {
-                csm.comboExpired = true;
                 stateMachine.SetNextStateToMain();
                 attackFinished = false;
                 shouldCombo = false;

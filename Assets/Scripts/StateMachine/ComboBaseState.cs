@@ -12,18 +12,22 @@ public class ComboBaseState : State
     protected int attackIndex; // will contain which attack string the combo is currently on?
     public Vector3 attackPoint;
     public float attackRadius = 3f;
-
-    protected CombatStateMachine csm;
-
+    public int attackDamage;
+    public float gracePeriod;
+    public LayerMask targetMask;
 
     public static event System.Action<int> OnAttackAnimationPlayRequest;
+    public static event System.Action<int> OnEnterAttackString;
 
 
-    public ComboBaseState(int _attackIndex, Vector3 _attackPoint, float _attackRadius)
+    public ComboBaseState(int _attackIndex, Vector3 _attackPoint, float _attackRadius, int _attackDamage, float _gracePeriod, LayerMask _targetMask)
     {
         attackIndex = _attackIndex;
         attackPoint = _attackPoint;
         attackRadius = _attackRadius;
+        attackDamage = _attackDamage;
+        gracePeriod = _gracePeriod;
+        targetMask = _targetMask;
     }
 
     public override void OnEnter(StateMachine _stateMachine)
@@ -31,12 +35,7 @@ public class ComboBaseState : State
         base.OnEnter(_stateMachine);
         shouldCombo = false;
 
-        csm = (CombatStateMachine)stateMachine;
-        if (csm.EquippedWeapon != null)
-        {
-            csm.UpdateAttackPoint(csm.EquippedWeapon.AttackPoints[attackIndex]);
-            csm.TotalGracePeriod(attackIndex);
-        }
+        OnEnterAttackString?.Invoke(attackIndex);
         OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this and will fire an animation based on the passed attackIndex
     }
 
@@ -55,10 +54,10 @@ public class ComboBaseState : State
     // Hit scan
     public void AttackHit_AnimationEvent()
     {
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, csm.enemyMask);
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint, attackRadius, targetMask);
         foreach (Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyStats>().TakeDamage(csm.PlayerStats.Damage.GetValue());
+            enemy.GetComponent<EnemyStats>().TakeDamage(attackDamage);
         }
     }
 

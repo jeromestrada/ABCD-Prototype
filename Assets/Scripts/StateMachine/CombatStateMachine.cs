@@ -32,16 +32,22 @@ public class CombatStateMachine : StateMachine
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
         ComboCharacter.OnAttack += OnAttack;
         AttackStringState.OnStringAttack += OnAttack;
+        ComboBaseState.OnEnterAttackString += TotalGracePeriod;
     }
 
-    private void OnAttack(int attackIndex)
-    {
-        SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius));
-    }
 
     void OnDisable()
     {
         EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
+        ComboCharacter.OnAttack -= OnAttack;
+        AttackStringState.OnStringAttack -= OnAttack;
+        ComboBaseState.OnEnterAttackString -= TotalGracePeriod;
+    }
+    private void OnAttack(int attackIndex)
+    {
+        comboExpired = false;
+        UpdateAttackPoint(equippedWeapon.AttackPoints[attackIndex]);
+        SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius, playerStats.Damage.GetValue(), CurrentGracePeriodExtension, enemyMask));
     }
 
     public override void Update()
@@ -64,10 +70,9 @@ public class CombatStateMachine : StateMachine
         }
     }
 
-    public float TotalGracePeriod(int _index)
+    public void TotalGracePeriod(int _index)
     {
         CurrentGracePeriodExtension = globalGracePeriod + WeaponGracePeriodExtensions[_index];
-        return CurrentGracePeriodExtension;
     }
 
     public void UpdateAttackPoint(Transform newAttackPoint)
