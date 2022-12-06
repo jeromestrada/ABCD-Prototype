@@ -5,15 +5,16 @@ using UnityEngine;
 public class ChestDrop : MonoBehaviour
 {
     [SerializeField] private GameObject _chestPrefab;
+    [SerializeField] private EnemyStats _enemyStats;
 
     private void OnEnable()
     {
-        EnemyStats.OnEnemyDied += DropChest;
+        _enemyStats.OnEnemyDied += DropChest;
     }
 
     private void OnDisable()
     {
-        EnemyStats.OnEnemyDied -= DropChest;
+        _enemyStats.OnEnemyDied -= DropChest;
     }
 
     public void DropChest() // TODO: add a rarity system to the chest drop based on the enemy type. maybe an enum can be used

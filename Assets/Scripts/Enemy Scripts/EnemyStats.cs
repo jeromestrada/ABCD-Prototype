@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
-    public static System.Action OnEnemyDied;
+    public event System.Action OnEnemyDied;
     private void OnEnable()
     {
         MoonPhaseSystem.OnMoonPhaseChange += UpdateEnemyStats;
