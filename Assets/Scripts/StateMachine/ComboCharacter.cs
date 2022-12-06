@@ -11,7 +11,7 @@ public class ComboCharacter : MonoBehaviour
     [SerializeField] public GameObject Hiteffect;
     private bool hasWeapon = false;
 
-    public static event System.Action<int> OnAttack;
+    public static event System.Action<int> OnFirstAttack;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +19,7 @@ public class ComboCharacter : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && csm.CurrentState.GetType() == typeof(IdleCombatState) 
             && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
-            OnAttack?.Invoke(0);
+            OnFirstAttack?.Invoke(0);
             //csm.SetNextState(new AttackStringState(0, csm.AttackPoint, csm.AttackRadius));
         }
     }

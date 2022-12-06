@@ -30,7 +30,7 @@ public class CombatStateMachine : StateMachine
     void OnEnable()
     {
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
-        ComboCharacter.OnAttack += OnAttack;
+        ComboCharacter.OnFirstAttack += OnAttack;
         AttackStringState.OnStringAttack += OnAttack;
         ComboBaseState.OnEnterAttackString += TotalGracePeriod;
     }
@@ -39,7 +39,7 @@ public class CombatStateMachine : StateMachine
     void OnDisable()
     {
         EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
-        ComboCharacter.OnAttack -= OnAttack;
+        ComboCharacter.OnFirstAttack -= OnAttack;
         AttackStringState.OnStringAttack -= OnAttack;
         ComboBaseState.OnEnterAttackString -= TotalGracePeriod;
     }
