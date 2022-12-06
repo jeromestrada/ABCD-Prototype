@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 249785402}
   - component: {fileID: 249785404}
   - component: {fileID: 249785403}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainSpawnPoint B
   m_TagString: Terrain Spawner
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1340528135}
   - component: {fileID: 1340528137}
   - component: {fileID: 1340528136}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainSpawnPoint L
   m_TagString: Terrain Spawner
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 1668267592}
   - component: {fileID: 1668267594}
   - component: {fileID: 1668267593}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TerrainSpawnPoint R
   m_TagString: Terrain Spawner
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 3415282761118748620}
   - component: {fileID: 3415282761118748623}
   - component: {fileID: 3415282761118748610}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3415282761290809271}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RBL
   m_TagString: Terrain Chunk
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 3415282761572296397}
   - component: {fileID: 3415282761572296396}
   - component: {fileID: 3415282761572296387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 3415282761800849991}
   - component: {fileID: 3415282761800849990}
   - component: {fileID: 3415282761800849989}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 3415282761973871950}
   - component: {fileID: 3415282761973871945}
   - component: {fileID: 3415282761973871948}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 3415282762488781889}
   - component: {fileID: 3415282762488781888}
   - component: {fileID: 3415282762488781895}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 3415282762627786485}
   - component: {fileID: 3415282762627786484}
   - component: {fileID: 3415282762627786443}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 3415282762850913157}
   - component: {fileID: 3415282762850913156}
   - component: {fileID: 3415282762850913179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1116,7 +1116,7 @@ GameObject:
   - component: {fileID: 3415282762980154430}
   - component: {fileID: 3415282762980154425}
   - component: {fileID: 3415282762980154428}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1235,7 +1235,7 @@ GameObject:
   - component: {fileID: 4462147084792850281}
   - component: {fileID: 4462147084792850280}
   - component: {fileID: 4462147084792850286}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}

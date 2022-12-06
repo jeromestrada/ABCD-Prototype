@@ -74,7 +74,7 @@ public class EnemyCombatAI : MonoBehaviour
         if (walkPointSet) agent.SetDestination(walkPoint);
         Vector3 distancToWalkPoint = transform.position - walkPoint;
 
-        if (distancToWalkPoint.magnitude < 1f)
+        if (distancToWalkPoint.magnitude < 1.3f)
         {
             walkPointSet = false;
         }
