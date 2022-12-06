@@ -37,13 +37,12 @@ public class PlayerMovement : MonoBehaviour
     {
         AttackStringState.OnAttackAnimationPlayRequest += OnAttack;
         PlayerStats.OnStatChange += UpdateMoveSpeed;
-        //PlayerCombat.OnAttack += OnAttack;
     }
 
     private void OnDisable()
     {
         AttackStringState.OnAttackAnimationPlayRequest -= OnAttack;
-        //PlayerCombat.OnAttack -= OnAttack;
+        PlayerStats.OnStatChange -= UpdateMoveSpeed;
     }
 
     // Start is called before the first frame update

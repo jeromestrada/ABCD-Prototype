@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface MoonBound
 {
-    public void Buff(Moon moon);
+    public void ApplyMoonBuff(Moon moon);
 }

@@ -17,10 +17,10 @@ public class EnemyStats : CharacterStats
 
     private void UpdateEnemyStats(Moon moon)
     {
-        Buff(moon);
+        ApplyMoonBuff(moon);
     }
 
-    public override void Buff(Moon moon)
+    public override void ApplyMoonBuff(Moon moon)
     {
         
         // Enemy specific buff logic here.
@@ -35,7 +35,7 @@ public class EnemyStats : CharacterStats
             RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "newMoonMovespeed"));
         }
         Debug.Log($"EnemyStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
-        base.Buff(moon);
+        base.ApplyMoonBuff(moon);
     }
 
     public override void TakeDamage(int damage)

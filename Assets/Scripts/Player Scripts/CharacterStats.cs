@@ -34,12 +34,22 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
         _modifiers = new List<Modifier>();
     }
 
+    /// <summary>
+    /// Adds the given Modifier to the given Stat.
+    /// </summary>
+    /// <param name="stat"></param>
+    /// <param name="modifier"></param>
     public void AddStatModifier(Stat stat, Modifier modifier)
     {
         stat.AddModifier(modifier);
         _modifiers.Add(modifier);
     }
 
+    /// <summary>
+    /// Removes the given Modifier from the given Stat.
+    /// </summary>
+    /// <param name="stat"></param>
+    /// <param name="modifier"></param>
     public void RemoveStatModifier(Stat stat, Modifier modifier)
     {
         stat.RemoveModifier(modifier);
@@ -79,7 +89,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
         }
     }
 
-    public virtual void Buff(Moon moon) // Moon bound buff, overriden by a specific unit type: player, different enemies, neutrals, etc...
+    public virtual void ApplyMoonBuff(Moon moon) // Moon bound buff, overriden by a specific unit type: player, different enemies, neutrals, etc...
     {
         Debug.Log($"{gameObject.name} affected by new moon phase.");
         OnStatChange?.Invoke();

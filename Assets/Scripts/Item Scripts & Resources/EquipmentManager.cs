@@ -37,56 +37,51 @@ public class EquipmentManager : MonoBehaviour
 
     public void Equip(Equipment equipment)
     {
-        int equipmentType = (int)equipment.ItemType;
+        EquipmentType equipmentType = equipment.ItemType;
 
         if (equipment != null)
         {
             Equipment oldEquipment = Unequip(equipmentType);
-
             OnEquipmentChanged?.Invoke(oldEquipment, equipment);
-            if(equipmentType == 0)
+            switch (equipmentType)
             {
-                equippedWeapon = (Equipment)equipment;
-                SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
-                newMesh.transform.parent = targetMesh.transform;
-                newMesh.bones = targetMesh.bones;
-                newMesh.rootBone = targetMesh.rootBone;
-                equippedWeaponMesh = newMesh;
-            }
-            else if (equipmentType == 1)
-            {
-                // TODO: add a mesh logic for armor meshes to be rendered
-                //SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
-                equippedProtection = (Equipment)equipment;
+                case EquipmentType.Weapon:
+                    equippedWeapon = (Equipment)equipment;
+                    SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(equipment.mesh);
+                    newMesh.transform.parent = targetMesh.transform;
+                    newMesh.bones = targetMesh.bones;
+                    newMesh.rootBone = targetMesh.rootBone;
+                    equippedWeaponMesh = newMesh;
+                    break;
+
+                case EquipmentType.Protection:
+                    equippedProtection = (Equipment)equipment;
+                    break;
             }
         }
     }
 
-    public Equipment Unequip(int equipmentType)
+    public Equipment Unequip(EquipmentType equipmentType)
     {
-        if(equipmentType == 0 && equippedWeapon != null)
+        Equipment oldEquipment;
+        switch (equipmentType)
         {
-            if (equippedWeaponMesh != null)
-            {
-                if(equippedWeaponMesh != null) Destroy(equippedWeaponMesh.gameObject);
-            }
-            Equipment oldEquipment = equippedWeapon;
-            equippedWeapon = null;
-            OnEquipmentChanged?.Invoke(equippedWeapon, null);
-            return oldEquipment;
-        }
-        else if (equipmentType == 1 && equippedProtection != null)
-        {
-            if (equippedProtectionMesh != null)
-            {
-                if (equippedProtectionMesh != null) Destroy(equippedProtectionMesh.gameObject);
-            }
-            Equipment oldEquipment = equippedProtection;
-            equippedProtection = null;
-            OnEquipmentChanged?.Invoke(equippedProtection, null);
-            return oldEquipment;
-        }
+            case EquipmentType.Weapon:
+                if (equippedWeaponMesh != null) Destroy(equippedWeaponMesh.gameObject);
+                oldEquipment = equippedWeapon;
+                equippedWeapon = null;
+                OnEquipmentChanged?.Invoke(equippedWeapon, null);
+                return oldEquipment;
 
-        return null;
+            case EquipmentType.Protection:
+                if (equippedProtectionMesh != null) Destroy(equippedProtectionMesh.gameObject);
+                oldEquipment = equippedProtection;
+                equippedProtection = null;
+                OnEquipmentChanged?.Invoke(equippedProtection, null);
+                return oldEquipment;
+
+            default:
+                return null;
+        }
     }
 }
