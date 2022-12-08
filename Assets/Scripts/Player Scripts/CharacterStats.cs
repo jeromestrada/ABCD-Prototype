@@ -10,6 +10,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     [SerializeField] private Stat _damage;
     [SerializeField] private Stat _armor;
     [SerializeField] private Stat _movespeed;
+    [SerializeField] private Stat _critChance;
+    [SerializeField] private Stat _critDamage;
     [SerializeField] protected List<Stat> _statsList;
     // stats like movespeed, hp/mana regen, cdr, etc can be added here.
 
@@ -20,6 +22,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     public Stat Damage => _damage;
     public Stat Armor => _armor;
     public Stat Movespeed => _movespeed;
+    public Stat CritChance => _critChance;
+    public Stat CritDamage => _critDamage;
 
     public List<Modifier> Modifiers => _modifiers;
 
@@ -41,6 +45,11 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
         _statsList.Add(Armor);
         Movespeed.ClearModifiers();
         _statsList.Add(Movespeed);
+        Debug.Log($"Armor: {Armor}");
+        CritChance.ClearModifiers();
+        _statsList.Add(CritChance);
+        CritDamage.ClearModifiers();
+        _statsList.Add(CritDamage);
 
         OnStatChange?.Invoke();
     }

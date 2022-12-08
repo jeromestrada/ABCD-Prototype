@@ -9,13 +9,18 @@ public class Stat : ScriptableObject
     [SerializeField] private Sprite statIcon;
     [SerializeField] private string _statName;
     [SerializeField] private int baseValue;
-    [SerializeField] private List<Modifier> modifiers = new List<Modifier>();
+    [SerializeField] private List<Modifier> modifiers;
 
 
     public Sprite StatIcon => statIcon;
     public string StatName => _statName;
     public int BaseValue => baseValue;
     public List<Modifier> Modifiers => modifiers;
+
+    private void Awake()
+    {
+        modifiers = new List<Modifier>();
+    }
 
     public int GetValue()
     {
