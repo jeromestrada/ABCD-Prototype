@@ -6,9 +6,16 @@ using UnityEngine.UI;
 [System.Serializable, CreateAssetMenu(fileName = "New Stat", menuName = "Stats/Stat")]
 public class Stat : ScriptableObject
 {
+    [SerializeField] private Sprite statIcon;
     [SerializeField] private string _statName;
     [SerializeField] private int baseValue;
     [SerializeField] private List<Modifier> modifiers = new List<Modifier>();
+
+
+    public Sprite StatIcon => statIcon;
+    public string StatName => _statName;
+    public int BaseValue => baseValue;
+    public List<Modifier> Modifiers => modifiers;
 
     public int GetValue()
     {

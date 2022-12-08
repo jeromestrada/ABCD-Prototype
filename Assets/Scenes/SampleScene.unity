@@ -1908,6 +1908,7 @@ GameObject:
   - component: {fileID: 341457809}
   - component: {fileID: 341457808}
   - component: {fileID: 341457810}
+  - component: {fileID: 341457811}
   m_Layer: 5
   m_Name: Stats Panel
   m_TagString: Untagged
@@ -1922,7 +1923,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341457806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1934,12 +1935,12 @@ RectTransform:
   - {fileID: 913836173}
   - {fileID: 550379753}
   - {fileID: 566281777}
-  m_Father: {fileID: 608772458}
-  m_RootOrder: 9
+  m_Father: {fileID: 1638107831}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 150}
+  m_AnchoredPosition: {x: -710, y: -340}
   m_SizeDelta: {x: 330, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341457808
@@ -2004,6 +2005,19 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &341457811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341457806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fbff9535dac114dbe542404265e660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statPrefab: {fileID: 5989337922790627862, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
 --- !u!1 &368060468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4052,7 +4066,7 @@ RectTransform:
   - {fileID: 287712592}
   - {fileID: 2134289864}
   - {fileID: 2123648334}
-  - {fileID: 341457807}
+  - {fileID: 1638107831}
   m_Father: {fileID: 205027063}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5929,6 +5943,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 341457807}
     m_Modifications:
+    - target: {fileID: 3230480818608585578, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7582f0b56da399541ba12f22d7e42eb4, type: 3}
     - target: {fileID: 4840141683106966011, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
       propertyPath: m_Name
       value: Stat Slot (2)
@@ -6993,6 +7011,7 @@ MonoBehaviour:
   _damage: {fileID: 11400000, guid: 42559265290f8944eaaabfd9041c9a1b, type: 2}
   _armor: {fileID: 11400000, guid: 34f742559d98b294eb7f7c6ce5c35a1c, type: 2}
   _movespeed: {fileID: 11400000, guid: 6c5ad87e62664e949995eb1640fdba39, type: 2}
+  _statsList: []
 --- !u!114 &1434756279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7404,6 +7423,7 @@ MonoBehaviour:
   _damage: {fileID: 11400000, guid: 19a483f5497ebf44a98c7ad26044b06a, type: 2}
   _armor: {fileID: 11400000, guid: ddb4724c16ead4f4c9c88a7d5402503b, type: 2}
   _movespeed: {fileID: 11400000, guid: badd3b0d5264dd142ab7f79260f5581f, type: 2}
+  _statsList: []
 --- !u!114 &1477938537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7875,6 +7895,56 @@ Transform:
   m_Father: {fileID: 205027063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1638107830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1638107831}
+  - component: {fileID: 1638107832}
+  m_Layer: 5
+  m_Name: Stats Panel Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1638107831
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638107830}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 341457807}
+  m_Father: {fileID: 608772458}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1638107832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638107830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a63d685f3ef85041a88fb20fb216465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatsPanel: {fileID: 341457811}
 --- !u!4 &1639339507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1571808446220551554, guid: 97833aa36ecd14f4a90663a495f869ea, type: 3}
@@ -8347,6 +8417,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 341457807}
     m_Modifications:
+    - target: {fileID: 3230480818608585578, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f43c4764ba3fef4e8388672bc8338e2, type: 3}
     - target: {fileID: 4840141683106966011, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
       propertyPath: m_Name
       value: Stat Slot (1)
@@ -11730,27 +11804,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4894135583606859347, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
   m_PrefabInstance: {fileID: 5989337922790627859}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5989337922790627861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4840141683106966011, guid: 25ebab907a8d8744f972c54abca52926, type: 3}
-  m_PrefabInstance: {fileID: 5989337922790627859}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5989337922790627862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5989337922790627861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7a7a450ed342224a80ed3c3c892f7ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statIcon: {fileID: 0}
-  statValue: {fileID: 0}
-  _stat: {fileID: 0}
-  hoverTip: {fileID: 0}
 --- !u!1 &5999168812911596679
 GameObject:
   m_ObjectHideFlags: 0

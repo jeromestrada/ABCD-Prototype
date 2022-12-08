@@ -11,11 +11,6 @@ public class StatUI : MonoBehaviour
     [SerializeField] private Stat _stat;
     [SerializeField] private HoverTip hoverTip;
 
-    private void Awake()
-    {
-        
-    }
-
     public void Init(Stat stat)
     {
         _stat = stat;
@@ -26,9 +21,9 @@ public class StatUI : MonoBehaviour
     {
         if (_stat != null)
         {
-
             statValue.text = stat.GetValue().ToString();
-
+            statIcon.sprite = stat.StatIcon;
+            hoverTip.tipToShow = stat.StatName;
         }
     }
 }

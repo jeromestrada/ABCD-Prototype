@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51a63f68d02bc245b27992e963560f9, type: 3}
   m_Name: Player Armor
   m_EditorClassIdentifier: 
+  statIcon: {fileID: 21300000, guid: 0f43c4764ba3fef4e8388672bc8338e2, type: 3}
   _statName: Player Armor
   baseValue: 10
   modifiers: []

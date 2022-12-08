@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51a63f68d02bc245b27992e963560f9, type: 3}
   m_Name: Player Movespeed
   m_EditorClassIdentifier: 
+  statIcon: {fileID: 21300000, guid: 7582f0b56da399541ba12f22d7e42eb4, type: 3}
   _statName: Player Movespeed
   baseValue: 7
   modifiers:
-  - _modifierName: Full Moon Movespeed
-    _modifierValue: 5
   - _modifierName: Drowsy Movement
     _modifierValue: -3
+  - _modifierName: Full Moon Movespeed
+    _modifierValue: 5

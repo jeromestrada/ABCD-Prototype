@@ -10,6 +10,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     [SerializeField] private Stat _damage;
     [SerializeField] private Stat _armor;
     [SerializeField] private Stat _movespeed;
+    [SerializeField] protected List<Stat> _statsList;
     // stats like movespeed, hp/mana regen, cdr, etc can be added here.
 
     // Add a list of Modifiers that the subclasses can reference to handle stat changes such as adding/removing modifiers based on their names.
@@ -30,11 +31,17 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     protected void Awake()
     {
         _currentHealth = MaxHealth;
-        OnStatChange?.Invoke();
+        
         _modifiers = new List<Modifier>();
+        _statsList = new List<Stat>();
         Damage.ClearModifiers();
+        _statsList.Add(Damage);
         Armor.ClearModifiers();
+        _statsList.Add(Armor);
         Movespeed.ClearModifiers();
+        _statsList.Add(Movespeed);
+
+        OnStatChange?.Invoke();
     }
 
     /// <summary>

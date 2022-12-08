@@ -6,6 +6,7 @@ public class PlayerStats : CharacterStats
 {
 
     public static event System.Action OnPlayerDying;
+    public static event System.Action<List<Stat>> OnStatsDisplayUpdateRequested;
 
     private void OnEnable()
     {
@@ -32,6 +33,7 @@ public class PlayerStats : CharacterStats
     private void UpdatePlayerStats(HungerSystem hungerSystem)
     {
         ApplyHungerStatus(hungerSystem);
+        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }
 
     public override void ApplyHungerStatus(HungerSystem hungerSystem)
@@ -57,11 +59,13 @@ public class PlayerStats : CharacterStats
                 break;
         }
         base.ApplyHungerStatus(hungerSystem);
+        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }
 
     private void UpdatePlayerStats(Moon moon)
     {
         ApplyMoonBuff(moon);
+        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }
 
     public override void ApplyMoonBuff(Moon moon)
@@ -107,6 +111,7 @@ public class PlayerStats : CharacterStats
                     break;
             }
         }
+        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }
 
     /// <summary>
@@ -141,6 +146,7 @@ public class PlayerStats : CharacterStats
                     break;
             }
         }
+        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }
 
     public override void TakeDamage(int damage)
