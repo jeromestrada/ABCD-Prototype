@@ -21,7 +21,5 @@ MonoBehaviour:
   _cardPrice: 5
   numOfUses: 1
   exhaustable: 1
-  _statBonus:
-    baseValue: 5
-    modifiers: 
+  _statBonus: {fileID: 11400000, guid: 1e27d56c10aa5634f8a10021003bc930, type: 2}
   _statCardType: 1

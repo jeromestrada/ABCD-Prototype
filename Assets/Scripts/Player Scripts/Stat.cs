@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-[System.Serializable]
-public class Stat
+[System.Serializable, CreateAssetMenu(fileName = "New Stat", menuName = "Stats/Stat")]
+public class Stat : ScriptableObject
 {
+    [SerializeField] private string _statName;
     [SerializeField] private int baseValue;
     [SerializeField] private List<Modifier> modifiers = new List<Modifier>();
+
+    
     public int GetValue()
     {
         int finalValue = baseValue;
@@ -29,5 +33,10 @@ public class Stat
         {
             modifiers.Remove(modifier);
         }
+    }
+
+    public void ClearModifiers()
+    {
+        modifiers.Clear();
     }
 }
