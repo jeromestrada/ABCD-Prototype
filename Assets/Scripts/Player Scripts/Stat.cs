@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable, CreateAssetMenu(fileName = "New Stat", menuName = "Stats/Stat")]
+[CreateAssetMenu(fileName = "New Stat", menuName = "Stats/Stat")]
+[System.Serializable]
 public class Stat : ScriptableObject
 {
     [SerializeField] private Sprite statIcon;
