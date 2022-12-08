@@ -31,7 +31,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     protected void Awake()
     {
         _currentHealth = MaxHealth;
-        
+        // TODO: clean up the redundant code, keep the stat list and find 
+        // each stat in the list by their "statName" when accessing them
         _modifiers = new List<Modifier>();
         _statsList = new List<Stat>();
         Damage.ClearModifiers();
