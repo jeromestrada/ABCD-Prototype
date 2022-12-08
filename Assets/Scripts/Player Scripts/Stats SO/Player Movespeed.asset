@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: Player Movespeed
   m_EditorClassIdentifier: 
   _statName: Player Movespeed
-  baseValue: 5
+  baseValue: 7
   modifiers:
-  - _modifierName: Full Moon Movespeed
-    _modifierValue: 5
-  - _modifierName: Drowsy Movement
-    _modifierValue: -3
   - _modifierName: Full Moon Movespeed
     _modifierValue: 5
   - _modifierName: Drowsy Movement

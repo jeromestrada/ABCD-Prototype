@@ -32,6 +32,9 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
         _currentHealth = MaxHealth;
         OnStatChange?.Invoke();
         _modifiers = new List<Modifier>();
+        Damage.ClearModifiers();
+        Armor.ClearModifiers();
+        Movespeed.ClearModifiers();
     }
 
     /// <summary>

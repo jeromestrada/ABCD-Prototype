@@ -10,7 +10,6 @@ public class Stat : ScriptableObject
     [SerializeField] private int baseValue;
     [SerializeField] private List<Modifier> modifiers = new List<Modifier>();
 
-    
     public int GetValue()
     {
         int finalValue = baseValue;
