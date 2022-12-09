@@ -79,7 +79,6 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
 
         _currentHealth += healing;
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
-        Debug.Log($"Healed for {healing} amount");
     }
 
     public virtual void Die()
@@ -93,7 +92,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
 
     public virtual void ApplyMoonBuff(Moon moon) // Moon bound buff, overriden by a specific unit type: player, different enemies, neutrals, etc...
     {
-        Debug.Log($"{gameObject.name} affected by new moon phase.");
+        // Debug.Log($"{gameObject.name} affected by new moon phase.");
         OnStatChange?.Invoke();
     }
 

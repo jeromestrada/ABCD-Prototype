@@ -33,13 +33,11 @@ public class BlockAbility : Ability
     {
         if (isActivated)
         {
-            Debug.Log("Blocking");
             if (Time.time - blockStartTime <= blockDuration)
             {
                 if (!isBlocking)
                 {
                     stats.AddStatModifier(stats.Armor, new Modifier("Block Armor", BlockAmount));
-                    // stats.Armor.AddModifier(BlockAmount);
                     isBlocking = true;
                 }
             }
@@ -47,7 +45,6 @@ public class BlockAbility : Ability
             {
                 OnEndBlock();
                 stats.RemoveStatModifier(stats.Armor, stats.Modifiers.Find(x => x.ModifierName == "Block Armor"));
-                // stats.Armor.RemoveModifier(BlockAmount);
             }
         }
     }

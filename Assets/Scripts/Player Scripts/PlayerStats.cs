@@ -80,7 +80,6 @@ public class PlayerStats : CharacterStats
             RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Full Moon Damage"));
             RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Full Moon Movespeed"));
         }
-        Debug.Log($"PlayerStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
         base.ApplyMoonBuff(moon);
     }
 

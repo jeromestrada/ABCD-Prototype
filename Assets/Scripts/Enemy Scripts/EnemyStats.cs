@@ -34,7 +34,7 @@ public class EnemyStats : CharacterStats
             RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "newMoonDamage"));
             RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "newMoonMovespeed"));
         }
-        Debug.Log($"EnemyStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
+        // Debug.Log($"EnemyStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
         base.ApplyMoonBuff(moon);
     }
 
