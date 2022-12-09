@@ -18,7 +18,7 @@ public class Stat : ScriptableObject
     public int BaseValue => baseValue;
     public List<Modifier> Modifiers => modifiers;
 
-    private void Awake()
+    private void OnEnable()
     {
         ClearModifiers();
     }
