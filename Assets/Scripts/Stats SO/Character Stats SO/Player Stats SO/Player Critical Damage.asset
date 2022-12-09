@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Player Critical Damage
   m_EditorClassIdentifier: 
   statIcon: {fileID: 21300000, guid: 7a2cdb844e9b9194ea7b692a2c8b874f, type: 3}
-  _statName: Player Critical Damage
+  _statName: Critical Damage
   baseValue: 0
   modifiers: []

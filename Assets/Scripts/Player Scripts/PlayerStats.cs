@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-
     public static event System.Action OnPlayerDying;
     public static event System.Action<List<Stat>> OnStatsDisplayUpdateRequested;
 

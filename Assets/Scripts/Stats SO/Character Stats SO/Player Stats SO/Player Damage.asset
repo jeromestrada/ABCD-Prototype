@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Player Damage
   m_EditorClassIdentifier: 
   statIcon: {fileID: 21300000, guid: 27ec7c3a9504bb445855e20b9d818a8f, type: 3}
-  _statName: Player Damage
+  _statName: Damage
   baseValue: 15
   modifiers:
-  - _modifierName: Reverse Trusty Sword
-    _modifierValue: 30
   - _modifierName: Full Moon Damage
     _modifierValue: 50

@@ -6,24 +6,16 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
 {
     [SerializeField] private int _maxHealth = 100;
     protected int _currentHealth;
-
-    [SerializeField] private Stat _damage;
-    [SerializeField] private Stat _armor;
-    [SerializeField] private Stat _movespeed;
-    [SerializeField] private Stat _critChance;
-    [SerializeField] private Stat _critDamage;
     [SerializeField] protected List<Stat> _statsList;
-    // stats like movespeed, hp/mana regen, cdr, etc can be added here.
-
-    // Add a list of Modifiers that the subclasses can reference to handle stat changes such as adding/removing modifiers based on their names.
     protected List<Modifier> _modifiers;
 
     public int MaxHealth => _maxHealth;
-    public Stat Damage => _damage;
-    public Stat Armor => _armor;
-    public Stat Movespeed => _movespeed;
-    public Stat CritChance => _critChance;
-    public Stat CritDamage => _critDamage;
+
+    public Stat Damage => _statsList.Find(s => s.StatName == "Damage");
+    public Stat Armor => _statsList.Find(s => s.StatName == "Armor");
+    public Stat Movespeed => _statsList.Find(s => s.StatName == "Movespeed");
+    public Stat CritChance => _statsList.Find(s => s.StatName == "Critical Chance");
+    public Stat CritDamage => _statsList.Find(s => s.StatName == "Critical Damage");
 
     public List<Modifier> Modifiers => _modifiers;
 
@@ -35,21 +27,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     protected void Awake()
     {
         _currentHealth = MaxHealth;
-        // TODO: clean up the redundant code, keep the stat list and find 
-        // each stat in the list by their "statName" when accessing them
         _modifiers = new List<Modifier>();
-        _statsList = new List<Stat>();
-        Damage.ClearModifiers();
-        _statsList.Add(Damage);
-        Armor.ClearModifiers();
-        _statsList.Add(Armor);
-        Movespeed.ClearModifiers();
-        _statsList.Add(Movespeed);
-        Debug.Log($"Armor: {Armor}");
-        CritChance.ClearModifiers();
-        _statsList.Add(CritChance);
-        CritDamage.ClearModifiers();
-        _statsList.Add(CritDamage);
+        if(_statsList == null) _statsList = new List<Stat>();
 
         OnStatChange?.Invoke();
     }
@@ -72,8 +51,11 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     /// <param name="modifier"></param>
     public void RemoveStatModifier(Stat stat, Modifier modifier)
     {
-        stat.RemoveModifier(modifier);
-        _modifiers.Remove(modifier);
+        if(stat != null && modifier != null)
+        {
+            stat.RemoveModifier(modifier);
+            _modifiers.Remove(modifier);
+        }
     }
 
     public virtual void TakeDamage(int damage)

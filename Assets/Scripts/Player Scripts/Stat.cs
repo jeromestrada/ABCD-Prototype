@@ -20,7 +20,7 @@ public class Stat : ScriptableObject
 
     private void Awake()
     {
-        modifiers = new List<Modifier>();
+        ClearModifiers();
     }
 
     public int GetValue()

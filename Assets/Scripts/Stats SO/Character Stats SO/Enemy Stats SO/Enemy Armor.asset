@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51a63f68d02bc245b27992e963560f9, type: 3}
   m_Name: Enemy Armor
   m_EditorClassIdentifier: 
-  _statName: Enemy Armor
+  statIcon: {fileID: 0}
+  _statName: Armor
   baseValue: 5
   modifiers: []
