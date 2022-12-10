@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statIcon: {fileID: 0}
   _statName: Damage
-  baseValue: 15
+  baseValue: 10
   modifiers: []

@@ -20,7 +20,6 @@ public class ComboCharacter : MonoBehaviour
             && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
             OnFirstAttack?.Invoke(0);
-            //csm.SetNextState(new AttackStringState(0, csm.AttackPoint, csm.AttackRadius));
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    private int criticalPity = 0;
+
     public static event System.Action OnPlayerDying;
     public static event System.Action<List<Stat>> OnStatsDisplayUpdateRequested;
 
@@ -27,6 +29,24 @@ public class PlayerStats : CharacterStats
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
         HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
+    }
+
+    public int CriticalHit(int baseDamage)
+    {
+        var critical = Random.Range(0, 100) + 1;
+        if(CritChance.GetValue() > 0) // only have crit pity if there is atleast some critical chance
+        {
+            if (criticalPity >= 5 || critical <= CritChance.GetValue()) // if we haven't crit for 5 hits straight, we guarantee a crit hit
+            {
+                criticalPity = 0; // reset the pity
+                var finalDamage = (int) (baseDamage + (baseDamage * (float)(CritDamage.GetValue() / 100f)));
+                Debug.Log($"CRIT! {finalDamage}");
+                return finalDamage;
+            }
+            criticalPity++;
+        }
+        
+        return baseDamage;
     }
 
     private void UpdatePlayerStats(HungerSystem hungerSystem)

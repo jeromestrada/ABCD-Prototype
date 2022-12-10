@@ -45,9 +45,11 @@ public class CombatStateMachine : StateMachine
     }
     private void OnAttack(int attackIndex)
     {
+        // handle the critical attack logic here.
         comboExpired = false;
         UpdateAttackPoint(equippedWeapon.AttackPoints[attackIndex]);
-        SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius, playerStats.Damage.GetValue(), CurrentGracePeriodExtension, enemyMask));
+        var attackDamage = playerStats.CriticalHit(playerStats.Damage.GetValue());
+        SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius, attackDamage, CurrentGracePeriodExtension, enemyMask));
     }
 
     public override void Update()
