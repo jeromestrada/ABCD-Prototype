@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
+public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
 {
     [SerializeField] private int _maxHealth = 100;
     protected int _currentHealth;
@@ -19,6 +19,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
 
     public List<Modifier> Modifiers => _modifiers;
 
+    public List<Buff> Buffs = new List<Buff>();
+
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
     public event System.Action<CharacterStats> OnTakeDamage;
@@ -31,6 +33,16 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
         if(_statsList == null) _statsList = new List<Stat>();
 
         OnStatChange?.Invoke();
+    }
+
+    public virtual void ApplyBuff(Buff buff)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public virtual void RemoveBuff(Buff buff)
+    {
+        throw new System.NotImplementedException();
     }
 
     /// <summary>
@@ -100,4 +112,6 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound
     {
         OnStatChange?.Invoke();
     }
+
+    
 }
