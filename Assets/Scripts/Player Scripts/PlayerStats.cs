@@ -61,7 +61,9 @@ public class PlayerStats : CharacterStats
         {
             case HungerState.Full:
                 Debug.Log("FULL status!");
-                AddStatModifier(Movespeed, new Modifier("Drowsy Movement", -3));
+                // AddStatModifier(Movespeed, new Modifier("Drowsy Movement", -3));
+                ApplyBuff(BuffsList.Buffs.Find(x => x.Name == "Drowsy"));
+
                 RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Starving Damage Buff"));
                 RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Hungry Damage Buff"));
                 break;
@@ -69,7 +71,8 @@ public class PlayerStats : CharacterStats
             case HungerState.Hungry:
                 Debug.Log("HUNGRY status!");
                 AddStatModifier(Damage, new Modifier("Hungry Damage Buff", 5));
-                RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Drowsy Movement"));
+                //RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Drowsy Movement"));
+                RemoveBuff(BuffsList.Buffs.Find(x => x.Name == "Drowsy"));
                 break;
 
             case HungerState.Starving:

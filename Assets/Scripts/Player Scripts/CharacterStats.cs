@@ -9,7 +9,11 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     [SerializeField] protected List<Stat> _statsList;
     protected List<Modifier> _modifiers;
 
+    
+
     public int MaxHealth => _maxHealth;
+
+    
 
     public Stat Damage => _statsList.Find(s => s.StatName == "Damage");
     public Stat Armor => _statsList.Find(s => s.StatName == "Armor");
@@ -20,6 +24,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     public List<Modifier> Modifiers => _modifiers;
 
     public List<Buff> Buffs = new List<Buff>();
+
+    [SerializeField] protected BuffsList BuffsList;
 
     public event System.Action<int, int> OnHealthChanged;
     public event System.Action OnDying;
@@ -37,12 +43,15 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
 
     public virtual void ApplyBuff(Buff buff)
     {
-        throw new System.NotImplementedException();
+        Debug.Log($"The buff is {buff}");
+        buff.Apply(this);
+        Buffs.Add(buff);
     }
 
     public virtual void RemoveBuff(Buff buff)
     {
-        throw new System.NotImplementedException();
+        buff.Purge(this);
+        Buffs.Remove(buff);
     }
 
     /// <summary>
