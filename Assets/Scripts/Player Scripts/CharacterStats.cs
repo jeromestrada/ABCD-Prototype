@@ -52,18 +52,20 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
         return BuffsList.Buff(buffName);
     }
 
-    public virtual void ApplyBuff(Buff buff)
+    public virtual void ApplyBuff(string buffName)
     {
+        var buff = Buff(buffName);
         if(buff == null) return;
         buff.Apply(this);
         Buffs.Add(buff);
     }
 
-    public virtual void RemoveBuff(Buff buff)
+    public virtual void RemoveBuff(string buffName)
     {
-        if(buff == null) return;
+        var buff = Buff(buffName);
+        if (buff == null) return;
         buff.Purge(this);
-        Buffs.Remove(buff);
+        Buffs.Add(buff);
     }
 
     /// <summary>

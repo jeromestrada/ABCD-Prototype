@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface Buffable
 {
-    public void ApplyBuff(Buff buff);
+    public void ApplyBuff(string buffName);
 
-    public void RemoveBuff(Buff buff);
+    public void RemoveBuff(string buffName);
 
 }

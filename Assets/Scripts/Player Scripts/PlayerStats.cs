@@ -62,18 +62,18 @@ public class PlayerStats : CharacterStats
             case HungerState.Full:
                 Debug.Log("FULL status!");
                 // AddStatModifier(Movespeed, new Modifier("Drowsy Movement", -3));
-                ApplyBuff(Buff("Full Buff"));
+                ApplyBuff("Full Buff");
                 break;
 
             case HungerState.Hungry:
                 Debug.Log("HUNGRY status!");
-                ApplyBuff(Buff("Hungry Buff"));
-                RemoveBuff(Buff("Full Buff"));
+                ApplyBuff("Hungry Buff");
+                RemoveBuff("Full Buff");
                 break;
 
             case HungerState.Starving:
                 Debug.Log("STARVING status!");
-                ApplyBuff(Buff("Starving Buff"));
+                ApplyBuff("Starving Buff");
                 break;
         }
         base.ApplyHungerStatus(hungerSystem);
@@ -91,11 +91,11 @@ public class PlayerStats : CharacterStats
         // Player specific buff logic should be here.
         if(moon.CurrentMoon == MoonPhase.Full)
         {
-            ApplyBuff(Buff("Full Moon Buff"));
+            ApplyBuff("Full Moon Buff");
         }
         else
         {
-            RemoveBuff(Buff("Full Moon Buff"));
+            RemoveBuff("Full Moon Buff");
         }
         base.ApplyMoonBuff(moon);
     }
