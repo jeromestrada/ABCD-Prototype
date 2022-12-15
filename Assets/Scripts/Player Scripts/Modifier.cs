@@ -13,7 +13,7 @@ public class Modifier
     public int ModifierValue => _modifierValue;
     public StatType StatToModify => _statToModifiy;
 
-    public Modifier(string name, int value)
+    public Modifier(string name = "New Modifier", int value = 0)
     {
         _modifierName = name;
         _modifierValue = value;

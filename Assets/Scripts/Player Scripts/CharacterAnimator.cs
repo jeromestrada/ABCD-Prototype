@@ -26,12 +26,16 @@ public class CharacterAnimator : MonoBehaviour
     private void OnEnable()
     {
         DashAbility.OnDash += OnDash;
+        EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
+        deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest += OnAttackString;
     }
 
     private void OnDisable()
     {
         DashAbility.OnDash -= OnDash;
+        EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
+        deck.CardSystem.OnInventorySlotChanged -= AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest -= OnAttackString;
     }
 
@@ -47,10 +51,7 @@ public class CharacterAnimator : MonoBehaviour
 
         playerMovement = GetComponent<PlayerMovement>();
 
-        EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
-
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
-        deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
 
         weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
         weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();

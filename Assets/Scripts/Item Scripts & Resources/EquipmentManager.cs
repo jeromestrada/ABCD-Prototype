@@ -9,10 +9,11 @@ public class EquipmentManager : MonoBehaviour
     // handles the MeshRenderer to display the weapon being wielded by the player.
 
     public static event System.Action<Equipment, Equipment> OnEquipmentChanged; // <old, new>
+    [SerializeField] private DeckOfCards deck;
+    [SerializeField] private List<Buff> equipmentBuffsList;
+
 
     public Equipment equippedWeapon;
-    public Equipment testEquip;
-    public Equipment testEquipReverse;
     SkinnedMeshRenderer equippedWeaponMesh;
 
     [SerializeField] private Equipment equippedProtection;
@@ -23,16 +24,31 @@ public class EquipmentManager : MonoBehaviour
     private void OnEnable()
     {
         Equipment.OnEquipmentUse += Equip;
+        deck.CardSystem.OnInventorySlotChanged += AddWeaponBuff;
     }
 
     private void OnDisable()
     {
         Equipment.OnEquipmentUse -= Equip;
+        deck.CardSystem.OnInventorySlotChanged -= AddWeaponBuff;
     }
 
     private void Start()
     {
         equippedWeaponMesh = new SkinnedMeshRenderer();
+    }
+
+    public void AddWeaponBuff(PlayerCardSlot slot)
+    {
+        if (slot.Card.CardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Equipment)
+        {
+            var itemCard = (ItemCard)slot.Card;
+            var weapon = (Equipment)itemCard.item;
+            if (itemCard.item is Equipment && !equipmentBuffsList.Find(x => x == weapon.EquipmentBuff))
+            {
+                equipmentBuffsList.Add(weapon.EquipmentBuff);
+            }
+        }
     }
 
     public void Equip(Equipment equipment)

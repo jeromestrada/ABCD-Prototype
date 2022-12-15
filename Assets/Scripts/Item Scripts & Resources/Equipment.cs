@@ -8,6 +8,7 @@ public class Equipment : Item
     [SerializeField] private int _damage;
     [SerializeField] private int _armor;
     [SerializeField] private EquipmentType _type;
+    [SerializeField] private Buff _equipmentBuff;
 
     [SerializeField] private int _stringAttacksCount;
     [SerializeField] private Transform[] _attackPoints; // an array of attack points that we can access to resolve attack hits
@@ -16,6 +17,7 @@ public class Equipment : Item
     [Tooltip("If certain weapon transitions take time, extensions can be provided so the combo state machine can adjust accordingly - floats")]
     [SerializeField] private float[] gracePeriodExtensions;
 
+    public Buff EquipmentBuff => _equipmentBuff;
     public int Damage => _damage;
     public int Armor => _armor;
     public int StringAttacksCount => _stringAttacksCount;

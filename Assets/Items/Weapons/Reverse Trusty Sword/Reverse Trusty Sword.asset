@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af9ff0478ba02174fa82cf4df53430c9, type: 3}
-  m_Name: Trusty Sword
+  m_Name: Reverse Trusty Sword
   m_EditorClassIdentifier: 
-  name: Trusty Sword
+  name: Reverse Trusty Sword
   description: 
-  icon: {fileID: 21300000, guid: 5f8eadf6d26aec84abe03814b6a8c6f7, type: 3}
+  icon: {fileID: 21300000, guid: 9e47e17380468004aa41e7854579bd9d, type: 3}
   mesh: {fileID: 402616743014682421, guid: a21ff9b00362dfc43968e1edad50ae54, type: 3}
-  _damage: 25
-  _armor: 0
+  _damage: 30
+  _armor: 5
   _type: 0
+  _equipmentBuff: {fileID: 11400000, guid: e68ad32d660451844bd0d8fbc964e3e9, type: 2}
   _stringAttacksCount: 2
   _attackPoints:
-  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
   - {fileID: 1062047230199363204, guid: 9cadee8b9f0b32140b5903b4324d1422, type: 3}
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
   _weaponAnimations:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
     - {fileID: 8792094651403321428, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
+    - {fileID: 1725195846218060345, guid: 5f3a6bcc4f620e94b9a9403836e3d7d0, type: 3}
   _weaponTransitionAnims:
     weapon: {fileID: 0}
     clips: []

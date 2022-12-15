@@ -7372,9 +7372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b284e100d1fcf7346b300adb055178ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 0}
-  testEquip: {fileID: 11400000, guid: 049a6c42ecf371f4380df208f540fc8d, type: 2}
-  testEquipReverse: {fileID: 11400000, guid: 01be133a8b63ce6419c6ec4b81322446, type: 2}
+  deck: {fileID: 547087588}
+  equipmentBuffsList: []
+  equippedWeapon: {fileID: 11400000, guid: 033a7adf9cf690144ba3773a50a7a6a6, type: 2}
   equippedProtection: {fileID: 0}
   targetMesh: {fileID: 3248816037825387173}
 --- !u!114 &1477938536
