@@ -10,12 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58c0b67fa52057a4f9df86a8328d1d72, type: 3}
-  m_Name: Drowsy
+  m_Name: New Moon Buff
   m_EditorClassIdentifier: 
-  _name: Drowsy
-  _description: Reduces movement speed when full.
+  _name: New Moon Buff
+  _description: 'Grants absurd boosts during New Moon Phases
+
+'
   _icon: {fileID: 0}
   _effects:
-  - _modifierName: Drowsy Movement
-    _modifierValue: -6
-    _statToModifiy: {fileID: 11400000, guid: badd3b0d5264dd142ab7f79260f5581f, type: 2}
+  - _modifierName: Damage Boost
+    _modifierValue: 15
+    _statToModifiy: Damage
+  - _modifierName: Movespeed Boost
+    _modifierValue: 5
+    _statToModifiy: Movespeed

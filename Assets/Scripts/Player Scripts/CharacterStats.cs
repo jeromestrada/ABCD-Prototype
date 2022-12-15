@@ -41,15 +41,27 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
         OnStatChange?.Invoke();
     }
 
+    public Stat Stat(string statName)
+    {
+        return _statsList.Find(s => s.StatName == statName);
+    }
+
+    // wrapper method for getting the buff by name
+    public Buff Buff(string buffName)
+    {
+        return BuffsList.Buff(buffName);
+    }
+
     public virtual void ApplyBuff(Buff buff)
     {
-        Debug.Log($"The buff is {buff}");
+        if(buff == null) return;
         buff.Apply(this);
         Buffs.Add(buff);
     }
 
     public virtual void RemoveBuff(Buff buff)
     {
+        if(buff == null) return;
         buff.Purge(this);
         Buffs.Remove(buff);
     }
@@ -62,7 +74,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     public void AddStatModifier(Stat stat, Modifier modifier)
     {
         stat.AddModifier(modifier);
-        _modifiers.Add(modifier);
+        /*_modifiers.Add(modifier);*/
     }
 
     /// <summary>
@@ -75,7 +87,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
         if(stat != null && modifier != null)
         {
             stat.RemoveModifier(modifier);
-            _modifiers.Remove(modifier);
+            //_modifiers.Remove(modifier);
         }
     }
 

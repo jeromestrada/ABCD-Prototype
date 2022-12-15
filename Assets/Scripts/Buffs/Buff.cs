@@ -7,7 +7,7 @@ using UnityEngine;
 public class Buff : ScriptableObject
 {
     [SerializeField] private string _name;
-    [SerializeField] private string _description;
+    [SerializeField, TextArea(3, 5)] private string _description;
     [SerializeField] private Sprite _icon;
     [SerializeField] private List<Modifier> _effects;
 
@@ -22,7 +22,7 @@ public class Buff : ScriptableObject
     {
         foreach(Modifier m in _effects)
         {
-            target.AddStatModifier(m.StatToModify, m);
+            target.Stat(m.StatToModify).AddModifier(m);
         }
     }
 
@@ -30,7 +30,7 @@ public class Buff : ScriptableObject
     {
         foreach (Modifier m in _effects)
         {
-            target.RemoveStatModifier(m.StatToModify, m);
+            target.Stat(m.StatToModify).RemoveModifier(m);
         }
     }
 }

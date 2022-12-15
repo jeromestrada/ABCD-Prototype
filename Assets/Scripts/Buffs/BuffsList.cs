@@ -13,4 +13,8 @@ public class BuffsList : MonoBehaviour
     {
         if( _buffs  == null ) _buffs = new List<Buff>();
     }
+    public Buff Buff(string buffName)
+    {
+        return Buffs.Find(x => x.Name == buffName);
+    }
 }

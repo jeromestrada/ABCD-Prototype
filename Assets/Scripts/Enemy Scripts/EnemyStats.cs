@@ -26,13 +26,11 @@ public class EnemyStats : CharacterStats
         // Enemy specific buff logic here.
         if (moon.CurrentMoon == MoonPhase.New)
         {
-            AddStatModifier(Damage, new Modifier("newMoonDamage", 15));
-            AddStatModifier(Movespeed, new Modifier("newMoonMovespeed", 5));
+            ApplyBuff(Buff("New Moon Buff"));
         }
         else
         {
-            RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "newMoonDamage"));
-            RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "newMoonMovespeed"));
+            RemoveBuff(Buff("New Moon Buff"));
         }
         // Debug.Log($"EnemyStats: In {gameObject.name}'s Buff(). Moon phase received = {moon.CurrentMoon}");
         base.ApplyMoonBuff(moon);

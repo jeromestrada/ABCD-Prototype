@@ -62,22 +62,18 @@ public class PlayerStats : CharacterStats
             case HungerState.Full:
                 Debug.Log("FULL status!");
                 // AddStatModifier(Movespeed, new Modifier("Drowsy Movement", -3));
-                ApplyBuff(BuffsList.Buffs.Find(x => x.Name == "Drowsy"));
-
-                RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Starving Damage Buff"));
-                RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Hungry Damage Buff"));
+                ApplyBuff(Buff("Full Buff"));
                 break;
 
             case HungerState.Hungry:
                 Debug.Log("HUNGRY status!");
-                AddStatModifier(Damage, new Modifier("Hungry Damage Buff", 5));
-                //RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Drowsy Movement"));
-                RemoveBuff(BuffsList.Buffs.Find(x => x.Name == "Drowsy"));
+                ApplyBuff(Buff("Hungry Buff"));
+                RemoveBuff(Buff("Full Buff"));
                 break;
 
             case HungerState.Starving:
                 Debug.Log("STARVING status!");
-                AddStatModifier(Damage, new Modifier("Starving Damage Buff", 10));
+                ApplyBuff(Buff("Starving Buff"));
                 break;
         }
         base.ApplyHungerStatus(hungerSystem);
@@ -95,13 +91,11 @@ public class PlayerStats : CharacterStats
         // Player specific buff logic should be here.
         if(moon.CurrentMoon == MoonPhase.Full)
         {
-            AddStatModifier(Damage, new Modifier("Full Moon Damage", 50));
-            AddStatModifier(Movespeed, new Modifier("Full Moon Movespeed", 5));
+            ApplyBuff(Buff("Full Moon Buff"));
         }
         else
         {
-            RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == "Full Moon Damage"));
-            RemoveStatModifier(Movespeed, _modifiers.Find(x => x.ModifierName == "Full Moon Movespeed"));
+            RemoveBuff(Buff("Full Moon Buff"));
         }
         base.ApplyMoonBuff(moon);
     }

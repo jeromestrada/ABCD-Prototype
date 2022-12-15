@@ -5066,8 +5066,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a565910be17c04ca66cfdd68dd1340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buffList:
+  _buffs:
   - {fileID: 11400000, guid: 5713464e6cbfd4743acb69dca2fa5e12, type: 2}
+  - {fileID: 11400000, guid: 9fdd34a06df44354395f712ebb2836f0, type: 2}
+  - {fileID: 11400000, guid: 8f14fe1ab6a221b4c90ce0cad6cc94b1, type: 2}
+  - {fileID: 11400000, guid: b14e8a857f128874894780615cc4c2c5, type: 2}
+  - {fileID: 11400000, guid: bffbe80d0228bf645b2c8f17d016afec, type: 2}
 --- !u!4 &912108028
 Transform:
   m_ObjectHideFlags: 0
@@ -6943,7 +6947,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e542250288819147b322fea70c1c6ac, type: 2}
   - {fileID: 11400000, guid: 9004cbefa03c3624098dde535a5848fd, type: 2}
   Buffs: []
-  BuffsList: {fileID: 0}
+  BuffsList: {fileID: 912108027}
 --- !u!114 &1434756279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7496,7 +7500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _satietyLimit: 100
-  _metabolism: 0.2
+  _metabolism: 0.5
   _digestionInterval: 0.1
   _rations:
   - {fileID: 11400000, guid: 052b8069f0f1bdb448265b8ec1da08ca, type: 2}
