@@ -7,11 +7,11 @@ public class Modifier
 {
     [SerializeField] private string _modifierName;
     [SerializeField] private int _modifierValue;
-    [SerializeField] private string _statToModifiy;
+    [SerializeField] private StatType _statToModifiy;
 
     public string ModifierName => _modifierName;
     public int ModifierValue => _modifierValue;
-    public string StatToModify => _statToModifiy;
+    public StatType StatToModify => _statToModifiy;
 
     public Modifier(string name, int value)
     {

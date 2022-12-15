@@ -18,8 +18,8 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     public Stat Damage => _statsList.Find(s => s.StatName == "Damage");
     public Stat Armor => _statsList.Find(s => s.StatName == "Armor");
     public Stat Movespeed => _statsList.Find(s => s.StatName == "Movespeed");
-    public Stat CritChance => _statsList.Find(s => s.StatName == "Critical Chance");
-    public Stat CritDamage => _statsList.Find(s => s.StatName == "Critical Damage");
+    public Stat CritChance => _statsList.Find(s => s.StatName == "CriticalChance");
+    public Stat CritDamage => _statsList.Find(s => s.StatName == "CriticalDamage");
 
     public List<Modifier> Modifiers => _modifiers;
 
@@ -65,7 +65,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
         var buff = Buff(buffName);
         if (buff == null) return;
         buff.Purge(this);
-        Buffs.Add(buff);
+        Buffs.Remove(buff);
     }
 
     /// <summary>
@@ -135,6 +135,6 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     {
         OnStatChange?.Invoke();
     }
-
-    
 }
+
+public enum StatType { Damage, Armor, Movespeed, CriticalDamage, CriticalChance }

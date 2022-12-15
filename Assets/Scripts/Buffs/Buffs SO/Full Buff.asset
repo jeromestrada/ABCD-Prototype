@@ -18,7 +18,7 @@ MonoBehaviour:
   _effects:
   - _modifierName: Drowsy Movement
     _modifierValue: -2
-    _statToModifiy: Movespeed
+    _statToModifiy: 2
   - _modifierName: Slow Handed
     _modifierValue: -10
-    _statToModifiy: Damage
+    _statToModifiy: 0

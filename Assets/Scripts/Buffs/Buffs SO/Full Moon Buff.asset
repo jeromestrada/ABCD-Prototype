@@ -18,7 +18,7 @@ MonoBehaviour:
   _effects:
   - _modifierName: Damage Boost
     _modifierValue: 50
-    _statToModifiy: Damage
+    _statToModifiy: 0
   - _modifierName: Movespeed Boost
     _modifierValue: 3
-    _statToModifiy: Movespeed
+    _statToModifiy: 2

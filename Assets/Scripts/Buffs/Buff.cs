@@ -22,7 +22,7 @@ public class Buff : ScriptableObject
     {
         foreach(Modifier m in _effects)
         {
-            target.Stat(m.StatToModify).AddModifier(m);
+            target.Stat(m.StatToModify.ToString()).AddModifier(m);
         }
     }
 
@@ -30,7 +30,7 @@ public class Buff : ScriptableObject
     {
         foreach (Modifier m in _effects)
         {
-            target.Stat(m.StatToModify).RemoveModifier(m);
+            target.Stat(m.StatToModify.ToString()).RemoveModifier(m);
         }
     }
 }
