@@ -104,27 +104,13 @@ public class PlayerStats : CharacterStats
     {
         if(newEquipment != null)
         {
-            switch (newEquipment.ItemType)
-            {
-                case EquipmentType.Weapon:
-                    AddStatModifier(Damage, new Modifier(newEquipment.name, newEquipment.Damage));
-                    break;
-                case EquipmentType.Protection:
-                    AddStatModifier(Armor, new Modifier(newEquipment.name, newEquipment.Armor));
-                    break;
-            }
+            Debug.Log($"Equipping {newEquipment}");
+            ApplyBuff(newEquipment.EquipmentBuff);
         }
+
         if (oldEquipment != null)
         {
-            switch (oldEquipment.ItemType)
-            {
-                case EquipmentType.Weapon:
-                    RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == oldEquipment.name));
-                    break;
-                case EquipmentType.Protection:
-                    RemoveStatModifier(Armor, _modifiers.Find(x => x.ModifierName == oldEquipment.name));
-                    break;
-            }
+            RemoveBuff(oldEquipment.EquipmentBuff);
         }
         OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }

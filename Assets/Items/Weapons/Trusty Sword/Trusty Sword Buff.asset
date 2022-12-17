@@ -16,6 +16,6 @@ MonoBehaviour:
   _description: Damage buff granted when this sword is equipped
   _icon: {fileID: 0}
   _effects:
-  - _modifierName: Damage Boost
+  - _modifierName: Trusty Damage Boost
     _modifierValue: 25
     _statToModifiy: 0
