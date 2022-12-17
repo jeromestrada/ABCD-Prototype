@@ -70,7 +70,6 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
 
     public virtual void ApplyBuff(Buff buff)
     {
-        Debug.Log($"Buff is {buff.Name}");
         if(buff == null) return;
         buff.Apply(this);
         Buffs.Add(buff);

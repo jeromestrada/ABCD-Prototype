@@ -20,7 +20,6 @@ public class Buff : ScriptableObject
 
     public void Apply(CharacterStats target)
     {
-        Debug.Log($"Applying {_name} to {target.name}");
         foreach(Modifier m in _effects)
         {
             target.Stat(m.StatToModify.ToString()).AddModifier(m);

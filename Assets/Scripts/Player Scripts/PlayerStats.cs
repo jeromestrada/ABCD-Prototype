@@ -104,7 +104,6 @@ public class PlayerStats : CharacterStats
     {
         if(newEquipment != null)
         {
-            Debug.Log($"Equipping {newEquipment}");
             ApplyBuff(newEquipment.EquipmentBuff);
         }
 
