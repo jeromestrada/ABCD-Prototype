@@ -18,8 +18,9 @@ MonoBehaviour:
   _castCost: 5
   _state: 0
   _key: 103
-  isActivated: 1
+  isActivated: 0
   _blockAmount: 50
+  _blockBuff: {fileID: 11400000, guid: 9dbbcb9de67dd1743904ea40f99921ea, type: 2}
   isBlocking: 1
   blockStartTime: 11.137415
   blockDuration: 5

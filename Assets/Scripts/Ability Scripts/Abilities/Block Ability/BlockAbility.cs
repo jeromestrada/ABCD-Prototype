@@ -11,6 +11,9 @@ using UnityEngine;
 public class BlockAbility : Ability
 {
     [SerializeField] private int _blockAmount;
+    [SerializeField] private Buff _blockBuff;
+
+    public Buff BlockBuff => _blockBuff;
 
     public int BlockAmount => _blockAmount;
     public bool isBlocking;
@@ -37,14 +40,14 @@ public class BlockAbility : Ability
             {
                 if (!isBlocking)
                 {
-                    stats.AddStatModifier(stats.Armor, new Modifier("Block Armor", BlockAmount));
+                    stats.ApplyBuff(BlockBuff);
                     isBlocking = true;
                 }
             }
             else
             {
                 OnEndBlock();
-                stats.RemoveStatModifier(stats.Armor, stats.Modifiers.Find(x => x.ModifierName == "Block Armor"));
+                stats.RemoveBuff(BlockBuff);
             }
         }
     }
