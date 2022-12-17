@@ -3,12 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Stat Card", menuName = "Cards/Stat Card")]
 public class StatCard : Card
 {
-    [SerializeField] private Stat _statBonus; // prototyping the stat system in hand
     [SerializeField] private StatCardType _statCardType;
-    public static event System.Action<StatCard, bool> OnStatCardUsed;
-
-    public Stat StatBonus => _statBonus;
+    [SerializeField] private Buff _statBuff;
+    
+    public Buff StatBuff => _statBuff;
     public StatCardType StatCardType => _statCardType;
+    public static event System.Action<StatCard, bool> OnStatCardUsed;
     public override bool Use()
     {
         // have a bonus effect when using the stat card,

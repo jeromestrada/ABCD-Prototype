@@ -60,19 +60,15 @@ public class PlayerStats : CharacterStats
         switch (hungerSystem.HungerStatus)
         {
             case HungerState.Full:
-                Debug.Log("FULL status!");
-                // AddStatModifier(Movespeed, new Modifier("Drowsy Movement", -3));
                 ApplyBuff("Full Buff");
                 break;
 
             case HungerState.Hungry:
-                Debug.Log("HUNGRY status!");
                 ApplyBuff("Hungry Buff");
                 RemoveBuff("Full Buff");
                 break;
 
             case HungerState.Starving:
-                Debug.Log("STARVING status!");
                 ApplyBuff("Starving Buff");
                 break;
         }
@@ -88,7 +84,6 @@ public class PlayerStats : CharacterStats
 
     public override void ApplyMoonBuff(Moon moon)
     {
-        // Player specific buff logic should be here.
         if(moon.CurrentMoon == MoonPhase.Full)
         {
             ApplyBuff("Full Moon Buff");
@@ -123,28 +118,11 @@ public class PlayerStats : CharacterStats
     {
         if (isDrawn)
         {
-            // more stat type handling can be added here, i.e. movespeed, cooldown reduction, hp/mana regen stats, etc..
-            switch (statCard.StatCardType)
-            {
-                case StatCardType.DamageStat:
-                    AddStatModifier(Damage, new Modifier(statCard.name, statCard.StatBonus.GetValue()));
-                    break;
-                case StatCardType.ArmorStat:
-                    AddStatModifier(Armor, new Modifier(statCard.name, statCard.StatBonus.GetValue()));
-                    break;
-            }
+            ApplyBuff(statCard.StatBuff);
         }
         else // the stat card is either being discarded or used (which is a form of discard)
         {
-            switch (statCard.StatCardType)
-            {
-                case StatCardType.DamageStat:
-                    RemoveStatModifier(Damage, _modifiers.Find(x => x.ModifierName == statCard.name));
-                    break;
-                case StatCardType.ArmorStat:
-                    RemoveStatModifier(Armor, _modifiers.Find(x => x.ModifierName == statCard.name));
-                    break;
-            }
+            RemoveBuff(statCard.StatBuff);
         }
         OnStatsDisplayUpdateRequested?.Invoke(_statsList);
     }
