@@ -61,6 +61,7 @@ public class PlayerStats : CharacterStats
         {
             case HungerState.Full:
                 ApplyBuff("Full Buff");
+                RemoveBuff("Starving Buff");
                 break;
 
             case HungerState.Hungry:
@@ -70,6 +71,7 @@ public class PlayerStats : CharacterStats
 
             case HungerState.Starving:
                 ApplyBuff("Starving Buff");
+                RemoveBuff("Hungry Buff");
                 break;
         }
         base.ApplyHungerStatus(hungerSystem);
