@@ -7500,7 +7500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _satietyLimit: 100
   _metabolism: 0.5
-  _digestionInterval: 0.1
+  _digestionInterval: 0.08
   _rations:
   - {fileID: 11400000, guid: 052b8069f0f1bdb448265b8ec1da08ca, type: 2}
   _maxRations: 5

@@ -9,16 +9,24 @@ public class EnemyAnimator : MonoBehaviour
     EnemyCombatAI enemyAI;
 
     public float locomotionSmoothTime = 0.1f;
+
+    private void OnEnable()
+    {
+        enemy.OnHealthChanged += OnTakingDamage;
+        enemy.OnDying += OnDying;
+        enemyAI.OnEnemyAttack += OnEnemyAttack;
+    }
+    private void OnDisable()
+    {
+        enemy.OnHealthChanged -= OnTakingDamage;
+        enemy.OnDying -= OnDying;
+        enemyAI.OnEnemyAttack -= OnEnemyAttack;
+    }
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         enemy = GetComponent<EnemyStats>();
         enemyAI = GetComponent<EnemyCombatAI>();
-
-        enemy.OnHealthChanged += OnTakingDamage;
-        enemy.OnDying += OnDying;
-
-        enemyAI.OnEnemyAttack += OnEnemyAttack;
     }
     void Update()
     {
