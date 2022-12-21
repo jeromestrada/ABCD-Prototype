@@ -9,6 +9,12 @@ public class EnemyAnimator : MonoBehaviour
     EnemyCombatAI enemyAI;
 
     public float locomotionSmoothTime = 0.1f;
+    public void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+        enemy = GetComponent<EnemyStats>();
+        enemyAI = GetComponent<EnemyCombatAI>();
+    }
 
     private void OnEnable()
     {
@@ -22,12 +28,7 @@ public class EnemyAnimator : MonoBehaviour
         enemy.OnDying -= OnDying;
         enemyAI.OnEnemyAttack -= OnEnemyAttack;
     }
-    void Start()
-    {
-        animator = GetComponentInChildren<Animator>();
-        enemy = GetComponent<EnemyStats>();
-        enemyAI = GetComponent<EnemyCombatAI>();
-    }
+    
     void Update()
     {
         animator.SetFloat("speedPercent", enemyAI.speedPercent, locomotionSmoothTime, Time.deltaTime);
