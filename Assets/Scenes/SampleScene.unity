@@ -774,7 +774,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3415282761290809270, guid: f3c6715bf4c455342adf7484f35dcb98, type: 3}
       propertyPath: m_Name
-      value: Entry
+      value: Entry Room
       objectReference: {fileID: 0}
     - target: {fileID: 3415282761290809271, guid: f3c6715bf4c455342adf7484f35dcb98, type: 3}
       propertyPath: m_RootOrder
@@ -7372,7 +7372,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 5
-  m_Radius: 0.75
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.05
   m_SkinWidth: 0.08
@@ -7560,6 +7560,7 @@ MonoBehaviour:
   _metabolism: 0.5
   _digestionInterval: 0.08
   _rations:
+  - {fileID: 11400000, guid: 9802d4aed8fd4674fab204080c9e2e02, type: 2}
   - {fileID: 11400000, guid: 052b8069f0f1bdb448265b8ec1da08ca, type: 2}
   _maxRations: 5
   _state: 0
@@ -8341,7 +8342,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.51449573, y: 0.000000007377174, z: -0.0000000044263047, w: 0.8574929}
+  m_LocalRotation: {x: 0.51449573, y: -0.000000007377177, z: 0.000000004426306, w: 0.8574929}
   m_LocalPosition: {x: -2.21, y: 30, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -9397,7 +9398,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.51449573, y: 0.000000007377174, z: -0.0000000044263047, w: 0.8574929}
+  m_LocalRotation: {x: 0.51449573, y: -0.000000007377177, z: 0.000000004426306, w: 0.8574929}
   m_LocalPosition: {x: -2.21, y: 30, z: -11.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10288,7 +10289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148601751453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8879528567371140537}
