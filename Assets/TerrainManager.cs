@@ -8,6 +8,7 @@ public class TerrainManager : MonoBehaviour
     public int _currentTerrainCount;
     
     public bool HasRoom => _currentTerrainCount < _maxTerrainCount;
+    public bool LastRoom => _currentTerrainCount == _maxTerrainCount;
 
     private void Start()
     {

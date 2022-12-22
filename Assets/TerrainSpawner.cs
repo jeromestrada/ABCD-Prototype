@@ -7,8 +7,12 @@ public class TerrainSpawner : MonoBehaviour
     [Tooltip(" 0: Top\n 1: Bottom\n 2: Left\n 3: Right")]
     [SerializeField] private int openingDirection;
 
+    
+
     [SerializeField] private RoomTemplates roomTemplates;
     private TerrainManager terrainManager;
+
+    private bool LastRoom;
 
     public static System.Action OnTerrainSpawned;
     public static System.Action OnTerrainDespawned;
@@ -54,6 +58,10 @@ public class TerrainSpawner : MonoBehaviour
             }
             hasSpawned = true;
             OnTerrainSpawned?.Invoke();
+            if (terrainManager.LastRoom)
+            {
+                Instantiate(roomTemplates.LastRoomMarker, transform.position + (transform.up * 5), Quaternion.identity);
+            }
         }
     }
 
