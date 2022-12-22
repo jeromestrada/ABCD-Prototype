@@ -10,6 +10,8 @@ public class TerrainSpawner : MonoBehaviour
     
 
     [SerializeField] private RoomTemplates roomTemplates;
+    // maybe have a list of elite room templates to spawn here too,
+    // boss rooms as well, so we can fight different bosses per Act/Chamber/Chapter/Kabanata
     private TerrainManager terrainManager;
 
     private bool LastRoom;
@@ -31,8 +33,11 @@ public class TerrainSpawner : MonoBehaviour
     {
         if(!hasSpawned && terrainManager.HasRoom)
         {
+            OnTerrainSpawned?.Invoke(); // this increases the terrain count so that future spawns will adjust accordingly
             switch (openingDirection)
             {
+                // add logic to what type of rooms to spawn here, maybe when we have spawned 2-4 regular rooms already, the next room will be an elite room, etc...
+                // the last room will always be a Boss room.
                 case 0:
                     // spawn with a top opening
                     rand = Random.Range(0, roomTemplates.TopRooms.Length);
@@ -57,7 +62,8 @@ public class TerrainSpawner : MonoBehaviour
                     break;
             }
             hasSpawned = true;
-            OnTerrainSpawned?.Invoke();
+            // Test logic for the marker
+            // Add an event that marks this terrain as a boos room/ spawn a boos room prefab instead
             if (terrainManager.LastRoom)
             {
                 Instantiate(roomTemplates.LastRoomMarker, transform.position + (transform.up * 5), Quaternion.identity);
