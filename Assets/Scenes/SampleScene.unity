@@ -2931,8 +2931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14effabce6b85b74fb7ce228330021ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _seed: test
-  setMySeed: 1
+  _seed: 
+  setMySeed: 0
   copySeedToClipboard: 0
 --- !u!114 &519069860
 MonoBehaviour:
@@ -2946,7 +2946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1d3f1c9dc8323488b27d63751acb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxTerrainCount: 30
+  _maxTerrainCount: 15
   _currentTerrainCount: 0
 --- !u!1 &524249062
 GameObject:
