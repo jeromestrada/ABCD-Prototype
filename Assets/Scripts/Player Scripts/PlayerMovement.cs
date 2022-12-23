@@ -43,17 +43,18 @@ public class PlayerMovement : MonoBehaviour
         PlayerStats.OnStatChange += UpdateMoveSpeed;
         GatePlatform.OnPass += OnPass;
     }
+    private void OnDisable()
+    {
+        AttackStringState.OnAttackAnimationPlayRequest -= OnAttack;
+        PlayerStats.OnStatChange -= UpdateMoveSpeed;
+        GatePlatform.OnPass -= OnPass;
+    }
 
     private void OnPass(GatePlatform gate)
     {
         agent.SetDestination(gate.interactionTransform.position);
     }
 
-    private void OnDisable()
-    {
-        AttackStringState.OnAttackAnimationPlayRequest -= OnAttack;
-        PlayerStats.OnStatChange -= UpdateMoveSpeed;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         if (move.magnitude >= 0.1f)
         {
+            agent.SetDestination(transform.position);
             speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
             {

@@ -12,6 +12,7 @@ public class GatePlatform : Interactable
     public static event System.Action<GatePlatform> OnPass;
     public override void Interact(InteractableScanner interactor, out bool interactSuccessful)
     {
+        Pass();
         base.Interact(interactor, out interactSuccessful);
     }
 
