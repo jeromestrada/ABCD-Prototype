@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.1f;
     public Transform groundChecker;
     public LayerMask groundMask;
-    bool isGrounded;
+    [SerializeField] bool isGrounded;
     [SerializeField] Vector3 velocity;
 
     float turnSmoothness = 0.1f;
@@ -85,7 +85,6 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         if (move.magnitude >= 0.1f)
         {
-            agent.SetDestination(transform.position);
             speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
             {

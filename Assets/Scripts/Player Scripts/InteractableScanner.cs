@@ -25,7 +25,7 @@ public class InteractableScanner : MonoBehaviour
         interactables = new List<Interactable>();
     }
 
-    void Update()
+    void Update() 
     {
         if(interactables.Count > 0) // scanning for closest when there's atleast 1 interactable
         {
