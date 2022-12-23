@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private NavMeshAgent agent; // this will move the player through offmeshlinks, allowing the player to pass between rooms using gates
     [SerializeField] private PlayerStats myStats;
 
     public Vector3 move;
@@ -33,10 +35,18 @@ public class PlayerMovement : MonoBehaviour
 
     InteractableScanner scanner;
 
+
+
     private void OnEnable()
     {
         AttackStringState.OnAttackAnimationPlayRequest += OnAttack;
         PlayerStats.OnStatChange += UpdateMoveSpeed;
+        GatePlatform.OnPass += OnPass;
+    }
+
+    private void OnPass(GatePlatform gate)
+    {
+        agent.SetDestination(gate.interactionTransform.position);
     }
 
     private void OnDisable()
