@@ -29,6 +29,7 @@ public class MovementManager : MonoBehaviour
     void Switch(GatePlatform gate)
     {
         Debug.Log("Switching to navmesh agent mode...");
+        manualMovement.speed = 0;
         manualMovement.enabled = false;
         navMeshAgent.enabled = true;
         navMeshAgent.SetDestination(gate.interactionTransform.position);
