@@ -17,7 +17,7 @@ public class RandomRoomPiece : MonoBehaviour
     public void GeneratePiece()
     {
         GameObject piece = _piecePrefabs[Random.Range(0, _piecePrefabs.Count)];
-        Instantiate(piece, transform.position, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)));
+        Instantiate(piece, transform.position, Quaternion.Euler(new Vector3(0, 90 * Random.Range(0, 4), 0)), transform.parent);
         Destroy(gameObject);
     }
 }
