@@ -463,17 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 1
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282761290809270
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,17 +650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 4
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282761800849984
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,17 +760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 2
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282761973871947
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,17 +870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 5
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282762488781890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,17 +980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 3
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282762627786486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,17 +1090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 8
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282762850913158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,17 +1200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 7
+  pieceTemplates: {fileID: 0}
 --- !u!1 &3415282762980154427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,17 +1310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 6
+  pieceTemplates: {fileID: 0}
 --- !u!1 &4135028427273303502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,17 +1523,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _piecePrefabs:
-  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
-  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
-  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
-  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
+  terrainSpot: 0
+  pieceTemplates: {fileID: 0}
 --- !u!114 &7154025181048221592
 MonoBehaviour:
   m_ObjectHideFlags: 0

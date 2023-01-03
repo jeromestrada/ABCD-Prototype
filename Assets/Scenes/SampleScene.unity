@@ -5781,6 +5781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059108438}
   - component: {fileID: 1059108439}
+  - component: {fileID: 1059108440}
   m_Layer: 0
   m_Name: Room Templates
   m_TagString: Rooms
@@ -5815,34 +5816,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _topRooms:
-  - {fileID: 3415282761290809270, guid: 281a0b51c86adda4f9dd71dfcd0238e4, type: 3}
-  - {fileID: 3415282761290809270, guid: dbd05c2eb2ffd2744b07e20f257d1368, type: 3}
-  - {fileID: 3415282761290809270, guid: dfc6edc1149671c40b8bf6394723f07d, type: 3}
-  - {fileID: 3415282761290809270, guid: e58c4ded5779f60499b90bc9a1eadaf2, type: 3}
-  - {fileID: 3415282761290809270, guid: df46a8d467d2b554385cca2f534ff487, type: 3}
-  - {fileID: 3415282761290809270, guid: 7ac8407e003a2254e8291768074d37e0, type: 3}
+  - {fileID: 3415282761290809270, guid: 0e76d1481576ade42b291be8291ce213, type: 3}
+  - {fileID: 3415282761290809270, guid: 2924850ffdabca248a60018eda59e79b, type: 3}
+  - {fileID: 3415282761290809270, guid: f3c6715bf4c455342adf7484f35dcb98, type: 3}
+  - {fileID: 3415282761290809270, guid: 91216075cb94d9a40a344fd5e33d1e98, type: 3}
+  - {fileID: 3415282761290809270, guid: f6aefa9524886dc43a71ae32a830672b, type: 3}
+  - {fileID: 3415282761290809270, guid: cbc42999b36de954f8a7659ff6a8a8b9, type: 3}
+  - {fileID: 3415282761290809270, guid: 827ffcd1c26153f4583621311ede8d0c, type: 3}
   _bottomRooms:
-  - {fileID: 3415282761290809270, guid: b9c2e7319ab7e4742ac8acf1b95282e6, type: 3}
-  - {fileID: 3415282761290809270, guid: bd72fc4f9ce32354e98d24d5b57796c4, type: 3}
-  - {fileID: 3415282761290809270, guid: 990de16ad890e744b94fc36efa8741f4, type: 3}
-  - {fileID: 3415282761290809270, guid: dfc6edc1149671c40b8bf6394723f07d, type: 3}
-  - {fileID: 3415282761290809270, guid: df46a8d467d2b554385cca2f534ff487, type: 3}
-  - {fileID: 3415282761290809270, guid: 7ac8407e003a2254e8291768074d37e0, type: 3}
+  - {fileID: 3415282761290809270, guid: 1255588b3ed6f174899a32126217a2f9, type: 3}
+  - {fileID: 3415282761290809270, guid: 4c05c934de8612743b346d8decfb5235, type: 3}
+  - {fileID: 3415282761290809270, guid: 0e76d1481576ade42b291be8291ce213, type: 3}
+  - {fileID: 3415282761290809270, guid: 7c0195768891d6249a58486899f0e97c, type: 3}
+  - {fileID: 3415282761290809270, guid: 79641a816e1ac524e99498bf23eb50cc, type: 3}
+  - {fileID: 3415282761290809270, guid: 91216075cb94d9a40a344fd5e33d1e98, type: 3}
+  - {fileID: 3415282761290809270, guid: 827ffcd1c26153f4583621311ede8d0c, type: 3}
   _rightRooms:
-  - {fileID: 3415282761290809270, guid: bd72fc4f9ce32354e98d24d5b57796c4, type: 3}
-  - {fileID: 3415282761290809270, guid: 990de16ad890e744b94fc36efa8741f4, type: 3}
-  - {fileID: 3415282761290809270, guid: e5673aed6e3bcdc48936cc929f581e4d, type: 3}
-  - {fileID: 3415282761290809270, guid: 851f501c63b4ff549a0e23d47d0a02c2, type: 3}
-  - {fileID: 3415282761290809270, guid: 281a0b51c86adda4f9dd71dfcd0238e4, type: 3}
-  - {fileID: 3415282761290809270, guid: 7ac8407e003a2254e8291768074d37e0, type: 3}
+  - {fileID: 3415282761290809270, guid: 7c0195768891d6249a58486899f0e97c, type: 3}
+  - {fileID: 3415282761290809270, guid: 24e72db93a6fa234c964dd29da56da7a, type: 3}
+  - {fileID: 3415282761290809270, guid: 2924850ffdabca248a60018eda59e79b, type: 3}
+  - {fileID: 3415282761290809270, guid: 5b392aded66d7d44c9ef17d414c21e76, type: 3}
+  - {fileID: 3415282761290809270, guid: 79641a816e1ac524e99498bf23eb50cc, type: 3}
+  - {fileID: 3415282761290809270, guid: cbc42999b36de954f8a7659ff6a8a8b9, type: 3}
+  - {fileID: 3415282761290809270, guid: 827ffcd1c26153f4583621311ede8d0c, type: 3}
   _leftRooms:
-  - {fileID: 3415282761290809270, guid: 221926906cc5a5f4a98ca6b3f4fb9dfd, type: 3}
-  - {fileID: 3415282761290809270, guid: 990de16ad890e744b94fc36efa8741f4, type: 3}
-  - {fileID: 3415282761290809270, guid: e5673aed6e3bcdc48936cc929f581e4d, type: 3}
-  - {fileID: 3415282761290809270, guid: 281a0b51c86adda4f9dd71dfcd0238e4, type: 3}
-  - {fileID: 3415282761290809270, guid: e58c4ded5779f60499b90bc9a1eadaf2, type: 3}
-  - {fileID: 3415282761290809270, guid: df46a8d467d2b554385cca2f534ff487, type: 3}
+  - {fileID: 3415282761290809270, guid: 6ca2ea6e2a35a4946842745f2fba1f59, type: 3}
+  - {fileID: 3415282761290809270, guid: 4c05c934de8612743b346d8decfb5235, type: 3}
+  - {fileID: 3415282761290809270, guid: 0e76d1481576ade42b291be8291ce213, type: 3}
+  - {fileID: 3415282761290809270, guid: 24e72db93a6fa234c964dd29da56da7a, type: 3}
+  - {fileID: 3415282761290809270, guid: 2924850ffdabca248a60018eda59e79b, type: 3}
+  - {fileID: 3415282761290809270, guid: 79641a816e1ac524e99498bf23eb50cc, type: 3}
+  - {fileID: 3415282761290809270, guid: f6aefa9524886dc43a71ae32a830672b, type: 3}
   _lastRoomMarker: {fileID: 5453757125421717722, guid: 0c1293481c788324895d8769cca5f0ce, type: 3}
+--- !u!114 &1059108440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059108437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c41b6c63db3b3489af07df58f61f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _centerPieces:
+  - {fileID: 8876696585350143092, guid: ed3ee53fbc3509b43b3c55b0e5753839, type: 3}
+  - {fileID: 7910542034321449418, guid: 16e5c99fd8964264e804dc31ac7cc4f0, type: 3}
+  - {fileID: 7910542034321449418, guid: b0f9370563f6fda4b947a6ab6bf6c39c, type: 3}
+  - {fileID: 4303567559205780445, guid: 88dd6f060c4fb0042980c6f1cc5cb899, type: 3}
+  _leftPieces:
+  - {fileID: 7910542034321449418, guid: 7c41d87aee4b1cb429f8c041928deadb, type: 3}
+  _rightPieces:
+  - {fileID: 7910542034321449418, guid: 249c55f9c318e7149b508bb4d32586c5, type: 3}
+  _topPieces:
+  - {fileID: 7910542034321449418, guid: cd1411daa0b26294883259a072c55755, type: 3}
+  _bottomPieces:
+  - {fileID: 7910542034321449418, guid: 9c2279f50ad4e564ba54b684f067c674, type: 3}
+  _cornerPieces:
+  - {fileID: 4303567559205780445, guid: 9605cc3ee311d3d4abb44de6f7bf1d4f, type: 3}
 --- !u!1 &1061251429
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,7 +7153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1434756276
 CapsuleCollider:
   m_ObjectHideFlags: 0

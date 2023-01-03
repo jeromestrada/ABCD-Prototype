@@ -7,6 +7,10 @@ public class RandomRoomPiece : MonoBehaviour
     [SerializeField] private TerrainSpot terrainSpot;
     [SerializeField] private PieceTemplates pieceTemplates;
 
+    private void Start()
+    {
+        pieceTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<PieceTemplates>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
