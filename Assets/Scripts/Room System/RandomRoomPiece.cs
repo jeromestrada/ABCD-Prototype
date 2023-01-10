@@ -41,19 +41,19 @@ public class RandomRoomPiece : MonoBehaviour
                 piece = pieceTemplates.BottomPieces[Random.Range(0, pieceTemplates.BottomPieces.Count)];
                 break;
             case TerrainSpot.Corner1:
-                piece = pieceTemplates.CornerPieces[Random.Range(0, pieceTemplates.CornerPieces.Count)];
+                piece = pieceTemplates.CornerPiecesOne[Random.Range(0, pieceTemplates.CornerPiecesOne.Count)];
                 break;
             case TerrainSpot.Corner2:
-                piece = pieceTemplates.CornerPieces[Random.Range(0, pieceTemplates.CornerPieces.Count)];
-                rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                piece = pieceTemplates.CornerPiecesTwo[Random.Range(0, pieceTemplates.CornerPiecesTwo.Count)];
+                
                 break;
             case TerrainSpot.Corner3:
-                piece = pieceTemplates.CornerPieces[Random.Range(0, pieceTemplates.CornerPieces.Count)];
-                rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                piece = pieceTemplates.CornerPiecesThree[Random.Range(0, pieceTemplates.CornerPiecesThree.Count)];
+                
                 break;
             case TerrainSpot.Corner4:
-                piece = pieceTemplates.CornerPieces[Random.Range(0, pieceTemplates.CornerPieces.Count)];
-                rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+                piece = pieceTemplates.CornerPiecesFour[Random.Range(0, pieceTemplates.CornerPiecesFour.Count)];
+                
                 break;
             default:
                 break;
