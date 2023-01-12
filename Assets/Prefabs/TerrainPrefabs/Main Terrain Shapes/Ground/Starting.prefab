@@ -223,8 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 1
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &1433425071259432850
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 7
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &3166394949479320485
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,8 +315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 6
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &3227370285567956809
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,8 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 2
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &3606472496728208370
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,8 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 3
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &4224221625897443434
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +548,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: e6cdfcc32d16a35468edd13d4b206b68, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: e95a9a2e9aa52a24183a5c0b670020e8, type: 2}
 --- !u!1 &4894015972056694999
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,8 +592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 5
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &5014015765701101007
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,8 +638,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 8
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &7308342613423556611
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainSpot: 0
   pieceTemplates: {fileID: 0}
+  terrainType: 0
 --- !u!1 &7835253148686007231
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,5 +730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea27b808a43c704b9073941b3f3780f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainSpot: 0
+  terrainSpot: 4
   pieceTemplates: {fileID: 0}
+  terrainType: 0
