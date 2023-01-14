@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 move;
     public Vector3 dashForward;
+    public float targetAngle;
+    public float angle;
     public float minSpeed = 3.5f;
     public float maxSpeed = 7f;
     
@@ -81,7 +83,28 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement(CharacterController controller)
     {
-        move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+
+        
+
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        Vector3 forward = transform.InverseTransformVector(Camera.main.transform.forward);
+        Vector3 right = transform.InverseTransformVector(Camera.main.transform.right);
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        Vector3 forwardRelativeVerticalInput = verticalInput * forward;
+        Vector3 rightRelativeVerticalInput = horizontalInput * right;
+
+        move = forwardRelativeVerticalInput + rightRelativeVerticalInput;
+
+        targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
         velocity.y += gravity * Time.deltaTime;
         if (move.magnitude >= 0.1f)
         {
@@ -90,10 +113,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = minSpeed;
             }
-            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
             
+
             if (isAttacking)
             {
                 speed = 0;
