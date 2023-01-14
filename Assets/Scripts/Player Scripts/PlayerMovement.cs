@@ -83,9 +83,6 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement(CharacterController controller)
     {
-
-        
-
         float verticalInput = Input.GetAxisRaw("Vertical");
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
