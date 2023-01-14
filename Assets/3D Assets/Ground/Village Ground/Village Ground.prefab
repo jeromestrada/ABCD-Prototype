@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8661251341664485292}
   - component: {fileID: 6905713114396330854}
   - component: {fileID: 5194779973337755064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Village Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
