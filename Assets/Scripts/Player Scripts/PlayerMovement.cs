@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent agent; // this will move the player through offmeshlinks, allowing the player to pass between rooms using gates
     [SerializeField] private PlayerStats myStats;
     CharacterController controller;
+    GameObject camera;
 
     public Vector3 move;
     public Vector3 dashForward;
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        camera = GameObject.FindGameObjectWithTag("Top Down Camera");
         controller = GetComponent<CharacterController>();
         scanner = GetComponent<InteractableScanner>();
         combat = GetComponent<PlayerCombat>();
@@ -91,15 +93,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (move.magnitude != 0f)
         {
-            Vector3 positionToLookAt;
-            positionToLookAt.x = move.x;
-            positionToLookAt.y = 0f;
-            positionToLookAt.z = move.z;
             currentRotation = transform.rotation;
-            var camera = GameObject.FindGameObjectWithTag("Top Down Camera");
-            Debug.Log($"Camera is {camera.name} rot: {camera.transform.rotation.eulerAngles}");
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, camera.transform.rotation.eulerAngles.y, 0f));
-            var skewed = matrix.MultiplyPoint3x4(positionToLookAt);
+            var skewed = matrix.MultiplyPoint3x4(move);
             var rot = Quaternion.LookRotation(skewed, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnRate * Time.deltaTime);
         }
@@ -107,23 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement(CharacterController controller)
     {
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        move = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 
-        Vector3 forward = transform.InverseTransformVector(Camera.main.transform.forward);
-        Vector3 right = transform.InverseTransformVector(Camera.main.transform.right);
-        forward.y = 0;
-        right.y = 0;
-        forward = forward.normalized;
-        right = right.normalized;
-
-        var forwardRelativeVerticalInput = verticalInput * forward;
-        var rightRelativeVerticalInput = horizontalInput * right;
-
-        //move = (forwardRelativeVerticalInput + rightRelativeVerticalInput).normalized;
-        move = new Vector3(horizontalInput, 0f, verticalInput);
-
-        velocity.y += gravity * Time.deltaTime;
         if (move.magnitude >= 0.1f)
         {
             speed = maxSpeed;
@@ -131,7 +112,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = minSpeed;
             }
-            
 
             if (isAttacking)
             {
@@ -143,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 0;
         }
+        velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
 
