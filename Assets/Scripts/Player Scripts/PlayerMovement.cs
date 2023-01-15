@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public Quaternion targetRotation;
     float turnSmoothness = 0.1f;
     float turnSmoothVelocity;
-    float turnRate = 10f;
+    float turnRate = 720f;
 
     PlayerCombat combat;
     public bool isAttacking = false;
@@ -89,18 +89,19 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        Vector3 positionToLookAt;
-
-        positionToLookAt.x = move.x;
-        positionToLookAt.y = 0f;
-        positionToLookAt.z = move.z;
-
-        currentRotation = transform.rotation;
-
-        if(move.magnitude > 0.1f)
+        if (move.magnitude != 0f)
         {
-            targetRotation = Quaternion.LookRotation(positionToLookAt);
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, turnRate * Time.deltaTime);
+            Vector3 positionToLookAt;
+            positionToLookAt.x = move.x;
+            positionToLookAt.y = 0f;
+            positionToLookAt.z = move.z;
+            currentRotation = transform.rotation;
+            var camera = GameObject.FindGameObjectWithTag("Top Down Camera");
+            Debug.Log($"Camera is {camera.name} rot: {camera.transform.rotation.eulerAngles}");
+            var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, camera.transform.rotation.eulerAngles.y, 0f));
+            var skewed = matrix.MultiplyPoint3x4(positionToLookAt);
+            var rot = Quaternion.LookRotation(skewed, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, turnRate * Time.deltaTime);
         }
     }
 
@@ -116,15 +117,11 @@ public class PlayerMovement : MonoBehaviour
         forward = forward.normalized;
         right = right.normalized;
 
-        Vector3 forwardRelativeVerticalInput = (verticalInput * forward).normalized;
-        Vector3 rightRelativeVerticalInput = (horizontalInput * right).normalized;
+        var forwardRelativeVerticalInput = verticalInput * forward;
+        var rightRelativeVerticalInput = horizontalInput * right;
 
-        move = (forwardRelativeVerticalInput + rightRelativeVerticalInput).normalized;
-        //move = new Vector3(horizontalInput, 0f, verticalInput);
-
-        /*targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-        angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothness);
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);*/
+        //move = (forwardRelativeVerticalInput + rightRelativeVerticalInput).normalized;
+        move = new Vector3(horizontalInput, 0f, verticalInput);
 
         velocity.y += gravity * Time.deltaTime;
         if (move.magnitude >= 0.1f)
@@ -140,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = 0;
             }
-            controller.Move(move * (speed + dashSpeed) * Time.deltaTime);
+            controller.Move(transform.forward * (speed + dashSpeed) * Time.deltaTime);
         }
         else
         {

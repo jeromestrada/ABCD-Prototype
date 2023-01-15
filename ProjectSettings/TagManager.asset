@@ -10,6 +10,7 @@ TagManager:
   - Terrain Chunk
   - Rooms
   - Game Manager
+  - Top Down Camera
   layers:
   - Default
   - TransparentFX
