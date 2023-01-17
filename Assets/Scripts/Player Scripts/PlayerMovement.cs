@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public Quaternion targetRotation;
     float turnSmoothness = 0.1f;
     float turnSmoothVelocity;
-    float turnRate = 720f;
+    public float turnRate = 1440f;
 
     PlayerCombat combat;
     public bool isAttacking = false;
