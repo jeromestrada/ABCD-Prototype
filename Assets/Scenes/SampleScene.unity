@@ -1016,6 +1016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9062252165400956988, guid: cb2f2e0de212f9446be1b63d96e3ff6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68c9b7ff6a0fe7743bbe7131386459fa, type: 2}
     - target: {fileID: -8679921383154817045, guid: cb2f2e0de212f9446be1b63d96e3ff6c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1120,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boat
       objectReference: {fileID: 0}
+    - target: {fileID: 8656326445269738794, guid: cb2f2e0de212f9446be1b63d96e3ff6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4ee3a326a8f0ed44d83ef7345aecc069, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb2f2e0de212f9446be1b63d96e3ff6c, type: 3}
 --- !u!1 &205027062
