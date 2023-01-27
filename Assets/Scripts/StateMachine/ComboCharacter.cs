@@ -19,6 +19,7 @@ public class ComboCharacter : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && csm.CurrentState.GetType() == typeof(IdleCombatState) 
             && !MouseItemData.IsPointerOverUIObjects() && !MouseItemData.inUI && hasWeapon)
         {
+            Debug.Log("First attack!");
             OnFirstAttack?.Invoke(0);
         }
     }

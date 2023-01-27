@@ -35,12 +35,13 @@ public class StateMachine : MonoBehaviour
 
     public void SetState(State _newState)
     {
-        nextState = null;
+        
         if (CurrentState != null)
         {
             CurrentState.OnExit();
         }
         CurrentState = _newState;
+        nextState = null;
         CurrentState.OnEnter(this);
     }
 
@@ -66,6 +67,7 @@ public class StateMachine : MonoBehaviour
 
     public void SetNextStateToMain()
     {
+        Debug.Log("Idling...");
         nextState = mainStateType;
     }
 

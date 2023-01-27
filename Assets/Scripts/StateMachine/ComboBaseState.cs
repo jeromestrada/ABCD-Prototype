@@ -7,7 +7,7 @@ public class ComboBaseState : State
 {
     protected static bool shouldCombo = false; // replaces the canStringAttack in the player combat?
     protected static bool attackFinished = false;
-    protected static float attackEndTime;
+    protected static float attackEndTime = int.MaxValue;
 
     protected int attackIndex; // will contain which attack string the combo is currently on?
     public Vector3 attackPoint;
@@ -35,7 +35,6 @@ public class ComboBaseState : State
         attackFinished = false;
         base.OnEnter(_stateMachine);
         shouldCombo = false;
-
         OnEnterAttackString?.Invoke(attackIndex);
         OnAttackAnimationPlayRequest?.Invoke(attackIndex); // the character animator will listen to this and will fire an animation based on the passed attackIndex
     }
@@ -43,12 +42,12 @@ public class ComboBaseState : State
     public override void OnUpdate()
     {
         base.OnUpdate();
-        
         if (Input.GetMouseButtonDown(0)) shouldCombo = true;
     }
 
     public override void OnExit()
     {
+        Debug.Log($"Exiting: {attackIndex}");
         base.OnExit();
     }
 
@@ -65,8 +64,8 @@ public class ComboBaseState : State
     // Animation end logic
     public static void AttackFinished()
     {
+        attackEndTime = fixedtime;
         attackFinished = true;
         shouldCombo = false;
-        attackEndTime = time;
     }
 }
