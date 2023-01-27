@@ -30,7 +30,6 @@ public class AttackStringState : ComboBaseState
             }
             if (fixedtime - attackEndTime >= gracePeriod)
             {
-                Debug.Log("grace expired");
                 stateMachine.SetNextStateToMain();
                 attackFinished = false;
                 shouldCombo = false;
