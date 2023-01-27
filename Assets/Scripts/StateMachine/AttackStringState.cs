@@ -14,6 +14,7 @@ public class AttackStringState : ComboBaseState
         base.OnEnter(_stateMachine);
         attackFinished = false;
         shouldCombo = false;
+        fixedtime = 0; // reset the fixed time to avoid timing problems on the first hit
     }
 
     public override void OnUpdate()
@@ -29,13 +30,13 @@ public class AttackStringState : ComboBaseState
             }
             if (fixedtime - attackEndTime >= gracePeriod)
             {
+                Debug.Log("grace expired");
                 stateMachine.SetNextStateToMain();
                 attackFinished = false;
                 shouldCombo = false;
             }
         }
+        
     }
-
-    
 }
 

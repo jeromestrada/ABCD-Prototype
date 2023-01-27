@@ -32,6 +32,7 @@ public class ComboBaseState : State
 
     public override void OnEnter(StateMachine _stateMachine)
     {
+        attackFinished = false;
         base.OnEnter(_stateMachine);
         shouldCombo = false;
 
@@ -66,6 +67,6 @@ public class ComboBaseState : State
     {
         attackFinished = true;
         shouldCombo = false;
-        attackEndTime = fixedtime;
+        attackEndTime = time;
     }
 }

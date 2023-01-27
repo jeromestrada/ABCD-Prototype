@@ -8,7 +8,7 @@ public class ComboCharacter : MonoBehaviour
     [SerializeField] private CombatStateMachine csm;
 
     [SerializeField] public Collider2D hitbox;
-    [SerializeField] public GameObject Hiteffect;
+    [SerializeField] public GameObject HitEffect;
     private bool hasWeapon = false;
 
     public static event System.Action<int> OnFirstAttack;
