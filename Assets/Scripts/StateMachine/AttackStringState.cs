@@ -29,7 +29,6 @@ public class AttackStringState : ComboBaseState
             }
             if (gracePeriod != 0 && fixedtime - attackEndTime >= gracePeriod)
             {
-                Debug.Log($"Time: {fixedtime}, AttackEndTime: {attackEndTime}, Grace Period: {gracePeriod}");
                 stateMachine.SetNextStateToMain();
                 attackFinished = false;
                 shouldCombo = false;

@@ -67,7 +67,6 @@ public class StateMachine : MonoBehaviour
 
     public void SetNextStateToMain()
     {
-        Debug.Log("Idling...");
         nextState = mainStateType;
     }
 

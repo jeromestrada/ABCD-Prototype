@@ -47,7 +47,6 @@ public class ComboBaseState : State
 
     public override void OnExit()
     {
-        Debug.Log($"Exiting: {attackIndex}");
         base.OnExit();
     }
 
