@@ -30,7 +30,72 @@ ModelImporter:
   - first:
       74: 8655920556288904669
     second: rig|Combat Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bahag Band Baked
+    second: {fileID: 2100000, guid: 47b2fb881b6355e409b526bac2fa565f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bahag Cover Baked
+    second: {fileID: 2100000, guid: ec070724fd760ec46a76d1083e7bd0e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bandana Inner Baked
+    second: {fileID: 2100000, guid: 2d3924e5764b08e4797439542a85c8bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bandana Outer Baked
+    second: {fileID: 2100000, guid: dc6ea1abc6f845549a27e079f73ba943, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bandana Tie Baked
+    second: {fileID: 2100000, guid: 3431307acbb32df429706f6fed32bbcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blade
+    second: {fileID: 2100000, guid: c87c4b5463929854c814c699bcbeebd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold Bracer Baked
+    second: {fileID: 2100000, guid: d9702790d5a02e54ca4b01081e653b32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold Coin Baked
+    second: {fileID: 2100000, guid: 533fb970bb5c3c6408c356ef1067f91b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold Mat
+    second: {fileID: 2100000, guid: e0216884997115b40911962eaeb5f53f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2100000, guid: 0ddfde0b92a91b14e9ebbf542a827e8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand Guard mat
+    second: {fileID: 2100000, guid: 658597a757688da41b5cf5a201bf7f79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sawili Texture Baked
+    second: {fileID: 2100000, guid: a83b1f07f40a7d046984f3e77d9f11f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tribal Sword Handle
+    second: {fileID: 2100000, guid: bbcef9ff9066aa344a2b2ba1c3cca302, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -121,7 +186,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
