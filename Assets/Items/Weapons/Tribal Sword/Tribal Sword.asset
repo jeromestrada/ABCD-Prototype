@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9ff0478ba02174fa82cf4df53430c9, type: 3}
+  m_Name: Tribal Sword
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  mesh: {fileID: 3200700381070900805, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+  _type: 0
+  _equipmentBuff: {fileID: 0}
+  _stringAttacksCount: 3
+  _attackPoints:
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
+  _weaponAnimations:
+    weapon: {fileID: 11400000}
+    clips:
+    - {fileID: 4246170909174674916, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+    - {fileID: -8293023195841545072, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+    - {fileID: -8882622804878974964, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+  _weaponTransitionAnims:
+    weapon: {fileID: 0}
+    clips:
+    - {fileID: -5410299197862660453, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+  gracePeriodExtensions:
+  - 0
+  - 0
+  - 0
