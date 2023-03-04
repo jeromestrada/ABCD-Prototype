@@ -45,6 +45,7 @@ public class CombatStateMachine : StateMachine
     }
     private void OnAttack(int attackIndex)
     {
+        Debug.Log($"attack index: {attackIndex}");
         comboExpired = false;
         UpdateAttackPoint(equippedWeapon.AttackPoints[attackIndex]);
         var attackDamage = playerStats.CriticalHit(playerStats.Damage.GetValue());

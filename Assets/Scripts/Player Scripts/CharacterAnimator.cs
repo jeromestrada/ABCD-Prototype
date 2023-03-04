@@ -66,19 +66,25 @@ public class CharacterAnimator : MonoBehaviour
 
     void ChangeCurrentAttackAnimSet(Equipment newWeapon)
     {
+        Debug.Log("entering ccaas");
         if (newWeapon == null)
         {
+            Debug.Log("Equipping null... Basically trying to hold a nonexistent weapon. Well. Played.");
             currentAttackAnimSet = defaultAttackAnimSet;
+            Debug.Log("exiting ccaas (unequipping)");
             return;
         }
         else
         {
+            Debug.Log($"Changing animation set to {newWeapon.name}'s set");
             if (weaponAnimationsDict.ContainsKey(newWeapon))
             {
+                Debug.Log($"Found animation set of {newWeapon.name}, changing into it...");
                 currentAttackAnimSet = weaponAnimationsDict[newWeapon];
                 currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
             }
         }
+        Debug.Log("exiting ccaas");
     }
 
     void LateUpdate()
@@ -106,8 +112,8 @@ public class CharacterAnimator : MonoBehaviour
     // Attack animations
     protected virtual void OnAttack(int attackString)
     {
-        animator.SetTrigger("attackTrigger");
         overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
+        animator.SetTrigger("attackTrigger");
     }
 
     protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
