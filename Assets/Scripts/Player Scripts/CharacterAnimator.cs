@@ -8,6 +8,7 @@ public class CharacterAnimator : MonoBehaviour
 {
     Animator animator;
     public AnimationClip replaceableAttackAnim;
+    public AnimationClip replaceableTransAnim;
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
     protected AnimationClip[] currentAttackTransitionAnimSet;
@@ -57,39 +58,10 @@ public class CharacterAnimator : MonoBehaviour
         weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();
     }
 
-    private void OnAttackString(int attackString)
-    {
-        // Debug.Log($"Triggered OnAttackString with the {attackString} string");
-        animator.SetTrigger("attackTrigger");
-        overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
-    }
-
-    void ChangeCurrentAttackAnimSet(Equipment newWeapon)
-    {
-        Debug.Log("entering ccaas");
-        if (newWeapon == null)
-        {
-            Debug.Log("Equipping null... Basically trying to hold a nonexistent weapon. Well. Played.");
-            currentAttackAnimSet = defaultAttackAnimSet;
-            Debug.Log("exiting ccaas (unequipping)");
-            return;
-        }
-        else
-        {
-            Debug.Log($"Changing animation set to {newWeapon.name}'s set");
-            if (weaponAnimationsDict.ContainsKey(newWeapon))
-            {
-                Debug.Log($"Found animation set of {newWeapon.name}, changing into it...");
-                currentAttackAnimSet = weaponAnimationsDict[newWeapon];
-                currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
-            }
-        }
-        Debug.Log("exiting ccaas");
-    }
+    
 
     void LateUpdate()
     {
-        
         animator.SetFloat("speed", playerMovement.speed / playerMovement.maxSpeed, motionSmoothness, Time.deltaTime);
         animator.SetBool("isAttacking", playerMovement.isAttacking);
     }
@@ -110,12 +82,43 @@ public class CharacterAnimator : MonoBehaviour
     }
 
     // Attack animations
-    protected virtual void OnAttack(int attackString)
+    private void OnAttackString(int attackString)
     {
-        overrideController[replaceableAttackAnim] = currentAttackAnimSet[attackString];
+        // Debug.Log($"Triggered OnAttackString with the {attackString} string");
+        Debug.Log($"attacking with attackString: {attackString}");
         animator.SetTrigger("attackTrigger");
+        overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
+        overrideController[replaceableTransAnim.name] = currentAttackTransitionAnimSet[attackString];
     }
-
+    void ChangeCurrentAttackAnimSet(Equipment newWeapon)
+    {
+        Debug.Log("entering ccaas");
+        if (newWeapon == null)
+        {
+            currentAttackAnimSet = defaultAttackAnimSet;
+            Debug.Log("exiting ccaas (unequipping)");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Changing animation set to {newWeapon.name}'s set");
+            if (weaponAnimationsDict.ContainsKey(newWeapon))
+            {
+                Debug.Log($"currentaas has {currentAttackAnimSet.Length} animations...");
+                Debug.Log($"Found animation set of {newWeapon.name}, changing into it...");
+                currentAttackAnimSet = weaponAnimationsDict[newWeapon];
+                currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
+                Debug.Log($"currentaas now has {currentAttackAnimSet.Length} animations...");
+            }
+        }
+        Debug.Log("exiting ccaas");
+    }
+    /*protected virtual void OnAttack(int attackString)
+    {
+        
+        animator.SetTrigger("attackTrigger");
+        overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
+    }*/
     protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
     {
         ChangeCurrentAttackAnimSet(newWeapon);

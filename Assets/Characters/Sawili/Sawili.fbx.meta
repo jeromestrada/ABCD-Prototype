@@ -175,7 +175,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.82986677
+      - time: 1
         functionName: AttackFinishEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -247,7 +247,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8326473
+      - time: 1
         functionName: AttackFinishEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -319,7 +319,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8259584
+      - time: 1
         functionName: AttackFinishEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -367,16 +367,16 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
-    weldVertices: 1
+    weldVertices: 0
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0

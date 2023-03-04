@@ -21,7 +21,6 @@ public class AttackStringState : ComboBaseState
         base.OnUpdate();
         if (attackFinished)
         {
-            Debug.Log("finished, can combo now");
             var index = (attackIndex + 1) % stateMachine.NumOfStates; // this sets up for the next attack animation
             if (shouldCombo)
             {
