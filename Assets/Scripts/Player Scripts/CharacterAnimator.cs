@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class CharacterAnimator : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
     public AnimationClip replaceableAttackAnim;
     public AnimationClip replaceableTransAnim;
     public AnimationClip[] defaultAttackAnimSet;
@@ -17,7 +17,7 @@ public class CharacterAnimator : MonoBehaviour
     Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict , weaponTransitionAnimsDict;
 
 
-    PlayerMovement playerMovement;
+    public PlayerMovement playerMovement;
     public AnimatorOverrideController overrideController;
 
     [SerializeField] private DeckOfCards deck;
@@ -42,7 +42,7 @@ public class CharacterAnimator : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
         if (overrideController == null)
         {
             overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
@@ -50,7 +50,7 @@ public class CharacterAnimator : MonoBehaviour
         animator.runtimeAnimatorController = overrideController;
         currentAttackAnimSet = defaultAttackAnimSet;
 
-        playerMovement = GetComponent<PlayerMovement>();
+        // playerMovement = GetComponent<PlayerMovement>();
 
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
 

@@ -1,92 +1,36 @@
 fileFormatVersion: 2
-guid: 3f528e79557e63c4badc3aa39be6f820
+guid: 334a56757798f4e40922f7adbdaf7ae4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 5442034356534455606
-    second: Attack 1 Full
+      74: 479015651624206301
+    second: Armature|CLOSED R HAND
   - first:
-      74: -8882622804878974964
-    second: Attack 1 S3
+      74: -3528468380927518014
+    second: Armature|COMBAT IDLE
   - first:
-      74: -8293023195841545072
-    second: Attack 1 S2
+      74: -1194487210089086858
+    second: Armature|COMBAT RUN_IP
   - first:
-      74: 3671864308568770023
-    second: Attack 1 S1
+      74: -2752487832533717428
+    second: Armature|COMBAT RUN_RM
   - first:
-      74: 3321173135709547491
-    second: Combat Idle
+      74: 6992403620871338186
+    second: Armature|COMBAT WALK_IP
   - first:
-      74: 6878546748232364156
-    second: rig|Attack 1 S1
+      74: -3522249145448423172
+    second: Armature|COMBAT WALK_RM
   - first:
-      74: -7247784221449236248
-    second: rig|Attack 1 S2
+      74: 2876981554226286365
+    second: Armature|IDLE
   - first:
-      74: -73851134275585608
-    second: rig|Attack 1 S3
+      74: 5612178746654066029
+    second: Armature|KEY-SET
   - first:
-      74: 8655920556288904669
-    second: rig|Combat Idle
-  - first:
-      74: 8961735954740660636
-    second: rig|KEY-SET
-  - first:
-      74: 4246170909174674916
-    second: A1 S1
-  - first:
-      74: -5410299197862660453
-    second: A1 T2
-  - first:
-      74: -4826772358318509181
-    second: A1 S2
-  - first:
-      74: -794180296104610115
-    second: A1 T1
-  - first:
-      74: 5063733702028293342
-    second: A1 S3
-  - first:
-      74: 4309153939589443292
-    second: A1 T3
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bahag Band Baked
-    second: {fileID: 2100000, guid: 5508b931cedaf6c40900160c97ddbb31, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bahag Cover Baked
-    second: {fileID: 2100000, guid: 5403540da522aae4f989fdaedd80d346, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bandana Inner Baked
-    second: {fileID: 2100000, guid: 0cea472c783de4444a62072672e2119a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bandana Outer Baked
-    second: {fileID: 2100000, guid: b73e2d7df14b2264caeb7fb527c61e7c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Blade
-    second: {fileID: 2100000, guid: ab2943a9c72eff04ca1c6423b2e4a8da, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hand Guard mat
-    second: {fileID: 2100000, guid: 45ad1e4c136b0444a993a51881c803a9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Sawili Texture Baked
-    second: {fileID: 2100000, guid: 37418bada490aa44882b8398cf243ad9, type: 2}
+      74: 9001476607715108068
+    second: Armature|WALK_IP
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -115,11 +59,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Combat Idle
-      takeName: Combat Idle
+      name: Armature|COMBAT IDLE
+      takeName: Armature|COMBAT IDLE
       internalID: 0
       firstFrame: 0
-      lastFrame: 50
+      lastFrame: 240
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -144,66 +88,23 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A1 S1
-      takeName: Attack 1 S1
+      name: Armature|COMBAT RUN_RM
+      takeName: Armature|COMBAT RUN_RM
       internalID: 0
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.69014084
-        functionName: AttackHitEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackFinishEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: A1 T1
-      takeName: Attack 1 S1
-      internalID: 0
-      firstFrame: 20
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -216,125 +117,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A1 S2
-      takeName: Attack 1 S2
+      name: Armature|COMBAT WALK_RM
+      takeName: Armature|COMBAT WALK_RM
       internalID: 0
       firstFrame: 0
-      lastFrame: 16
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.63064003
-        functionName: AttackHitEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackFinishEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: A1 T2
-      takeName: Attack 1 S2
-      internalID: 0
-      firstFrame: 17
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: A1 S3
-      takeName: Attack 1 S3
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 13
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.5152151
-        functionName: AttackHitEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackFinishEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: A1 T3
-      takeName: Attack 1 S3
-      internalID: 0
-      firstFrame: 14
       lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
@@ -342,7 +128,36 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|WALK_IP
+      takeName: Armature|WALK_IP
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -362,7 +177,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 3
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -376,7 +191,7 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
-    weldVertices: 0
+    weldVertices: 1
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
@@ -413,8 +228,8 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 3
-    rootMotionBoneName: 
+    globalScale: 1
+    rootMotionBoneName: DEF_hips.001
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

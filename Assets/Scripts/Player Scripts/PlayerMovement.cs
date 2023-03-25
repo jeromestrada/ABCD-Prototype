@@ -8,15 +8,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent; // this will move the player through offmeshlinks, allowing the player to pass between rooms using gates
     [SerializeField] private PlayerStats myStats;
-    CharacterController controller;
+    public CharacterController controller;
     GameObject camera;
 
     public Vector3 move;
     public Vector3 dashForward;
     public float targetAngle;
     public float angle;
-    public float minSpeed = 3.5f;
-    public float maxSpeed = 7f;
+    public float minSpeed;
+    public float maxSpeed;
     
     public float speed;
     public float dashSpeed;
@@ -67,10 +67,11 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         camera = GameObject.FindGameObjectWithTag("Top Down Camera");
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
         scanner = GetComponent<InteractableScanner>();
         combat = GetComponent<PlayerCombat>();
         maxSpeed = myStats.Movespeed.GetValue();
+        minSpeed = maxSpeed / 2;
         dashSpeed = 0;
         dashForward = Vector3.zero;
         IsDashing = false;
@@ -107,17 +108,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (move.magnitude >= 0.1f)
         {
-            speed = maxSpeed;
+            /*speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = minSpeed;
-            }
+            }*/
+            float slowMoPreventer = 0.4f * maxSpeed;
+            speed = maxSpeed * move.magnitude;
+            if (speed < slowMoPreventer) speed = slowMoPreventer;
 
             if (isAttacking)
             {
                 speed = 0;
             }
-            controller.Move(transform.forward * (speed + dashSpeed) * Time.deltaTime);
+            //controller.Move(transform.forward * (speed + dashSpeed) * Time.deltaTime);
         }
         else
         {
