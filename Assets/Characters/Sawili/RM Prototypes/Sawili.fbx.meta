@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 334a56757798f4e40922f7adbdaf7ae4
+guid: c43ac98aabdfaec4faa666f2bb57a052
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -7,29 +7,26 @@ ModelImporter:
       74: 479015651624206301
     second: Armature|CLOSED R HAND
   - first:
-      74: -3528468380927518014
-    second: Armature|COMBAT IDLE
-  - first:
       74: -1194487210089086858
     second: Armature|COMBAT RUN_IP
-  - first:
-      74: -2752487832533717428
-    second: Armature|COMBAT RUN_RM
   - first:
       74: 6992403620871338186
     second: Armature|COMBAT WALK_IP
   - first:
-      74: -3522249145448423172
-    second: Armature|COMBAT WALK_RM
-  - first:
       74: 2876981554226286365
     second: Armature|IDLE
+  - first:
+      74: -28711888129191440
+    second: 'Armature|IDLE COMBAT '
   - first:
       74: 5612178746654066029
     second: Armature|KEY-SET
   - first:
-      74: 9001476607715108068
-    second: Armature|WALK_IP
+      74: 6651704631225955691
+    second: 'Armature|RUN_RM COMBAT '
+  - first:
+      74: 5004077266754927973
+    second: 'Armature|WALK_RM COMBAT '
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -57,123 +54,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Armature|COMBAT IDLE
-      takeName: Armature|COMBAT IDLE
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 240
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|COMBAT RUN_RM
-      takeName: Armature|COMBAT RUN_RM
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 22
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|COMBAT WALK_RM
-      takeName: Armature|COMBAT WALK_RM
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|WALK_IP
-      takeName: Armature|WALK_IP
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 28
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []

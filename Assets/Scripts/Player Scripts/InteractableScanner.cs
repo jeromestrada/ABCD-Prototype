@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 public class InteractableScanner : MonoBehaviour
 {
     [SerializeField] private float scannerRadius;
     [SerializeField] InteractionPromptUI _promptUI;
-    private CharacterController characterController;
+    [SerializeField] CharacterController characterController;
     public Interactable closestInteractable = null;
     [SerializeField] private float interactableScanInterval = 0.2f;
     bool alreadyScanned = false;
@@ -20,7 +20,7 @@ public class InteractableScanner : MonoBehaviour
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        characterController = GetComponentInParent<CharacterController>();
         characterController.radius = scannerRadius;
         interactables = new List<Interactable>();
     }

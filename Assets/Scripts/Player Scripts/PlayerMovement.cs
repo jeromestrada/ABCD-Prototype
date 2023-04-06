@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         AttackStringState.OnAttackAnimationPlayRequest += OnAttack;
         PlayerStats.OnStatChange += UpdateMoveSpeed;
+        controller = GetComponent<CharacterController>();
         // GatePlatform.OnPass += OnPass;
     }
     private void OnDisable()

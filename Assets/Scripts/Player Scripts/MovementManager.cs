@@ -12,8 +12,8 @@ public class MovementManager : MonoBehaviour
 
     private void Awake()
     {
-        manualMovement = GetComponent<PlayerMovement>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        //manualMovement = GetComponent<PlayerMovement>();
+        //navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void OnEnable()
