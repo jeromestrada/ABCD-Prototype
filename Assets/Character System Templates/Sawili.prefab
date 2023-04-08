@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: df722961-8c91-4491-b1b4-63c50dbc48e4
+  _id: 57b5b03e-4591-48b0-a6b9-470563b8537f
 --- !u!114 &7098597249296748129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 66a4c73b-611a-48a0-a6ba-cf6991a90acf
+  _id: d05ca981-243b-4c7c-9061-1f6b88fc2cde
 --- !u!114 &7098597249302514864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 7927d439-fff7-403d-a17e-3d55daa58e9b
+  _id: 068264a4-3ea0-46dc-aa05-37947188d57a
 --- !u!114 &7098597249724071398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,13 +707,13 @@ GameObject:
   - component: {fileID: 7098597250221076448}
   - component: {fileID: 7098597250221076451}
   - component: {fileID: 7098597250221076450}
-  - component: {fileID: 7098597250221076453}
   - component: {fileID: 7098597250221076458}
   - component: {fileID: 7098597250221076454}
   - component: {fileID: 7098597250221076377}
   - component: {fileID: 7098597250221076376}
   - component: {fileID: 7098597250221076379}
   - component: {fileID: 7098597250221076378}
+  - component: {fileID: 3686633684057959518}
   m_Layer: 7
   m_Name: Sawili
   m_TagString: Player
@@ -728,7 +728,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7098597250221076380}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -877,22 +877,6 @@ MonoBehaviour:
   csm: {fileID: 7098597250221076451}
   hitbox: {fileID: 0}
   HitEffect: {fileID: 0}
---- !u!114 &7098597250221076453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7098597250221076380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b284e100d1fcf7346b300adb055178ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentBuffsList: []
-  equippedWeapon: {fileID: 0}
-  equippedProtection: {fileID: 0}
-  targetMesh: {fileID: 0}
 --- !u!195 &7098597250221076458
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -941,12 +925,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7098597250221076380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb5824cbdb14ba94492e623a6dc440fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scannerRadius: 0.75
+  scannerRadius: 2
   _promptUI: {fileID: 7098597250412902823}
   characterController: {fileID: 0}
   closestInteractable: {fileID: 0}
@@ -992,6 +976,22 @@ MonoBehaviour:
   manualMovement: {fileID: 0}
   navMeshAgent: {fileID: 7098597250221076458}
   duration: 4
+--- !u!114 &3686633684057959518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7098597250221076380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b284e100d1fcf7346b300adb055178ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentBuffsList: []
+  equippedWeapon: {fileID: 11400000, guid: 86b8398f3c3b25942adcfd854ef8f17a, type: 2}
+  equippedProtection: {fileID: 0}
+  targetMesh: {fileID: 0}
 --- !u!1 &7098597250307925347
 GameObject:
   m_ObjectHideFlags: 0

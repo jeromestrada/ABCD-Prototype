@@ -11,14 +11,14 @@ public class EquipmentManager : MonoBehaviour
     public static event System.Action<Equipment, Equipment> OnEquipmentChanged; // <old, new>
     [SerializeField] private List<Buff> equipmentBuffsList;
 
-
+    [Tooltip("Equip an arbitrary weapon so the target mesh field shows up. Weird, I know.")]
     public Equipment equippedWeapon;
     SkinnedMeshRenderer equippedWeaponMesh;
 
     [SerializeField] private Equipment equippedProtection;
     SkinnedMeshRenderer equippedProtectionMesh;
 
-    public SkinnedMeshRenderer targetMesh;
+    [SerializeField] public SkinnedMeshRenderer targetMesh;
 
     private void OnEnable()
     {
