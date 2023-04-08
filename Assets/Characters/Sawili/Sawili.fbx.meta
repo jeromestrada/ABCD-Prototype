@@ -54,6 +54,9 @@ ModelImporter:
   - first:
       74: 3156210656681801847
     second: B1 R2
+  - first:
+      74: 2069148520362078168
+    second: B1 R1
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -194,7 +197,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.8472222
+      - time: 0.8573232
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -266,7 +269,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.8253707
+      - time: 0.8683
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}

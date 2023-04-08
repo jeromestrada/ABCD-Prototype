@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: b820ec3b-24fa-4bac-964c-662d16ac67ce
+  _id: 7c8c4b86-3c8f-4ccd-82d1-2fc85a0e52f6
 --- !u!135 &159000275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3579,6 +3579,10 @@ PrefabInstance:
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 1007373871}
+    - target: {fileID: 7098597250221076451, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
+      propertyPath: globalGracePeriod
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7098597250221076454, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
       propertyPath: animator
       value: 
@@ -3587,6 +3591,26 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 5062237104154995511}
+    - target: {fileID: 7098597250221076454, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
+      propertyPath: replaceableTransAnim
+      value: 
+      objectReference: {fileID: 3156210656681801847, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+    - target: {fileID: 7098597250221076454, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
+      propertyPath: replaceableAttackAnim
+      value: 
+      objectReference: {fileID: -7674541795138680126, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+    - target: {fileID: 7098597250221076454, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098597250221076454, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.data[0]
+      value: 
+      objectReference: {fileID: -7674541795138680126, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+    - target: {fileID: 7098597250221076454, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 3156210656681801847, guid: 753b93c8411646544a7ace793759fdef, type: 3}
     - target: {fileID: 7098597250221076461, guid: 5d92e8e11c49c994c9516ba109df104e, type: 3}
       propertyPath: BuffsList
       value: 
@@ -7638,7 +7662,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.26757723, y: -0.38811192, z: 0.11883908, w: 0.87387013}
+  m_LocalRotation: {x: 0.26757726, y: -0.38811195, z: 0.11883909, w: 0.8738701}
   m_LocalPosition: {x: 26.800001, y: 24.410002, z: -24.220001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8523,7 +8547,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.26757723, y: -0.38811192, z: 0.11883908, w: 0.87387013}
+  m_LocalRotation: {x: 0.26757726, y: -0.38811195, z: 0.11883909, w: 0.8738701}
   m_LocalPosition: {x: 26.800001, y: 24.41, z: -24.220001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12975,7 +12999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5824cbdb14ba94492e623a6dc440fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scannerRadius: 0
+  scannerRadius: 0.5
   _promptUI: {fileID: 802799324}
   characterController: {fileID: 5062237104154995512}
   closestInteractable: {fileID: 0}
