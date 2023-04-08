@@ -71,7 +71,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transition
+  m_Name: Recovery
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -87,7 +87,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -794180296104610115, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+  m_Motion: {fileID: 3156210656681801847, guid: 753b93c8411646544a7ace793759fdef, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -110,7 +110,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.88
   m_HasExitTime: 0
@@ -140,7 +140,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4246170909174674916, guid: 3f528e79557e63c4badc3aa39be6f820, type: 3}
+  m_Motion: {fileID: -7495224383286117881, guid: 753b93c8411646544a7ace793759fdef, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
