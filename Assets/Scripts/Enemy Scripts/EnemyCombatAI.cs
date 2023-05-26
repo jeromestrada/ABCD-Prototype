@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyCombatAI : MonoBehaviour
 {
     [SerializeField] private EnemyStats _myStats;
-
+    private Vector3 trueAttackPoint;
     public NavMeshAgent agent;
     public Transform playerTrans;
 
@@ -24,6 +24,7 @@ public class EnemyCombatAI : MonoBehaviour
     // Attacking
     public float timeBetweenAttacks = 2;
     bool alreadyAttacked;
+    bool canMove;
 
 
     // States
@@ -55,11 +56,12 @@ public class EnemyCombatAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = _myStats.Movespeed.GetValue();
         previousTrans = transform;
+        canMove = true;
     }
 
     void Update()
     {
-        attackPoint = transform.position;
+        trueAttackPoint = transform.position + attackPoint;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
@@ -68,7 +70,7 @@ public class EnemyCombatAI : MonoBehaviour
         if (speedPercent <= 0) Invoke(nameof(SearchWalkPoint), 3f);
 
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (playerInSightRange && !playerInAttackRange) Chasing();
+        if (playerInSightRange && !playerInAttackRange && canMove) Chasing();
         if (playerInSightRange && playerInAttackRange) Attacking();
     }
 
@@ -102,11 +104,13 @@ public class EnemyCombatAI : MonoBehaviour
 
     private void Attacking()
     {
+        
         agent.SetDestination(transform.position);
         transform.LookAt(playerTrans);
         if (!alreadyAttacked)
         {
             OnEnemyAttack?.Invoke();
+            canMove = false;
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -118,7 +122,8 @@ public class EnemyCombatAI : MonoBehaviour
 
     public void EnemyAttackHit_AnimationEvent()
     {
-        Collider[] hitPlayers = Physics.OverlapSphere(attackPoint, attackRadius, Player);
+        canMove = true;
+        Collider[] hitPlayers = Physics.OverlapSphere(trueAttackPoint, attackRadius, Player);
         foreach (Collider player in hitPlayers) // setting up for multiplayer? maybe this makes sense...
         {
             Debug.Log(gameObject.name + " is hitting " + player.gameObject.name);
@@ -133,7 +138,7 @@ public class EnemyCombatAI : MonoBehaviour
             return;
         }
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint, attackRadius);
+        Gizmos.DrawWireSphere(trueAttackPoint, attackRadius);
     }
 }
 

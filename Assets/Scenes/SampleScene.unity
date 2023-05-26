@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: fd44f8d8-d369-406d-a78f-d541072e5d51
+  _id: eb6845e5-3c87-43fb-8e22-d3964772f22b
 --- !u!135 &159000275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1011,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 3764367519779520024}
     - target: {fileID: 1914843130515272075, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
       propertyPath: attackRadius
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1914843130515272075, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
       propertyPath: attackPoint.y
@@ -1019,7 +1019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1914843130515272075, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
       propertyPath: attackPoint.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1914843130515272075, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
       propertyPath: timeBetweenAttacks
