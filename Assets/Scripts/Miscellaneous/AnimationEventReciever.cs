@@ -28,7 +28,10 @@ public class AnimationEventReciever : MonoBehaviour
 
     public void AttackHitEvent()
     {
-        comboBaseState = (ComboBaseState)csm.CurrentState;
-        comboBaseState.AttackHit_AnimationEvent();
+        if(csm.CurrentState != null)
+        {
+            comboBaseState = (ComboBaseState)csm.CurrentState;
+            comboBaseState.AttackHit_AnimationEvent();
+        }
     }
 }
