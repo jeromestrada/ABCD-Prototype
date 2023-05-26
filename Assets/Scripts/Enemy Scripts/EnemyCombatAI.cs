@@ -51,7 +51,7 @@ public class EnemyCombatAI : MonoBehaviour
 
     private void Awake()
     {
-        playerTrans = GameObject.Find("Player").transform;
+        if(playerTrans == null) playerTrans = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = _myStats.Movespeed.GetValue();
         previousTrans = transform;
@@ -121,7 +121,7 @@ public class EnemyCombatAI : MonoBehaviour
         Collider[] hitPlayers = Physics.OverlapSphere(attackPoint, attackRadius, Player);
         foreach (Collider player in hitPlayers) // setting up for multiplayer? maybe this makes sense...
         {
-            player.GetComponent<PlayerStats>().TakeDamage(_myStats.Damage.GetValue());
+            player.GetComponentInChildren<PlayerStats>().TakeDamage(_myStats.Damage.GetValue());
         }
     }
 
