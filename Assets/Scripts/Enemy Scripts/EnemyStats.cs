@@ -39,7 +39,7 @@ public class EnemyStats : CharacterStats
     public override void TakeDamage(int damage)
     {
         var reducedDamage = Mathf.Clamp((damage - Armor.GetValue()), 0, damage);
-        // Debug.Log($"{gameObject.name} is taking damage...");
+        Debug.Log($"{gameObject.name} is taking damage...");
         base.TakeDamage(reducedDamage);
     }
 
