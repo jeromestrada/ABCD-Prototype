@@ -25,13 +25,13 @@ MonoBehaviour:
   _weaponAnimations:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: 2810812286671666572, guid: 753b93c8411646544a7ace793759fdef, type: 3}
-    - {fileID: -4540153052208149577, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+    - {fileID: -9222424468692360427, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
+    - {fileID: 9034257028530596401, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
   _weaponTransitionAnims:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: -4154818698755974399, guid: 753b93c8411646544a7ace793759fdef, type: 3}
-    - {fileID: -7674541795138680126, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+    - {fileID: -9222424468692360427, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
+    - {fileID: 9034257028530596401, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
   gracePeriodExtensions:
   - 0
   - 0

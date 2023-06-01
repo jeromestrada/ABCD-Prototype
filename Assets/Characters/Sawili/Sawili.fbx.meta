@@ -16,6 +16,12 @@ ModelImporter:
       74: -2720058691029319232
     second: Armature|A1 S3
   - first:
+      74: 885944232402757753
+    second: Armature|Action
+  - first:
+      74: -8676396570869842059
+    second: Armature|Chest SS Action
+  - first:
       74: -3528468380927518014
     second: Armature|COMBAT IDLE
   - first:
@@ -28,24 +34,18 @@ ModelImporter:
       74: 2876981554226286365
     second: Armature|IDLE
   - first:
-      74: 5612178746654066029
-    second: Armature|KEY-SET
-  externalObjects:
+      74: 64091165837645774
+    second: Armature|Neck SS  Action
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Brows
-    second: {fileID: 2100000, guid: f5f370febc17842438299ec3bb7314b6, type: 2}
+      74: -8212295859531948795
+    second: Armature|Running RM
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Diffuse
-    second: {fileID: 2100000, guid: bd4e296f7bfa9944e8c489655589ce08, type: 2}
+      74: -6768568709289676732
+    second: Armature|Shoulder L SS Action
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hair
-    second: {fileID: 2100000, guid: f5f370febc17842438299ec3bb7314b6, type: 2}
+      74: -3896740199664001199
+    second: Armature|Shoulder R SS Action
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -72,7 +72,65 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|COMBAT IDLE
+      takeName: Armature|COMBAT IDLE
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Running RM
+      takeName: Armature|Running RM
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -128,7 +186,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 3
-    rootMotionBoneName: 
+    rootMotionBoneName: DEF-hips
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -136,7 +194,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
