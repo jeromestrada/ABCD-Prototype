@@ -18,6 +18,11 @@ public class InteractableScanner : MonoBehaviour
 
     private List<Interactable> interactables;
 
+    private void Awake()
+    {
+        if(characterController == null) characterController = GetComponent<CharacterController>();
+    }
+
     void Start()
     {
         characterController = GetComponentInParent<CharacterController>();

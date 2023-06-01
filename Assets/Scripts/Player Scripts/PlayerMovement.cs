@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     {
         AttackStringState.OnAttackAnimationPlayRequest += OnAttack;
         PlayerStats.OnStatChange += UpdateMoveSpeed;
-        controller = GetComponent<CharacterController>();
         // GatePlatform.OnPass += OnPass;
     }
     private void OnDisable()
@@ -58,11 +57,16 @@ public class PlayerMovement : MonoBehaviour
         // GatePlatform.OnPass -= OnPass;
     }
 
+    private void Awake()
+    {
+        if(controller == null) controller = GetComponent<CharacterController>();
+        if(myStats == null) myStats = GetComponentInChildren<PlayerStats>();
+    }
+
     /*private void OnPass(GatePlatform gate)
     {
         agent.SetDestination(gate.interactionTransform.position);
     }*/
-
 
     // Start is called before the first frame update
     void Start()

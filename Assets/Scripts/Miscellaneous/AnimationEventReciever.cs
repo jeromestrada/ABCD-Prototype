@@ -4,7 +4,7 @@ public class AnimationEventReciever : MonoBehaviour
 {
     public CombatStateMachine csm;
     public ComboBaseState comboBaseState;
-    public PlayerMovement controller;
+    public PlayerMovement playerMovement;
 
     public static event System.Action OnAttackFinished;
 
@@ -12,6 +12,8 @@ public class AnimationEventReciever : MonoBehaviour
     {
         DashAbility.OnDashEnd += AttackFinishEvent;
         DashAbility.OnDash += AttackFinishEvent;
+
+        if (playerMovement == null) playerMovement = GetComponent<PlayerMovement>();
     }
     private void OnDisable()
     {
@@ -19,10 +21,15 @@ public class AnimationEventReciever : MonoBehaviour
         DashAbility.OnDash -= AttackFinishEvent;
     }
 
+    private void Awake()
+    {
+        
+    }
+
     public void AttackFinishEvent()
     {   // should be triggered towards the very end of each animation so that it prompts the animator to increment to the next animation if possible.
         // combat.AttackFinish_AnimationEvent();
-        controller.AttackFinish_AnimationEvent();
+        playerMovement.AttackFinish_AnimationEvent();
         AttackStringState.AttackFinished();
     }
 

@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 5769b777-85aa-455c-8276-e2fc3f708435
+  _id: 304c0a5c-5c72-4be1-887a-1b12964c4ac8
 --- !u!135 &159000275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -684,9 +684,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 912108027}
     - target: {fileID: 1269334623752147488, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: navMeshAgent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269334623752147488, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: manualMovement
       value: 
-      objectReference: {fileID: 8073626515693246061}
+      objectReference: {fileID: 0}
     - target: {fileID: 1269334623752147491, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: characterController
       value: 
@@ -694,11 +698,11 @@ PrefabInstance:
     - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 3287826680980149932}
+      objectReference: {fileID: 0}
     - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: playerMovement
       value: 
-      objectReference: {fileID: 8073626515693246061}
+      objectReference: {fileID: 0}
     - target: {fileID: 1269334623752147494, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: _cam
       value: 
@@ -713,17 +717,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
---- !u!114 &172175481 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1269334623206687126, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
-  m_PrefabInstance: {fileID: 172175480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61f22a9cfe5cf3d4bacbd1556f9a799f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &172175482 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1269334623206687125, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
@@ -7590,7 +7583,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.2675772, y: -0.38811192, z: 0.11883908, w: 0.8738701}
+  m_LocalRotation: {x: 0.26757723, y: -0.38811195, z: 0.11883909, w: 0.8738701}
   m_LocalPosition: {x: 19.103962, y: 24.471024, z: -24.854805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8420,7 +8413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.2675772, y: -0.38811192, z: 0.11883908, w: 0.8738701}
+  m_LocalRotation: {x: 0.26757723, y: -0.38811195, z: 0.11883909, w: 0.8738701}
   m_LocalPosition: {x: 19.103962, y: 24.471022, z: -24.854805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15040,7 +15033,7 @@ MonoBehaviour:
     targetMask:
       serializedVersion: 2
       m_Bits: 64
-  controller: {fileID: 4572957903430460579}
+  playerMovement: {fileID: 0}
 --- !u!143 &4572957903430460581
 CharacterController:
   m_ObjectHideFlags: 0
@@ -19172,6 +19165,7 @@ GameObject:
   - component: {fileID: 8073626515693246063}
   - component: {fileID: 8073626515693246062}
   - component: {fileID: 8073626515693246061}
+  - component: {fileID: 8073626515693246064}
   m_Layer: 7
   m_Name: Sawili
   m_TagString: Untagged
@@ -19192,8 +19186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 172175484}
-  myStats: {fileID: 172175481}
-  controller: {fileID: 8073626515693246063}
+  myStats: {fileID: 0}
+  controller: {fileID: 0}
   move: {x: 0, y: 0, z: 0}
   dashForward: {x: 0, y: 0, z: 0}
   targetAngle: 0
@@ -19238,7 +19232,7 @@ MonoBehaviour:
     targetMask:
       serializedVersion: 2
       m_Bits: 64
-  controller: {fileID: 8073626515693246061}
+  playerMovement: {fileID: 0}
 --- !u!143 &8073626515693246063
 CharacterController:
   m_ObjectHideFlags: 0
@@ -19257,6 +19251,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &8073626515693246064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073626515693246060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5824cbdb14ba94492e623a6dc440fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scannerRadius: 0
+  _promptUI: {fileID: 0}
+  characterController: {fileID: 0}
+  closestInteractable: {fileID: 0}
+  interactableScanInterval: 0.2
 --- !u!137 &8134194490650140492
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

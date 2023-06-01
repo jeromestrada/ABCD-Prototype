@@ -24,6 +24,12 @@ public class CharacterAnimator : MonoBehaviour
 
     float motionSmoothness = 0.1f;
 
+    private void Awake()
+    {
+        if (animator == null) animator = GetComponentInParent<Animator>();
+        if(playerMovement == null) playerMovement = GetComponentInParent<PlayerMovement>();
+    }
+
     private void OnEnable()
     {
         DashAbility.OnDash += OnDash;
