@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 304c0a5c-5c72-4be1-887a-1b12964c4ac8
+  _id: 33403364-18a4-4f1e-aa52-3029252455cc
 --- !u!135 &159000275
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: BuffsList
       value: 
       objectReference: {fileID: 912108027}
+    - target: {fileID: 1269334623752147480, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: characterStats
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1269334623752147488, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: navMeshAgent
       value: 
@@ -1149,6 +1153,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
+--- !u!114 &279969156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1269334623344920740, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+  m_PrefabInstance: {fileID: 172175480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42fdb48edac483499dc81b5832e94b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &287712591
 GameObject:
   m_ObjectHideFlags: 0
@@ -7043,17 +7058,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556540485}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1602638477 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1914843130515272075, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
-  m_PrefabInstance: {fileID: 265169549}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db8b2a6ba29d624ba83dbf3580824e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1608129805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8260,24 +8264,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3279443865076612376, guid: 988bce09298cee840930d5b852403421, type: 3}
   m_PrefabInstance: {fileID: 3028764950534384030}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2031402560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 87223971390513583, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
-  m_PrefabInstance: {fileID: 265169549}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2031402563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031402560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04037ecebd58da64284ecbc4091cae58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyAI: {fileID: 1602638477}
 --- !u!1 &2033034738
 GameObject:
   m_ObjectHideFlags: 0
@@ -8611,6 +8597,24 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071876217}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2084325927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7434233570237058223, guid: 057a9b7ba8f7cbf46a7668c46be83daa, type: 3}
+  m_PrefabInstance: {fileID: 265169549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084325930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084325927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04037ecebd58da64284ecbc4091cae58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAI: {fileID: 0}
 --- !u!1 &2084882530
 GameObject:
   m_ObjectHideFlags: 0
@@ -19264,7 +19268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scannerRadius: 0
-  _promptUI: {fileID: 0}
+  _promptUI: {fileID: 279969156}
   characterController: {fileID: 0}
   closestInteractable: {fileID: 0}
   interactableScanInterval: 0.2
