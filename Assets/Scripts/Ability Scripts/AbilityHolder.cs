@@ -10,7 +10,12 @@ public class AbilityHolder : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private PlayerMovement movement;
     [SerializeField] private CharacterStats characterStats;
-
+    private void Awake()
+    {
+        if(controller == null) controller = GetComponentInParent<CharacterController>();
+        if(movement == null) movement = GetComponentInParent<PlayerMovement>();
+        if(characterStats == null) characterStats = GetComponent<CharacterStats>();
+    }
     private void Update()
     {
         // cast time can be added so that abilities can be cancelled skillfully when needed.
