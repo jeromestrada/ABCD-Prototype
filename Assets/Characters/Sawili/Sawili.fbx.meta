@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ac73b563ef24964d820b71a87fb4e5a
+guid: 054a8447b6c1ca742972efb00c033716
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -23,7 +23,7 @@ ModelImporter:
     second: Armature|Chest SS Action
   - first:
       74: -3528468380927518014
-    second: Armature|COMBAT IDLE
+    second: COMBAT IDLE
   - first:
       74: -6198441498882739707
     second: Armature|HAND CLOSED L
@@ -39,6 +39,9 @@ ModelImporter:
   - first:
       74: -8212295859531948795
     second: Armature|Running RM
+  - first:
+      74: 4730331388427816827
+    second: Running
   - first:
       74: -6768568709289676732
     second: Armature|Shoulder L SS Action
@@ -74,7 +77,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|COMBAT IDLE
+      name: COMBAT IDLE
       takeName: Armature|COMBAT IDLE
       internalID: 0
       firstFrame: 0
@@ -103,8 +106,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Running RM
-      takeName: Armature|Running RM
+      name: Running
+      takeName: Armature|Running RM Refined
       internalID: 0
       firstFrame: 0
       lastFrame: 15
@@ -119,9 +122,9 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
