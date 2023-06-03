@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(controller == null) controller = GetComponent<CharacterController>();
         if(myStats == null) myStats = GetComponentInChildren<PlayerStats>();
+        if (agent == null) agent = GetComponent<NavMeshAgent>();
     }
 
     /*private void OnPass(GatePlatform gate)

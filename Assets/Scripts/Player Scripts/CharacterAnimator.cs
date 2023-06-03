@@ -24,6 +24,8 @@ public class CharacterAnimator : MonoBehaviour
 
     float motionSmoothness = 0.1f;
 
+    private bool isInteractingWithGate;
+
     private void Awake()
     {
         if (animator == null) animator = GetComponentInParent<Animator>();
@@ -36,6 +38,7 @@ public class CharacterAnimator : MonoBehaviour
         EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
         deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest += OnAttackString;
+        MovementManager.OnGateInteraction += OnGateInteract;
     }
 
     private void OnDisable()
@@ -44,10 +47,12 @@ public class CharacterAnimator : MonoBehaviour
         EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
         deck.CardSystem.OnInventorySlotChanged -= AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest -= OnAttackString;
+        MovementManager.OnGateInteraction -= OnGateInteract;
     }
 
     void Start()
     {
+        isInteractingWithGate = false;
         //animator = GetComponentInChildren<Animator>();
         if (overrideController == null)
         {
@@ -68,8 +73,11 @@ public class CharacterAnimator : MonoBehaviour
 
     void LateUpdate()
     {
-        animator.SetFloat("speed", playerMovement.speed / playerMovement.maxSpeed, motionSmoothness, Time.deltaTime);
-        animator.SetBool("isAttacking", playerMovement.isAttacking);
+        if (!isInteractingWithGate)
+        {
+            animator.SetFloat("speed", playerMovement.speed / playerMovement.maxSpeed, motionSmoothness, Time.deltaTime);
+            animator.SetBool("isAttacking", playerMovement.isAttacking);
+        }
     }
 
     public void AddWeaponAnimation(PlayerCardSlot slot)
@@ -134,6 +142,21 @@ public class CharacterAnimator : MonoBehaviour
     protected virtual void OnDash()
     {
         animator.SetTrigger("dashTrigger");
+    }
+
+    // Gate Animations, changing stages or what not
+    protected virtual void OnGateInteract(float duration)
+    {
+        //Debug.Log("Interacting with a gate for " + duration + " seconds...");
+        isInteractingWithGate = true;
+        animator.SetFloat("speed", playerMovement.maxSpeed, motionSmoothness, Time.deltaTime);
+        Invoke(nameof(ResetSpeed), duration);
+    }
+
+    void ResetSpeed()
+    {
+        isInteractingWithGate = false;
+        animator.SetFloat("speed", 0f);
     }
 
     /*
