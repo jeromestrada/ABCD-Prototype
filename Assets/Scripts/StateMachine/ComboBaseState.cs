@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Combo states waits for an attack input in their duration and will set a should combo flag for the state machine.
 [System.Serializable]
 public class ComboBaseState : State
 {

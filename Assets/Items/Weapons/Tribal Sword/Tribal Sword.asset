@@ -32,9 +32,9 @@ MonoBehaviour:
   _weaponTransitionAnims:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
-    - {fileID: 9034257028530596401, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
-    - {fileID: -2720058691029319232, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: -3528468380927518014, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: -3528468380927518014, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: -3528468380927518014, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   gracePeriodExtensions:
   - 0
   - 0

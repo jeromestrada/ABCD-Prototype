@@ -104,7 +104,7 @@ public class CharacterAnimator : MonoBehaviour
         overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
         overrideController[replaceableTransAnim.name] = currentAttackTransitionAnimSet[attackString];
     }
-    void ChangeCurrentAttackAnimSet(Equipment newWeapon)
+    void ChangeCurrentAttackAnimSet(Equipment newWeapon) // each weapon will have an array of animations in them
     {
         Debug.Log("entering ccaas");
         if (newWeapon == null)
