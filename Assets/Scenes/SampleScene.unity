@@ -7720,6 +7720,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1269334623206687125, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: globalGracePeriod
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1269334623206687126, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: BuffsList
       value: 
@@ -7728,6 +7732,22 @@ PrefabInstance:
       propertyPath: duration
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.data[0]
+      value: 
+      objectReference: {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.data[1]
+      value: 
+      objectReference: {fileID: 9034257028530596401, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: defaultAttackAnimSet.Array.data[2]
+      value: 
+      objectReference: {fileID: -2720058691029319232, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
     - target: {fileID: 1269334623752147494, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: _cam
       value: 

@@ -18,7 +18,7 @@ MonoBehaviour:
   mesh: {fileID: 3200700381070900805, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   _type: 0
   _equipmentBuff: {fileID: 11400000, guid: 0859f77d1c5b07f43af522e8454ae446, type: 2}
-  _stringAttacksCount: 2
+  _stringAttacksCount: 3
   _attackPoints:
   - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
   - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
@@ -32,9 +32,9 @@ MonoBehaviour:
   _weaponTransitionAnims:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: -3528468380927518014, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
-    - {fileID: -3528468380927518014, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
-    - {fileID: -3528468380927518014, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: 8070641122095604767, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: -2413843436902781471, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: 2970475719962805037, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   gracePeriodExtensions:
   - 0
   - 0
