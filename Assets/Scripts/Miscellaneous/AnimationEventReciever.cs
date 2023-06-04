@@ -23,7 +23,7 @@ public class AnimationEventReciever : MonoBehaviour
 
     private void Awake()
     {
-        
+        if(csm == null) csm = GetComponentInChildren<CombatStateMachine>();
     }
 
     public void AttackFinishEvent()
