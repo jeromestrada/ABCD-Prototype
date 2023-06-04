@@ -1156,6 +1156,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306529292}
   m_CullTransparentMesh: 1
+--- !u!114 &311825897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1269334622694535272, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+  m_PrefabInstance: {fileID: 1977984521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5b78dfdd822b148a1e5b5dc0d30566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &314465419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5580608816594372912, guid: 1718b79fa9cd9c94f91a28f9bcd06424, type: 3}
@@ -3816,7 +3827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _drawAmount: 7
   drawText: {fileID: 368060470}
-  hand: {fileID: 0}
+  hand: {fileID: 311825897}
 --- !u!1 &848140982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7628,8 +7639,19 @@ MonoBehaviour:
     _cardLevel: 0
     remainingUses: -1
     slotNumber: 0
-  handOfCards: {fileID: 0}
-  discardPile: {fileID: 0}
+  handOfCards: {fileID: 311825897}
+  discardPile: {fileID: 1933070727}
+--- !u!114 &1933070727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1269334623617778908, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+  m_PrefabInstance: {fileID: 1977984521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76a5156405996c459fd1358327b66fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1944728111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3279443865076612376, guid: 988bce09298cee840930d5b852403421, type: 3}
@@ -7718,6 +7740,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sawili Sys
       objectReference: {fileID: 0}
+    - target: {fileID: 1269334623752147503, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: targetMesh
+      value: 
+      objectReference: {fileID: 3522352181666696436}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
 --- !u!1 &2033034738
@@ -13136,7 +13162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7708182291682840296
 GameObject:
   m_ObjectHideFlags: 0

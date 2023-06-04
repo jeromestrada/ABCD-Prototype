@@ -15,23 +15,27 @@ MonoBehaviour:
   name: Tribal Sword
   description: A tribal sword that was passed down from father to son
   icon: {fileID: 21300000, guid: df4dc708bd8692446a6d5c3531ac377b, type: 3}
-  mesh: {fileID: 3200700381070900805, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
+  mesh: {fileID: 3200700381070900805, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   _type: 0
   _equipmentBuff: {fileID: 11400000, guid: 0859f77d1c5b07f43af522e8454ae446, type: 2}
   _stringAttacksCount: 2
   _attackPoints:
   - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
   - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
+  - {fileID: 1062047230199363204, guid: bb7eefd1dd7017848bf680b418573b9f, type: 3}
   _weaponAnimations:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: -9222424468692360427, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
-    - {fileID: 9034257028530596401, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
+    - {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: 9034257028530596401, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: -2720058691029319232, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   _weaponTransitionAnims:
     weapon: {fileID: 11400000}
     clips:
-    - {fileID: -9222424468692360427, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
-    - {fileID: 9034257028530596401, guid: 7ac73b563ef24964d820b71a87fb4e5a, type: 3}
+    - {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: 9034257028530596401, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - {fileID: -2720058691029319232, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   gracePeriodExtensions:
+  - 0
   - 0
   - 0
