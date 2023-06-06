@@ -100,7 +100,9 @@ public class CharacterAnimator : MonoBehaviour
     {
         // Debug.Log($"Triggered OnAttackString with the {attackString} string");
         Debug.Log($"attacking with attackString: {attackString}");
-        animator.SetTrigger("attackTrigger");
+        //animator.SetTrigger("attackTrigger");
+        animator.Play("Attack",0,0.1f); // this seems like a better way to control the animations played when doing a combo
+        // the normalized time can be adjusted to make transitions more seamless.
         overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
         overrideController[replaceableTransAnim.name] = currentAttackTransitionAnimSet[attackString];
     }
