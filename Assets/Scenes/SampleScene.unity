@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1d3f1c9dc8323488b27d63751acb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxTerrainCount: 15
+  _maxTerrainCount: 9
   _currentTerrainCount: 0
 --- !u!1 &524249062
 GameObject:
@@ -7732,6 +7732,14 @@ PrefabInstance:
       propertyPath: duration
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: replaceableTransAnim
+      value: 
+      objectReference: {fileID: 8070641122095604767, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+    - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: replaceableAttackAnim
+      value: 
+      objectReference: {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
     - target: {fileID: 1269334623752147492, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: defaultAttackAnimSet.Array.size
       value: 3
