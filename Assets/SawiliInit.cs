@@ -21,7 +21,6 @@ public class SawiliInit : MonoBehaviour
     {
         gameObject.AddComponent<CharacterController>();
         gameObject.AddComponent<PlayerMovement>();
-        
         gameObject.AddComponent<AnimationEventReciever>();
         gameObject.AddComponent<InteractableScanner>();
     }

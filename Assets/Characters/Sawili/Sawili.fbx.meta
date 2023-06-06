@@ -8,13 +8,13 @@ ModelImporter:
     second: Armature|A1 Full
   - first:
       74: -9222424468692360427
-    second: A1 S1
+    second: S1
   - first:
       74: 9034257028530596401
-    second: A1 S2
+    second: S2
   - first:
       74: -2720058691029319232
-    second: A1 S3
+    second: S3
   - first:
       74: 885944232402757753
     second: Armature|Action
@@ -23,7 +23,7 @@ ModelImporter:
     second: Armature|Chest SS Action
   - first:
       74: -3528468380927518014
-    second: COMBAT IDLE
+    second: Idle
   - first:
       74: -6198441498882739707
     second: Armature|HAND CLOSED L
@@ -49,14 +49,14 @@ ModelImporter:
       74: -3896740199664001199
     second: Armature|Shoulder R SS Action
   - first:
-      74: 8070641122095604767
-    second: A1 R1
+      74: 6383190975571203625
+    second: R1
   - first:
-      74: -2413843436902781471
-    second: A1 R2
+      74: 7085724741181485360
+    second: R2
   - first:
-      74: 2970475719962805037
-    second: A1 R3
+      74: 9074686993660069658
+    second: R3
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -86,7 +86,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: COMBAT IDLE
+      name: Idle
       takeName: Armature|COMBAT IDLE
       internalID: 0
       firstFrame: 0
@@ -119,7 +119,7 @@ ModelImporter:
       takeName: Armature|Running RM Refined
       internalID: 0
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -133,7 +133,7 @@ ModelImporter:
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -144,7 +144,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A1 S1
+      name: S1
       takeName: Armature|A1 S1
       internalID: 0
       firstFrame: 0
@@ -168,14 +168,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.94400376
+      - time: 0.96039605
         functionName: AttackHitEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
+      - time: 0.9937303
         functionName: AttackFinishEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -187,96 +187,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A1 S2
-      takeName: Armature|A1 S2
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 13
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.9668856
-        functionName: AttackHitEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackFinishEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: A1 S3
-      takeName: Armature|A1 S3
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 13
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 0.95610523
-        functionName: AttackHitEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: AttackFinishEvent
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: A1 R1
+      name: R1
       takeName: Armature|A1 S1
       internalID: 0
-      firstFrame: 14
+      firstFrame: 13
       lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
@@ -302,10 +216,53 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A1 R2
+      name: S2
       takeName: Armature|A1 S2
       internalID: 0
-      firstFrame: 14
+      firstFrame: 0
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.94148374
+        functionName: AttackHitEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9937303
+        functionName: AttackFinishEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: R2
+      takeName: Armature|A1 S2
+      internalID: 0
+      firstFrame: 13
       lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
@@ -331,10 +288,53 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: A1 R3
+      name: S3
       takeName: Armature|A1 S3
       internalID: 0
-      firstFrame: 14
+      firstFrame: 0
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.92580974
+        functionName: AttackHitEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.98328096
+        functionName: AttackFinishEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: R3
+      takeName: Armature|A1 S3
+      internalID: 0
+      firstFrame: 13
       lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
@@ -362,7 +362,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 3
+    globalScale: 2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -413,7 +413,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 3
+    globalScale: 2
     rootMotionBoneName: DEF-hips
     hasTranslationDoF: 0
     hasExtraRoot: 0
