@@ -101,33 +101,34 @@ public class CharacterAnimator : MonoBehaviour
         // Debug.Log($"Triggered OnAttackString with the {attackString} string");
         Debug.Log($"attacking with attackString: {attackString}");
         //animator.SetTrigger("attackTrigger");
-        animator.Play("Attack",0,0.1f); // this seems like a better way to control the animations played when doing a combo
+        //animator.Play("Attack",0,0.1f); // this seems like a better way to control the animations played when doing a combo
         // the normalized time can be adjusted to make transitions more seamless.
         overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
         overrideController[replaceableTransAnim.name] = currentAttackTransitionAnimSet[attackString];
+        animator.SetTrigger("attackTrigger");
     }
     void ChangeCurrentAttackAnimSet(Equipment newWeapon) // each weapon will have an array of animations in them
     {
-        Debug.Log("entering ccaas");
+        //Debug.Log("entering ccaas");
         if (newWeapon == null)
         {
             currentAttackAnimSet = defaultAttackAnimSet;
-            Debug.Log("exiting ccaas (unequipping)");
+            //Debug.Log("exiting ccaas (unequipping)");
             return;
         }
         else
         {
-            Debug.Log($"Changing animation set to {newWeapon.name}'s set");
+            //Debug.Log($"Changing animation set to {newWeapon.name}'s set");
             if (weaponAnimationsDict.ContainsKey(newWeapon))
             {
-                Debug.Log($"currentaas has {currentAttackAnimSet.Length} animations...");
-                Debug.Log($"Found animation set of {newWeapon.name}, changing into it...");
+                //Debug.Log($"currentaas has {currentAttackAnimSet.Length} animations...");
+                //Debug.Log($"Found animation set of {newWeapon.name}, changing into it...");
                 currentAttackAnimSet = weaponAnimationsDict[newWeapon];
                 currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
-                Debug.Log($"currentaas now has {currentAttackAnimSet.Length} animations...");
+                //Debug.Log($"currentaas now has {currentAttackAnimSet.Length} animations...");
             }
         }
-        Debug.Log("exiting ccaas");
+        //Debug.Log("exiting ccaas");
     }
     /*protected virtual void OnAttack(int attackString)
     {
