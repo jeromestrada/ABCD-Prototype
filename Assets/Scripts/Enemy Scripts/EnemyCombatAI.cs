@@ -24,7 +24,7 @@ public class EnemyCombatAI : MonoBehaviour
     // Attacking
     public float timeBetweenAttacks = 2;
     bool alreadyAttacked;
-    bool canMove;
+    public bool canMove;
 
 
     // States
