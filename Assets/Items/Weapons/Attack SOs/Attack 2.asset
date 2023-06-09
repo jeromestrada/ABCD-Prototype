@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d75faa9e2994dd468eb7bbdf0310fa1, type: 3}
-  m_Name: Attack 1
+  m_Name: Attack 2
   m_EditorClassIdentifier: 
-  attackAnimation: {fileID: 0}
-  recoveryAnimation: {fileID: 0}
-  attackDamage: 0
+  _attackAnimation: {fileID: 9034257028530596401, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+  _recoveryAnimation: {fileID: 7085724741181485360, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+  _attackDamage: 25
+  _attackPoint: {x: 0, y: 1, z: 1.5}

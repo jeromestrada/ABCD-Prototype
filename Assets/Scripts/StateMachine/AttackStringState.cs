@@ -26,9 +26,7 @@ public class AttackStringState : ComboBaseState
             var index = (attackIndex + 1) % stateMachine.NumOfStates; // this sets up for the next attack animation
             if (shouldCombo) // if this is set in the combo base state update() we invoke a string attack
             {
-                Debug.Log("tried to combo");
                 OnStringAttack.Invoke(index);
-                //stateMachine.SetNextState(new AttackStringState(index, csm.AttackPoint, csm.AttackRadius));
             }
             if (gracePeriod != 0 && fixedtime - attackEndTime >= gracePeriod)
             { // if the grace period for the combo runs out, we set the next state to the main state instead.

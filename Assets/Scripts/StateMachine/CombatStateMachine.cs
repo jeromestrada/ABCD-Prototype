@@ -47,16 +47,17 @@ public class CombatStateMachine : StateMachine
     {
         Debug.Log($"attack index: {attackIndex}");
         comboExpired = false;
-        UpdateAttackPoint(equippedWeapon.AttackPoints[attackIndex]); // update the attack point
-        var attackDamage = playerStats.CriticalHit(playerStats.Damage.GetValue()); // calculate the attack damage (crit chance logic)
+        UpdateAttackPoint(equippedWeapon.Attacks[attackIndex].AttackPoint); // update the attack point using the attack SO
+        //var attackDamage = playerStats.CriticalHit(playerStats.Damage.GetValue()); // calculate the attack damage (crit chance logic)
+        var attackDamage = playerStats.CriticalHit((int)equippedWeapon.Attacks[attackIndex].AttackDamage);
         SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius, attackDamage, CurrentGracePeriodExtension, enemyMask)); // spit out a new state
     }
 
     public override void Update()
     {
         base.Update();
-        if(equippedWeapon != null)
-            attackPoint = PlaceAttackPoint();
+        /*if(equippedWeapon != null)
+            UpdateAttackPoint();*/
     }
 
     private void OnWeaponChanged(Item oldWeapon, Item newWeapon)
@@ -67,7 +68,7 @@ public class CombatStateMachine : StateMachine
             {
                 equippedWeapon = (Equipment)newWeapon;
                 combo.SetMaxCombo(equippedWeapon);
-                currentStringAttackPoint = equippedWeapon.AttackPoints[0];
+                // currentStringAttackPoint = equippedWeapon.AttackPoints[0];
             }
         }
     }
@@ -77,10 +78,10 @@ public class CombatStateMachine : StateMachine
         CurrentGracePeriodExtension = globalGracePeriod + WeaponGracePeriodExtensions[_index];
     }
 
-    public void UpdateAttackPoint(Transform newAttackPoint)
+    public void UpdateAttackPoint(Vector3 newAttackPoint)
     {
-        currentStringAttackPoint = newAttackPoint;
-        attackPoint = PlaceAttackPoint();
+        //currentStringAttackPoint = newAttackPoint;
+        attackPoint = transform.position + newAttackPoint;
     }
 
     // TODO: figure out if theres a better system to set this, right now it just uses the raw values of the attack point and directly sets the offset

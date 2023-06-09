@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7dc94d9ae7a229409e201d5dca52d48, type: 3}
-  m_Name: Trusty Sword
+  m_Name: Test
   m_EditorClassIdentifier: 
-  ID: 5
-  _cardRarity: 4
-  name: Trusty Sword
-  cardIcon: {fileID: 21300000, guid: 5f8eadf6d26aec84abe03814b6a8c6f7, type: 3}
-  description: Equips a Trusty Sword
+  ID: 4
+  _cardRarity: 0
+  name: 
+  cardIcon: {fileID: 0}
+  description: 
   _cardType: 0
-  _cardPrice: 20
+  _cardPrice: 0
   numOfUses: 1
   exhaustable: 0
-  item: {fileID: 11400000, guid: 033a7adf9cf690144ba3773a50a7a6a6, type: 2}
+  item: {fileID: 0}

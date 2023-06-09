@@ -14,7 +14,7 @@ public class CharacterAnimator : MonoBehaviour
     protected AnimationClip[] currentAttackTransitionAnimSet;
 
     EquipmentManager weaponManager;
-    Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict , weaponTransitionAnimsDict;
+    //Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict , weaponTransitionAnimsDict;
 
 
     public PlayerMovement playerMovement;
@@ -30,13 +30,14 @@ public class CharacterAnimator : MonoBehaviour
     {
         if (animator == null) animator = GetComponentInParent<Animator>();
         if(playerMovement == null) playerMovement = GetComponentInParent<PlayerMovement>();
+        if (weaponManager == null) weaponManager = GetComponent<EquipmentManager>();
     }
 
     private void OnEnable()
     {
         DashAbility.OnDash += OnDash;
-        EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
-        deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
+        //EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
+        //deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest += OnAttackString;
         MovementManager.OnGateInteraction += OnGateInteract;
     }
@@ -44,8 +45,8 @@ public class CharacterAnimator : MonoBehaviour
     private void OnDisable()
     {
         DashAbility.OnDash -= OnDash;
-        EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
-        deck.CardSystem.OnInventorySlotChanged -= AddWeaponAnimation;
+        //EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
+        //deck.CardSystem.OnInventorySlotChanged -= AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest -= OnAttackString;
         MovementManager.OnGateInteraction -= OnGateInteract;
     }
@@ -65,8 +66,8 @@ public class CharacterAnimator : MonoBehaviour
 
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
 
-        weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
-        weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();
+        /*weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
+        weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();*/
     }
 
     
@@ -80,7 +81,8 @@ public class CharacterAnimator : MonoBehaviour
         }
     }
 
-    public void AddWeaponAnimation(PlayerCardSlot slot)
+    // will not use a Dictionary to store animations anymore
+    /*public void AddWeaponAnimation(PlayerCardSlot slot)
     {
         if (slot.Card.CardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Equipment)
         {
@@ -93,53 +95,34 @@ public class CharacterAnimator : MonoBehaviour
             }
         }
         else return;
-    }
+    }*/
 
     // Attack animations
     private void OnAttackString(int attackString)
     {
-        // Debug.Log($"Triggered OnAttackString with the {attackString} string");
-        Debug.Log($"attacking with attackString: {attackString}");
-        //animator.SetTrigger("attackTrigger");
-        //animator.Play("Attack",0,0.1f); // this seems like a better way to control the animations played when doing a combo
-        // the normalized time can be adjusted to make transitions more seamless.
-        overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
-        overrideController[replaceableTransAnim.name] = currentAttackTransitionAnimSet[attackString];
+        //Debug.Log($"attacking with attackString: {attackString}");
+        overrideController[replaceableAttackAnim.name] = weaponManager.equippedWeapon.Attacks[attackString].AttackAnimation;
+        overrideController[replaceableTransAnim.name] = weaponManager.equippedWeapon.Attacks[attackString].RecoveryAnimation;
         animator.SetTrigger("attackTrigger");
     }
-    void ChangeCurrentAttackAnimSet(Equipment newWeapon) // each weapon will have an array of animations in them
+    /*void ChangeCurrentAttackAnimSet(Equipment newWeapon) // each weapon will have an array of animations in them
     {
-        //Debug.Log("entering ccaas");
         if (newWeapon == null)
         {
             currentAttackAnimSet = defaultAttackAnimSet;
-            //Debug.Log("exiting ccaas (unequipping)");
             return;
         }
         else
         {
-            //Debug.Log($"Changing animation set to {newWeapon.name}'s set");
-            if (weaponAnimationsDict.ContainsKey(newWeapon))
-            {
-                //Debug.Log($"currentaas has {currentAttackAnimSet.Length} animations...");
-                //Debug.Log($"Found animation set of {newWeapon.name}, changing into it...");
-                currentAttackAnimSet = weaponAnimationsDict[newWeapon];
-                currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
-                //Debug.Log($"currentaas now has {currentAttackAnimSet.Length} animations...");
-            }
+            ;
+            currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
         }
-        //Debug.Log("exiting ccaas");
-    }
-    /*protected virtual void OnAttack(int attackString)
-    {
-        
-        animator.SetTrigger("attackTrigger");
-        overrideController[replaceableAttackAnim.name] = currentAttackAnimSet[attackString];
     }*/
-    protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
+
+    /*protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
     {
         ChangeCurrentAttackAnimSet(newWeapon);
-    }
+    }*/
 
     // Dash animations
     protected virtual void OnDash()
