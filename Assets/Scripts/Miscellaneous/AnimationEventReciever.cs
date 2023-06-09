@@ -28,7 +28,6 @@ public class AnimationEventReciever : MonoBehaviour
 
     public void AttackFinishEvent()
     {   // should be triggered towards the very end of each animation so that it prompts the animator to increment to the next animation if possible.
-        // combat.AttackFinish_AnimationEvent();
         playerMovement.AttackFinish_AnimationEvent();
         AttackStringState.AttackFinished();
     }

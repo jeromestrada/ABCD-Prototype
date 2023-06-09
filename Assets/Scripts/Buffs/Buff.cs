@@ -22,6 +22,7 @@ public class Buff : ScriptableObject
     {
         foreach(Modifier m in _effects)
         {
+            Debug.Log($"in buff script, stat to modify: {m.StatToModify.ToString()}");
             target.Stat(m.StatToModify.ToString()).AddModifier(m);
         }
     }
@@ -30,6 +31,7 @@ public class Buff : ScriptableObject
     {
         foreach (Modifier m in _effects)
         {
+            Debug.Log($"PURGE in buff script, stat to modify: {m.StatToModify.ToString()}");
             target.Stat(m.StatToModify.ToString()).RemoveModifier(m);
         }
     }

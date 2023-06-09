@@ -48,16 +48,13 @@ public class CombatStateMachine : StateMachine
         Debug.Log($"attack index: {attackIndex}");
         comboExpired = false;
         UpdateAttackPoint(equippedWeapon.Attacks[attackIndex].AttackPoint); // update the attack point using the attack SO
-        //var attackDamage = playerStats.CriticalHit(playerStats.Damage.GetValue()); // calculate the attack damage (crit chance logic)
-        var attackDamage = playerStats.CriticalHit((int)equippedWeapon.Attacks[attackIndex].AttackDamage);
+        var attackDamage = playerStats.CalculateTotalAttackDamage((int)equippedWeapon.Attacks[attackIndex].AttackDamage);
         SetNextState(new AttackStringState(attackIndex, attackPoint, attackRadius, attackDamage, CurrentGracePeriodExtension, enemyMask)); // spit out a new state
     }
 
     public override void Update()
     {
         base.Update();
-        /*if(equippedWeapon != null)
-            UpdateAttackPoint();*/
     }
 
     private void OnWeaponChanged(Item oldWeapon, Item newWeapon)
@@ -68,7 +65,6 @@ public class CombatStateMachine : StateMachine
             {
                 equippedWeapon = (Equipment)newWeapon;
                 combo.SetMaxCombo(equippedWeapon);
-                // currentStringAttackPoint = equippedWeapon.AttackPoints[0];
             }
         }
     }

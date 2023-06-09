@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(PlayerMovement))]
 public class CharacterAnimator : MonoBehaviour
 {
     public Animator animator;
@@ -14,7 +13,6 @@ public class CharacterAnimator : MonoBehaviour
     protected AnimationClip[] currentAttackTransitionAnimSet;
 
     EquipmentManager weaponManager;
-    //Dictionary<Equipment, AnimationClip[]> weaponAnimationsDict , weaponTransitionAnimsDict;
 
 
     public PlayerMovement playerMovement;
@@ -36,8 +34,6 @@ public class CharacterAnimator : MonoBehaviour
     private void OnEnable()
     {
         DashAbility.OnDash += OnDash;
-        //EquipmentManager.OnEquipmentChanged += OnWeaponChanged;
-        //deck.CardSystem.OnInventorySlotChanged += AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest += OnAttackString;
         MovementManager.OnGateInteraction += OnGateInteract;
     }
@@ -45,8 +41,6 @@ public class CharacterAnimator : MonoBehaviour
     private void OnDisable()
     {
         DashAbility.OnDash -= OnDash;
-        //EquipmentManager.OnEquipmentChanged -= OnWeaponChanged;
-        //deck.CardSystem.OnInventorySlotChanged -= AddWeaponAnimation;
         AttackStringState.OnAttackAnimationPlayRequest -= OnAttackString;
         MovementManager.OnGateInteraction -= OnGateInteract;
     }
@@ -54,7 +48,6 @@ public class CharacterAnimator : MonoBehaviour
     void Start()
     {
         isInteractingWithGate = false;
-        //animator = GetComponentInChildren<Animator>();
         if (overrideController == null)
         {
             overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
@@ -62,12 +55,7 @@ public class CharacterAnimator : MonoBehaviour
         animator.runtimeAnimatorController = overrideController;
         currentAttackAnimSet = defaultAttackAnimSet;
 
-        // playerMovement = GetComponent<PlayerMovement>();
-
         if(deck == null) deck = GetComponentInChildren<DeckOfCards>();
-
-        /*weaponAnimationsDict = new Dictionary<Equipment, AnimationClip[]>();
-        weaponTransitionAnimsDict = new Dictionary<Equipment, AnimationClip[]>();*/
     }
 
     
@@ -81,22 +69,6 @@ public class CharacterAnimator : MonoBehaviour
         }
     }
 
-    // will not use a Dictionary to store animations anymore
-    /*public void AddWeaponAnimation(PlayerCardSlot slot)
-    {
-        if (slot.Card.CardType == CardType.ItemCard && ((ItemCard)slot.Card).item is Equipment)
-        {
-            var itemCard = (ItemCard)slot.Card;
-            var weapon = (Equipment)itemCard.item;
-            if (itemCard.item is Equipment && !weaponAnimationsDict.ContainsKey(weapon))
-            {
-                weaponAnimationsDict.Add(weapon, (weapon.WeaponAnimations.clips));
-                weaponTransitionAnimsDict.Add(weapon, (weapon.WeaponTransitions.clips));
-            }
-        }
-        else return;
-    }*/
-
     // Attack animations
     private void OnAttackString(int attackString)
     {
@@ -105,24 +77,6 @@ public class CharacterAnimator : MonoBehaviour
         overrideController[replaceableTransAnim.name] = weaponManager.equippedWeapon.Attacks[attackString].RecoveryAnimation;
         animator.SetTrigger("attackTrigger");
     }
-    /*void ChangeCurrentAttackAnimSet(Equipment newWeapon) // each weapon will have an array of animations in them
-    {
-        if (newWeapon == null)
-        {
-            currentAttackAnimSet = defaultAttackAnimSet;
-            return;
-        }
-        else
-        {
-            ;
-            currentAttackTransitionAnimSet = weaponTransitionAnimsDict[newWeapon];
-        }
-    }*/
-
-    /*protected virtual void OnWeaponChanged(Equipment oldWeapon, Equipment newWeapon)
-    {
-        ChangeCurrentAttackAnimSet(newWeapon);
-    }*/
 
     // Dash animations
     protected virtual void OnDash()
@@ -133,7 +87,6 @@ public class CharacterAnimator : MonoBehaviour
     // Gate Animations, changing stages or what not
     protected virtual void OnGateInteract(float duration)
     {
-        //Debug.Log("Interacting with a gate for " + duration + " seconds...");
         isInteractingWithGate = true;
         animator.SetFloat("speed", playerMovement.maxSpeed, motionSmoothness, Time.deltaTime);
         Invoke(nameof(ResetSpeed), duration);

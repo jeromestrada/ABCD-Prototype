@@ -40,13 +40,19 @@ public class PlayerStats : CharacterStats
             {
                 criticalPity = 0; // reset the pity
                 var finalDamage = (int) (baseDamage + (baseDamage * (float)(CritDamage.GetValue() / 100f)));
-                Debug.Log($"CRIT! {finalDamage}");
+                Debug.Log($"CRIT! {baseDamage} + {CritDamage.GetValue()} : {finalDamage}");
                 return finalDamage;
             }
             criticalPity++;
         }
         
         return baseDamage;
+    }
+
+    // each attack will now have a base damage from the player stats + the weapon damage subject to critical hits.
+    public int CalculateTotalAttackDamage(int weaponDamage)
+    {
+        return CriticalHit(this.Damage.GetValue() + weaponDamage);
     }
 
     private void UpdatePlayerStats(HungerSystem hungerSystem)

@@ -23,10 +23,10 @@ ModelImporter:
     second: Armature|Chest SS Action
   - first:
       74: -3528468380927518014
-    second: Armature|COMBAT IDLE
+    second: Combat Idle
   - first:
       74: -7352841521393408972
-    second: Armature|Combat Running
+    second: Combat Running
   - first:
       74: -6198441498882739707
     second: Armature|HAND CLOSED L
@@ -86,11 +86,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Combat Running
+      name: Combat Running
       takeName: Armature|Combat Running
       internalID: 0
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -187,7 +187,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|COMBAT IDLE
+      name: Combat Idle
       takeName: Armature|COMBAT IDLE
       internalID: 0
       firstFrame: 0

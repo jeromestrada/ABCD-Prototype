@@ -26,6 +26,6 @@ public class ComboCharacter : MonoBehaviour
     public void SetMaxCombo(Equipment weapon)
     {
         hasWeapon = true;
-        csm.SetNumOfStates(weapon.StringAttacksCount);
+        csm.SetNumOfStates(weapon.Attacks.Count);
     }
 }
