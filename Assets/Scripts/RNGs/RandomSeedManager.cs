@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomSeedManager : MonoBehaviour
 {
-    private string _currentSeed;
+    [SerializeField] private string _currentSeed;
     [SerializeField] private string _seed;
     public bool setMySeed;
     public bool copySeedToClipboard;
@@ -33,9 +33,9 @@ public class RandomSeedManager : MonoBehaviour
     }
 
 
-    public void SetRandomSeed(string seed = "test")
+    public void SetRandomSeed(string seed)
     {
-        _currentSeed = seed;
+        if(_currentSeed == "") _currentSeed = "test";
 
         int tempSeed = 0;
 
@@ -44,6 +44,7 @@ public class RandomSeedManager : MonoBehaviour
         else
             tempSeed = seed.GetHashCode();
 
+        Debug.Log($"Temp seed is {tempSeed}");
         Random.InitState(tempSeed);
     }
     public void SetRandomSeed(int seed)

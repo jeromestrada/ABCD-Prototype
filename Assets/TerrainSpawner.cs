@@ -63,7 +63,7 @@ public class TerrainSpawner : MonoBehaviour
             }
             hasSpawned = true;
             // Test logic for the marker
-            // Add an event that marks this terrain as a boos room/ spawn a boos room prefab instead
+            // Add an event that marks this terrain as a boss room/ spawn a boos room prefab instead
             if (terrainManager.LastRoom)
             {
                 Instantiate(roomTemplates.LastRoomMarker, transform.position + (transform.up * 5), Quaternion.identity);

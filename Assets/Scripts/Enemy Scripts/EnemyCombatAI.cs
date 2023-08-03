@@ -25,6 +25,7 @@ public class EnemyCombatAI : MonoBehaviour
     public float timeBetweenAttacks = 2;
     bool alreadyAttacked;
     public bool canMove;
+    private bool searching = false;
 
 
     // States
@@ -57,6 +58,7 @@ public class EnemyCombatAI : MonoBehaviour
         agent.speed = _myStats.Movespeed.GetValue();
         previousTrans = transform;
         canMove = true;
+        SearchPoint();
     }
 
     void Update()
@@ -67,7 +69,7 @@ public class EnemyCombatAI : MonoBehaviour
 
         speedPercent = agent.velocity.magnitude / agent.speed;
 
-        if (speedPercent <= 0) Invoke(nameof(SearchWalkPoint), 3f);
+        if (speedPercent <= 0f) SearchWalkPoint();
 
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange && canMove) Chasing();
@@ -76,25 +78,34 @@ public class EnemyCombatAI : MonoBehaviour
 
     private void Patrolling()
     {
-        if (!walkPointSet) SearchWalkPoint();
-
         if (walkPointSet) agent.SetDestination(walkPoint);
-        Vector3 distancToWalkPoint = transform.position - walkPoint;
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
-        if (distancToWalkPoint.magnitude < 2f)
-        {
-            walkPointSet = false;
-        }
+        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+
+        if (!walkPointSet && !searching) SearchWalkPoint();
     }
 
     private void SearchWalkPoint()
     {
+        CancelInvoke(nameof(SearchPoint));
+        searching = true;
+        Invoke(nameof(SearchPoint), Random.Range(2f, 4f));
+    }
+
+    private void SearchPoint()
+    {
+        
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground)) walkPointSet = true;
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
+        {
+            walkPointSet = true;
+            searching = false;
+        }
     }
 
     private void Chasing()
