@@ -4,6 +4,33 @@ ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
+      74: -7721223951888547193
+    second: Hurt 3
+  - first:
+      74: 9205029281357977753
+    second: Hurt 2
+  - first:
+      74: 2059985915391101241
+    second: Hurt 1
+  - first:
+      74: -6418670526250029698
+    second: Attack 4
+  - first:
+      74: -4084516132872533229
+    second: Attack 3
+  - first:
+      74: 296130795608717920
+    second: Attack 2
+  - first:
+      74: -1962111147472363628
+    second: Attack 1
+  - first:
+      74: 2667949614841947897
+    second: Walk
+  - first:
+      74: 3321173135709547491
+    second: Combat Idle
+  - first:
       74: -6908384883446255348
     second: Armature|Combat Idle
   externalObjects: {}
@@ -33,36 +60,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Armature|Combat Idle
-      takeName: Armature|Combat Idle
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 29
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
