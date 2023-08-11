@@ -37,7 +37,7 @@ public class EnemyAnimator : MonoBehaviour
     public void OnTakingDamage(int currentHealth, int maxHealth)
     {
         animator.SetTrigger("hurtTrigger");
-        Invoke(nameof(MoveAgain), 2f);
+        Invoke(nameof(MoveAgain), 1f);
     }
     public void MoveAgain()
     {
