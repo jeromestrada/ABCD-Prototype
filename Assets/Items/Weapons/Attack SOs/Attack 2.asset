@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Attack 2
   m_EditorClassIdentifier: 
   _attackAnimation: {fileID: 9034257028530596401, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
-  _recoveryAnimation: {fileID: 7085724741181485360, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+  _recoveryAnimation: {fileID: -2413843436902781471, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   _attackDamage: 25
   _attackPoint: {x: 0, y: 1, z: 1.5}

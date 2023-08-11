@@ -111,7 +111,7 @@ public class EnemyCombatAI : MonoBehaviour
     {
         
         agent.SetDestination(transform.position);
-        transform.LookAt(playerTrans);
+        if(canMove) transform.LookAt(playerTrans);
         if (!alreadyAttacked)
         {
             OnEnemyAttack?.Invoke();
