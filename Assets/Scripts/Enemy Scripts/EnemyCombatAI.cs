@@ -69,8 +69,6 @@ public class EnemyCombatAI : MonoBehaviour
 
         speedPercent = agent.velocity.magnitude / agent.speed;
 
-        if (speedPercent <= 0f) SearchWalkPoint();
-
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange && canMove) Chasing();
         if (playerInSightRange && playerInAttackRange) Attacking();
@@ -83,7 +81,7 @@ public class EnemyCombatAI : MonoBehaviour
 
         if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
 
-        if (!walkPointSet && !searching) SearchWalkPoint();
+        if (!searching && speedPercent <= 0f) SearchWalkPoint();
     }
 
     private void SearchWalkPoint()
@@ -100,12 +98,8 @@ public class EnemyCombatAI : MonoBehaviour
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground))
-        {
-            walkPointSet = true;
-            searching = false;
-        }
+        searching = false;
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, Ground)) walkPointSet = true;
     }
 
     private void Chasing()
