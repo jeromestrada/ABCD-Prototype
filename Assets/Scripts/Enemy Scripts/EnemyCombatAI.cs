@@ -104,6 +104,7 @@ public class EnemyCombatAI : MonoBehaviour
 
     private void Chasing()
     {
+        //if(canMove) transform.LookAt(playerTrans);
         agent.SetDestination(playerTrans.position);
     }
 
