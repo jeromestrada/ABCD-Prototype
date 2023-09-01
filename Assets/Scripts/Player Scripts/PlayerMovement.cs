@@ -114,11 +114,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (move.magnitude >= 0.1f)
         {
-            /*speed = maxSpeed;
+            speed = maxSpeed;
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = minSpeed;
-            }*/
+            }
             float slowMoPreventer = 0.4f * maxSpeed;
             speed = maxSpeed * move.magnitude;
             if (speed < slowMoPreventer) speed = slowMoPreventer;
@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = 0;
             }
-            //controller.Move(transform.forward * (speed + dashSpeed) * Time.deltaTime);
+            controller.Move(transform.forward * (speed + dashSpeed) * Time.deltaTime);
         }
         else
         {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statIcon: {fileID: 21300000, guid: 7582f0b56da399541ba12f22d7e42eb4, type: 3}
   _statName: Movespeed
-  baseValue: 20
+  baseValue: 5
   modifiers:
   - _modifierName: Movespeed Boost
     _modifierValue: 3
