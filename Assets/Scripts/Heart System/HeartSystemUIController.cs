@@ -10,7 +10,7 @@ public class HeartSystemUIController : MonoBehaviour
 
     private void Awake()
     {
-        HeartsPanel.gameObject.SetActive(false);
+        HeartsPanel.gameObject.SetActive(true);
     }
 
     private void OnEnable()

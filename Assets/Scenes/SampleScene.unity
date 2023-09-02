@@ -5912,6 +5912,10 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1269334622289133982, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1269334622289133983, guid: 282823a5ba2d0814ba128ffc124c2092, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
@@ -6359,7 +6363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a55991d59ed26446910781f358fbd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heartPrefab: {fileID: 8342917910407887595, guid: 1d8992f37c536e042891319f6ff74124, type: 3}
+  _heartPrefab: {fileID: 5994301550917707747, guid: 3c48fc7b63312e245b5e990f9ed18f01, type: 3}
 --- !u!1 &1337976092
 GameObject:
   m_ObjectHideFlags: 0
@@ -7549,7 +7553,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.2910569, y: -0.34439072, z: 0.113216385, w: 0.88536036}
+  m_LocalRotation: {x: 0.29105687, y: -0.34439075, z: 0.11321639, w: 0.88536036}
   m_LocalPosition: {x: 11, y: 12.1, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8361,7 +8365,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050845832}
-  m_LocalRotation: {x: 0.2910569, y: -0.34439072, z: 0.113216385, w: 0.88536036}
+  m_LocalRotation: {x: 0.29105687, y: -0.34439075, z: 0.11321639, w: 0.88536036}
   m_LocalPosition: {x: 11, y: 12.1, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9964,7 +9968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030465, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: m_AngularSpeed
-      value: 1750
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030465, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: m_StoppingDistance

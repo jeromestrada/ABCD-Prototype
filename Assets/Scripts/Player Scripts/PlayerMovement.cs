@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = minSpeed;
             }
-            float slowMoPreventer = 0.4f * maxSpeed;
+            float slowMoPreventer = 0.35f * maxSpeed;
             speed = maxSpeed * move.magnitude;
             if (speed < slowMoPreventer) speed = slowMoPreventer;
 

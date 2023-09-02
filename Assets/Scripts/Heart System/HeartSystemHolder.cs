@@ -23,7 +23,7 @@ public class HeartSystemHolder : MonoBehaviour
         PlayerStats.OnPlayerDying -= LoseHeart;
     }
 
-    protected virtual void Awake()
+    protected void Start()
     {
         _heartSystem = new HeartSystem(_maxHearts, _startingHearts);
         OnHeartsDisplayRequested?.Invoke(_heartSystem);
