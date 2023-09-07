@@ -26,6 +26,7 @@ public class EnemyCombatAI : MonoBehaviour
     bool alreadyAttacked;
     public bool canMove;
     private bool searching = false;
+    private bool isStrafing = false;
 
 
     // States
@@ -33,6 +34,9 @@ public class EnemyCombatAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
     public Vector3 attackPoint;
     public float attackRadius = 1.5f;
+
+    private float stoppingDistTemp;
+    private float speedTemp;
 
     public event System.Action OnEnemyAttack;
 
@@ -58,6 +62,8 @@ public class EnemyCombatAI : MonoBehaviour
         agent.speed = _myStats.Movespeed.GetValue();
         previousTrans = transform;
         canMove = true;
+        stoppingDistTemp = agent.stoppingDistance;
+        speedTemp = agent.speed;
         SearchPoint();
     }
 
@@ -88,7 +94,7 @@ public class EnemyCombatAI : MonoBehaviour
     {
         CancelInvoke(nameof(SearchPoint));
         searching = true;
-        Invoke(nameof(SearchPoint), Random.Range(2f, 4f));
+        Invoke(nameof(SearchPoint), Random.Range(1.5f, 3f));
     }
 
     private void SearchPoint()
@@ -104,8 +110,36 @@ public class EnemyCombatAI : MonoBehaviour
 
     private void Chasing()
     {
-        //if(canMove) transform.LookAt(playerTrans);
-        agent.SetDestination(playerTrans.position);
+        if(canMove) transform.LookAt(playerTrans);
+        float chaseDistance = Vector3.Distance(agent.transform.position, playerTrans.position);
+        //Debug.Log($"cd:{chaseDistance}, sd:{agent.stoppingDistance}");
+        if (chaseDistance > stoppingDistTemp)
+        {
+            Debug.Log("CHASING");
+            isStrafing = false;
+            // revert alterations
+            agent.stoppingDistance = stoppingDistTemp;
+            agent.speed = speedTemp; 
+            agent.SetDestination(playerTrans.position);
+        }
+        else
+        {
+            if (!isStrafing)
+            {
+                
+                isStrafing = true;
+                Invoke(nameof(Strafe), 2f); // strafe after death staring the player
+            }
+            agent.SetDestination(agent.transform.position + agent.transform.right * 4);
+        }
+    }
+
+    private void Strafe()
+    {
+        Debug.Log("STRAFING````````````````````````````````````");
+        isStrafing = true;
+        agent.stoppingDistance = 1; // temporarily alter the stopping distance to allow the navmesh to strafe
+        agent.speed /= 4; // slow down the agent for strafing.
     }
 
     private void Attacking()
