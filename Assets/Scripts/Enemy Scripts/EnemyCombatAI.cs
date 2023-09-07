@@ -152,7 +152,7 @@ public class EnemyCombatAI : MonoBehaviour
     {
         agent.isStopped = true;
         dir = Random.Range(0, 2) == 0 ? agent.transform.right : -agent.transform.right;
-        Invoke(nameof(Strafe), 1.2f);
+        Invoke(nameof(Strafe), 1.8f);
     }
 
     private void Attacking()
