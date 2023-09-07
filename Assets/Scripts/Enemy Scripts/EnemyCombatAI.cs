@@ -27,6 +27,8 @@ public class EnemyCombatAI : MonoBehaviour
     public bool canMove;
     private bool searching = false;
     private bool isStrafing = false;
+    private int strafeDir = 0;
+    private Vector3 dir;
 
 
     // States
@@ -126,20 +128,31 @@ public class EnemyCombatAI : MonoBehaviour
         {
             if (!isStrafing)
             {
-                
                 isStrafing = true;
                 Invoke(nameof(Strafe), 2f); // strafe after death staring the player
             }
-            agent.SetDestination(agent.transform.position + agent.transform.right * 4);
+            else
+            {
+                agent.SetDestination(agent.transform.position + (dir * 4));
+            }
         }
     }
 
     private void Strafe()
     {
-        Debug.Log("STRAFING````````````````````````````````````");
+        //Debug.Log("STRAFING````````````````````````````````````");
         isStrafing = true;
+        agent.isStopped = false;
         agent.stoppingDistance = 1; // temporarily alter the stopping distance to allow the navmesh to strafe
         agent.speed /= 4; // slow down the agent for strafing.
+        Invoke(nameof(StopStrafe), 2f);
+    }
+
+    private void StopStrafe()
+    {
+        agent.isStopped = true;
+        dir = Random.Range(0, 2) == 0 ? agent.transform.right : -agent.transform.right;
+        Invoke(nameof(Strafe), 1.2f);
     }
 
     private void Attacking()
