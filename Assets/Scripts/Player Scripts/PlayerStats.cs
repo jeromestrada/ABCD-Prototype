@@ -17,7 +17,7 @@ public class PlayerStats : CharacterStats
         MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
-        HungerSystem.OnHungerStatusChanged += UpdatePlayerStats;
+        //HungerSystem.OnHungerStatusChanged += UpdatePlayerStats;
     }
 
     private void OnDisable()
@@ -28,7 +28,7 @@ public class PlayerStats : CharacterStats
         MoonPhaseSystem.OnMoonPhaseChange -= UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
-        HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
+        //HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
     }
 
     public int CriticalHit(int baseDamage)
@@ -55,13 +55,13 @@ public class PlayerStats : CharacterStats
         return CriticalHit(this.Damage.GetValue() + weaponDamage);
     }
 
-    private void UpdatePlayerStats(HungerSystem hungerSystem)
+    /*private void UpdatePlayerStats(HungerSystem hungerSystem)
     {
         ApplyHungerStatus(hungerSystem);
         OnStatsDisplayUpdateRequested?.Invoke(_statsList);
-    }
+    }*/
 
-    public override void ApplyHungerStatus(HungerSystem hungerSystem)
+    /*public override void ApplyHungerStatus(HungerSystem hungerSystem)
     {
         switch (hungerSystem.HungerStatus)
         {
@@ -82,7 +82,7 @@ public class PlayerStats : CharacterStats
         }
         base.ApplyHungerStatus(hungerSystem);
         OnStatsDisplayUpdateRequested?.Invoke(_statsList);
-    }
+    }*/
 
     private void UpdatePlayerStats(Moon moon)
     {

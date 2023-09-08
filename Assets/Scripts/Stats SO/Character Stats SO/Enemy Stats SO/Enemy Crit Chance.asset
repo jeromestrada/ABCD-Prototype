@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statIcon: {fileID: 21300000, guid: 9e78a63ef39d0d64abfe3c64ee77d6fa, type: 3}
   _statName: Critical Chance
-  baseValue: 0
+  baseValue: 5
   modifiers: []

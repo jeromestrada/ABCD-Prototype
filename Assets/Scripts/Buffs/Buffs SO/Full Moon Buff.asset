@@ -17,8 +17,8 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _effects:
   - _modifierName: Damage Boost
-    _modifierValue: 50
+    _modifierValue: 2
     _statToModifiy: 0
   - _modifierName: Movespeed Boost
-    _modifierValue: 3
+    _modifierValue: 1
     _statToModifiy: 2

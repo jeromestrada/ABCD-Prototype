@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statIcon: {fileID: 21300000, guid: 0f43c4764ba3fef4e8388672bc8338e2, type: 3}
   _statName: Armor
-  baseValue: 10
+  baseValue: 1
   modifiers: []

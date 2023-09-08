@@ -17,5 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _effects:
   - _modifierName: Tribal Damage Boost
-    _modifierValue: 35
+    _modifierValue: 3
     _statToModifiy: 0
