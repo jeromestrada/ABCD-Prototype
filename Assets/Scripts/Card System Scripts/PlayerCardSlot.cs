@@ -10,7 +10,7 @@ public class PlayerCardSlot : CardSlot
 
     [SerializeField] private int slotNumber; // a number used to indicate the position of the slot in the card System
     // this number is arbitrary and is used to aid the shuffling of the card slots without changing their position in the system list.
-    public int manaCost;
+    public int manaCost = 1; // mana cost for cards will be a minimum 1
     public static event System.Action<int,Card> OnCardUse;
 
     public int SlotNumber => slotNumber;
