@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269334621862132140}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.6, z: 0.26}
+  m_LocalPosition: {x: 0, y: 1, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269334622616715748}
@@ -284,8 +284,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -337,8 +337,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -390,8 +390,8 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
-      minScalar: 2
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 7bcd2371-ac31-49a1-bac6-6d882c350a8b
+  _id: 24a8d2ef-be94-4e66-b87e-61d62fd006b1
 --- !u!114 &1269334621942548670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5183,7 +5183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: e78ecbe1-b76f-4301-9764-11f1779495d7
+  _id: 521290e3-c1f0-48fc-8fd7-faedfca2430a
 --- !u!114 &1269334623617778908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,7 +5243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 60aef548-3229-4c97-b368-597ddbee63bd
+  _id: 0e9c4924-85d6-456d-a539-f748e1025dbb
 --- !u!114 &1269334622694535272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5288,7 +5288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269334622289133982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269334622616715748}
@@ -5546,7 +5546,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10358,7 +10358,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269334622864078263}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -10527,7 +10527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1269334623381543633
 Transform:
   m_ObjectHideFlags: 0
@@ -10536,7 +10536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269334623381543632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.99, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1269334622864078248}
@@ -10721,7 +10721,6 @@ GameObject:
   - component: {fileID: 1269334623752147481}
   - component: {fileID: 1269334623752147480}
   - component: {fileID: 1269334623206687126}
-  - component: {fileID: 1269334623496272496}
   - component: {fileID: 1269334623752147495}
   - component: {fileID: 1269334623752147494}
   - component: {fileID: 1269334623206687125}
@@ -10797,7 +10796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f22a9cfe5cf3d4bacbd1556f9a799f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 10
   _statsList:
   - {fileID: 11400000, guid: 19a483f5497ebf44a98c7ad26044b06a, type: 2}
   - {fileID: 11400000, guid: ddb4724c16ead4f4c9c88a7d5402503b, type: 2}
@@ -10806,27 +10805,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ebee43f5ac140c40900320e0a7a4e00, type: 2}
   Buffs: []
   BuffsList: {fileID: 0}
---- !u!114 &1269334623496272496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269334623752147502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 767e81701bce8ec4fb66e6f6688c590c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _satietyLimit: 100
-  _metabolism: 0.5
-  _digestionInterval: 0.08
-  _rations:
-  - {fileID: 11400000, guid: 9802d4aed8fd4674fab204080c9e2e02, type: 2}
-  - {fileID: 11400000, guid: 052b8069f0f1bdb448265b8ec1da08ca, type: 2}
-  _maxRations: 5
-  _state: 0
-  _satiety: 0
 --- !u!114 &1269334623752147495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10907,11 +10885,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  replaceableAttackAnim: {fileID: 2810812286671666572, guid: 753b93c8411646544a7ace793759fdef, type: 3}
-  replaceableTransAnim: {fileID: -4154818698755974399, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+  replaceableAttackAnim: {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
+  replaceableTransAnim: {fileID: 6383190975571203625, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   defaultAttackAnimSet:
-  - {fileID: 2810812286671666572, guid: 753b93c8411646544a7ace793759fdef, type: 3}
-  - {fileID: -4540153052208149577, guid: 753b93c8411646544a7ace793759fdef, type: 3}
+  - {fileID: -9222424468692360427, guid: 054a8447b6c1ca742972efb00c033716, type: 3}
   playerMovement: {fileID: 0}
   overrideController: {fileID: 0}
   deck: {fileID: 1269334621942548670}
@@ -10955,6 +10932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manualMovement: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  controller: {fileID: 0}
   duration: 4
 --- !u!114 &1269334623752147503
 MonoBehaviour:
@@ -10969,6 +10947,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentBuffsList: []
-  equippedWeapon: {fileID: 11400000, guid: 86b8398f3c3b25942adcfd854ef8f17a, type: 2}
+  equippedWeapon: {fileID: 0}
   equippedProtection: {fileID: 0}
   targetMesh: {fileID: 0}

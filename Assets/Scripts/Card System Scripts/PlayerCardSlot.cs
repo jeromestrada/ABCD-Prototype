@@ -10,15 +10,16 @@ public class PlayerCardSlot : CardSlot
 
     [SerializeField] private int slotNumber; // a number used to indicate the position of the slot in the card System
     // this number is arbitrary and is used to aid the shuffling of the card slots without changing their position in the system list.
+    public int manaCost;
+    public static event System.Action<int,Card> OnCardUse;
 
     public int SlotNumber => slotNumber;
-    public int RemainingUses => remainingUses;
     
     public PlayerCardSlot(Card source)
     {
         card = source;
         _cardID = card.ID;
-        remainingUses = card.NumOfUses;
+        manaCost = source.manaCost;
     }
     public PlayerCardSlot()
     {
@@ -40,21 +41,16 @@ public class PlayerCardSlot : CardSlot
     {
         card = cardSlot.Card;
         _cardID = card.ID;
-        remainingUses = ((PlayerCardSlot)cardSlot).RemainingUses;
     }
 
     public override void InitCardSlot(Card cardToAdd)
     {
         base.InitCardSlot(cardToAdd);
-        remainingUses = card.NumOfUses;
     }
 
     public void UseCardInSlot()
     {
-        // Debug.Log($"Using card {card.name}");
-        card.Use();
-        remainingUses--;
-        if (remainingUses == 0) ClearSlot();
+        OnCardUse?.Invoke(manaCost, card);
     }
 
 }

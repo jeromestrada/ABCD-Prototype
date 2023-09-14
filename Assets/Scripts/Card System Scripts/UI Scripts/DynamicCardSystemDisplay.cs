@@ -85,7 +85,7 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
                             var cardSlot = cardSystem.CardSlots[i];
                             Debug.Log($"Confirmed use of {hotKeys[i]} in hand");
                             cardSlot.UseCardInSlot();
-                            if (cardSlot.RemainingUses <= 0) cardSystem.RemoveCardSlot(cardSlot);
+                            /*if (cardSlot.RemainingUses <= 0) cardSystem.RemoveCardSlot(cardSlot);*/
                             RefreshDynamicInventory(cardSystem);
                         }
                         previousHotKeyPressed = selectedHotKeyIndex;

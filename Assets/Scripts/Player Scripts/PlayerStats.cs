@@ -17,6 +17,7 @@ public class PlayerStats : CharacterStats
         MoonPhaseSystem.OnMoonPhaseChange += UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
+        PlayerCardSlot.OnCardUse += UseMana;
         //HungerSystem.OnHungerStatusChanged += UpdatePlayerStats;
     }
 
@@ -28,6 +29,7 @@ public class PlayerStats : CharacterStats
         MoonPhaseSystem.OnMoonPhaseChange -= UpdatePlayerStats;
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
+        PlayerCardSlot.OnCardUse -= UseMana;
         //HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
     }
 

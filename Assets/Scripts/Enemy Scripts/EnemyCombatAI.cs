@@ -113,46 +113,30 @@ public class EnemyCombatAI : MonoBehaviour
     private void Chasing()
     {
         if(canMove) transform.LookAt(playerTrans);
-        float chaseDistance = Vector3.Distance(agent.transform.position, playerTrans.position);
-        //Debug.Log($"cd:{chaseDistance}, sd:{agent.stoppingDistance}");
-        if (chaseDistance > stoppingDistTemp)
-        {
-            Debug.Log("CHASING");
-            isStrafing = false;
-            // revert alterations
-            agent.stoppingDistance = stoppingDistTemp;
-            agent.speed = speedTemp; 
-            agent.SetDestination(playerTrans.position);
-        }
-        else
-        {
-            if (!isStrafing)
-            {
-                isStrafing = true;
-                Invoke(nameof(Strafe), 2f); // strafe after death staring the player
-            }
-            else
-            {
-                agent.SetDestination(agent.transform.position + (dir * 4));
-            }
-        }
+        agent.SetDestination(playerTrans.position);
     }
 
     private void Strafe()
     {
-        //Debug.Log("STRAFING````````````````````````````````````");
         isStrafing = true;
         agent.isStopped = false;
         agent.stoppingDistance = 1; // temporarily alter the stopping distance to allow the navmesh to strafe
-        agent.speed /= 4; // slow down the agent for strafing.
+        agent.speed /= 2; // slow down the agent for strafing.
         Invoke(nameof(StopStrafe), 2f);
     }
 
     private void StopStrafe()
     {
         agent.isStopped = true;
-        dir = Random.Range(0, 2) == 0 ? agent.transform.right : -agent.transform.right;
+        RandomizeStrafeDir();
         Invoke(nameof(Strafe), 1.8f);
+    }
+
+    private void RandomizeStrafeDir()
+    {
+        var dirToPlayer = transform.position - playerTrans.position;
+        var dirToAi = playerTrans.position - transform.position;
+        dir = Random.Range(0, 2) == 0 ? Vector3.Cross(dirToPlayer, Vector3.up) : Vector3.Cross(dirToAi, Vector3.up);
     }
 
     private void Attacking()

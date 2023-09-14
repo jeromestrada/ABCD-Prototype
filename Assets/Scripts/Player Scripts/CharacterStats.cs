@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _maxHealth = 10;
+    [SerializeField] private int _maxMana = 6;
     protected int _currentHealth;
+    protected int _currentMana;
     [SerializeField] protected List<Stat> _statsList;
     protected List<Modifier> _modifiers;
 
     
 
     public int MaxHealth => _maxHealth;
+    public int MaxMana => _maxMana;
 
     
 
@@ -28,6 +31,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     [SerializeField] protected BuffsList BuffsList;
 
     public event System.Action<int, int> OnHealthChanged;
+    public event System.Action<int, int> OnManaChanged;
     public event System.Action OnDying;
     public event System.Action<CharacterStats> OnTakeDamage;
     public static event System.Action OnStatChange;
@@ -35,6 +39,7 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
     protected void Awake()
     {
         _currentHealth = MaxHealth;
+        _currentMana = MaxMana;
         _modifiers = new List<Modifier>();
         if(_statsList == null) _statsList = new List<Stat>();
 
@@ -121,6 +126,18 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
         {
             Die();
         }
+    }
+
+    public virtual void UseMana(int manaCost, Card card)
+    {
+        Debug.Log($"currentMana: {_currentMana}, manaCost: {manaCost}!");
+        if(_currentMana >= manaCost)
+        {
+            card.Use(); // use the card when there is enough mana to use it.
+            _currentMana -= manaCost;
+            OnManaChanged?.Invoke(_currentMana, _maxMana);
+        }
+
     }
 
     public virtual void Heal(int healing)
