@@ -63,7 +63,6 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
         {
             Destroy(item.gameObject);
         }
-
         if(slotDictionary != null) slotDictionary.Clear();
     }
 
@@ -77,7 +76,6 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
                 {
                     if (Input.GetKeyDown(hotKeys[i]))
                     {
-
                         Debug.Log($"Selecting {hotKeys[i]} in hand");
                         selectedHotKeyIndex = i;
                         if (previousHotKeyPressed == selectedHotKeyIndex) // if a hotkey is pressed twice in a row, use the item.
@@ -85,7 +83,6 @@ public class DynamicCardSystemDisplay : CardSystemDisplay
                             var cardSlot = cardSystem.CardSlots[i];
                             Debug.Log($"Confirmed use of {hotKeys[i]} in hand");
                             cardSlot.UseCardInSlot();
-                            /*if (cardSlot.RemainingUses <= 0) cardSystem.RemoveCardSlot(cardSlot);*/
                             RefreshDynamicInventory(cardSystem);
                         }
                         previousHotKeyPressed = selectedHotKeyIndex;

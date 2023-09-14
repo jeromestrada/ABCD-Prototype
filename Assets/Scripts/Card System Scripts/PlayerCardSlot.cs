@@ -41,6 +41,7 @@ public class PlayerCardSlot : CardSlot
     {
         card = cardSlot.Card;
         _cardID = card.ID;
+        manaCost = card.manaCost;
     }
 
     public override void InitCardSlot(Card cardToAdd)

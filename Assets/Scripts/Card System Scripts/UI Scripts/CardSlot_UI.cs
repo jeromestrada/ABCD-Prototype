@@ -35,8 +35,6 @@ public class CardSlot_UI : Slot_UI
         {
             cardSprite.sprite = slot.Card.cardIcon;
             cardSprite.color = Color.white;
-            /*if (slot.RemainingUses > 1) cardCount.text = slot.RemainingUses.ToString();
-            else cardCount.text = "";*/
             hoverTip.tipToShow = slot.Card.description;
         }
         else

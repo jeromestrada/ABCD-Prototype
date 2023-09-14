@@ -48,14 +48,6 @@ public class MouseItemData : MonoBehaviour
             {// left click
                 var tempCard = AssignedCardSlot.Card;
                 AssignedCardSlot.UseCardInSlot();
-                /*if (AssignedCardSlot.RemainingUses > 0) ReturnToSlot();
-                else
-                {   // remove the slot from the card system, refresh the hand display and clear the mouse slot.
-                    discardPile.Discard(tempCard);
-                    handOfCards.CardSystem.RemoveCardSlot(pickedFromSlot.AssignedInventorySlot);
-                    cardSystemUIController.HandPanel.RefreshDynamicInventory(handOfCards.CardSystem);
-                    ClearSlot();
-                }*/
             }
             else if (Input.GetMouseButtonDown(1) && !IsPointerOverUIObjects())
             {// right click
