@@ -145,7 +145,17 @@ public class CharacterStats : MonoBehaviour , MoonBound, HungerBound, Buffable
         healing = Mathf.Clamp(healing, 0, int.MaxValue); // look out for negative healing.
 
         _currentHealth += healing;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, MaxHealth);
         OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+
+    public virtual void GainMana(int manaGain)
+    {
+        manaGain = Mathf.Clamp(manaGain, 0, int.MaxValue);
+
+        _currentMana += manaGain;
+        _currentMana = Mathf.Clamp(_currentMana, 0, MaxMana);
+        OnManaChanged?.Invoke(_currentMana, _maxMana);
     }
 
     public virtual void Die()

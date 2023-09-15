@@ -17,5 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _effects:
   - _modifierName: Defense Stat
-    _modifierValue: 5
+    _modifierValue: 2
     _statToModifiy: 1

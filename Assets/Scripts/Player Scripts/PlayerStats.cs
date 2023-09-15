@@ -9,6 +9,13 @@ public class PlayerStats : CharacterStats
     public static event System.Action OnPlayerDying;
     public static event System.Action<List<Stat>> OnStatsDisplayUpdateRequested;
 
+    // Regeneration related delegates
+    public static event System.Action<bool> OnDamaged;
+    public static event System.Action<bool> OnNotFullMana;
+
+    public bool fullHp = false;
+    public bool fullMana = false;
+
     private void OnEnable()
     {
         EquipmentManager.OnEquipmentChanged += UpdatePlayerStats;
@@ -18,6 +25,8 @@ public class PlayerStats : CharacterStats
         ConsumableManager.OnConsumableHandled += TakeConsumable;
         HeartSystemHolder.OnHeartsChanged += RealDeath;
         PlayerCardSlot.OnCardUse += UseMana;
+        Regeneration.OnRegenerateHP += Heal;
+        Regeneration.OnRegenerateMP += GainMana;
         //HungerSystem.OnHungerStatusChanged += UpdatePlayerStats;
     }
 
@@ -30,7 +39,24 @@ public class PlayerStats : CharacterStats
         ConsumableManager.OnConsumableHandled -= TakeConsumable;
         HeartSystemHolder.OnHeartsChanged -= RealDeath;
         PlayerCardSlot.OnCardUse -= UseMana;
+        Regeneration.OnRegenerateHP -= Heal;
+        Regeneration.OnRegenerateMP -= GainMana;
         //HungerSystem.OnHungerStatusChanged -= UpdatePlayerStats;
+    }
+
+    private void Update()
+    {
+        if (_currentHealth < MaxHealth)
+        {
+            fullHp = false;
+        }
+        else fullHp = true;
+
+        if (_currentMana < MaxMana)
+        {
+            fullMana = false;
+        }
+        else fullMana = true;
     }
 
     public int CriticalHit(int baseDamage)
@@ -56,35 +82,6 @@ public class PlayerStats : CharacterStats
     {
         return CriticalHit(this.Damage.GetValue() + weaponDamage);
     }
-
-    /*private void UpdatePlayerStats(HungerSystem hungerSystem)
-    {
-        ApplyHungerStatus(hungerSystem);
-        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
-    }*/
-
-    /*public override void ApplyHungerStatus(HungerSystem hungerSystem)
-    {
-        switch (hungerSystem.HungerStatus)
-        {
-            case HungerState.Full:
-                ApplyBuff("Full Buff");
-                RemoveBuff("Starving Buff");
-                break;
-
-            case HungerState.Hungry:
-                ApplyBuff("Hungry Buff");
-                RemoveBuff("Full Buff");
-                break;
-
-            case HungerState.Starving:
-                ApplyBuff("Starving Buff");
-                RemoveBuff("Hungry Buff");
-                break;
-        }
-        base.ApplyHungerStatus(hungerSystem);
-        OnStatsDisplayUpdateRequested?.Invoke(_statsList);
-    }*/
 
     private void UpdatePlayerStats(Moon moon)
     {

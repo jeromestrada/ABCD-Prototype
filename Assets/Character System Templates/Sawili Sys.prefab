@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 24a8d2ef-be94-4e66-b87e-61d62fd006b1
+  _id: ef31050c-0d60-4349-be74-587e2ccdf8a9
 --- !u!114 &1269334621942548670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5183,7 +5183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 521290e3-c1f0-48fc-8fd7-faedfca2430a
+  _id: 2cbd3ade-2a4b-4b95-a121-9829a3eb2194
 --- !u!114 &1269334623617778908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,7 +5243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 0e9c4924-85d6-456d-a539-f748e1025dbb
+  _id: bc377f33-7f72-49b1-b266-18c94a4b116d
 --- !u!114 &1269334622694535272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10730,6 +10730,7 @@ GameObject:
   - component: {fileID: 1269334623752147489}
   - component: {fileID: 1269334623752147488}
   - component: {fileID: 1269334623752147503}
+  - component: {fileID: 1196987790}
   m_Layer: 7
   m_Name: Sawili Sys
   m_TagString: Player
@@ -10797,6 +10798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
+  _maxMana: 6
   _statsList:
   - {fileID: 11400000, guid: 19a483f5497ebf44a98c7ad26044b06a, type: 2}
   - {fileID: 11400000, guid: ddb4724c16ead4f4c9c88a7d5402503b, type: 2}
@@ -10826,7 +10828,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269334623752147502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0335621e14435e45818946a8d11f99e, type: 3}
   m_Name: 
@@ -10950,3 +10952,17 @@ MonoBehaviour:
   equippedWeapon: {fileID: 0}
   equippedProtection: {fileID: 0}
   targetMesh: {fileID: 0}
+--- !u!114 &1196987790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269334623752147502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d86d117b2cfaa640aae05d4693ee756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regenAmount: 1
+  regenRate: 2
