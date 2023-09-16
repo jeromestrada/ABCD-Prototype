@@ -15,10 +15,9 @@ MonoBehaviour:
   ID: 10
   _cardRarity: 4
   name: Tribal Sword
+  manaCost: 0
   cardIcon: {fileID: 21300000, guid: df4dc708bd8692446a6d5c3531ac377b, type: 3}
   description: Equips a Tribal Sword
   _cardType: 0
   _cardPrice: 30
-  numOfUses: 1
-  exhaustable: 0
   item: {fileID: 11400000, guid: 86b8398f3c3b25942adcfd854ef8f17a, type: 2}

@@ -15,11 +15,10 @@ MonoBehaviour:
   ID: 9
   _cardRarity: 4
   name: Procure Healing Vial
+  manaCost: 0
   cardIcon: {fileID: 0}
   description: Procues a Healing Vial that heals for a small amount. Soothe cuts
     and bruises.
   _cardType: 0
   _cardPrice: 10
-  numOfUses: 1
-  exhaustable: 1
   item: {fileID: 11400000, guid: 295807844e7ea5d49afd28677c7a14da, type: 2}

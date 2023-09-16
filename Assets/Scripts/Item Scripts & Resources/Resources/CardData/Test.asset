@@ -15,10 +15,9 @@ MonoBehaviour:
   ID: 4
   _cardRarity: 0
   name: 
+  manaCost: 0
   cardIcon: {fileID: 0}
   description: 
   _cardType: 0
   _cardPrice: 0
-  numOfUses: 1
-  exhaustable: 0
   item: {fileID: 0}

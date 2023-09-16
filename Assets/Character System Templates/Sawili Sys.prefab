@@ -4906,7 +4906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: ef31050c-0d60-4349-be74-587e2ccdf8a9
+  _id: d37c4455-58b8-484f-893e-2e1040d0fe1e
 --- !u!114 &1269334621942548670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5183,7 +5183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 2cbd3ade-2a4b-4b95-a121-9829a3eb2194
+  _id: 2d21e704-29c7-4d71-879a-ee9c0b82c4f1
 --- !u!114 &1269334623617778908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,7 +5243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c68b071c5b0a4482920ad1b220dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: bc377f33-7f72-49b1-b266-18c94a4b116d
+  _id: a7daf56e-2348-4ef0-a0a0-3d1024072b26
 --- !u!114 &1269334622694535272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10273,7 +10273,7 @@ Transform:
   - {fileID: 1269334622289133983}
   - {fileID: 1269334621862132141}
   m_Father: {fileID: 1269334623206687124}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269334622864078263
 GameObject:
@@ -10389,36 +10389,6 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &1269334622868648098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1269334622868648099}
-  m_Layer: 7
-  m_Name: HealthUI Target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1269334622868648099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269334622868648098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1269334623206687124}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269334622944579851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10573,7 +10543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269334623206687124}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1269334623706817255
 GameObject:
@@ -10753,7 +10723,6 @@ Transform:
   - {fileID: 1269334622137716330}
   - {fileID: 1269334622067819092}
   - {fileID: 1269334622443001093}
-  - {fileID: 1269334622868648099}
   - {fileID: 1269334623206687123}
   - {fileID: 1269334622616715748}
   m_Father: {fileID: 0}
@@ -10807,6 +10776,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ebee43f5ac140c40900320e0a7a4e00, type: 2}
   Buffs: []
   BuffsList: {fileID: 0}
+  fullHp: 0
+  fullMana: 0
 --- !u!114 &1269334623752147495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10834,7 +10805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBarPrefab: {fileID: 965597412236753673, guid: 910e678fc78c3b04f88ee326b22b7754, type: 3}
-  _healthUITarget: {fileID: 1269334622868648099}
+  _healthUITarget: {fileID: 0}
   _cam: {fileID: 0}
   _canvas: {fileID: 0}
 --- !u!114 &1269334623206687125
@@ -10964,5 +10935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d86d117b2cfaa640aae05d4693ee756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regenAmount: 1
+  playerStats: {fileID: 0}
+  healthAmount: 0
+  manaAmount: 0
   regenRate: 2

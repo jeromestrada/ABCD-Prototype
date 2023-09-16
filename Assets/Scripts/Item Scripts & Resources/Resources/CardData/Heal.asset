@@ -15,9 +15,8 @@ MonoBehaviour:
   ID: 2
   _cardRarity: 3
   name: Heal
+  manaCost: 3
   cardIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   description: Lesser healing to treat minor cuts and bruises
   _cardType: 3
   _cardPrice: 8
-  numOfUses: 1
-  exhaustable: 0

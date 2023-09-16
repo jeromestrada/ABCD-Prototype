@@ -15,11 +15,10 @@ MonoBehaviour:
   ID: 6
   _cardRarity: 4
   name: Attack Stat
+  manaCost: 0
   cardIcon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   description: Increases Attack Stat by a small value
   _cardType: 4
   _cardPrice: 5
-  numOfUses: 1
-  exhaustable: 1
   _statCardType: 0
   _statBuff: {fileID: 11400000, guid: 48da643f7ce8f454fad3980a76da76fe, type: 2}

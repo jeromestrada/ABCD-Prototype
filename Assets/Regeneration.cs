@@ -16,6 +16,16 @@ public class Regeneration : MonoBehaviour
     public static event System.Action<int> OnRegenerateMP;
 
 
+    private void OnEnable()
+    {
+        EngagementBubble.OnEngage += Engage;
+    }
+
+    private void OnDisable()
+    {
+        EngagementBubble.OnEngage -= Engage;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,5 +79,10 @@ public class Regeneration : MonoBehaviour
         OnRegenerateMP?.Invoke(manaAmount);
         
         regeningMp = false;
+    }
+
+    void Engage(float potency)
+    {
+        regenRate += potency;
     }
 }

@@ -20,6 +20,4 @@ MonoBehaviour:
   description: Dash forward quickly
   _cardType: 3
   _cardPrice: 10
-  numOfUses: 20
-  exhaustable: 0
   ability: {fileID: 11400000, guid: f6b7109f77791c84789fd114da4eadf7, type: 2}

@@ -15,10 +15,9 @@ MonoBehaviour:
   ID: 3
   _cardRarity: 2
   name: Orb of Protection
+  manaCost: 0
   cardIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   description: Equips an Orb of Protection
   _cardType: 0
   _cardPrice: 10
-  numOfUses: 1
-  exhaustable: 0
   item: {fileID: 11400000, guid: 4fdaee708ab7b6f4db151f2946869020, type: 2}
