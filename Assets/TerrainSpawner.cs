@@ -31,7 +31,7 @@ public class TerrainSpawner : MonoBehaviour
 
     public void SpawnTerrain()
     {
-        if(!hasSpawned && terrainManager.HasRoom)
+        if(!hasSpawned && terrainManager.HasRoom) // set another condition that manages when to spawn the new terrain
         {
             OnTerrainSpawned?.Invoke(); // this increases the terrain count so that future spawns will adjust accordingly
             switch (openingDirection)

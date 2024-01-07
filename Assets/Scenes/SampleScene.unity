@@ -10339,19 +10339,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030465, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: m_Speed
-      value: 7
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030465, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: m_Acceleration
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030465, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: m_AngularSpeed
-      value: 10000
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030465, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: m_StoppingDistance
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1292135290315030467, guid: 709578c5143bedc43a1fa58b0ff084c0, type: 3}
       propertyPath: _cam
