@@ -22,7 +22,7 @@ public class TerrainSpawner : MonoBehaviour
     private bool hasSpawned = false;
     private int rand;
 
-    private void Start()
+    private void OnEnable()
     {
         roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         terrainManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<TerrainManager>();

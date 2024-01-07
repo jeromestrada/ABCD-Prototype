@@ -3980,17 +3980,49 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 275456349, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 275456351, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 527127320, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 527127320, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 527127322, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 656119408, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 656119408, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 656119410, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1432354924, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432354924, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432354926, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 532972619507017724, guid: cf3f61ca051b91b4a966f656e5faba8a, type: 3}
       propertyPath: m_Layer
